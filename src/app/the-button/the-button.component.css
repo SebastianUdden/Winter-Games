@@ -1,0 +1,396 @@
+body {
+  background-color: rgb(44, 44, 44);
+}
+
+.full-height {
+  height: 1100px;
+}
+
+.users {
+  background-color:rgb(86, 86, 86);
+}
+
+.power-bar {
+  background-color:rgb(86, 86, 86);
+}
+
+.health-bar {
+  background-color:rgb(86, 86, 86);
+}
+.pointer {
+	cursor: pointer;
+}
+
+.centerVertically {
+  margin-top: 10%;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.light-switch-array-controller {
+    width: 150px;
+    height: 90px;
+    text-align: center;
+    padding: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    display: inline-block;
+    font-size: 25px;
+    cursor: pointer;
+    /* outline: none; */
+
+    /* border: none; */
+    /* border-radius: 50px; */
+    /* border-color: #dddddd; */
+    /* border-style: solid; */
+    /* border-width: 5px; */
+}
+
+.light-switch-array {
+  /* border-radius: 50px; */
+  height: 130px !important;
+	background-color: #3e3e3e;
+	box-shadow: 0 5px #111111;
+}
+
+/* .on {
+  box-shadow: 0 7px #777777;
+}
+
+.on:active {
+  box-shadow: 0 5px #666666;
+  transform: translateY(10px);
+}
+
+.off {
+  box-shadow: 0 5px #666666;
+  margin-top: 15px;
+}
+
+.off:active {
+  box-shadow: 0 7px #777777;
+  transform: translateY(10px);
+} */
+
+.user-level {
+	background-color: #AA4444;
+	color: #EEEEEE;
+	border-radius: 5px;
+	border: solid;
+	border-color: #FFFFFF !important;
+	border-width: 2px !important;
+	padding: 4px;
+	float:right;
+	display: table-cell;
+	vertical-align: middle !important;
+}
+
+.left {
+	background-color:#666666;
+}
+
+.mid {
+	background-color:#BBBBBB;
+}
+
+.right {
+	background-color:#EEEEEE;
+}
+
+.extra-time-row {
+	height: 100px;
+}
+
+.empty-row {
+	height: 80px;
+}
+
+ul {
+	list-style-type:none;
+	margin: 30px 30px 0 0;
+	padding: 0; }
+li {
+	padding: 15px;
+	width: 100%;
+	background:#E3E3E3;
+	margin-bottom:2px;
+	font-weight:bold;
+}
+
+.spin-text {
+	width: 400px;
+}
+
+.cheat-text {
+	font-size: 20px;
+	text-align:center;
+
+	-webkit-user-select: none; /* Safari */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+/Edge */
+	user-select: none; /* Standard */
+}
+
+.small {
+	font-size: 20px;
+}
+
+.medium {
+	font-size: 39px;
+}
+
+.big {
+  font-size: 60px;
+}
+
+.huge {
+	font-size: 130px;
+}
+
+.enormous {
+	font-size: 150px;
+}
+
+.unselectable {
+	-webkit-user-select: none; /* Safari */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+/Edge */
+	user-select: none; /* Standard */
+}
+
+.text-center {
+    text-align: center;
+}
+
+.center {
+    margin: auto;
+}
+
+.grey-text {
+    color:#999999;
+}
+
+.grey-text:hover {
+	color:#BBBBBB;
+}
+
+.grey-background {
+	color: #FFFFFF;
+    background-color:#555555;
+}
+
+.grey-background:hover {
+	background-color:#888888;
+}
+
+.grey-background:activate {
+	background-color:#333333;
+}
+
+.red-text {
+    color:#DD0000;
+}
+
+.red-text:hover {
+	color:#EE0000;
+}
+
+.red-background {
+	color: #FFFFFF;
+  background-color:#DD0000;
+}
+
+.red-background:hover {
+	background-color:#EE0000;
+}
+
+.red-background:active {
+	background-color: #BB0000;
+}
+
+.green-background {
+	color: #FFFFFF;
+    background-color:#006600;
+}
+
+.green-background:hover {
+	background-color:#008800;
+}
+
+.green-background:active {
+	background-color: #004400;
+}
+
+.orange-background {
+	color: #FFFFFF;
+    background-color:#DD4400;
+}
+
+.orange-background:hover {
+	background-color:#EE5500;
+}
+
+.orange-background:active {
+	background-color: #CC8800;
+}
+
+.white-background {
+	color: #AAAAAA;
+    background-color:#EEEEEE;
+}
+
+.white-background:hover {
+	background-color:#FFFFFF;
+}
+
+.white-background:active {
+	background-color: #CCCCCC;
+}
+
+.grayed-out-text {
+  color: rgb(80, 80, 80)
+}
+
+.bland-error-background {
+  color: white;
+  background-color: rgb(227, 223, 204);
+}
+
+.bland-error-background:hover {
+  background-color: rgb(241, 236, 216);
+}
+
+.bland-error-background:active {
+  background-color: rgb(221, 92, 78);
+}
+
+.piggy-background {
+  color: white;
+  background-color: rgb(189, 74, 74);
+}
+
+.piggy-background:hover {
+  background-color: rgb(192, 94, 94);
+}
+
+.piggy-background:active {
+  background-color: rgb(179, 57, 57);
+}
+
+.blue-oyster-background {
+  color: white;
+  background-color: rgb(100, 152, 201);
+}
+
+.blue-oyster-background:hover {
+  background-color: rgb(108, 165, 219)
+}
+
+.blue-oyster-background:active {
+  background-color: rgb(89, 137, 181)
+}
+
+.sea-4-background {
+  color: white;
+  background-color: rgb(134, 186, 118);
+}
+
+.sea-4-background:hover {
+  background-color: rgb(144, 201, 127);
+}
+
+.sea-4-background:active {
+  background-color: rgb(113, 157, 99);
+}
+
+.the-counter {
+  display: inline-block;
+  overflow: hidden;
+	border-radius: 100px;
+	border-style: solid;
+	border-width: 5px;
+	padding: 15px;
+}
+
+.lame-border {
+  border-color: rgb(80, 80, 80);
+}
+
+.cool-border {
+  border-color: rgb(250, 0, 196);
+}
+
+.empty {
+	margin-top: 15px;
+	margin-bottom: 15px;
+	border: none;
+	outline: none;
+	color: white;
+	max-width: 350px;
+	padding: 15px 25px;
+}
+
+.the-button-main {
+	text-align: center;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	border: none;
+	border-radius: 15px;
+	box-shadow: 0 9px #999;
+	cursor: pointer;
+ 	outline: none;
+
+	border-color: #DDDDDD;
+	border-style: solid;
+	border-width: 5px;
+	max-width: 350px;
+	padding: 15px 25px;
+}
+
+.the-button-main:active {
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.the-button {
+	margin-top: 15px;
+	margin-bottom: 15px;
+	border: none;
+	border-radius: 15px;
+	box-shadow: 0 9px #999;
+	cursor: pointer;
+ 	outline: none;
+
+	border-color: #DDDDDD;
+	border-style: solid;
+	border-width: 5px;
+	max-width: 350px;
+	padding: 15px 25px;
+}
+
+.the-button:active {
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.the-random-button {
+  text-align: center;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	border: none;
+	border-radius: 30px;
+	box-shadow: 0 9px #999;
+	cursor: pointer;
+ 	outline: none;
+
+	border-color: #DDDDDD;
+	border-style: solid;
+	border-width: 5px;
+	/*max-width: 350px;*/
+	padding: 15px;
+}
+
+.the-random-button:active {
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}

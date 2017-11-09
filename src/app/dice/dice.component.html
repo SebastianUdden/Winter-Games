@@ -1,0 +1,16 @@
+
+
+<div class="row" style="margin-top:10px;">
+    <div class="col-lg-2">
+        <button class="roll-dice blue-oyster-background unselectable" *ngIf="!diceRolling" (click)="rollDice()">Roll</button>
+        <button class="roll-dice bland-error-background" *ngIf="diceRolling && !diceSorting">Rolling</button>
+        <button class="roll-dice sea-4-background unselectable" *ngIf="diceRolling && diceSorting">Sorting</button>
+    </div>
+    <div class="col-lg-1" *ngFor="let die of dice">
+        <pre class="dieFace done unselectable" *ngIf="die.rollFinished && die.lastRoll">{{ die.lastRoll.face }}</pre>
+        <pre class="dieFace rolling unselectable" *ngIf="!die.rollFinished">{{ die.lastRoll.face }}</pre>
+    </div>
+    <div class="col-lg-5">
+        <!-- <p class="dice-info">Rolls made: {{ rollCount }}</p> -->
+    </div>
+</div>

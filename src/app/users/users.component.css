@@ -1,0 +1,84 @@
+.side-menu {
+  /* height:1050px; */
+  /* background-color:#cc1111; */
+}
+.userMenu-item {
+  text-align: center;
+  background-color:rgb(86, 86, 86);
+  border-color: black;
+  border:5px;
+  color:#f1f1f1;
+  font-size: 17px;
+  padding: 10px;
+  cursor:pointer;
+}
+.userMenu-item:hover {
+  color:#ffffff;
+  background-color:#420505
+}
+
+.userInfo-item {
+  font-size:25px;
+  border-color: black;
+  color:white;
+}
+
+.centerText {
+  text-align: center;
+}
+
+.avatar {
+  width:40px;
+}
+
+.name {
+  width: 120px;
+}
+
+.score {
+  width: 80px;
+}
+
+.box-content {
+  padding: 10px;
+  color:white;
+  font-size:20px;
+}
+
+/* .high-score {
+	border-radius: 10px;
+	border-width: 3px;
+	border-style: solid;
+  border-color: #BB0000;
+}
+
+.high-score-entry-current {
+	height: 63px;
+	font-size: 22px;
+	font-weight: 300;
+	padding: 10px;
+	margin: 2px;
+	background-color: #990000 !important;
+	border-width: 3px 5px;
+	border-style: solid;
+	border-color: #660000 #000000;
+}
+
+.high-score-entry-current:hover {
+	font-weight: 700;
+}
+
+.high-score-entry {
+  display:inline-block;
+	height: 63px;
+	font-size: 20px;
+	padding: 8px;
+	margin: 2px;
+	border-width: 3px;
+	border-style: solid;
+	border-color: #BB0000;
+}
+
+.high-score-entry:hover {
+	font-weight: 700;
+} */

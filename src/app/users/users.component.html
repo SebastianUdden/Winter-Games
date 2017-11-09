@@ -1,0 +1,41 @@
+<!-- <span class="text-center big unselectable">High Scores -->
+  <!-- <button *ngIf="user.name !== '' && !duplicate" (click)="AddCurrentUser()" class="the-button small center red-background unselectable">Add {{user.username}}</button> -->
+  <!-- <button *ngIf="user.name !== '' && duplicate" (click)="addCurrentUser()" class="the-button small center grey-background unselectable">Add {{user.name}}</button> -->
+<!-- </span> -->
+<div class="side-menu">
+    <div class="row userMenu">
+        <div (click)="seletctTab(1)" class="col-lg-4 userMenu-item">HS</div>
+        <div (click)="seletctTab(2)" class="col-lg-4 userMenu-item">Profile</div>
+        <div (click)="seletctTab(3)" class="col-lg-4 userMenu-item">Settings</div>
+    </div>
+    <div class="row">
+        <div *ngIf="selectedTab === 1" class="box-content">
+              <div *ngFor="let user of users">
+                <div class="row">
+                  <div class="col-lg-2 centerText userInfo-item">AVT</div>
+                  <div class="col-lg-7 userInfo-item">{{user.username}}</div>
+                  <div class="col-lg-3 centerText userInfo-item">{{user.score}}</div>
+                </div>
+                <!-- <span style="width:123px;">AVT</span>
+                <span class="name">{{user.username}}</span>
+                <span class="score">{{user.score}}</span> -->
+                <!-- <div *ngIf="!user.current && !displayFullName" class="high-score-entry unselectable pointer" (click)="ToggleFullName()">{{user.username}}: {{ user.score }}</div>
+                  <div *ngIf="!user.current && displayFullName" class="high-score-entry unselectable pointer" (click)="ToggleFullName()">{{user.firstName}} {{user.lastName}}: {{ user.score }}</div>
+                  <div *ngIf="user.current && !displayFullName" class="high-score-entry-current unselectable pointer" (click)="ToggleFullName()">{{user.username}}: {{ user.score }}</div>
+                  <div *ngIf="user.current && displayFullName" class="high-score-entry-current unselectable pointer" (click)="ToggleFullName()">{{user.firstName}} {{user.lastName}}: {{ user.score }}</div> -->
+              </div>
+        </div>
+        <div *ngIf="selectedTab === 2" class="box-content">
+          <p>PROFILE</p>
+        </div>
+        <div *ngIf="selectedTab === 3" class="box-content">
+          <p>SETTINGS</p>
+        </div>
+    </div>
+</div>
+
+<!-- <div>
+
+</div> -->
+
+<!-- <div class="empty-row red big unselectable">LEVEL: {{userLevel}}</div> -->

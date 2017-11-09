@@ -1,0 +1,135 @@
+<div *ngIf="showDevValues" class="row">
+  <div class="col-lg-1" class="red-text small unselectable">countDown: {{countDown}}</div>
+  <div class="col-lg-1" class="red-text small unselectable">noStartValue: {{noStartValue}}</div>
+  <div class="col-lg-1" class="red-text small unselectable">bonusTime: {{bonusTime}}</div>
+  <div class="col-lg-1" class="red-text small unselectable">randomNumber: {{randomNumber}}</div>
+  <div class="col-lg-1" class="red-text small unselectable">countdownValue: {{countdownValue}} +</div>
+  <div class="col-lg-1" class="red-text small unselectable">timeLimit: {{timeLimit}} +</div>
+  <div class="col-lg-1" class="red-text small unselectable">totalBonusTime: {{totalBonusTime}} -</div>
+  <div class="col-lg-1" class="red-text small unselectable">tick: {{tick}} =</div>
+  <div class="col-lg-1" class="red-text small unselectable">readyIn: {{readyIn}}</div>
+  <div class="row red-text small">
+      <div class="col-lg-1" *ngFor="let lightSwitch of lightSwitches">{{lightSwitch.color}}: {{lightSwitch.status}}</div>
+  </div>
+</div>
+<div *ngIf="showCheats" class="row">
+  <div class="col-lg-4"></div>
+  <div class="col-lg-4">
+      <div>
+          <!--<div *ngIf="this.state === 'small'" (click)='bigToSmall()' class="the-button red center cheat-text levelOne">Big to small</div>
+          <div *ngIf="this.state === 'big'" (click)='bigToSmall()' class="the-button grey center cheat-text levelOne">Big to small</div>
+
+          <div *ngIf="this.state === 'original'" (click)='spinMoveFade()' class="the-button red center cheat-text levelOne">Spin move fade</div>
+          <div *ngIf="this.state === 'spinMoveFade'" (click)='spinMoveFade()' class="the-button grey center cheat-text levelOne">Spin move fade</div>-->
+
+          <div *ngIf="showCheats && cheatX2" (click)="CheatToggle(2)" class="the-button grey-background center cheat-text">Cheat X2</div>
+          <div *ngIf="showCheats && !cheatX2" (click)="CheatToggle(2)" class="the-button red-background center cheat-text">Cheat X2</div>
+
+          <div *ngIf="showCheats && cheatX3" (click)="CheatToggle(3)" class="the-button grey-background center cheat-text">Cheat X3</div>
+          <div *ngIf="showCheats && !cheatX3" (click)="CheatToggle(3)" class="the-button red-background center cheat-text">Cheat X3</div>
+
+          <div *ngIf="showCheats && cheatX9" (click)="CheatToggle(9)" class="the-button grey-background center cheat-text">Cheat X9</div>
+          <div *ngIf="showCheats && !cheatX9" (click)="CheatToggle(9)" class="the-button red-background center cheat-text">Cheat X9</div>
+      </div>
+  </div>
+  <div class="col-lg-4"></div>
+</div>
+
+<div class="row">
+  <div class="col-lg-3 full-height users">
+    <app-users></app-users>
+  </div>
+  <div class="col-lg-8">
+      <div class="row extra-time-row light-switch-array">
+        <div class="col-lg-10">
+          <div class="row">
+              <app-light-switch (lightSwitchOut)="LightSwitchToggle($event)" class="col-lg-1" *ngFor="let lightSwitch of lightSwitches" [lightSwitch]="lightSwitch"></app-light-switch>
+          </div>
+        </div>
+        <div class="col-lg-2">
+            <div class="light-switch-array-controller off grey-background" (click)="CheckForCheats();"><span class="centerVertically">ACTIVATE</span></div>
+        </div>
+      </div>
+
+      <div *ngIf="showExtraTime" class="row extra-time-row">
+        <div class="col-lg-1"><div *ngIf="this.timeBlocks[0].selected" (click)="ExtraTime()" class="the-random-button piggy-background">{{bonusTime}}</div></div>
+        <div class="col-lg-1"><div *ngIf="this.timeBlocks[1].selected" (click)="ExtraTime()" class="the-random-button piggy-background">{{bonusTime}}</div></div>
+        <div class="col-lg-1"><div *ngIf="this.timeBlocks[2].selected" (click)="ExtraTime()" class="the-random-button piggy-background">{{bonusTime}}</div></div>
+        <div class="col-lg-1"><div *ngIf="this.timeBlocks[3].selected" (click)="ExtraTime()" class="the-random-button piggy-background">{{bonusTime}}</div></div>
+        <div class="col-lg-1"><div *ngIf="this.timeBlocks[4].selected" (click)="ExtraTime()" class="the-random-button piggy-background">{{bonusTime}}</div></div>
+        <div class="col-lg-1"><div *ngIf="this.timeBlocks[5].selected" (click)="ExtraTime()" class="the-random-button piggy-background">{{bonusTime}}</div></div>
+        <div class="col-lg-1"><div *ngIf="this.timeBlocks[6].selected" (click)="ExtraTime()" class="the-random-button piggy-background">{{bonusTime}}</div></div>
+        <div class="col-lg-1"><div *ngIf="this.timeBlocks[7].selected" (click)="ExtraTime()" class="the-random-button piggy-background">{{bonusTime}}</div></div>
+        <div class="col-lg-1"><div *ngIf="this.timeBlocks[8].selected" (click)="ExtraTime()" class="the-random-button piggy-background">{{bonusTime}}</div></div>
+        <div class="col-lg-1"><div *ngIf="this.timeBlocks[9].selected" (click)="ExtraTime()" class="the-random-button piggy-background">{{bonusTime}}</div></div>
+        <div class="col-lg-1"><div *ngIf="this.timeBlocks[10].selected" (click)="ExtraTime()" class="the-random-button piggy-background">{{bonusTime}}</div></div>
+        <div class="col-lg-1"><div *ngIf="this.timeBlocks[11].selected" (click)="ExtraTime()" class="the-random-button piggy-background">{{bonusTime}}</div></div>
+      </div>
+
+      <div class="row">
+        <div class="row">
+          <p class="grayed-out-text text-center medium unselectable">Time <span *ngIf="bonusTime !== 0" class="red-text medium unselectable">+ {{bonusTime}}</span></p>
+        </div>
+
+        <div class="row">
+          <div *ngIf="!gameOn" class="grayed-out-text text-center huge unseslectable">0</div>
+          <div *ngIf="gameOn && countDown > 5" class="grayed-out-text text-center huge unselectable">{{countDown}}</div>
+          <div *ngIf="gameOn && countDown <= 5" class="red-text text-center huge unselectable">{{countDown}}</div>
+
+        </div>
+      </div>
+      <div class="row">
+          <!-- <user-form></user-form>     -->
+          <!-- <div class="red-text text-center medium unselectable empty-row">{{ perseverance }}</div> -->
+          <div *ngIf="userScore >= 0 && gameOn" (click)="Count()" class="the-button-main center blue-oyster-background medium unselectable">BOSS
+              <span *ngIf="cheatX2">x2</span>
+              <span *ngIf="cheatX3">x3</span>
+              <span *ngIf="cheatX4">x4</span>
+              <span *ngIf="cheatX5">x5</span>
+              <span *ngIf="cheatX9">x9</span>
+              <span *ngIf="cheatX20">MVP NUKEM x20</span>
+          </div>
+          <div *ngIf="!gameOn && noStart" class="the-button-main center bland-error-background medium unselectable">Loading: {{ readyIn }}</div>
+          <div *ngIf="!gameOn && !noStart" (click)="StartOver()" class="the-button-main center sea-4-background medium unselectable">New Game</div>
+
+          <!-- <div *ngIf="gameOn" [@spinMoveFade]='state' [@bigToSmall]='state'>
+              <div class="red-text center text-center medium unselectable spin-text">{{ level }}</div>
+              <p *ngIf="userScore >= 9999" class="red-text text-center medium unselectable">You're here to kick ass and chew bubblegum, and you're all out of gum...</p>
+              <p *ngIf="userScore >= 9999 && userScore < 11000" class="red-text text-center medium unselectable">MVP NUKEM UNLOCKED!</p>
+          </div> -->
+      </div>
+      <div class="row">
+          <div class="extra-time-row">
+
+          </div>
+      </div>
+      <div class="row text-center">
+          <div class="row">
+              <div *ngIf="userScore < 100" class="the-counter lame-border grayed-out-text text-center big unselectable">{{ userScore }}</div>
+              <div *ngIf="userScore >= 100" class="the-counter cool-border grayed-out-text text-center big unselectable">{{ userScore }}</div>
+          </div>
+          <div class="row">
+            <p class="grayed-out-text text-center medium unselectable">Score</p>
+          </div>
+      </div>
+      <div *ngIf="showExtraTime" class="row extra-time-row">
+        <div class="col-lg-1"><div *ngIf="this.timeBlocks[12].selected" (click)="ExtraTime()" class="the-random-button piggy-background">{{bonusTime}}</div></div>
+        <div class="col-lg-1"><div *ngIf="this.timeBlocks[13].selected" (click)="ExtraTime()" class="the-random-button piggy-background">{{bonusTime}}</div></div>
+        <div class="col-lg-1"><div *ngIf="this.timeBlocks[14].selected" (click)="ExtraTime()" class="the-random-button piggy-background">{{bonusTime}}</div></div>
+        <div class="col-lg-1"><div *ngIf="this.timeBlocks[15].selected" (click)="ExtraTime()" class="the-random-button piggy-background">{{bonusTime}}</div></div>
+        <div class="col-lg-1"><div *ngIf="this.timeBlocks[16].selected" (click)="ExtraTime()" class="the-random-button piggy-background">{{bonusTime}}</div></div>
+        <div class="col-lg-1"><div *ngIf="this.timeBlocks[17].selected" (click)="ExtraTime()" class="the-random-button piggy-background">{{bonusTime}}</div></div>
+        <div class="col-lg-1"><div *ngIf="this.timeBlocks[18].selected" (click)="ExtraTime()" class="the-random-button piggy-background">{{bonusTime}}</div></div>
+        <div class="col-lg-1"><div *ngIf="this.timeBlocks[19].selected" (click)="ExtraTime()" class="the-random-button piggy-background">{{bonusTime}}</div></div>
+        <div class="col-lg-1"><div *ngIf="this.timeBlocks[20].selected" (click)="ExtraTime()" class="the-random-button piggy-background">{{bonusTime}}</div></div>
+        <div class="col-lg-1"><div *ngIf="this.timeBlocks[21].selected" (click)="ExtraTime()" class="the-random-button piggy-background">{{bonusTime}}</div></div>
+        <div class="col-lg-1"><div *ngIf="this.timeBlocks[22].selected" (click)="ExtraTime()" class="the-random-button piggy-background">{{bonusTime}}</div></div>
+        <div class="col-lg-1"><div *ngIf="this.timeBlocks[23].selected" (click)="ExtraTime()" class="the-random-button piggy-background">{{bonusTime}}</div></div>
+      </div>
+      <div class="row health-bar extra-time-row">
+        <app-dice></app-dice>
+      </div>
+  </div>
+  <div class="col-lg-1 full-height power-bar"></div>
+</div>
+

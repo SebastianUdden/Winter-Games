@@ -1,0 +1,128 @@
+.light-switch {
+  width: 75px;
+  height: 90px;
+  /* text-align: center; */
+  /* padding: 15px; */
+  margin-top: 15px;
+  margin-bottom: 15px;
+
+  cursor: pointer;
+  /* outline: none; */
+
+  /* border: none; */
+  /* border-radius: 50px; */
+  /* border-color: #dddddd; */
+  /* border-style: solid; */
+  /* border-width: 5px; */
+}
+
+.on {
+  box-shadow: 0 7px #777777;
+}
+
+.on:active {
+  box-shadow: 0 5px #666666;
+  transform: translateY(4px);
+}
+
+.off {
+  box-shadow: 0 5px #666666;
+  margin-top: 15px;
+}
+
+.off:active {
+  box-shadow: 0 7px #777777;
+  transform: translateY(4px);
+}
+
+/* Rainbow Color Buttons */
+.grey { background-color:#555555; color: #FFFFFF; }
+.grey:hover { background-color:#666666; }
+.grey:active { background-color: #444444; }
+.grey-off { background-color:#000000; color: #FFFFFF; }
+.grey-off:hover { background-color:#222222; }
+.grey-off:active { background-color: #444444; }
+
+.dark-red { background-color:#8a0000; color: #FFFFFF; }
+.dark-red:hover { background-color:#bd0000; }
+.dark-red:active { background-color: #670000; }
+.dark-red-off { background-color:#000000; color: #FFFFFF; }
+.dark-red-off:hover { background-color:#630000; }
+.dark-red-off:active { background-color: #670000; }
+
+.red { background-color:#dd0000; color: #FFFFFF; }
+.red:hover { background-color:#ff0000; }
+.red:active { background-color: #bc0000; }
+.red-off { background-color: #000000; }
+.red-off:hover { background-color:#970000; }
+.red-off:active { background-color: #bc0000; }
+
+.red-orange { background-color:#dd6300; color: #FFFFFF; }
+.red-orange:hover { background-color:#ff7300; }
+.red-orange:active { background-color: #cc5100; }
+.red-orange-off { background-color: #000000; }
+.red-orange-off:hover { background-color:#a95300; }
+.red-orange-off:active { background-color: #cc5100; }
+
+.orange-yellow { background-color:#ffb600; color: #FFFFFF; }
+.orange-yellow:hover { background-color:#ffc800; }
+.orange-yellow:active { background-color: #efa600; }
+.orange-yellow-off { background-color: #000000; }
+.orange-yellow-off:hover { background-color:#986600; }
+.orange-yellow-off:active { background-color: #efa600; }
+
+.yellow { background-color:#f7e600; color: #FFFFFF; }
+.yellow:hover { background-color:#f8f700; }
+.yellow:active { background-color: #e8d700; }
+.yellow-off { background-color: #000000; }
+.yellow-off:hover { background-color:#aa9900; }
+.yellow-off:active { background-color: #e8d700; }
+
+.green { background-color:#87ee00; color: #FFFFFF; }
+.green:hover { background-color:#98ff00; }
+.green:active { background-color: #65cc00; }
+.green-off { background-color: #000000; }
+.green-off:hover { background-color:#217700; }
+.green-off:active { background-color: #65cc00; }
+
+.cyan-green { background-color:#00eea7; color: #FFFFFF; }
+.cyan-green:hover { background-color:#11ffb8; }
+.cyan-green:active { background-color: #00cc85; }
+.cyan-green-off { background-color: #000000; }
+.cyan-green-off:hover { background-color:#008761; }
+.cyan-green-off:active { background-color: #00cc85; }
+
+.cyan { background-color:#00eeee; color: #FFFFFF; }
+.cyan:hover { background-color:#11ffff; }
+.cyan:active { background-color: #00cccc; }
+.cyan-off { background-color: #000000; }
+.cyan-off:hover { background-color:#007378; }
+.cyan-off:active { background-color: #00cccc; }
+
+.light-blue { background-color:#10b6ee; color: #FFFFFF; }
+.light-blue:hover { background-color:#10d7ff; }
+.light-blue:active { background-color: #10a4cc; }
+.light-blue-off { background-color: #000000; }
+.light-blue-off:hover { background-color:#006097; }
+.light-blue-off:active { background-color: #10a4cc; }
+
+.blue { background-color:#0053ee; color: #FFFFFF; }
+.blue:hover { background-color:#3386ff; }
+.blue:active { background-color: #0042dd; }
+.blue-off { background-color: #000000; }
+.blue-off:hover { background-color:#0032bb; }
+.blue-off:active { background-color: #0042dd; }
+
+.purple { background-color:#a700ee; color: #FFFFFF; }
+.purple:hover { background-color:#ca22ff; }
+.purple:active { background-color: #9500cc; }
+.purple-off { background-color: #000000; }
+.purple-off:hover { background-color:#6800aa; }
+.purple-off:active { background-color: #9500cc; }
+
+.pink { background-color:#e600ee; color: #FFFFFF; }
+.pink:hover { background-color:#f822ff; }
+.pink:active { background-color: #c400cc; }
+.pink-off { background-color: #000000; }
+.pink-off:hover { background-color:#910077; }
+.pink-off:active { background-color: #c400cc; }

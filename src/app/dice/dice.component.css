@@ -1,0 +1,108 @@
+body {
+  background-color: rgb(44, 44, 44);
+}
+
+.dice-info {
+  color:white;
+}
+
+.dieFace {
+  cursor: pointer;
+  max-width:60px;
+}
+
+.roll-dice {
+  width: 100px;
+  text-align: center;
+  padding:10px;
+  border: none;
+	border-radius: 15px;
+	box-shadow: 0 9px #999;
+	cursor: pointer;
+ 	outline: none;
+
+	border-color: #DDDDDD;
+	border-style: solid;
+	border-width: 5px;
+	max-width: 350px;
+	padding: 15px 25px;
+}
+
+.roll-dice:active {
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.rolling {
+  background-color: rgb(138, 138, 138);
+}
+
+.rolling:hover {
+  background-color: rgb(161, 161, 161);
+}
+
+.rolling:active {
+  background-color: rgb(230, 18, 10);
+}
+
+.done {
+  background-color: rgb(233, 233, 233);
+}
+
+.done:hover {
+  background-color: rgb(255, 255, 255);
+}
+
+.done:active {
+  background-color: rgb(212, 212, 212);
+}
+
+.blue-oyster-background {
+  color: white;
+  background-color: rgb(100, 152, 201);
+}
+
+.blue-oyster-background:hover {
+  background-color: rgb(108, 165, 219)
+}
+
+.blue-oyster-background:active {
+  background-color: rgb(89, 137, 181)
+}
+
+.bland-error-background {
+  color: white;
+  background-color: rgb(227, 223, 204);
+}
+
+.bland-error-background:hover {
+  background-color: rgb(241, 236, 216);
+}
+
+.bland-error-background:active {
+  background-color: rgb(221, 92, 78);
+}
+
+.sea-4-background {
+  color: white;
+  background-color: rgb(134, 186, 118);
+}
+
+.sea-4-background:hover {
+  background-color: rgb(144, 201, 127);
+}
+
+.sea-4-background:active {
+  background-color: rgb(113, 157, 99);
+}
+
+.unselectable {
+	-webkit-user-select: none; /* Safari */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+/Edge */
+	user-select: none; /* Standard */
+}
+
+.roll-history {
+  display:inline-block;
+}
