@@ -4,6 +4,31 @@ body {
 
 .dice-info {
   color:white;
+  background-color:rgb(123, 123, 123);
+  width: 100%;
+  height: auto;
+  text-align: center;
+  padding:10px;
+  margin-top: -5px !important;
+  border: none;
+  border-radius: 15px;
+	box-shadow: 0 9px rgb(158, 158, 158);
+	cursor: pointer;
+ 	outline: none;
+
+	border-color: #DDDDDD;
+	border-style: solid;
+	border-width: 5px;
+	max-width: 350px;
+	padding: 15px 12px;
+}
+.dice-info:hover {
+  background-color:rgb(134, 134, 134);
+}
+.dice-info:active {
+  background-color:rgb(115, 115, 115);
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }
 
 .dieFace {
@@ -12,9 +37,10 @@ body {
 }
 
 .roll-dice {
-  width: 100px;
+  width: 100%;
   text-align: center;
   padding:10px;
+  margin-top: -5px !important;
   border: none;
 	border-radius: 15px;
 	box-shadow: 0 9px #999;
@@ -25,7 +51,7 @@ body {
 	border-style: solid;
 	border-width: 5px;
 	max-width: 350px;
-	padding: 15px 25px;
+	padding: 15px 15px;
 }
 
 .roll-dice:active {
@@ -42,7 +68,7 @@ body {
 }
 
 .rolling:active {
-  background-color: rgb(230, 18, 10);
+  background-color: rgb(179, 83, 75);
 }
 
 .done {
@@ -72,15 +98,15 @@ body {
 
 .bland-error-background {
   color: white;
-  background-color: rgb(227, 223, 204);
+  background-color: rgb(155, 147, 117);
 }
 
 .bland-error-background:hover {
-  background-color: rgb(241, 236, 216);
+  background-color: rgb(185, 179, 157);
 }
 
 .bland-error-background:active {
-  background-color: rgb(221, 92, 78);
+  background-color: rgb(179, 83, 75);
 }
 
 .sea-4-background {

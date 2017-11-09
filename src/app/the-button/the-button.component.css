@@ -7,16 +7,17 @@ body {
 }
 
 .users {
-  background-color:rgb(86, 86, 86);
+  background-color:#2b2b2b;
 }
 
-.power-bar {
-  background-color:rgb(86, 86, 86);
+.gambling-bar {
+  background-color: #2b2b2b;
 }
 
-.health-bar {
-  background-color:rgb(86, 86, 86);
+.right-bar {
+  background-color: #2b2b2b;
 }
+
 .pointer {
 	cursor: pointer;
 }
@@ -133,6 +134,10 @@ li {
 
 .small {
 	font-size: 20px;
+}
+
+.small-medium {
+	font-size: 25px;
 }
 
 .medium {
@@ -253,11 +258,11 @@ li {
 
 .bland-error-background {
   color: white;
-  background-color: rgb(227, 223, 204);
+  background-color: rgb(189, 180, 155);
 }
 
 .bland-error-background:hover {
-  background-color: rgb(241, 236, 216);
+  background-color: rgb(201, 194, 172);
 }
 
 .bland-error-background:active {
@@ -275,6 +280,19 @@ li {
 
 .piggy-background:active {
   background-color: rgb(179, 57, 57);
+}
+
+.popup-background {
+  color: white;
+  background-color: rgb(100, 100, 100);
+}
+
+.popup-background:hover {
+  background-color: rgb(179, 179, 179);
+}
+
+.popup-background:active {
+  background-color: rgb(66, 66, 66);
 }
 
 .blue-oyster-background {
@@ -379,18 +397,22 @@ li {
 	margin-bottom: 15px;
 	border: none;
 	border-radius: 30px;
-	box-shadow: 0 9px #999;
+	box-shadow: 0 7px #999;
 	cursor: pointer;
  	outline: none;
 
-	border-color: #DDDDDD;
-	border-style: solid;
-	border-width: 5px;
+	/* border-color: #DDDDDD; */
+	/* border-style: solid; */
+	/* border-width: 5px; */
 	/*max-width: 350px;*/
-	padding: 15px;
+  padding: 15px;
+  -webkit-user-select: none; /* Safari */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+/Edge */
+	user-select: none; /* Standard */
 }
 
 .the-random-button:active {
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
+  box-shadow: 0 4px #666;
+  transform: translateY(3px);
 }

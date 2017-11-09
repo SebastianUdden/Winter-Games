@@ -1,4 +1,8 @@
-import { Component, trigger, state, style, transition, animate, keyframes, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
+import {
+  Component, trigger, state, style,
+  transition, animate, keyframes,
+  OnInit, OnDestroy,
+  ViewChild, ViewEncapsulation } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { TimerObservable } from 'rxjs/observable/TimerObservable';
 import { UpdateService } from '../_services/update.service';
@@ -101,6 +105,9 @@ import { DiceComponent } from '../dice/dice.component';
 
 export class TheButtonComponent implements OnInit, OnDestroy {
     private showDevValues = false;
+
+    @ViewChild(DiceComponent) dice;
+    private comboType: any;
     private user: User = new User(0, '', '', '', '', '', 0, '', true);
     private tick: number;
     private timeLimit: number;
@@ -110,8 +117,9 @@ export class TheButtonComponent implements OnInit, OnDestroy {
     private subscription: Subscription;
     private currentUser: User;
 
-    private countdownValue = 5;
-    private noStartValue = 0 - this.countdownValue;
+    private countdownValue = 112;
+    private countupValue = 5;
+    private noStartValue = -5;
     private readyIn = 0;
 
     private counter = 5000;
@@ -444,6 +452,7 @@ export class TheButtonComponent implements OnInit, OnDestroy {
         if (bool) {
           this.bonus *= number;
         } else { this.bonus /= number; }
+        this.bonus = Math.round(this.bonus);
     }
 
     CheckLevel(userScore) {
@@ -530,7 +539,7 @@ export class TheButtonComponent implements OnInit, OnDestroy {
         }
         if (this.countDown <= 0 && this.newUserScoreGiven) {
             this.countDown = this.timeLimit - this.tick;
-            this.readyIn = this.countdownValue + this.timeLimit - t;
+            this.readyIn = this.countupValue + this.timeLimit - t;
         }
         if (this.countDown === this.noStartValue) {
             this.noStart = false;
@@ -549,12 +558,14 @@ export class TheButtonComponent implements OnInit, OnDestroy {
         this.countDown = this.countdownValue;
         this.timeLimit = this.countdownValue;
         const timer = TimerObservable.create(2000, 1000);
+        this.comboType = '';
         this.subscription = timer.subscribe(t => {
             this.CalculateTimer(t);
         });
     }
 
     constructor(private data: UpdateService, private userService: UserService) {
+        this.comboType = '';
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
     ngOnInit() {
@@ -606,6 +617,39 @@ export class TheButtonComponent implements OnInit, OnDestroy {
 
     ngOnDestroy() {
         this.subscription.unsubscribe();
+    }
+
+    receiveCombo($event) {
+      this.comboType = $event;
+      let gamblerSuccess = false;
+      if (Math.random() > 0.3) {
+        gamblerSuccess = true;
+      }
+      switch (this.comboType) {
+        case 'Yatzy mothafocka!':
+          this.SetCheat(gamblerSuccess, 25);
+          break;
+        case 'Four of a kind':
+          this.SetCheat(gamblerSuccess, 17);
+          break;
+        case 'Full house':
+          this.SetCheat(gamblerSuccess, 11);
+          break;
+        case 'Straight':
+          this.SetCheat(gamblerSuccess, 9);
+          break;
+        case 'Three of a kind':
+          this.SetCheat(gamblerSuccess, 5);
+          break;
+        case 'Two pairs':
+          this.SetCheat(gamblerSuccess, 3);
+          break;
+        case 'Pair':
+          this.SetCheat(gamblerSuccess, 1);
+          break;
+        default:
+          break;
+      }
     }
 }
 
