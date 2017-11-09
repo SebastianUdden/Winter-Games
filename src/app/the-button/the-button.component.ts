@@ -453,6 +453,9 @@ export class TheButtonComponent implements OnInit, OnDestroy {
           this.bonus *= number;
         } else { this.bonus /= number; }
         this.bonus = Math.round(this.bonus);
+        if(this.bonus < 1) {
+          this.bonus = 1;
+        }
     }
 
     CheckLevel(userScore) {
