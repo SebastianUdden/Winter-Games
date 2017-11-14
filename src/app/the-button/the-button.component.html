@@ -52,18 +52,18 @@
       </div>
 
       <div *ngIf="showExtraTime" class="row extra-time-row">
-        <div class="col-lg-1"><div *ngIf="this.timeBlocks[0].selected" (click)="ExtraTime()" class="the-random-button popup-background">{{bonusTime}}</div></div>
-        <div class="col-lg-1"><div *ngIf="this.timeBlocks[1].selected" (click)="ExtraTime()" class="the-random-button popup-background">{{bonusTime}}</div></div>
-        <div class="col-lg-1"><div *ngIf="this.timeBlocks[2].selected" (click)="ExtraTime()" class="the-random-button popup-background">{{bonusTime}}</div></div>
-        <div class="col-lg-1"><div *ngIf="this.timeBlocks[3].selected" (click)="ExtraTime()" class="the-random-button popup-background">{{bonusTime}}</div></div>
-        <div class="col-lg-1"><div *ngIf="this.timeBlocks[4].selected" (click)="ExtraTime()" class="the-random-button popup-background">{{bonusTime}}</div></div>
-        <div class="col-lg-1"><div *ngIf="this.timeBlocks[5].selected" (click)="ExtraTime()" class="the-random-button popup-background">{{bonusTime}}</div></div>
-        <div class="col-lg-1"><div *ngIf="this.timeBlocks[6].selected" (click)="ExtraTime()" class="the-random-button popup-background">{{bonusTime}}</div></div>
-        <div class="col-lg-1"><div *ngIf="this.timeBlocks[7].selected" (click)="ExtraTime()" class="the-random-button popup-background">{{bonusTime}}</div></div>
-        <div class="col-lg-1"><div *ngIf="this.timeBlocks[8].selected" (click)="ExtraTime()" class="the-random-button popup-background">{{bonusTime}}</div></div>
-        <div class="col-lg-1"><div *ngIf="this.timeBlocks[9].selected" (click)="ExtraTime()" class="the-random-button popup-background">{{bonusTime}}</div></div>
-        <div class="col-lg-1"><div *ngIf="this.timeBlocks[10].selected" (click)="ExtraTime()" class="the-random-button popup-background">{{bonusTime}}</div></div>
-        <div class="col-lg-1"><div *ngIf="this.timeBlocks[11].selected" (click)="ExtraTime()" class="the-random-button popup-background">{{bonusTime}}</div></div>
+        <div class="col-lg-1"><div *ngIf="this.timeBlocks[0].selected" (click)="powerbar.extraTime(bonusTimePerClick)" class="the-random-button popup-background">{{bonusTime}}</div></div>
+        <div class="col-lg-1"><div *ngIf="this.timeBlocks[1].selected" (click)="powerbar.extraTime(bonusTimePerClick)" class="the-random-button popup-background">{{bonusTime}}</div></div>
+        <div class="col-lg-1"><div *ngIf="this.timeBlocks[2].selected" (click)="powerbar.extraTime(bonusTimePerClick)" class="the-random-button popup-background">{{bonusTime}}</div></div>
+        <div class="col-lg-1"><div *ngIf="this.timeBlocks[3].selected" (click)="powerbar.extraTime(bonusTimePerClick)" class="the-random-button popup-background">{{bonusTime}}</div></div>
+        <div class="col-lg-1"><div *ngIf="this.timeBlocks[4].selected" (click)="powerbar.extraTime(bonusTimePerClick)" class="the-random-button popup-background">{{bonusTime}}</div></div>
+        <div class="col-lg-1"><div *ngIf="this.timeBlocks[5].selected" (click)="powerbar.extraTime(bonusTimePerClick)" class="the-random-button popup-background">{{bonusTime}}</div></div>
+        <div class="col-lg-1"><div *ngIf="this.timeBlocks[6].selected" (click)="powerbar.extraTime(bonusTimePerClick)" class="the-random-button popup-background">{{bonusTime}}</div></div>
+        <div class="col-lg-1"><div *ngIf="this.timeBlocks[7].selected" (click)="powerbar.extraTime(bonusTimePerClick)" class="the-random-button popup-background">{{bonusTime}}</div></div>
+        <div class="col-lg-1"><div *ngIf="this.timeBlocks[8].selected" (click)="powerbar.extraTime(bonusTimePerClick)" class="the-random-button popup-background">{{bonusTime}}</div></div>
+        <div class="col-lg-1"><div *ngIf="this.timeBlocks[9].selected" (click)="powerbar.extraTime(bonusTimePerClick)" class="the-random-button popup-background">{{bonusTime}}</div></div>
+        <div class="col-lg-1"><div *ngIf="this.timeBlocks[10].selected" (click)="powerbar.extraTime(bonusTimePerClick)" class="the-random-button popup-background">{{bonusTime}}</div></div>
+        <div class="col-lg-1"><div *ngIf="this.timeBlocks[11].selected" (click)="powerbar.extraTime(bonusTimePerClick)" class="the-random-button popup-background">{{bonusTime}}</div></div>
       </div>
 
       <div class="row">
@@ -72,22 +72,22 @@
         </div>
 
         <div class="row">
-          <div *ngIf="!gameOn" class="grayed-out-text text-center huge unseslectable">0</div>
+          <div *ngIf="!gameOn" class="grayed-out-text text-center huge unselectable">0</div>
           <div *ngIf="gameOn && countDown > 5" class="grayed-out-text text-center huge unselectable">{{countDown}}</div>
           <div *ngIf="gameOn && countDown <= 5" class="red-text text-center huge unselectable">{{countDown}}</div>
-
         </div>
       </div>
       <div class="row">
           <!-- <user-form></user-form>     -->
-          <!-- <div class="red-text text-center medium unselectable empty-row">{{ perseverance }}</div> -->
-          <div *ngIf="userScore >= 0 && gameOn" (click)="Count()" class="the-button-main center blue-oyster-background medium unselectable">BOSS
+          <div class="red-text text-center medium unselectable empty-row">{{ perseverance }} {{ level }}</div>
+          <div *ngIf="userScore >= 0 && gameOn" (click)="Count()" class="the-button-main center blue-oyster-background medium unselectable">
+              <span *ngIf="!cheatX20">BOSS</span>
               <span *ngIf="cheatX2">x2</span>
               <span *ngIf="cheatX3">x3</span>
               <span *ngIf="cheatX4">x4</span>
               <span *ngIf="cheatX5">x5</span>
               <span *ngIf="cheatX9">x9</span>
-              <span *ngIf="cheatX20">MVP NUKEM x20</span>
+              <span *ngIf="cheatX20">NUKEM x20</span>
           </div>
           <div *ngIf="!gameOn && noStart" class="the-button-main center bland-error-background medium unselectable">Loading: {{ readyIn }}</div>
           <div *ngIf="!gameOn && !noStart" (click)="StartOver()" class="the-button-main center sea-4-background medium unselectable">New Game</div>
@@ -100,38 +100,60 @@
       </div>
       <div class="row">
           <div class="extra-time-row">
-
+              <!-- <input type="number" style="width: 100px;" class="input" [value]="userScore" (input)="userScore = $event.target.value" /> -->
+              <div class="text-center medium grayed-out-text unselectable">{{comboType}} x{{bonus}}</div>
           </div>
       </div>
       <div class="row text-center">
           <div class="row">
-              <div *ngIf="userScore < 100" class="the-counter lame-border grayed-out-text text-center big unselectable">{{ userScore }}</div>
-              <div *ngIf="userScore >= 100" class="the-counter cool-border grayed-out-text text-center big unselectable">{{ userScore }}</div>
+              <div *ngIf="userScore < 100 || userScore >= 2050000" class="the-counter border-gray grayed-out-text text-center big unselectable">{{ userScore }}</div>
+              <div *ngIf="(userScore >= 100 && userScore < 200) || (userScore >= 2000 && userScore < 3000)" class="the-counter border-dark-red grayed-out-text text-center big unselectable">{{ userScore }}</div>
+              <div *ngIf="(userScore >= 200 && userScore < 300) || (userScore >= 3000 && userScore < 4000)" class="the-counter border-red grayed-out-text text-center big unselectable">{{ userScore }}</div>
+              <div *ngIf="(userScore >= 300 && userScore < 400) || (userScore >= 4000 && userScore < 6000)" class="the-counter border-red-orange grayed-out-text text-center big unselectable">{{ userScore }}</div>
+              <div *ngIf="(userScore >= 400 && userScore < 500) || (userScore >= 6000 && userScore < 10000)" class="the-counter border-orange-yellow grayed-out-text text-center big unselectable">{{ userScore }}</div>
+              <div *ngIf="(userScore >= 500 && userScore < 600) || (userScore >= 10000 && userScore < 18000)" class="the-counter border-yellow grayed-out-text text-center big unselectable">{{ userScore }}</div>
+              <div *ngIf="(userScore >= 600 && userScore < 700) || (userScore >= 18000 && userScore < 34000)" class="the-counter border-green grayed-out-text text-center big unselectable">{{ userScore }}</div>
+              <div *ngIf="(userScore >= 700 && userScore < 800) || (userScore >= 34000 && userScore < 66000)" class="the-counter border-cyan-green grayed-out-text text-center big unselectable">{{ userScore }}</div>
+              <div *ngIf="(userScore >= 800 && userScore < 900) || (userScore >= 66000 && userScore < 130000)" class="the-counter border-cyan grayed-out-text text-center big unselectable">{{ userScore }}</div>
+              <div *ngIf="(userScore >= 900 && userScore < 1000) || (userScore >= 130000 && userScore < 258000)" class="the-counter border-light-blue grayed-out-text text-center big unselectable">{{ userScore }}</div>
+              <div *ngIf="(userScore >= 1000 && userScore < 1100) || (userScore >= 258000 && userScore < 514000)" class="the-counter border-blue grayed-out-text text-center big unselectable">{{ userScore }}</div>
+              <div *ngIf="(userScore >= 1100 && userScore < 1200) || (userScore >= 514000 && userScore < 1026000)" class="the-counter border-purple grayed-out-text text-center big unselectable">{{ userScore }}</div>
+              <div *ngIf="(userScore >= 1200 && userScore < 2000) || (userScore >= 1026000 && userScore < 2050000)" class="the-counter border-pink grayed-out-text text-center big unselectable">{{ userScore }}</div>
           </div>
           <div class="row">
-            <p class="grayed-out-text text-center medium unselectable">Score - {{comboType}} x{{bonus}}</p>
+            <p class="grayed-out-text text-center medium unselectable">Score</p>
           </div>
       </div>
       <div *ngIf="showExtraTime" class="row extra-time-row">
-        <div class="col-lg-1"><div *ngIf="this.timeBlocks[12].selected" (click)="ExtraTime()" class="the-random-button popup-background">{{bonusTime}}</div></div>
-        <div class="col-lg-1"><div *ngIf="this.timeBlocks[13].selected" (click)="ExtraTime()" class="the-random-button popup-background">{{bonusTime}}</div></div>
-        <div class="col-lg-1"><div *ngIf="this.timeBlocks[14].selected" (click)="ExtraTime()" class="the-random-button popup-background">{{bonusTime}}</div></div>
-        <div class="col-lg-1"><div *ngIf="this.timeBlocks[15].selected" (click)="ExtraTime()" class="the-random-button popup-background">{{bonusTime}}</div></div>
-        <div class="col-lg-1"><div *ngIf="this.timeBlocks[16].selected" (click)="ExtraTime()" class="the-random-button popup-background">{{bonusTime}}</div></div>
-        <div class="col-lg-1"><div *ngIf="this.timeBlocks[17].selected" (click)="ExtraTime()" class="the-random-button popup-background">{{bonusTime}}</div></div>
-        <div class="col-lg-1"><div *ngIf="this.timeBlocks[18].selected" (click)="ExtraTime()" class="the-random-button popup-background">{{bonusTime}}</div></div>
-        <div class="col-lg-1"><div *ngIf="this.timeBlocks[19].selected" (click)="ExtraTime()" class="the-random-button popup-background">{{bonusTime}}</div></div>
-        <div class="col-lg-1"><div *ngIf="this.timeBlocks[20].selected" (click)="ExtraTime()" class="the-random-button popup-background">{{bonusTime}}</div></div>
-        <div class="col-lg-1"><div *ngIf="this.timeBlocks[21].selected" (click)="ExtraTime()" class="the-random-button popup-background">{{bonusTime}}</div></div>
-        <div class="col-lg-1"><div *ngIf="this.timeBlocks[22].selected" (click)="ExtraTime()" class="the-random-button popup-background">{{bonusTime}}</div></div>
-        <div class="col-lg-1"><div *ngIf="this.timeBlocks[23].selected" (click)="ExtraTime()" class="the-random-button popup-background">{{bonusTime}}</div></div>
+        <div class="col-lg-1"><div *ngIf="this.timeBlocks[12].selected" (click)="powerbar.extraTime(bonusTimePerClick)" class="the-random-button popup-background">{{bonusTime}}</div></div>
+        <div class="col-lg-1"><div *ngIf="this.timeBlocks[13].selected" (click)="powerbar.extraTime(bonusTimePerClick)" class="the-random-button popup-background">{{bonusTime}}</div></div>
+        <div class="col-lg-1"><div *ngIf="this.timeBlocks[14].selected" (click)="powerbar.extraTime(bonusTimePerClick)" class="the-random-button popup-background">{{bonusTime}}</div></div>
+        <div class="col-lg-1"><div *ngIf="this.timeBlocks[15].selected" (click)="powerbar.extraTime(bonusTimePerClick)" class="the-random-button popup-background">{{bonusTime}}</div></div>
+        <div class="col-lg-1"><div *ngIf="this.timeBlocks[16].selected" (click)="powerbar.extraTime(bonusTimePerClick)" class="the-random-button popup-background">{{bonusTime}}</div></div>
+        <div class="col-lg-1"><div *ngIf="this.timeBlocks[17].selected" (click)="powerbar.extraTime(bonusTimePerClick)" class="the-random-button popup-background">{{bonusTime}}</div></div>
+        <div class="col-lg-1"><div *ngIf="this.timeBlocks[18].selected" (click)="powerbar.extraTime(bonusTimePerClick)" class="the-random-button popup-background">{{bonusTime}}</div></div>
+        <div class="col-lg-1"><div *ngIf="this.timeBlocks[19].selected" (click)="powerbar.extraTime(bonusTimePerClick)" class="the-random-button popup-background">{{bonusTime}}</div></div>
+        <div class="col-lg-1"><div *ngIf="this.timeBlocks[20].selected" (click)="powerbar.extraTime(bonusTimePerClick)" class="the-random-button popup-background">{{bonusTime}}</div></div>
+        <div class="col-lg-1"><div *ngIf="this.timeBlocks[21].selected" (click)="powerbar.extraTime(bonusTimePerClick)" class="the-random-button popup-background">{{bonusTime}}</div></div>
+        <div class="col-lg-1"><div *ngIf="this.timeBlocks[22].selected" (click)="powerbar.extraTime(bonusTimePerClick)" class="the-random-button popup-background">{{bonusTime}}</div></div>
+        <div class="col-lg-1"><div *ngIf="this.timeBlocks[23].selected" (click)="powerbar.extraTime(bonusTimePerClick)" class="the-random-button popup-background">{{bonusTime}}</div></div>
       </div>
       <div class="row gambling-bar extra-time-row">
         <app-dice (comboEvent)="receiveCombo($event)"></app-dice>
       </div>
   </div>
   <div class="col-lg-1 right-bar full-height">
-      <app-power-bar></app-power-bar>
+      <app-power-bar
+        [pbScore]="userScore"
+        [pbTimeLimit]="timeLimit"
+        (timeLimitEvent)="getTimeLimit($event)"
+        [pbTotalBonusTime]="totalBonusTime"
+        (totalBonusTimeEvent)="getTotalBonusTime($event)"
+        (perseveranceEvent)="getPerseverance($event)"
+        (randomNumberSpreadEvent)="getRandomNumberSpread($event)"
+        #powerbar>
+      </app-power-bar>
   </div>
 </div>
+
 

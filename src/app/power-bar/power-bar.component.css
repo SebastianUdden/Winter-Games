@@ -6,7 +6,7 @@ body {
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 40px;
+
   height: 200px;
   margin:10px;
   margin-top:30px;
@@ -16,6 +16,14 @@ body {
   border-style: outset;
   border-color:#aaaaaa;
   border-radius: 180px;
+}
+
+.full {
+  width: 40px;
+}
+
+.half {
+  width: 20px;
 }
 
 .power-bar {
@@ -56,6 +64,11 @@ body {
   border-radius: 90px;
   border-color:#7c7c7c;
   color:#7c7c7c;
+
+  -webkit-user-select: none; /* Safari */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+/Edge */
+	user-select: none; /* Standard */
 }
 
 .power {

@@ -10,9 +10,9 @@ import { Die } from './die';
 export class DiceComponent implements OnInit {
   @Output() comboEvent = new EventEmitter<string>();
   private rollCount: number;
-  private diceRolling = false;
-  private diceSorting = false;
-  private dice = [
+  public diceRolling = false;
+  public diceSorting = false;
+  public dice = [
     new Die(),
     new Die(),
     new Die(),

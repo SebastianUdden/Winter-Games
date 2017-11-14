@@ -3,7 +3,7 @@ body {
 }
 
 .full-height {
-  height: 1100px;
+  height: 1200px;
 }
 
 .users {
@@ -11,6 +11,7 @@ body {
 }
 
 .gambling-bar {
+  margin-top: 20px;
   background-color: #2b2b2b;
 }
 
@@ -326,16 +327,49 @@ li {
   overflow: hidden;
 	border-radius: 100px;
 	border-style: solid;
-	border-width: 5px;
+  border-width: 5px;
+  margin-top: -15px;
 	padding: 15px;
 }
 
-.lame-border {
+.border-gray {
   border-color: rgb(80, 80, 80);
 }
-
-.cool-border {
-  border-color: rgb(250, 0, 196);
+.border-dark-red {
+  border-color: #8a0000;
+}
+.border-red {
+  border-color: #dd0000;
+}
+.border-red-orange {
+  border-color: #dd6300;
+}
+.border-orange-yellow {
+  border-color: #ffb600;
+}
+.border-yellow {
+  border-color: #f7e600;
+}
+.border-green {
+  border-color: #87ee00;
+}
+.border-cyan-green {
+  border-color: #00eea7;
+}
+.border-cyan {
+  border-color: #00eeee;
+}
+.border-light-blue {
+  border-color: #10b6ee;
+}
+.border-blue {
+  border-color: #0053ee;
+}
+.border-purple {
+  border-color: #a700ee;
+}
+.border-pink {
+  border-color: #e600ee;
 }
 
 .empty {
@@ -351,7 +385,7 @@ li {
 .the-button-main {
 	text-align: center;
 	margin-top: 15px;
-	margin-bottom: 15px;
+	margin-bottom: 30px;
 	border: none;
 	border-radius: 15px;
 	box-shadow: 0 9px #999;
