@@ -9,8 +9,9 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy": "node dist/index.html",
-	  "localtunnel": "lt --port 3000"
+    "deploy": "ng build --prod --base-href 'https://sebastianudden.github.io/Winter-Games/'",
+    "postdeploy": "start https://sebastianudden.github.io/Winter-Games/",
+    "localtunnel": "lt --port 3000"
   },
   "private": true,
   "dependencies": {
