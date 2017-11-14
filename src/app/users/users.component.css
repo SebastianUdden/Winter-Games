@@ -1,10 +1,11 @@
-.side-menu {
-  /* height:1050px; */
-  /* background-color:#cc1111; */
+.box-content {
+  /* padding: 10px; */
+  color:white;
+  font-size:20px;
 }
 .userMenu-item {
   text-align: center;
-  background-color:rgb(86, 86, 86);
+  background-color:#424242;
   border-color: black;
   border:5px;
   color:#f1f1f1;
@@ -14,13 +15,27 @@
 }
 .userMenu-item:hover {
   color:#ffffff;
-  background-color:#420505
+  background-color:#535353
 }
 
 .userInfo-item {
+  padding: 5px;
   font-size:25px;
   border-color: black;
   color:white;
+}
+
+.userInfo-item:hover {
+  font-weight: 800;
+}
+
+.userInfo:nth-child(even) {
+  background-color: #383838;
+}
+
+.userInfo-row:hover {
+  color:rgb(179, 179, 179);
+  background-color:rgb(158, 158, 158);
 }
 
 .centerText {
@@ -28,21 +43,22 @@
 }
 
 .avatar {
-  width:40px;
+  margin-left: 15px;
+  /* width:40px; */
 }
 
 .name {
-  width: 120px;
+  /* width: 120px; */
+  margin-right: -10px;
 }
 
 .score {
-  width: 80px;
+  margin-left: -30px;
+  text-align: right;
 }
 
-.box-content {
-  padding: 10px;
-  color:white;
-  font-size:20px;
+p{
+  word-wrap: break-word;
 }
 
 /* .high-score {

@@ -21,7 +21,7 @@ export class Die {
 
   async dieRoll() {
     this.rollFinished = false;
-    const speed = Math.ceil(Math.random() * 10);
+    const speed = Math.ceil(Math.random() * 8);
     let decceleration = 0;
     for (let i = 0; i < 100; i++) {
       if (i > 90) {

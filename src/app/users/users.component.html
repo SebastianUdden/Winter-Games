@@ -10,26 +10,37 @@
     </div>
     <div class="row">
         <div *ngIf="selectedTab === 1" class="box-content">
-              <div *ngFor="let user of users">
-                <div class="row">
-                  <div class="col-lg-2 centerText userInfo-item">AVT</div>
-                  <div class="col-lg-7 userInfo-item">{{user.username}}</div>
-                  <div class="col-lg-3 centerText userInfo-item">{{user.score}}</div>
-                </div>
-                <!-- <span style="width:123px;">AVT</span>
-                <span class="name">{{user.username}}</span>
-                <span class="score">{{user.score}}</span> -->
-                <!-- <div *ngIf="!user.current && !displayFullName" class="high-score-entry unselectable pointer" (click)="ToggleFullName()">{{user.username}}: {{ user.score }}</div>
-                  <div *ngIf="!user.current && displayFullName" class="high-score-entry unselectable pointer" (click)="ToggleFullName()">{{user.firstName}} {{user.lastName}}: {{ user.score }}</div>
-                  <div *ngIf="user.current && !displayFullName" class="high-score-entry-current unselectable pointer" (click)="ToggleFullName()">{{user.username}}: {{ user.score }}</div>
-                  <div *ngIf="user.current && displayFullName" class="high-score-entry-current unselectable pointer" (click)="ToggleFullName()">{{user.firstName}} {{user.lastName}}: {{ user.score }}</div> -->
+            <h2 style="margin-left:15px;">HIGH SCORE</h2>
+            <div *ngFor="let user of users" class="userInfo">
+              <div class="row userInfo-row">
+                <div class="col-lg-2 centerText userInfo-item avatar">AVT</div>
+                <div class="col-lg-7 userInfo-item name">{{user.username}}</div>
+                <div class="col-lg-3 centerText userInfo-item score">{{user.score}}</div>
               </div>
+              <!-- <span style="width:123px;">AVT</span>
+              <span class="name">{{user.username}}</span>
+              <span class="score">{{user.score}}</span> -->
+              <!-- <div *ngIf="!user.current && !displayFullName" class="high-score-entry unselectable pointer" (click)="ToggleFullName()">{{user.username}}: {{ user.score }}</div>
+                <div *ngIf="!user.current && displayFullName" class="high-score-entry unselectable pointer" (click)="ToggleFullName()">{{user.firstName}} {{user.lastName}}: {{ user.score }}</div>
+                <div *ngIf="user.current && !displayFullName" class="high-score-entry-current unselectable pointer" (click)="ToggleFullName()">{{user.username}}: {{ user.score }}</div>
+                <div *ngIf="user.current && displayFullName" class="high-score-entry-current unselectable pointer" (click)="ToggleFullName()">{{user.firstName}} {{user.lastName}}: {{ user.score }}</div> -->
+            </div>
         </div>
-        <div *ngIf="selectedTab === 2" class="box-content">
-          <p>PROFILE</p>
+        <div *ngIf="selectedTab === 2" class="box-content container">
+          <h2>PROFILE</h2>
+          <h3>Name: Sebastian Uddén</h3>
+          <h3>Age: 29</h3>
+          <h3>Occupation: Developer</h3>
+          <h3>Sport of Choice: Basketball</h3>
+          <h3>Daily-drug: Coffee</h3>
+          <br />
+          <p>Enthusiastically eccentric enduring</p>
+          <p>endless events encompassing enemies, </p>
+          <p>errors, eggronious eggplants, elderly</p>
+          <p>eskimoes etc.</p>
         </div>
-        <div *ngIf="selectedTab === 3" class="box-content">
-          <p>SETTINGS</p>
+        <div *ngIf="selectedTab === 3" class="box-content container">
+          <h2>SETTINGS</h2>
         </div>
     </div>
 </div>

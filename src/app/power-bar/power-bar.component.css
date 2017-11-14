@@ -1,0 +1,84 @@
+body {
+  background-color: rgb(34, 34, 34);
+}
+
+.bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  height: 200px;
+  margin:10px;
+  margin-top:30px;
+  margin-bottom: 110px;
+
+  border:4px;
+  border-style: outset;
+  border-color:#aaaaaa;
+  border-radius: 180px;
+}
+
+.full {
+  width: 40px;
+}
+
+.half {
+  width: 20px;
+}
+
+.power-bar {
+  margin-left:80px;
+  background-color: rgb(203, 78, 219);
+}
+
+.power-bar:hover {
+  background-color: rgb(228, 59, 250);
+}
+
+.power-bar:active {
+  background-color: rgb(171, 62, 185);
+}
+
+.health-bar {
+  margin-left:20px;
+  background-color: rgb(226, 226, 23);
+}
+
+.health-bar:hover {
+  background-color: rgb(255, 255, 2);
+}
+
+.health-bar:active {
+  background-color: rgb(202, 202, 24);
+}
+
+.sign {
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  align-content: center;
+  font-size: 30px;
+  margin-bottom: 30px;
+  border: 3px;
+  border-style: solid;
+  border-radius: 90px;
+  border-color:#7c7c7c;
+  color:#7c7c7c;
+
+  -webkit-user-select: none; /* Safari */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+/Edge */
+	user-select: none; /* Standard */
+}
+
+.power {
+  margin-left:12px;
+}
+
+.health {
+  margin-left:72px;
+}
+
+.bar-container {
+
+}

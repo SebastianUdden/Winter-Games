@@ -12,7 +12,7 @@ import { User } from '../_models/user';
   encapsulation: ViewEncapsulation.None
 })
 export class UsersComponent implements OnInit {
-  private selectedTab: number;
+  public selectedTab: number;
 
 
   displayFullName = false;
@@ -34,7 +34,7 @@ export class UsersComponent implements OnInit {
       new User(9, 'Sebbe', 'sebsoundzzz', 'Sebastian', 'Uddén', 'sebastian.udden@gmail.com', 31256, 'Hard-boiled PUNISHER', false),
       new User(10, 'Kling', 'klingKlong', 'Alexander', 'Kling', 'alexander.kling@gmail.com', 194, 'Maniac Corporal', false),
       new User(11, 'Palmöga', 'globalFuuzbal', 'Marcus', 'Palm', 'marcus.palm@gmail.com', 174, 'Ambitious Grunt', false),
-      new User(12, 'Amanda', 'awppl', 'Amanda', 'Hagberg', 'amanda-hagberg@gmail.com', 98, 'Casual N00B', false)
+      new User(12, 'Amanda', 'awppl', 'Amanda', 'Hagberg', 'amanda-hagberg@gmail.com', 328, 'Casual N00B', false)
   ];
 
   constructor(private data: UpdateService) {

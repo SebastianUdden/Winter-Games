@@ -18,6 +18,7 @@ import { UsersComponent } from './users/users.component';
 import { UpdateService } from './_services/update.service';
 import { UserService } from './_services/user.service';
 import { DiceComponent } from './dice/dice.component';
+import { PowerBarComponent } from './power-bar/power-bar.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { DiceComponent } from './dice/dice.component';
     UserFormComponent,
     DatabaseComponent,
     UsersComponent,
-    DiceComponent
+    DiceComponent,
+    PowerBarComponent
   ],
   imports: [
     HttpModule,

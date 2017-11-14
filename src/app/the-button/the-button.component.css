@@ -3,20 +3,22 @@ body {
 }
 
 .full-height {
-  height: 1100px;
+  height: 1200px;
 }
 
 .users {
-  background-color:rgb(86, 86, 86);
+  background-color:#2b2b2b;
 }
 
-.power-bar {
-  background-color:rgb(86, 86, 86);
+.gambling-bar {
+  margin-top: 20px;
+  background-color: #2b2b2b;
 }
 
-.health-bar {
-  background-color:rgb(86, 86, 86);
+.right-bar {
+  background-color: #2b2b2b;
 }
+
 .pointer {
 	cursor: pointer;
 }
@@ -133,6 +135,10 @@ li {
 
 .small {
 	font-size: 20px;
+}
+
+.small-medium {
+	font-size: 25px;
 }
 
 .medium {
@@ -253,11 +259,11 @@ li {
 
 .bland-error-background {
   color: white;
-  background-color: rgb(227, 223, 204);
+  background-color: rgb(189, 180, 155);
 }
 
 .bland-error-background:hover {
-  background-color: rgb(241, 236, 216);
+  background-color: rgb(201, 194, 172);
 }
 
 .bland-error-background:active {
@@ -275,6 +281,19 @@ li {
 
 .piggy-background:active {
   background-color: rgb(179, 57, 57);
+}
+
+.popup-background {
+  color: white;
+  background-color: rgb(100, 100, 100);
+}
+
+.popup-background:hover {
+  background-color: rgb(179, 179, 179);
+}
+
+.popup-background:active {
+  background-color: rgb(66, 66, 66);
 }
 
 .blue-oyster-background {
@@ -308,16 +327,49 @@ li {
   overflow: hidden;
 	border-radius: 100px;
 	border-style: solid;
-	border-width: 5px;
+  border-width: 5px;
+  margin-top: -15px;
 	padding: 15px;
 }
 
-.lame-border {
+.border-gray {
   border-color: rgb(80, 80, 80);
 }
-
-.cool-border {
-  border-color: rgb(250, 0, 196);
+.border-dark-red {
+  border-color: #8a0000;
+}
+.border-red {
+  border-color: #dd0000;
+}
+.border-red-orange {
+  border-color: #dd6300;
+}
+.border-orange-yellow {
+  border-color: #ffb600;
+}
+.border-yellow {
+  border-color: #f7e600;
+}
+.border-green {
+  border-color: #87ee00;
+}
+.border-cyan-green {
+  border-color: #00eea7;
+}
+.border-cyan {
+  border-color: #00eeee;
+}
+.border-light-blue {
+  border-color: #10b6ee;
+}
+.border-blue {
+  border-color: #0053ee;
+}
+.border-purple {
+  border-color: #a700ee;
+}
+.border-pink {
+  border-color: #e600ee;
 }
 
 .empty {
@@ -333,7 +385,7 @@ li {
 .the-button-main {
 	text-align: center;
 	margin-top: 15px;
-	margin-bottom: 15px;
+	margin-bottom: 30px;
 	border: none;
 	border-radius: 15px;
 	box-shadow: 0 9px #999;
@@ -379,18 +431,22 @@ li {
 	margin-bottom: 15px;
 	border: none;
 	border-radius: 30px;
-	box-shadow: 0 9px #999;
+	box-shadow: 0 7px #999;
 	cursor: pointer;
  	outline: none;
 
-	border-color: #DDDDDD;
-	border-style: solid;
-	border-width: 5px;
+	/* border-color: #DDDDDD; */
+	/* border-style: solid; */
+	/* border-width: 5px; */
 	/*max-width: 350px;*/
-	padding: 15px;
+  padding: 15px;
+  -webkit-user-select: none; /* Safari */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+/Edge */
+	user-select: none; /* Standard */
 }
 
 .the-random-button:active {
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
+  box-shadow: 0 4px #666;
+  transform: translateY(3px);
 }

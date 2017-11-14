@@ -1,6 +1,12 @@
-import { Component, trigger, state, style, transition, animate, keyframes, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
+import {
+  Component, trigger, state, style,
+  transition, animate, keyframes,
+  OnInit, OnDestroy,
+  ViewChild, ViewEncapsulation } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { TimerObservable } from 'rxjs/observable/TimerObservable';
+import { FormsModule } from '@angular/forms';
+
 import { UpdateService } from '../_services/update.service';
 import { UserService } from '../_services/user.service';
 import { User } from '../_models/user';
@@ -100,29 +106,33 @@ import { DiceComponent } from '../dice/dice.component';
 })
 
 export class TheButtonComponent implements OnInit, OnDestroy {
-    private showDevValues = false;
+    public showDevValues = false;
+
+    @ViewChild(DiceComponent) dice;
+    public comboType: any;
+    private lastComboType: any;
     private user: User = new User(0, '', '', '', '', '', 0, '', true);
     private tick: number;
-    private timeLimit: number;
-    private countDown: number;
-    private gameOn = true;
-    private noStart = false;
+    public timeLimit: number;
+    public countDown: number;
+    public gameOn = true;
+    public noStart = false;
     private subscription: Subscription;
     private currentUser: User;
 
-    private countdownValue = 5;
-    private noStartValue = 0 - this.countdownValue;
+    private countdownValue = 20;
+    private countupValue = 5;
+    private noStartValue = -5;
     private readyIn = 0;
 
     private counter = 5000;
-    private userScore = 0;
+    public userScore = 0;
     private userLevel = '';
-    private bonus = 1;
+    public bonus = 1;
     private bonusTimePerClick = 10;
-    private bonusTime = 0;
-    private totalBonusTime = 0;
+    public bonusTime = 0;
 
-    private showCheats = false;
+    public showCheats = false;
     private cheatX2 = false;
     private cheatX3 = false;
     private cheatX4 = false;
@@ -134,12 +144,13 @@ export class TheButtonComponent implements OnInit, OnDestroy {
     private reached9999 = false;
     private newUserScoreGiven = false;
 
+    public totalBonusTime = 0;
     private randomNumber = 0;
-    private baseRandomNumberSpread = 50;
+    private baseRandomNumberSpread = 0; // 50 is default
     private randomNumberSpread = 24;
-    private showExtraTime = true;
-    private perseverance = '';
-    private level = '';
+    public showExtraTime = true;
+    public perseverance = 'L053R';
+    public level = 'N00B';
     private timeBlocks = [
         { id: 1, selected: false },
         { id: 2, selected: false },
@@ -169,17 +180,19 @@ export class TheButtonComponent implements OnInit, OnDestroy {
 
     // Adjectives
     timeLevel = [
-        'Casual',
-        'Ambitious',
-        'Hardy',
-        'Maniac',
-        'Long-lived',
-        'Hard-boiled',
-        'EPIC',
-        'GODLIKE',
-        'NO LIFE',
-        'CHEATING',
-        'Oh, fuck off...',
+        'L053R',          // 1
+        'Casual',         // 2
+        'Ambitious',      // 3
+        'Hardy',          // 4
+        'Maniac',         // 5
+        'Long-lived',     // 6
+        'Hard-boiled',    // 7
+        'EPIC',           // 8
+        'GODLIKE',        // 9
+        'NO LIFE',        // 10
+        'CHEATING',       // 11
+        'Oh, fuck off...', // 12
+        'BAWS' // 13
     ];
 
     // Substantives
@@ -235,57 +248,17 @@ export class TheButtonComponent implements OnInit, OnDestroy {
         });
     }
 
-    ExtraTime() {
-        if (this.totalBonusTime <= 10) {
-            this.perseverance = this.timeLevel[0];
-            this.bonusTimePerClick = 7;
-            this.randomNumberSpread = this.baseRandomNumberSpread + 24;
-        } else if (this.totalBonusTime <= 25) {
-            this.bonusTimePerClick = 6;
-            this.randomNumberSpread = this.baseRandomNumberSpread + 34;
-        } else if (this.totalBonusTime <= 45) {
-            this.bonusTimePerClick = 5;
-            this.randomNumberSpread = this.baseRandomNumberSpread + 44;
-        } else if (this.totalBonusTime <= 70) {
-            this.perseverance = this.timeLevel[1];
-            this.bonusTimePerClick = 4;
-            this.randomNumberSpread = this.baseRandomNumberSpread + 54;
-        } else if (this.totalBonusTime <= 100) {
-            this.perseverance = this.timeLevel[2];
-            this.bonusTimePerClick = 3;
-            this.randomNumberSpread = this.baseRandomNumberSpread + 64;
-        } else if (this.totalBonusTime <= 125) {
-            this.perseverance = this.timeLevel[3];
-        } else if (this.totalBonusTime <= 150) {
-            this.perseverance = this.timeLevel[4];
-            this.bonusTimePerClick = 2;
-            this.randomNumberSpread = this.baseRandomNumberSpread + 74;
-        } else if (this.totalBonusTime <= 170) {
-            this.perseverance = this.timeLevel[5];
-        } else if (this.totalBonusTime <= 195) {
-            this.perseverance = this.timeLevel[6];
-            this.bonusTimePerClick = 2;
-            this.randomNumberSpread = this.baseRandomNumberSpread + 92;
-        } else if (this.totalBonusTime <= 220) {
-            this.perseverance = this.timeLevel[7];
-            this.bonusTimePerClick = 2;
-            this.randomNumberSpread = this.baseRandomNumberSpread + 102;
-        } else if (this.totalBonusTime <= 300) {
-            this.perseverance = this.timeLevel[8];
-            this.bonusTimePerClick = 2;
-            this.randomNumberSpread = this.baseRandomNumberSpread + 122;
-        } else if (this.totalBonusTime <= 500) {
-            this.perseverance = this.timeLevel[9];
-            this.bonusTimePerClick = 1;
-            this.randomNumberSpread = this.baseRandomNumberSpread + 92;
-        } else {
-            this.perseverance = this.timeLevel[10];
-            this.bonusTimePerClick = 1;
-            this.randomNumberSpread = this.baseRandomNumberSpread + 142;
-        }
-        this.timeLimit += this.bonusTimePerClick;
-        this.bonusTime += this.bonusTimePerClick;
-        this.totalBonusTime += this.bonusTimePerClick;
+    getPerseverance($event) {
+      this.perseverance = $event;
+    }
+    getRandomNumberSpread($event) {
+      this.randomNumberSpread = $event;
+    }
+    getTimeLimit($event) {
+      this.timeLimit = $event;
+    }
+    getTotalBonusTime($event) {
+      this.totalBonusTime = $event;
     }
 
     NoExtraTimeBlock() {
@@ -444,36 +417,43 @@ export class TheButtonComponent implements OnInit, OnDestroy {
         if (bool) {
           this.bonus *= number;
         } else { this.bonus /= number; }
+        this.bonus = Math.round(this.bonus);
+        if (this.bonus < 1) {
+          this.bonus = 1;
+        }
     }
 
     CheckLevel(userScore) {
-        if (userScore > 50 && userScore < 100) {
+        if (userScore > 0 && userScore < 100) {
             this.level = this.scoreLevel[0];
         }
-        if (userScore >= 100 && userScore < 150) {
+        if (userScore >= 100 && userScore < 1000) {
             this.level = this.scoreLevel[1];
         }
-        if (userScore >= 150 && userScore < 200) {
+        if (userScore >= 1000 && userScore < 10000) {
             this.level = this.scoreLevel[2];
         }
-        if (userScore >= 200 && userScore < 250) {
+        if (userScore >= 10000 && userScore < 100000) {
             this.level = this.scoreLevel[3];
         }
-        if (userScore >= 250 && userScore < 300) {
+        if (userScore >= 100000 && userScore < 1000000) {
             this.level = this.scoreLevel[4];
         }
-        if (userScore >= 300 && userScore < 350) {
+        if (userScore >= 1000000 && userScore < 10000000) {
             this.level = this.scoreLevel[5];
         }
-        if (userScore >= 350 && userScore < 1337) {
+        if (userScore >= 10000000 && userScore < 100000000) {
             this.level = this.scoreLevel[6];
         }
-        if (userScore >= 1337 && userScore < 5000) {
+        if (userScore >= 100000000 && userScore < 1000000000) {
             this.level = this.scoreLevel[7];
         }
-        if (userScore >= 5000 && userScore < 9999) {
+        if (userScore >= 1000000000 && userScore < 10000000000) {
             this.level = this.scoreLevel[8];
         }
+        if (userScore >= 10000000000 && userScore < 100000000000) {
+          this.level = this.scoreLevel[8];
+      }
     }
 
     Count() {
@@ -505,7 +485,7 @@ export class TheButtonComponent implements OnInit, OnDestroy {
             this.reached1337 = true;
         }
         if (this.userScore > 9999 && !this.reached9999) {
-            this.TurnCheatsOff();
+            // this.TurnCheatsOff();
             this.CheatToggle(20);
             this.reached9999 = true;
         }
@@ -523,14 +503,14 @@ export class TheButtonComponent implements OnInit, OnDestroy {
         if (this.countDown <= 0 && !this.newUserScoreGiven) {
             this.newUserScore();
             this.NoExtraTimeBlock();
-            this.perseverance = '';
+            this.perseverance = 'N00B';
             this.level = '';
             this.gameOn = false;
             this.noStart = true;
         }
         if (this.countDown <= 0 && this.newUserScoreGiven) {
             this.countDown = this.timeLimit - this.tick;
-            this.readyIn = this.countdownValue + this.timeLimit - t;
+            this.readyIn = this.countupValue + this.timeLimit - t;
         }
         if (this.countDown === this.noStartValue) {
             this.noStart = false;
@@ -543,18 +523,20 @@ export class TheButtonComponent implements OnInit, OnDestroy {
         this.TurnCheatsOff();
         this.gameOn = true;
         this.userScore = 0;
-        this.perseverance = '';
-        this.level = '';
-        this.totalBonusTime = 0;
+        this.perseverance = 'L053R';
+        this.level = 'N00B';
         this.countDown = this.countdownValue;
         this.timeLimit = this.countdownValue;
+        this.totalBonusTime = 0;
         const timer = TimerObservable.create(2000, 1000);
+        this.comboType = '';
         this.subscription = timer.subscribe(t => {
             this.CalculateTimer(t);
         });
     }
 
     constructor(private data: UpdateService, private userService: UserService) {
+        this.comboType = '';
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
     ngOnInit() {
@@ -606,6 +588,41 @@ export class TheButtonComponent implements OnInit, OnDestroy {
 
     ngOnDestroy() {
         this.subscription.unsubscribe();
+    }
+
+    receiveCombo($event) {
+      this.comboType = $event;
+      this.setComboBonus(this.comboType, true);
+    }
+
+    setComboBonus(comboType, gamblerSuccess) {
+      switch (this.comboType) {
+        case 'Yatzy mothafocka!':
+          this.SetCheat(gamblerSuccess, 45);
+          break;
+        case 'Four of a kind':
+          this.SetCheat(gamblerSuccess, 22);
+          break;
+        case 'Full house':
+          this.SetCheat(gamblerSuccess, 13);
+          break;
+        case 'Straight':
+          this.SetCheat(gamblerSuccess, 8);
+          break;
+        case 'Three of a kind':
+          this.SetCheat(gamblerSuccess, 5);
+          break;
+        case 'Two pairs':
+          this.SetCheat(gamblerSuccess, 2);
+          break;
+        case 'Pair':
+          this.SetCheat(gamblerSuccess, 0.5);
+          break;
+        default:
+          this.SetCheat(gamblerSuccess, 0);
+          alert('Fuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu...');
+          break;
+      }
     }
 }
 
