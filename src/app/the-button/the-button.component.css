@@ -16,10 +16,11 @@
 
 .mobile {
   color:white;
-  max-width: 200px;
+  max-width: 290px;
 }
 
 .mobile p {
+  font-size: 16px;
   word-break: break-word;
   white-space: normal;
 }
