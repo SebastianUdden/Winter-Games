@@ -1,0 +1,53 @@
+@media only screen and (
+    max-width: 1026px
+  ) {
+  #showMainBig {
+    display: none;
+  }
+}
+
+@media only screen and (
+    min-width: 1026px
+  ) {
+  #showMainSmall {
+    display: none;
+  }
+}
+
+.laptop {
+  margin: auto;
+  max-width: 900px;
+}
+
+.mobile {
+  color:white;
+  max-width: 290px;
+}
+
+.mobile p {
+  font-size: 16px;
+  word-break: break-word;
+  white-space: normal;
+}
+
+body {
+  background-color: rgb(44, 44, 44);
+  color: white;
+}
+
+.big {
+  font-size: 25px;
+}
+
+.small {
+  font-size: 15px;
+}
+
+.svg-clock-white {
+  background-image: url('../../assets/images/clock-white.svg');
+  background-size: cover;
+  height: 358px;
+  width: 358px;
+  margin-left: auto;
+  margin-right: auto;
+}

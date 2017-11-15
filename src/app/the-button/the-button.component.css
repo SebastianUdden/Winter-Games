@@ -35,15 +35,19 @@ body {
 
 .users {
   background-color:#2b2b2b;
+  box-shadow: 0 1px #111111;
 }
 
 .gambling-bar {
   margin-top: 20px;
-  background-color: #2b2b2b;
+  /* background-color: #2b2b2b; */
+  background-color: #272626;
+	box-shadow: 0 1px #111111;
 }
 
 .right-bar {
   background-color: #2b2b2b;
+  box-shadow: 0 1px #111111;
 }
 
 .pointer {
@@ -79,7 +83,7 @@ body {
   /* border-radius: 50px; */
   height: 130px !important;
 	background-color: #3e3e3e;
-	box-shadow: 0 5px #111111;
+	box-shadow: 0 4px #111111;
 }
 
 /* .on {

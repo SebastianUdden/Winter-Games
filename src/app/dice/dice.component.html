@@ -1,24 +1,24 @@
 
 
 <div class="row" style="margin-top:10px;">
-    <div class="col-lg-3" style="align-content:center">
-        <button class="roll-dice blue-oyster-background small-medium unselectable" *ngIf="!diceRolling" (click)="rollDice()">Roll</button>
-        <button class="roll-dice bland-error-background small-medium unselectable" *ngIf="diceRolling && !diceSorting">Rolling</button>
-        <button class="roll-dice sea-4-background small-medium unselectable" *ngIf="diceRolling && diceSorting">Sorting</button>
-    </div>
-    <div class="col-lg-6">
-      <div class="row">
-          <div class="col-lg-1"></div>
-          <div class="col-lg-2" *ngFor="let die of dice">
-              <pre class="dieFace done unselectable" *ngIf="die.rollFinished && die.lastRoll">{{ die.lastRoll.face }}</pre>
-              <pre class="dieFace rolling unselectable" *ngIf="!die.rollFinished">{{ die.lastRoll.face }}</pre>
-          </div>
-          <div class="col-lg-1"></div>
+  <div class="col-lg-3" style="align-content:center">
+    <button class="roll-dice blue-oyster-background small-medium unselectable" *ngIf="!diceRolling" (click)="rollDice()">Roll</button>
+    <button class="roll-dice bland-error-background small-medium unselectable" *ngIf="diceRolling && !diceSorting">Rolling</button>
+    <button class="roll-dice sea-4-background small-medium unselectable" *ngIf="diceRolling && diceSorting">Sorting</button>
+  </div>
+  <div class="col-lg-6">
+    <div class="row">
+      <div class="col-lg-1"></div>
+      <div class="col-lg-2" *ngFor="let die of dice">
+        <pre class="dieFace done unselectable" *ngIf="die.rollFinished && die.lastRoll">{{ die.lastRoll.face }}</pre>
+        <pre class="dieFace rolling unselectable" *ngIf="!die.rollFinished">{{ die.lastRoll.face }}</pre>
       </div>
+      <div class="col-lg-1"></div>
     </div>
+  </div>
 
-    <div class="col-lg-3">
-        <div *ngIf="comboType" class="dice-info small-medium unselectable">{{comboType}}</div>
-        <div *ngIf="!comboType" class="dice-info small-medium unselectable"> --- </div>
-    </div>
+  <div class="col-lg-3">
+    <div *ngIf="comboType" class="dice-info small-medium unselectable">{{comboType}}</div>
+    <div *ngIf="!comboType" class="dice-info small-medium unselectable"> --- </div>
+  </div>
 </div>

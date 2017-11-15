@@ -109,6 +109,11 @@ export class TheButtonComponent implements OnInit, OnDestroy {
     public showDevValues = false;
 
     @ViewChild(DiceComponent) dice;
+    public gambler = false;
+    public maestro = false;
+    public grinder = false;
+    public mcFly = false;
+
     public comboType: any;
     private lastComboType: any;
     private user: User = new User(0, '', '', '', '', '', 0, '', true);
@@ -259,6 +264,19 @@ export class TheButtonComponent implements OnInit, OnDestroy {
     }
     getTotalBonusTime($event) {
       this.totalBonusTime = $event;
+    }
+
+    getGambler($event) {
+      this.gambler = $event;
+    }
+    getMaestro($event) {
+      this.maestro = $event;
+    }
+    getGrinder($event) {
+      this.grinder = $event;
+    }
+    getMcFly($event) {
+      this.mcFly = $event;
     }
 
     NoExtraTimeBlock() {

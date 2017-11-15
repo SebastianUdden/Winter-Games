@@ -1,5 +1,32 @@
+.svg {
+  background-size: cover;
+  height: 20px;
+  width: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.dice1 {
+  background-image: url('../../assets/images/dice/dice1.svg');
+}
+.dice2 {
+  background-image: url('../../assets/images/dice/dice2.svg');
+}
+.dice3 {
+  background-image: url('../../assets/images/dice/dice3.svg');
+}
+.dice4 {
+  background-image: url('../../assets/images/dice/dice4.svg');
+}
+.dice5 {
+  background-image: url('../../assets/images/dice/dice5.svg');
+}
+.dice6 {
+  background-image: url('../../assets/images/dice/dice6.svg');
+}
+
 body {
-  background-color: rgb(44, 44, 44);
+  /* background-color: rgb(44, 44, 44); */
 }
 
 .dice-info {
