@@ -9,6 +9,7 @@ import { Die } from './die';
 })
 export class DiceComponent implements OnInit {
   @Output() comboEvent = new EventEmitter<string>();
+  public diceRollSound: any;
   private rollCount: number;
   public diceRolling = false;
   public diceSorting = false;
@@ -43,14 +44,15 @@ export class DiceComponent implements OnInit {
 
   constructor() {
     this.rollCount = 0;
+    this.diceRollSound = new Audio('assets/sound/rollDice.ogg');
   }
 
   ngOnInit() {
   }
 
   async rollDice() {
+    this.diceRollSound.play();
     this.comboType = '';
-    this.diceRolling = true;
     let countFinished = 0;
     this.dice.forEach(die => {
       if (die.rollFinished) {
@@ -58,16 +60,17 @@ export class DiceComponent implements OnInit {
       }
     });
     if (countFinished === 5) {
+      this.diceRolling = true;
       this.dice.forEach(die => {
         die.dieRoll();
       });
     }
-    await this.sleep(5000);
+    await this.sleep(3000);
     this.diceSorting = true;
     this.dice.sort(function (a, b) {
       return a.lastRoll.number - b.lastRoll.number;
     });
-    await this.sleep(1000);
+    await this.sleep(3000);
     this.setCombos(this.dice);
     this.analyzeCombos();
     this.cleanCombos();

@@ -21,17 +21,17 @@ export class Die {
 
   async dieRoll() {
     this.rollFinished = false;
-    const speed = Math.ceil(Math.random() * 8);
+    const speed = Math.random() * 280;
     let decceleration = 0;
-    for (let i = 0; i < 100; i++) {
-      if (i > 90) {
-        decceleration = 10;
-      } else if (i > 70) {
-        decceleration = 7;
-      } else if (i > 50) {
-        decceleration = 5;
-      } else if (i > 30) {
-        decceleration = 3;
+    for (let i = 0; i < 10; i++) {
+      if (i > 9) {
+        decceleration = 1;
+      } else if (i > 7) {
+        decceleration = .7;
+      } else if (i > 5) {
+        decceleration = .5;
+      } else if (i > 3) {
+        decceleration = .3;
       }
       this.roll = Math.ceil(Math.random() * 6);
       this.numberToFace(this.roll);

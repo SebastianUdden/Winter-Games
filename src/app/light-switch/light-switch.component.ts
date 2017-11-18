@@ -9,11 +9,15 @@ import { LightSwitch } from './light-switch';
 })
 export class LightSwitchComponent {
   @Input() lightSwitch: LightSwitch;
+  @Input() maestro: boolean;
   @Output() lightSwitchOut = new EventEmitter<LightSwitch>();
+  public note: any;
 
-  ToggleLightSwitch() {
+  ToggleLightSwitch(note) {
+    this.note = new Audio('assets/sound/piano/' + note + '.ogg');
+    this.note.play();
     this.lightSwitch.status = this.lightSwitch.status === true ? false : true;
-    this.lightSwitchOut.emit(this.lightSwitch)
+    this.lightSwitchOut.emit(this.lightSwitch);
   }
   constructor() { }
 }

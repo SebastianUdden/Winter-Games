@@ -1,5 +1,5 @@
 .light-switch {
-  width: 75px;
+  width: 73px;
   height: 90px;
   /* text-align: center; */
   /* padding: 15px; */
@@ -126,3 +126,31 @@
 .pink-off { background-color: #000000; }
 .pink-off:hover { background-color:#910077; }
 .pink-off:active { background-color: #c400cc; }
+
+.white {
+  background-color: rgb(134, 134, 134) !important;
+}
+.white:hover {
+  background-color: rgb(95, 95, 95) !important;
+}
+
+.white-off {
+  background-color: rgb(219, 219, 219) !important;
+}
+.white-off:hover {
+  background-color: rgb(168, 168, 168) !important;
+}
+
+.black {
+  background-color: rgb(58, 58, 58) !important;
+}
+.black:hover {
+  background-color: rgb(83, 83, 83) !important;
+}
+
+.black-off {
+  background-color: rgb(14, 14, 14) !important;
+}
+.black-off:hover {
+  background-color: rgb(66, 66, 66) !important;
+}

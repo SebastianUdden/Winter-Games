@@ -1,48 +1,107 @@
-<div *ngIf="lightSwitch.color === 'dark-red'" (click)="ToggleLightSwitch()">
+<div *ngIf="lightSwitch.color === 'dark-red' && maestro" (click)="ToggleLightSwitch('028-C3')">
+  <div *ngIf="lightSwitch.status" class="light-switch on white"></div>
+  <div *ngIf="!lightSwitch.status" class="light-switch off white-off"></div>
+</div>
+<div *ngIf="lightSwitch.color === 'dark-red' && !maestro" (click)="ToggleLightSwitch()">
   <div *ngIf="lightSwitch.status" class="light-switch on dark-red"></div>
   <div *ngIf="!lightSwitch.status" class="light-switch off dark-red-off"></div>
 </div>
-<div *ngIf="lightSwitch.color === 'red'" (click)="ToggleLightSwitch()">
+
+<div *ngIf="lightSwitch.color === 'red' && maestro" (click)="ToggleLightSwitch('029-Cs3')">
+  <div *ngIf="lightSwitch.status" class="light-switch on black"></div>
+  <div *ngIf="!lightSwitch.status" class="light-switch off black-off"></div>
+</div>
+<div *ngIf="lightSwitch.color === 'red' && !maestro" (click)="ToggleLightSwitch()">
   <div *ngIf="lightSwitch.status" class="light-switch on red"></div>
   <div *ngIf="!lightSwitch.status" class="light-switch off red-off"></div>
 </div>
-<div *ngIf="lightSwitch.color === 'red-orange'" (click)="ToggleLightSwitch()">
+
+<div *ngIf="lightSwitch.color === 'red-orange' && maestro" (click)="ToggleLightSwitch('030-D3')">
+  <div *ngIf="lightSwitch.status" class="light-switch on white"></div>
+  <div *ngIf="!lightSwitch.status" class="light-switch off white-off"></div>
+</div>
+<div *ngIf="lightSwitch.color === 'red-orange' && !maestro" (click)="ToggleLightSwitch()">
   <div *ngIf="lightSwitch.status" class="light-switch on red-orange"></div>
   <div *ngIf="!lightSwitch.status" class="light-switch off red-orange-off"></div>
 </div>
-<div *ngIf="lightSwitch.color === 'orange-yellow'" (click)="ToggleLightSwitch()">
+
+<div *ngIf="lightSwitch.color === 'orange-yellow' && maestro" (click)="ToggleLightSwitch('031-Ds3')">
+  <div *ngIf="lightSwitch.status" class="light-switch on black"></div>
+  <div *ngIf="!lightSwitch.status" class="light-switch off black-off"></div>
+</div>
+<div *ngIf="lightSwitch.color === 'orange-yellow' && !maestro" (click)="ToggleLightSwitch()">
   <div *ngIf="lightSwitch.status" class="light-switch on orange-yellow"></div>
   <div *ngIf="!lightSwitch.status" class="light-switch off orange-yellow-off"></div>
 </div>
-<div *ngIf="lightSwitch.color === 'yellow'" (click)="ToggleLightSwitch()">
+
+<div *ngIf="lightSwitch.color === 'yellow' && maestro" (click)="ToggleLightSwitch('032-E3')">
+  <div *ngIf="lightSwitch.status" class="light-switch on white"></div>
+  <div *ngIf="!lightSwitch.status" class="light-switch off white-off"></div>
+</div>
+<div *ngIf="lightSwitch.color === 'yellow' && !maestro" (click)="ToggleLightSwitch()">
   <div *ngIf="lightSwitch.status" class="light-switch on yellow"></div>
   <div *ngIf="!lightSwitch.status" class="light-switch off yellow-off"></div>
 </div>
-<div *ngIf="lightSwitch.color === 'green'" (click)="ToggleLightSwitch()">
+
+<div *ngIf="lightSwitch.color === 'green' && maestro" (click)="ToggleLightSwitch('033-F3')">
+  <div *ngIf="lightSwitch.status" class="light-switch on white"></div>
+  <div *ngIf="!lightSwitch.status" class="light-switch off white-off"></div>
+</div>
+<div *ngIf="lightSwitch.color === 'green' && !maestro" (click)="ToggleLightSwitch()">
   <div *ngIf="lightSwitch.status" class="light-switch on green"></div>
   <div *ngIf="!lightSwitch.status" class="light-switch off green-off"></div>
 </div>
-<div *ngIf="lightSwitch.color === 'cyan-green'" (click)="ToggleLightSwitch()">
+
+<div *ngIf="lightSwitch.color === 'cyan-green' && maestro" (click)="ToggleLightSwitch('034-Fs3')">
+  <div *ngIf="lightSwitch.status" class="light-switch on black"></div>
+  <div *ngIf="!lightSwitch.status" class="light-switch off black-off"></div>
+</div>
+<div *ngIf="lightSwitch.color === 'cyan-green' && !maestro" (click)="ToggleLightSwitch()">
   <div *ngIf="lightSwitch.status" class="light-switch on cyan-green"></div>
   <div *ngIf="!lightSwitch.status" class="light-switch off cyan-green-off"></div>
 </div>
-<div *ngIf="lightSwitch.color === 'cyan'" (click)="ToggleLightSwitch()">
+
+<div *ngIf="lightSwitch.color === 'cyan' && maestro" (click)="ToggleLightSwitch('035-G3')">
+  <div *ngIf="lightSwitch.status" class="light-switch on white"></div>
+  <div *ngIf="!lightSwitch.status" class="light-switch off white-off"></div>
+</div>
+<div *ngIf="lightSwitch.color === 'cyan' && !maestro" (click)="ToggleLightSwitch()">
   <div *ngIf="lightSwitch.status" class="light-switch on cyan"></div>
   <div *ngIf="!lightSwitch.status" class="light-switch off cyan-off"></div>
 </div>
-<div *ngIf="lightSwitch.color === 'light-blue'" (click)="ToggleLightSwitch()">
+
+<div *ngIf="lightSwitch.color === 'light-blue' && maestro" (click)="ToggleLightSwitch('036-Gs3')">
+  <div *ngIf="lightSwitch.status" class="light-switch on black"></div>
+  <div *ngIf="!lightSwitch.status" class="light-switch off black-off"></div>
+</div>
+<div *ngIf="lightSwitch.color === 'light-blue' && !maestro" (click)="ToggleLightSwitch()">
   <div *ngIf="lightSwitch.status" class="light-switch on light-blue"></div>
   <div *ngIf="!lightSwitch.status" class="light-switch off light-blue-off"></div>
 </div>
-<div *ngIf="lightSwitch.color === 'blue'" (click)="ToggleLightSwitch()">
+
+<div *ngIf="lightSwitch.color === 'blue' && maestro" (click)="ToggleLightSwitch('037-A4')">
+  <div *ngIf="lightSwitch.status" class="light-switch on white"></div>
+  <div *ngIf="!lightSwitch.status" class="light-switch off white-off"></div>
+</div>
+<div *ngIf="lightSwitch.color === 'blue' && !maestro" (click)="ToggleLightSwitch()">
   <div *ngIf="lightSwitch.status" class="light-switch on blue"></div>
   <div *ngIf="!lightSwitch.status" class="light-switch off blue-off"></div>
 </div>
-<div *ngIf="lightSwitch.color === 'purple'" (click)="ToggleLightSwitch()">
+
+<div *ngIf="lightSwitch.color === 'purple' && maestro" (click)="ToggleLightSwitch('038-As4')">
+  <div *ngIf="lightSwitch.status" class="light-switch on black"></div>
+  <div *ngIf="!lightSwitch.status" class="light-switch off black-off"></div>
+</div>
+<div *ngIf="lightSwitch.color === 'purple' && !maestro" (click)="ToggleLightSwitch()">
   <div *ngIf="lightSwitch.status" class="light-switch on purple"></div>
   <div *ngIf="!lightSwitch.status" class="light-switch off purple-off"></div>
 </div>
-<div *ngIf="lightSwitch.color === 'pink'" (click)="ToggleLightSwitch()">
+
+<div *ngIf="lightSwitch.color === 'pink' && maestro" (click)="ToggleLightSwitch('039-B4')">
+  <div *ngIf="lightSwitch.status" class="light-switch on white"></div>
+  <div *ngIf="!lightSwitch.status" class="light-switch off white-off"></div>
+</div>
+<div *ngIf="lightSwitch.color === 'pink' && !maestro" (click)="ToggleLightSwitch()">
   <div *ngIf="lightSwitch.status" class="light-switch on pink"></div>
   <div *ngIf="!lightSwitch.status" class="light-switch off pink-off"></div>
 </div>

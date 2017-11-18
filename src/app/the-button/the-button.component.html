@@ -52,10 +52,10 @@
     </div>
     <div class="col-lg-8">
         <div class="row extra-time-row light-switch-array">
-          <div *ngIf="maestro">
+          <div>
             <div class="col-lg-10">
               <div class="row">
-                  <app-light-switch (lightSwitchOut)="LightSwitchToggle($event)" class="col-lg-1" *ngFor="let lightSwitch of lightSwitches" [lightSwitch]="lightSwitch"></app-light-switch>
+                  <app-light-switch (lightSwitchOut)="LightSwitchToggle($event)" class="col-lg-1" *ngFor="let lightSwitch of lightSwitches" [lightSwitch]="lightSwitch" [maestro]="maestro"></app-light-switch>
               </div>
             </div>
             <div class="col-lg-2">

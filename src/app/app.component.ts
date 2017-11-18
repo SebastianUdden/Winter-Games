@@ -7,13 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
-  public audio: any;
+  // public audio: any;
 
-  constructor() {
-    this.audio = new Audio('../assets/sound/rollDice.ogg');
-  }
+  // constructor() {
+  //   this.audio = new Audio('../assets/sound/rollDice.ogg');
+  // }
 
-  play() {
-    this.audio.play();
-  }
+  // play() {
+  //   this.audio.play();
+  // }
 }
