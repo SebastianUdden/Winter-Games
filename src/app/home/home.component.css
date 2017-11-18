@@ -46,8 +46,8 @@ body {
 .svg-clock-white {
   background-image: url('../../assets/images/clock-white.svg');
   background-size: cover;
-  height: 358px;
-  width: 358px;
+  height: 298px;
+  width: 298px;
   margin-left: auto;
   margin-right: auto;
 }

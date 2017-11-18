@@ -314,14 +314,14 @@ li {
   background-color: rgb(179, 57, 57);
 }
 
-.popup-background {
-  color: white;
-  background-color: rgb(100, 100, 100);
-}
+/* .popup-background { */
+  /* color: white; */
+  /* background-color: rgb(100, 100, 100); */
+/* } */
 
-.popup-background:hover {
+/* .popup-background:hover {
   background-color: rgb(179, 179, 179);
-}
+} */
 
 .popup-background:active {
   background-color: rgb(66, 66, 66);
@@ -456,28 +456,26 @@ li {
   transform: translateY(4px);
 }
 
-.the-random-button {
-  text-align: center;
-	margin-top: 15px;
-	margin-bottom: 15px;
-	border: none;
-	border-radius: 30px;
-	box-shadow: 0 7px #999;
+/*///////////////////
+// Random boss items
+///////////////////////////////////////////////////////////////////////////////*/
+
+.bottleCap { background-image: url('../../assets/images/bossItems/bottleCap.png'); }
+.bottleCap2 { background-image: url('../../assets/images/bossItems/bottleCap2.png'); }
+.floater { background-image: url('../../assets/images/bossItems/floater.png'); }
+.floater2 { background-image: url('../../assets/images/bossItems/floater2.png'); }
+.meatClub { background-image: url('../../assets/images/bossItems/meatClub.png'); }
+.meatClub2 { background-image: url('../../assets/images/bossItems/meatClub2.png'); }
+.oldOx { background-image: url('../../assets/images/bossItems/oldOx.png'); }
+.oldOx2 { background-image: url('../../assets/images/bossItems/oldOx2.png'); }
+
+.img {
 	cursor: pointer;
- 	outline: none;
-
-	/* border-color: #DDDDDD; */
-	/* border-style: solid; */
-	/* border-width: 5px; */
-	/*max-width: 350px;*/
-  padding: 15px;
-  -webkit-user-select: none; /* Safari */
-	-moz-user-select: none; /* Firefox */
-	-ms-user-select: none; /* IE10+/Edge */
-	user-select: none; /* Standard */
-}
-
-.the-random-button:active {
-  box-shadow: 0 4px #666;
-  transform: translateY(3px);
+  width: 8em;
+  height: 8em;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center;
 }

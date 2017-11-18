@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  public audio: any;
+
+  constructor() {
+    this.audio = new Audio('../assets/sound/rollDice.mp3');
+  }
+
+  play() {
+    this.audio.play();
+  }
 }

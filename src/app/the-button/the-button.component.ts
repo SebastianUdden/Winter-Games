@@ -107,7 +107,7 @@ import { DiceComponent } from '../dice/dice.component';
 
 export class TheButtonComponent implements OnInit, OnDestroy {
     public showDevValues = false;
-
+    public click = false;
     @ViewChild(DiceComponent) dice;
     public gambler = false;
     public maestro = false;
@@ -512,6 +512,7 @@ export class TheButtonComponent implements OnInit, OnDestroy {
     }
 
     CalculateTimer(t) {
+        this.click = false;
         this.tick = t;
         this.bonusTime = 0;
         if (this.gameOn) {
@@ -641,6 +642,10 @@ export class TheButtonComponent implements OnInit, OnDestroy {
           alert('Fuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu...');
           break;
       }
+    }
+
+    toggleClick() {
+      this.click = !this.click;
     }
 }
 
