@@ -10,7 +10,7 @@ export class AppComponent {
   public audio: any;
 
   constructor() {
-    this.audio = new Audio('../assets/sound/rollDice.mp3');
+    this.audio = new Audio('../assets/sound/rollDice.ogg');
   }
 
   play() {
