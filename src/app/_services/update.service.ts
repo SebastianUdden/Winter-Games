@@ -30,6 +30,6 @@ export class UpdateService {
   }
 
   changeUserLevel(userLevel: string) {
-    this.userLevelSource.next(userLevel)
+    this.userLevelSource.next(userLevel);
   }
 }

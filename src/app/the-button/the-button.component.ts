@@ -140,7 +140,7 @@ export class TheButtonComponent implements OnInit, OnDestroy {
     public bonus = 1;
     private bonusTimePerClick = 10;
     public bonusTime = 0;
-    public rage = 0;
+    public rage = 12;
 
     public showCheats = false;
     private cheatX2 = false;
