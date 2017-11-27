@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Http, Headers, RequestOptions, Response } from '@angular/http';
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-root',
@@ -7,13 +9,19 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
-  // public audio: any;
+  data: any = null;
+  public url = 'https://radiant-coast-25310.herokuapp.com';
 
-  // constructor() {
-  //   this.audio = new Audio('../assets/sound/rollDice.ogg');
-  // }
+  constructor(private _http: Http) {
+    this.getAllUsers();
+  }
 
-  // play() {
-  //   this.audio.play();
-  // }
+  private getAllUsers() {
+      return this._http.get(this.url + '/users')
+        .map((res: Response) => res.json())
+        .subscribe(data => {
+          this.data = data;
+          console.log(this.data);
+        });
+  }
 }

@@ -1,15 +1,26 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
+import 'rxjs/add/operator/map';
 
 import { User } from '../_models/user';
 
 @Injectable()
 export class UserService {
-    constructor(private http: Http) { }
+  data: any = null;
+  public url = 'https://radiant-coast-25310.herokuapp.com';
 
-    // getAll() {
-    //     return this.http.get('/api/users', this.jwt()).map((response: Response) => response.json());
-    // }
+  constructor(private _http: Http) {
+    this.getAllUsers();
+  }
+
+  private getAllUsers() {
+      return this._http.get(this.url + '/users')
+        .map((res: Response) => res.json())
+        .subscribe(data => {
+          this.data = data;
+          console.log(this.data);
+        });
+  }
 
     // getById(id: number) {
     //     return this.http.get('/api/users/' + id, this.jwt()).map((response: Response) => response.json());
