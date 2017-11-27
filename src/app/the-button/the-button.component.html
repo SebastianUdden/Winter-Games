@@ -41,7 +41,15 @@
     </div>
     <div class="col-lg-4"></div>
   </div>
-  <div class="row">
+  <div class="row shake-hard" [ngClass]="{
+    'troll': rage > 0 && rage < 4,
+    'fff': rage >= 4 && rage < 7,
+    'rage': rage >= 7 && rage < 11,
+    'shake-little': rage > 0 && rage < 4,
+    'shake-hard': rage >= 4 && rage < 7,
+    'shake-crazy': rage >= 7 && rage < 11,
+    'alone': foreverAlone && noStart
+  }">
     <div class="col-lg-3 full-height users">
       <app-users
         (gamblerEvent)="getGambler($event)"
@@ -67,52 +75,88 @@
         <div *ngIf="showExtraTime" class="row extra-time-row">
           <div *ngIf="mcFly">
             <div class="col-lg-1">
-              <div *ngIf="this.timeBlocks[0].selected && !click" (click)="powerbar.extraTime(bonusTimePerClick); toggleClick();" class="bottleCap img"></div>
-              <div *ngIf="this.timeBlocks[0].selected && click" (click)="powerbar.extraTime(bonusTimePerClick); toggleClick();" class="bottleCap2 img"></div>
+              <div *ngIf="this.timeBlocks[0].selected && click === 1" (click)="powerbar.extraTime(bonusTimePerClick); setClick(2);" class="bottleCap1 img"></div>
+              <div *ngIf="this.timeBlocks[0].selected && click === 2" (click)="powerbar.extraTime(bonusTimePerClick); setClick(3);" class="bottleCap1 img"></div>
+              <div *ngIf="this.timeBlocks[0].selected && click === 3" (click)="powerbar.extraTime(bonusTimePerClick); setClick(4);" class="bottleCap1 img"></div>
+              <div *ngIf="this.timeBlocks[0].selected && click === 4" (click)="powerbar.extraTime(bonusTimePerClick); setClick(5);" class="bottleCap1 img"></div>
+              <div *ngIf="this.timeBlocks[0].selected && click === 5" (click)="powerbar.extraTime(bonusTimePerClick); setClick(1);" class="bottleCap1 img"></div>
             </div>
             <div class="col-lg-1">
-              <div *ngIf="this.timeBlocks[1].selected && !click" (click)="powerbar.extraTime(bonusTimePerClick); toggleClick();" class="floater img"></div>
-              <div *ngIf="this.timeBlocks[1].selected && click" (click)="powerbar.extraTime(bonusTimePerClick); toggleClick();" class="floater2 img"></div>
+              <div *ngIf="this.timeBlocks[1].selected && click === 1" (click)="powerbar.extraTime(bonusTimePerClick); setClick(2);" class="floater1 img"></div>
+              <div *ngIf="this.timeBlocks[1].selected && click === 2" (click)="powerbar.extraTime(bonusTimePerClick); setClick(3);" class="floater2 img"></div>
+              <div *ngIf="this.timeBlocks[1].selected && click === 3" (click)="powerbar.extraTime(bonusTimePerClick); setClick(4);" class="floater3 img"></div>
+              <div *ngIf="this.timeBlocks[1].selected && click === 4" (click)="powerbar.extraTime(bonusTimePerClick); setClick(5);" class="floater4 img"></div>
+              <div *ngIf="this.timeBlocks[1].selected && click === 5" (click)="powerbar.extraTime(bonusTimePerClick); setClick(1);" class="floater5 img"></div>
             </div>
             <div class="col-lg-1">
-              <div *ngIf="this.timeBlocks[2].selected && !click" (click)="powerbar.extraTime(bonusTimePerClick); toggleClick();" class="meatClub img"></div>
-              <div *ngIf="this.timeBlocks[2].selected && click" (click)="powerbar.extraTime(bonusTimePerClick); toggleClick();" class="meatClub2 img"></div>
+              <div *ngIf="this.timeBlocks[2].selected && click === 1" (click)="powerbar.extraTime(bonusTimePerClick); setClick(2);" class="meatClub1 img"></div>
+              <div *ngIf="this.timeBlocks[2].selected && click === 2" (click)="powerbar.extraTime(bonusTimePerClick); setClick(3);" class="meatClub2 img"></div>
+              <div *ngIf="this.timeBlocks[2].selected && click === 3" (click)="powerbar.extraTime(bonusTimePerClick); setClick(4);" class="meatClub3 img"></div>
+              <div *ngIf="this.timeBlocks[2].selected && click === 4" (click)="powerbar.extraTime(bonusTimePerClick); setClick(5);" class="meatClub4 img"></div>
+              <div *ngIf="this.timeBlocks[2].selected && click === 5" (click)="powerbar.extraTime(bonusTimePerClick); setClick(1);" class="meatClub5 img"></div>
             </div>
             <div class="col-lg-1">
-              <div *ngIf="this.timeBlocks[3].selected && !click" (click)="powerbar.extraTime(bonusTimePerClick); toggleClick();" class="oldOx img"></div>
-              <div *ngIf="this.timeBlocks[3].selected && click" (click)="powerbar.extraTime(bonusTimePerClick); toggleClick();" class="oldOx2 img"></div>
+              <div *ngIf="this.timeBlocks[3].selected && click === 1" (click)="powerbar.extraTime(bonusTimePerClick); setClick(2);" class="oldOx1 img"></div>
+              <div *ngIf="this.timeBlocks[3].selected && click === 2" (click)="powerbar.extraTime(bonusTimePerClick); setClick(3);" class="oldOx2 img"></div>
+              <div *ngIf="this.timeBlocks[3].selected && click === 3" (click)="powerbar.extraTime(bonusTimePerClick); setClick(4);" class="oldOx3 img"></div>
+              <div *ngIf="this.timeBlocks[3].selected && click === 4" (click)="powerbar.extraTime(bonusTimePerClick); setClick(5);" class="oldOx4 img"></div>
+              <div *ngIf="this.timeBlocks[3].selected && click === 5" (click)="powerbar.extraTime(bonusTimePerClick); setClick(1);" class="oldOx5 img"></div>
             </div>
             <div class="col-lg-1">
-              <div *ngIf="this.timeBlocks[4].selected && !click" (click)="powerbar.extraTime(bonusTimePerClick); toggleClick();" class="bottleCap img"></div>
-              <div *ngIf="this.timeBlocks[4].selected && click" (click)="powerbar.extraTime(bonusTimePerClick); toggleClick();" class="bottleCap2 img"></div>
+              <div *ngIf="this.timeBlocks[4].selected && click === 1" (click)="powerbar.extraTime(bonusTimePerClick); setClick(2);" class="bottleCap1 img"></div>
+              <div *ngIf="this.timeBlocks[4].selected && click === 2" (click)="powerbar.extraTime(bonusTimePerClick); setClick(3);" class="bottleCap1 img"></div>
+              <div *ngIf="this.timeBlocks[4].selected && click === 3" (click)="powerbar.extraTime(bonusTimePerClick); setClick(4);" class="bottleCap1 img"></div>
+              <div *ngIf="this.timeBlocks[4].selected && click === 4" (click)="powerbar.extraTime(bonusTimePerClick); setClick(5);" class="bottleCap1 img"></div>
+              <div *ngIf="this.timeBlocks[4].selected && click === 5" (click)="powerbar.extraTime(bonusTimePerClick); setClick(1);" class="bottleCap1 img"></div>
             </div>
             <div class="col-lg-1">
-              <div *ngIf="this.timeBlocks[5].selected && !click" (click)="powerbar.extraTime(bonusTimePerClick); toggleClick();" class="floater img"></div>
-              <div *ngIf="this.timeBlocks[5].selected && click" (click)="powerbar.extraTime(bonusTimePerClick); toggleClick();" class="floater2 img"></div>
+              <div *ngIf="this.timeBlocks[5].selected && click === 1" (click)="powerbar.extraTime(bonusTimePerClick); setClick(2);" class="floater1 img"></div>
+              <div *ngIf="this.timeBlocks[5].selected && click === 2" (click)="powerbar.extraTime(bonusTimePerClick); setClick(3);" class="floater2 img"></div>
+              <div *ngIf="this.timeBlocks[5].selected && click === 3" (click)="powerbar.extraTime(bonusTimePerClick); setClick(4);" class="floater3 img"></div>
+              <div *ngIf="this.timeBlocks[5].selected && click === 4" (click)="powerbar.extraTime(bonusTimePerClick); setClick(5);" class="floater4 img"></div>
+              <div *ngIf="this.timeBlocks[5].selected && click === 5" (click)="powerbar.extraTime(bonusTimePerClick); setClick(1);" class="floater5 img"></div>
             </div>
             <div class="col-lg-1">
-              <div *ngIf="this.timeBlocks[6].selected && !click" (click)="powerbar.extraTime(bonusTimePerClick); toggleClick();" class="meatClub img"></div>
-              <div *ngIf="this.timeBlocks[6].selected && click" (click)="powerbar.extraTime(bonusTimePerClick); toggleClick();" class="meatClub2 img"></div>
+              <div *ngIf="this.timeBlocks[6].selected && click === 1" (click)="powerbar.extraTime(bonusTimePerClick); setClick(2);" class="meatClub1 img"></div>
+              <div *ngIf="this.timeBlocks[6].selected && click === 2" (click)="powerbar.extraTime(bonusTimePerClick); setClick(3);" class="meatClub2 img"></div>
+              <div *ngIf="this.timeBlocks[6].selected && click === 3" (click)="powerbar.extraTime(bonusTimePerClick); setClick(4);" class="meatClub3 img"></div>
+              <div *ngIf="this.timeBlocks[6].selected && click === 4" (click)="powerbar.extraTime(bonusTimePerClick); setClick(5);" class="meatClub4 img"></div>
+              <div *ngIf="this.timeBlocks[6].selected && click === 5" (click)="powerbar.extraTime(bonusTimePerClick); setClick(1);" class="meatClub5 img"></div>
             </div>
             <div class="col-lg-1">
-              <div *ngIf="this.timeBlocks[7].selected && !click" (click)="powerbar.extraTime(bonusTimePerClick); toggleClick();" class="oldOx img"></div>
-              <div *ngIf="this.timeBlocks[7].selected && click" (click)="powerbar.extraTime(bonusTimePerClick); toggleClick();" class="oldOx2 img"></div>
+              <div *ngIf="this.timeBlocks[7].selected && click === 1" (click)="powerbar.extraTime(bonusTimePerClick); setClick(2);" class="oldOx1 img"></div>
+              <div *ngIf="this.timeBlocks[7].selected && click === 2" (click)="powerbar.extraTime(bonusTimePerClick); setClick(3);" class="oldOx2 img"></div>
+              <div *ngIf="this.timeBlocks[7].selected && click === 3" (click)="powerbar.extraTime(bonusTimePerClick); setClick(4);" class="oldOx3 img"></div>
+              <div *ngIf="this.timeBlocks[7].selected && click === 4" (click)="powerbar.extraTime(bonusTimePerClick); setClick(5);" class="oldOx4 img"></div>
+              <div *ngIf="this.timeBlocks[7].selected && click === 5" (click)="powerbar.extraTime(bonusTimePerClick); setClick(1);" class="oldOx5 img"></div>
             </div>
             <div class="col-lg-1">
-              <div *ngIf="this.timeBlocks[8].selected && !click" (click)="powerbar.extraTime(bonusTimePerClick); toggleClick();" class="bottleCap img"></div>
-              <div *ngIf="this.timeBlocks[8].selected && click" (click)="powerbar.extraTime(bonusTimePerClick); toggleClick();" class="bottleCap2 img"></div>
+              <div *ngIf="this.timeBlocks[8].selected && click === 1" (click)="powerbar.extraTime(bonusTimePerClick); setClick(2);" class="bottleCap1 img"></div>
+              <div *ngIf="this.timeBlocks[8].selected && click === 2" (click)="powerbar.extraTime(bonusTimePerClick); setClick(3);" class="bottleCap1 img"></div>
+              <div *ngIf="this.timeBlocks[8].selected && click === 3" (click)="powerbar.extraTime(bonusTimePerClick); setClick(4);" class="bottleCap1 img"></div>
+              <div *ngIf="this.timeBlocks[8].selected && click === 4" (click)="powerbar.extraTime(bonusTimePerClick); setClick(5);" class="bottleCap1 img"></div>
+              <div *ngIf="this.timeBlocks[8].selected && click === 5" (click)="powerbar.extraTime(bonusTimePerClick); setClick(1);" class="bottleCap1 img"></div>
             </div>
             <div class="col-lg-1">
-              <div *ngIf="this.timeBlocks[9].selected && !click" (click)="powerbar.extraTime(bonusTimePerClick); toggleClick();" class="floater img"></div>
-              <div *ngIf="this.timeBlocks[9].selected && click" (click)="powerbar.extraTime(bonusTimePerClick); toggleClick();" class="floater2 img"></div>
+              <div *ngIf="this.timeBlocks[9].selected && click === 1" (click)="powerbar.extraTime(bonusTimePerClick); setClick(2);" class="floater1 img"></div>
+              <div *ngIf="this.timeBlocks[9].selected && click === 2" (click)="powerbar.extraTime(bonusTimePerClick); setClick(3);" class="floater2 img"></div>
+              <div *ngIf="this.timeBlocks[9].selected && click === 3" (click)="powerbar.extraTime(bonusTimePerClick); setClick(4);" class="floater3 img"></div>
+              <div *ngIf="this.timeBlocks[9].selected && click === 4" (click)="powerbar.extraTime(bonusTimePerClick); setClick(5);" class="floater4 img"></div>
+              <div *ngIf="this.timeBlocks[9].selected && click === 5" (click)="powerbar.extraTime(bonusTimePerClick); setClick(1);" class="floater5 img"></div>
             </div>
             <div class="col-lg-1">
-              <div *ngIf="this.timeBlocks[10].selected && !click" (click)="powerbar.extraTime(bonusTimePerClick); toggleClick();" class="meatClub img"></div>
-              <div *ngIf="this.timeBlocks[10].selected && click" (click)="powerbar.extraTime(bonusTimePerClick); toggleClick();" class="meatClub2 img"></div>
+              <div *ngIf="this.timeBlocks[10].selected && click === 1" (click)="powerbar.extraTime(bonusTimePerClick); setClick(2);" class="meatClub1 img"></div>
+              <div *ngIf="this.timeBlocks[10].selected && click === 2" (click)="powerbar.extraTime(bonusTimePerClick); setClick(3);" class="meatClub2 img"></div>
+              <div *ngIf="this.timeBlocks[10].selected && click === 3" (click)="powerbar.extraTime(bonusTimePerClick); setClick(4);" class="meatClub3 img"></div>
+              <div *ngIf="this.timeBlocks[10].selected && click === 4" (click)="powerbar.extraTime(bonusTimePerClick); setClick(5);" class="meatClub4 img"></div>
+              <div *ngIf="this.timeBlocks[10].selected && click === 5" (click)="powerbar.extraTime(bonusTimePerClick); setClick(1);" class="meatClub5 img"></div>
             </div>
             <div class="col-lg-1">
-              <div *ngIf="this.timeBlocks[11].selected && !click" (click)="powerbar.extraTime(bonusTimePerClick); toggleClick();" class="oldOx img"></div>
-              <div *ngIf="this.timeBlocks[11].selected && click" (click)="powerbar.extraTime(bonusTimePerClick); toggleClick();" class="oldOx2 img"></div>
+              <div *ngIf="this.timeBlocks[11].selected && click === 1" (click)="powerbar.extraTime(bonusTimePerClick); setClick(2);" class="oldOx1 img"></div>
+              <div *ngIf="this.timeBlocks[11].selected && click === 2" (click)="powerbar.extraTime(bonusTimePerClick); setClick(3);" class="oldOx2 img"></div>
+              <div *ngIf="this.timeBlocks[11].selected && click === 3" (click)="powerbar.extraTime(bonusTimePerClick); setClick(4);" class="oldOx3 img"></div>
+              <div *ngIf="this.timeBlocks[11].selected && click === 4" (click)="powerbar.extraTime(bonusTimePerClick); setClick(5);" class="oldOx4 img"></div>
+              <div *ngIf="this.timeBlocks[11].selected && click === 5" (click)="powerbar.extraTime(bonusTimePerClick); setClick(1);" class="oldOx5 img"></div>
             </div>
           </div>
         </div>
@@ -140,7 +184,8 @@
                 <span *ngIf="cheatX9">x9</span>
                 <span *ngIf="cheatX20">NUKEM x20</span>
             </div>
-            <div *ngIf="!gameOn && noStart" class="the-button-main center bland-error-background medium unselectable">Loading: {{ readyIn }}</div>
+            <!-- <div class="rage"></div> -->
+            <div *ngIf="!gameOn && noStart" (click)="foreverAlone = !foreverAlone" class="the-button-main center bland-error-background medium unselectable">Loading: {{ readyIn }}</div>
             <div *ngIf="!gameOn && !noStart" (click)="StartOver()" class="the-button-main center sea-4-background medium unselectable">New Game</div>
 
             <!-- <div *ngIf="gameOn" [@spinMoveFade]='state' [@bigToSmall]='state'>
@@ -178,56 +223,91 @@
         <div *ngIf="showExtraTime" class="row extra-time-row">
           <div *ngIf="mcFly">
               <div class="col-lg-1">
-                <div *ngIf="this.timeBlocks[12].selected && !click" (click)="powerbar.extraTime(bonusTimePerClick); toggleClick();" class="bottleCap img"></div>
-                <div *ngIf="this.timeBlocks[12].selected && click" (click)="powerbar.extraTime(bonusTimePerClick); toggleClick();" class="bottleCap2 img"></div>
+                <div *ngIf="this.timeBlocks[12].selected && click === 1" (click)="powerbar.extraTime(bonusTimePerClick); setClick(2);" class="bottleCap1 img"></div>
+                <div *ngIf="this.timeBlocks[12].selected && click === 2" (click)="powerbar.extraTime(bonusTimePerClick); setClick(3);" class="bottleCap1 img"></div>
+                <div *ngIf="this.timeBlocks[12].selected && click === 3" (click)="powerbar.extraTime(bonusTimePerClick); setClick(4);" class="bottleCap1 img"></div>
+                <div *ngIf="this.timeBlocks[12].selected && click === 4" (click)="powerbar.extraTime(bonusTimePerClick); setClick(5);" class="bottleCap1 img"></div>
+                <div *ngIf="this.timeBlocks[12].selected && click === 5" (click)="powerbar.extraTime(bonusTimePerClick); setClick(1);" class="bottleCap1 img"></div>
               </div>
               <div class="col-lg-1">
-                <div *ngIf="this.timeBlocks[13].selected && !click" (click)="powerbar.extraTime(bonusTimePerClick); toggleClick();" class="floater img"></div>
-                <div *ngIf="this.timeBlocks[13].selected && click" (click)="powerbar.extraTime(bonusTimePerClick); toggleClick();" class="floater2 img"></div>
+                <div *ngIf="this.timeBlocks[13].selected && click === 1" (click)="powerbar.extraTime(bonusTimePerClick); setClick(2);" class="floater1 img"></div>
+                <div *ngIf="this.timeBlocks[13].selected && click === 2" (click)="powerbar.extraTime(bonusTimePerClick); setClick(3);" class="floater2 img"></div>
+                <div *ngIf="this.timeBlocks[13].selected && click === 3" (click)="powerbar.extraTime(bonusTimePerClick); setClick(4);" class="floater3 img"></div>
+                <div *ngIf="this.timeBlocks[13].selected && click === 4" (click)="powerbar.extraTime(bonusTimePerClick); setClick(5);" class="floater4 img"></div>
+                <div *ngIf="this.timeBlocks[13].selected && click === 5" (click)="powerbar.extraTime(bonusTimePerClick); setClick(1);" class="floater5 img"></div>
               </div>
               <div class="col-lg-1">
-                <div *ngIf="this.timeBlocks[14].selected && !click" (click)="powerbar.extraTime(bonusTimePerClick); toggleClick();" class="meatClub img"></div>
-                <div *ngIf="this.timeBlocks[14].selected && click" (click)="powerbar.extraTime(bonusTimePerClick); toggleClick();" class="meatClub2 img"></div>
+                <div *ngIf="this.timeBlocks[14].selected && click === 1" (click)="powerbar.extraTime(bonusTimePerClick); setClick(2);" class="meatClub1 img"></div>
+                <div *ngIf="this.timeBlocks[14].selected && click === 2" (click)="powerbar.extraTime(bonusTimePerClick); setClick(3);" class="meatClub2 img"></div>
+                <div *ngIf="this.timeBlocks[14].selected && click === 3" (click)="powerbar.extraTime(bonusTimePerClick); setClick(4);" class="meatClub3 img"></div>
+                <div *ngIf="this.timeBlocks[14].selected && click === 4" (click)="powerbar.extraTime(bonusTimePerClick); setClick(5);" class="meatClub4 img"></div>
+                <div *ngIf="this.timeBlocks[14].selected && click === 5" (click)="powerbar.extraTime(bonusTimePerClick); setClick(1);" class="meatClub5 img"></div>
               </div>
               <div class="col-lg-1">
-                <div *ngIf="this.timeBlocks[15].selected && !click" (click)="powerbar.extraTime(bonusTimePerClick); toggleClick();" class="oldOx img"></div>
-                <div *ngIf="this.timeBlocks[15].selected && click" (click)="powerbar.extraTime(bonusTimePerClick); toggleClick();" class="oldOx2 img"></div>
+                <div *ngIf="this.timeBlocks[15].selected && click === 1" (click)="powerbar.extraTime(bonusTimePerClick); setClick(2);" class="oldOx1 img"></div>
+                <div *ngIf="this.timeBlocks[15].selected && click === 2" (click)="powerbar.extraTime(bonusTimePerClick); setClick(3);" class="oldOx2 img"></div>
+                <div *ngIf="this.timeBlocks[15].selected && click === 3" (click)="powerbar.extraTime(bonusTimePerClick); setClick(4);" class="oldOx3 img"></div>
+                <div *ngIf="this.timeBlocks[15].selected && click === 4" (click)="powerbar.extraTime(bonusTimePerClick); setClick(5);" class="oldOx4 img"></div>
+                <div *ngIf="this.timeBlocks[15].selected && click === 5" (click)="powerbar.extraTime(bonusTimePerClick); setClick(1);" class="oldOx5 img"></div>
               </div>
               <div class="col-lg-1">
-                <div *ngIf="this.timeBlocks[16].selected && !click" (click)="powerbar.extraTime(bonusTimePerClick); toggleClick();" class="bottleCap img"></div>
-                <div *ngIf="this.timeBlocks[16].selected && click" (click)="powerbar.extraTime(bonusTimePerClick); toggleClick();" class="bottleCap2 img"></div>
+                <div *ngIf="this.timeBlocks[16].selected && click === 1" (click)="powerbar.extraTime(bonusTimePerClick); setClick(2);" class="bottleCap1 img"></div>
+                <div *ngIf="this.timeBlocks[16].selected && click === 2" (click)="powerbar.extraTime(bonusTimePerClick); setClick(3);" class="bottleCap1 img"></div>
+                <div *ngIf="this.timeBlocks[16].selected && click === 3" (click)="powerbar.extraTime(bonusTimePerClick); setClick(4);" class="bottleCap1 img"></div>
+                <div *ngIf="this.timeBlocks[16].selected && click === 4" (click)="powerbar.extraTime(bonusTimePerClick); setClick(5);" class="bottleCap1 img"></div>
+                <div *ngIf="this.timeBlocks[16].selected && click === 5" (click)="powerbar.extraTime(bonusTimePerClick); setClick(1);" class="bottleCap1 img"></div>
               </div>
               <div class="col-lg-1">
-                <div *ngIf="this.timeBlocks[17].selected && !click" (click)="powerbar.extraTime(bonusTimePerClick); toggleClick();" class="floater img"></div>
-                <div *ngIf="this.timeBlocks[17].selected && click" (click)="powerbar.extraTime(bonusTimePerClick); toggleClick();" class="floater2 img"></div>
+                <div *ngIf="this.timeBlocks[17].selected && click === 1" (click)="powerbar.extraTime(bonusTimePerClick); setClick(2);" class="floater1 img"></div>
+                <div *ngIf="this.timeBlocks[17].selected && click === 2" (click)="powerbar.extraTime(bonusTimePerClick); setClick(3);" class="floater2 img"></div>
+                <div *ngIf="this.timeBlocks[17].selected && click === 3" (click)="powerbar.extraTime(bonusTimePerClick); setClick(4);" class="floater3 img"></div>
+                <div *ngIf="this.timeBlocks[17].selected && click === 4" (click)="powerbar.extraTime(bonusTimePerClick); setClick(5);" class="floater4 img"></div>
+                <div *ngIf="this.timeBlocks[17].selected && click === 5" (click)="powerbar.extraTime(bonusTimePerClick); setClick(1);" class="floater5 img"></div>
               </div>
               <div class="col-lg-1">
-                <div *ngIf="this.timeBlocks[18].selected && !click" (click)="powerbar.extraTime(bonusTimePerClick); toggleClick();" class="meatClub img"></div>
-                <div *ngIf="this.timeBlocks[18].selected && click" (click)="powerbar.extraTime(bonusTimePerClick); toggleClick();" class="meatClub2 img"></div>
+                <div *ngIf="this.timeBlocks[18].selected && click === 1" (click)="powerbar.extraTime(bonusTimePerClick); setClick(2);" class="meatClub1 img"></div>
+                <div *ngIf="this.timeBlocks[18].selected && click === 2" (click)="powerbar.extraTime(bonusTimePerClick); setClick(3);" class="meatClub2 img"></div>
+                <div *ngIf="this.timeBlocks[18].selected && click === 3" (click)="powerbar.extraTime(bonusTimePerClick); setClick(4);" class="meatClub3 img"></div>
+                <div *ngIf="this.timeBlocks[18].selected && click === 4" (click)="powerbar.extraTime(bonusTimePerClick); setClick(5);" class="meatClub4 img"></div>
+                <div *ngIf="this.timeBlocks[18].selected && click === 5" (click)="powerbar.extraTime(bonusTimePerClick); setClick(1);" class="meatClub5 img"></div>
               </div>
               <div class="col-lg-1">
-                <div *ngIf="this.timeBlocks[19].selected && !click" (click)="powerbar.extraTime(bonusTimePerClick); toggleClick();" class="oldOx img"></div>
-                <div *ngIf="this.timeBlocks[19].selected && click" (click)="powerbar.extraTime(bonusTimePerClick); toggleClick();" class="oldOx2 img"></div>
+                <div *ngIf="this.timeBlocks[19].selected && click === 1" (click)="powerbar.extraTime(bonusTimePerClick); setClick(2);" class="oldOx1 img"></div>
+                <div *ngIf="this.timeBlocks[19].selected && click === 2" (click)="powerbar.extraTime(bonusTimePerClick); setClick(3);" class="oldOx2 img"></div>
+                <div *ngIf="this.timeBlocks[19].selected && click === 3" (click)="powerbar.extraTime(bonusTimePerClick); setClick(4);" class="oldOx3 img"></div>
+                <div *ngIf="this.timeBlocks[19].selected && click === 4" (click)="powerbar.extraTime(bonusTimePerClick); setClick(5);" class="oldOx4 img"></div>
+                <div *ngIf="this.timeBlocks[19].selected && click === 5" (click)="powerbar.extraTime(bonusTimePerClick); setClick(1);" class="oldOx5 img"></div>
               </div>
               <div class="col-lg-1">
-                <div *ngIf="this.timeBlocks[20].selected && !click" (click)="powerbar.extraTime(bonusTimePerClick); toggleClick();" class="bottleCap img"></div>
-                <div *ngIf="this.timeBlocks[20].selected && click" (click)="powerbar.extraTime(bonusTimePerClick); toggleClick();" class="bottleCap2 img"></div>
+                <div *ngIf="this.timeBlocks[20].selected && click === 1" (click)="powerbar.extraTime(bonusTimePerClick); setClick(2);" class="bottleCap1 img"></div>
+                <div *ngIf="this.timeBlocks[20].selected && click === 2" (click)="powerbar.extraTime(bonusTimePerClick); setClick(3);" class="bottleCap1 img"></div>
+                <div *ngIf="this.timeBlocks[20].selected && click === 3" (click)="powerbar.extraTime(bonusTimePerClick); setClick(4);" class="bottleCap1 img"></div>
+                <div *ngIf="this.timeBlocks[20].selected && click === 4" (click)="powerbar.extraTime(bonusTimePerClick); setClick(5);" class="bottleCap1 img"></div>
+                <div *ngIf="this.timeBlocks[20].selected && click === 5" (click)="powerbar.extraTime(bonusTimePerClick); setClick(1);" class="bottleCap1 img"></div>
               </div>
               <div class="col-lg-1">
-                <div *ngIf="this.timeBlocks[21].selected && !click" (click)="powerbar.extraTime(bonusTimePerClick); toggleClick();" class="floater img"></div>
-                <div *ngIf="this.timeBlocks[21].selected && click" (click)="powerbar.extraTime(bonusTimePerClick); toggleClick();" class="floater2 img"></div>
+                <div *ngIf="this.timeBlocks[21].selected && click === 1" (click)="powerbar.extraTime(bonusTimePerClick); setClick(2);" class="floater1 img"></div>
+                <div *ngIf="this.timeBlocks[21].selected && click === 2" (click)="powerbar.extraTime(bonusTimePerClick); setClick(3);" class="floater2 img"></div>
+                <div *ngIf="this.timeBlocks[21].selected && click === 3" (click)="powerbar.extraTime(bonusTimePerClick); setClick(4);" class="floater3 img"></div>
+                <div *ngIf="this.timeBlocks[21].selected && click === 4" (click)="powerbar.extraTime(bonusTimePerClick); setClick(5);" class="floater4 img"></div>
+                <div *ngIf="this.timeBlocks[21].selected && click === 5" (click)="powerbar.extraTime(bonusTimePerClick); setClick(1);" class="floater5 img"></div>
               </div>
               <div class="col-lg-1">
-                <div *ngIf="this.timeBlocks[22].selected && !click" (click)="powerbar.extraTime(bonusTimePerClick); toggleClick();" class="meatClub img"></div>
-                <div *ngIf="this.timeBlocks[22].selected && click" (click)="powerbar.extraTime(bonusTimePerClick); toggleClick();" class="meatClub2 img"></div>
+                <div *ngIf="this.timeBlocks[22].selected && click === 1" (click)="powerbar.extraTime(bonusTimePerClick); setClick(2);" class="meatClub1 img"></div>
+                <div *ngIf="this.timeBlocks[22].selected && click === 2" (click)="powerbar.extraTime(bonusTimePerClick); setClick(3);" class="meatClub2 img"></div>
+                <div *ngIf="this.timeBlocks[22].selected && click === 3" (click)="powerbar.extraTime(bonusTimePerClick); setClick(4);" class="meatClub3 img"></div>
+                <div *ngIf="this.timeBlocks[22].selected && click === 4" (click)="powerbar.extraTime(bonusTimePerClick); setClick(5);" class="meatClub4 img"></div>
+                <div *ngIf="this.timeBlocks[22].selected && click === 5" (click)="powerbar.extraTime(bonusTimePerClick); setClick(1);" class="meatClub5 img"></div>
               </div>
               <div class="col-lg-1">
-                <div *ngIf="this.timeBlocks[23].selected && !click" (click)="powerbar.extraTime(bonusTimePerClick); toggleClick();" class="oldOx img"></div>
-                <div *ngIf="this.timeBlocks[23].selected && click" (click)="powerbar.extraTime(bonusTimePerClick); toggleClick();" class="oldOx2 img"></div>
+                <div *ngIf="this.timeBlocks[23].selected && click === 1" (click)="powerbar.extraTime(bonusTimePerClick); setClick(2);" class="oldOx1 img"></div>
+                <div *ngIf="this.timeBlocks[23].selected && click === 2" (click)="powerbar.extraTime(bonusTimePerClick); setClick(3);" class="oldOx2 img"></div>
+                <div *ngIf="this.timeBlocks[23].selected && click === 3" (click)="powerbar.extraTime(bonusTimePerClick); setClick(4);" class="oldOx3 img"></div>
+                <div *ngIf="this.timeBlocks[23].selected && click === 4" (click)="powerbar.extraTime(bonusTimePerClick); setClick(5);" class="oldOx4 img"></div>
+                <div *ngIf="this.timeBlocks[23].selected && click === 5" (click)="powerbar.extraTime(bonusTimePerClick); setClick(1);" class="oldOx5 img"></div>
               </div>
           </div>
         </div>
-        <!-- <div class="the-random-button img">o</div> -->
         <div class="row gambling-bar extra-time-row">
           <div *ngIf="gambler">
             <app-dice (comboEvent)="receiveCombo($event)"></app-dice>

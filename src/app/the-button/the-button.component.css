@@ -459,15 +459,26 @@ li {
 /*///////////////////
 // Random boss items
 ///////////////////////////////////////////////////////////////////////////////*/
-
-.bottleCap { background-image: url('../../assets/images/bossItems/bottleCap.png'); }
+.bottleCap1 { background-image: url('../../assets/images/bossItems/bottleCap1.png'); }
 .bottleCap2 { background-image: url('../../assets/images/bossItems/bottleCap2.png'); }
-.floater { background-image: url('../../assets/images/bossItems/floater.png'); }
+.bottleCap3 { background-image: url('../../assets/images/bossItems/bottleCap3.png'); }
+.bottleCap4 { background-image: url('../../assets/images/bossItems/bottleCap4.png'); }
+.bottleCap5 { background-image: url('../../assets/images/bossItems/bottleCap5.png'); }
+.floater1 { background-image: url('../../assets/images/bossItems/floater1.png'); }
 .floater2 { background-image: url('../../assets/images/bossItems/floater2.png'); }
-.meatClub { background-image: url('../../assets/images/bossItems/meatClub.png'); }
+.floater3 { background-image: url('../../assets/images/bossItems/floater3.png'); }
+.floater4 { background-image: url('../../assets/images/bossItems/floater4.png'); }
+.floater5 { background-image: url('../../assets/images/bossItems/floater5.png'); }
+.meatClub1 { background-image: url('../../assets/images/bossItems/meatClub1.png'); }
 .meatClub2 { background-image: url('../../assets/images/bossItems/meatClub2.png'); }
-.oldOx { background-image: url('../../assets/images/bossItems/oldOx.png'); }
+.meatClub3 { background-image: url('../../assets/images/bossItems/meatClub3.png'); }
+.meatClub4 { background-image: url('../../assets/images/bossItems/meatClub4.png'); }
+.meatClub5 { background-image: url('../../assets/images/bossItems/meatClub5.png'); }
+.oldOx1 { background-image: url('../../assets/images/bossItems/oldOx1.png'); }
 .oldOx2 { background-image: url('../../assets/images/bossItems/oldOx2.png'); }
+.oldOx3 { background-image: url('../../assets/images/bossItems/oldOx3.png'); }
+.oldOx4 { background-image: url('../../assets/images/bossItems/oldOx4.png'); }
+.oldOx5 { background-image: url('../../assets/images/bossItems/oldOx5.png'); }
 
 .img {
 	cursor: pointer;
@@ -478,4 +489,41 @@ li {
   -o-background-size: cover;
   background-size: cover;
   background-position: center;
+}
+
+
+.alone {
+  background-image: url("../../assets/images/random/alone.png");
+  background-size: 700px 500px;
+  background-position: center;
+  background-position-y: 140px !important;
+  background-position-x: 250px !important;
+  background-repeat: no-repeat;
+}
+
+.rage {
+  background-image: url("../../assets/images/random/rage.png");
+  background-size: 1100px 900px;
+  background-position: center;
+  background-position-y: 160px !important;
+  background-position-x: 400px !important;
+  background-repeat: no-repeat;
+}
+
+.fff {
+  background-image: url("../../assets/images/random/fff.png");
+  background-size: 700px 700px;
+  background-position: center;
+  background-position-y: 260px !important;
+  background-position-x: 400px !important;
+  background-repeat: no-repeat;
+}
+
+.troll {
+  background-image: url("../../assets/images/random/ProblemTroll.png");
+  background-size: 500px 400px;
+  background-position: center;
+  background-position-y: 140px !important;
+  background-position-x: 910px !important;
+  background-repeat: no-repeat;
 }

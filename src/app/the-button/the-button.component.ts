@@ -19,7 +19,10 @@ import { DiceComponent } from '../dice/dice.component';
     templateUrl: './the-button.component.html',
     encapsulation: ViewEncapsulation.None,
     styleUrls: [
-        './the-button.component.css'
+        './the-button.component.css',
+        './shakeCrazy.css',
+        './shakeHard.css',
+        './shakeLittle.css'
     ]
     // ,
     // animations: [
@@ -107,7 +110,7 @@ import { DiceComponent } from '../dice/dice.component';
 
 export class TheButtonComponent implements OnInit, OnDestroy {
     public showDevValues = false;
-    public click = false;
+    public click = 1;
     @ViewChild(DiceComponent) dice;
     public gambler = false;
     public maestro = false;
@@ -122,6 +125,7 @@ export class TheButtonComponent implements OnInit, OnDestroy {
     public countDown: number;
     public gameOn = true;
     public noStart = false;
+    public foreverAlone = false;
     private subscription: Subscription;
     private currentUser: User;
 
@@ -136,6 +140,7 @@ export class TheButtonComponent implements OnInit, OnDestroy {
     public bonus = 1;
     private bonusTimePerClick = 10;
     public bonusTime = 0;
+    public rage = 0;
 
     public showCheats = false;
     private cheatX2 = false;
@@ -512,7 +517,10 @@ export class TheButtonComponent implements OnInit, OnDestroy {
     }
 
     CalculateTimer(t) {
-        this.click = false;
+        if (this.rage < 11) {
+          this.rage++;
+        }
+        this.click = 1;
         this.tick = t;
         this.bonusTime = 0;
         if (this.gameOn) {
@@ -639,13 +647,13 @@ export class TheButtonComponent implements OnInit, OnDestroy {
           break;
         default:
           this.SetCheat(gamblerSuccess, 0);
-          alert('Fuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu...');
+          this.rage = 0;
           break;
       }
     }
 
-    toggleClick() {
-      this.click = !this.click;
+    setClick(click) {
+      this.click = click;
     }
 }
 
