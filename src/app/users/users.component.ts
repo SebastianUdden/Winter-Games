@@ -4,6 +4,7 @@ import { of } from 'rxjs/observable/of';
 
 import { UpdateService } from '../_services/update.service';
 import { UserService } from '../_services/user.service';
+import { AuthenticationService } from '../_services/authentication.service';
 import { User } from '../_models/user';
 
 @Component({
@@ -16,6 +17,7 @@ import { User } from '../_models/user';
   encapsulation: ViewEncapsulation.None
 })
 export class UsersComponent implements OnInit {
+  public user: User;
   public selectedTab: number;
 
   public gambler = false;
@@ -29,10 +31,9 @@ export class UsersComponent implements OnInit {
   @Output() mcFlyEvent = new EventEmitter<boolean>();
 
   displayFullName = false;
-  message: string;
-  user: User;
-  userScore: number;
-  userLevel: string;
+  // message: string;
+  // userScore: number;
+  // userLevel: string;
   duplicate = false;
   currentUsers: Array<User> = [];
   // users: Array<User> = [
@@ -49,9 +50,12 @@ export class UsersComponent implements OnInit {
   //   new User(11, 'Palmöga', 'globalFuuzbal', 'Marcus', 'Palm', 'marcus.palm@gmail.com', 174, 'Ambitious Grunt', false),
   //   new User(12, 'Amanda', 'awppl', 'Amanda', 'Hagberg', 'amanda-hagberg@gmail.com', 328, 'Casual N00B', false)
   // ];
-  constructor(private data: UpdateService, private userService: UserService) {
-    this.selectedTab = 1;
-    this.getUsers();
+  constructor(
+    private data: UpdateService,
+    private userService: UserService,
+    private authenticationService: AuthenticationService) {
+      this.selectedTab = 1;
+      this.getUsers();
   }
 
   users: User[];
@@ -61,13 +65,13 @@ export class UsersComponent implements OnInit {
     // this.users = this.SortDescending(this.users);
   }
 
-
   ngOnInit() {
     this.getUsers();
-    this.data.currentMessage.subscribe(message => this.message = message);
-    this.data.currentUser.subscribe(user => this.user = user);
-    this.data.currentUserScore.subscribe(userScore => this.userScore = userScore);
-    this.data.currentUserLevel.subscribe(userLevel => this.userLevel = userLevel);
+    this.authenticationService.currentUser.subscribe(user => this.user = user);
+    // this.data.currentMessage.subscribe(message => this.message = message);
+    // this.data.currentUser.subscribe(user => this.user = user);
+    // this.data.currentUserScore.subscribe(userScore => this.userScore = userScore);
+    // this.data.currentUserLevel.subscribe(userLevel => this.userLevel = userLevel);
   }
 
   selectTab(tab) {
@@ -97,15 +101,15 @@ export class UsersComponent implements OnInit {
 
   AddCurrentUser() {
     const committedUser = new User(
-        this.user.id,
-        this.user.username,
-        this.user.password,
-        this.user.firstName,
-        this.user.lastName,
-        this.user.email,
-        this.user.score,
-        this.user.level,
-        this.user.current
+      this.user.firstname,
+      this.user.lastname,
+      this.user.email,
+      this.user.username,
+      this.user.password,
+      this.user.score,
+      this.user.level,
+      this.user.current,
+      this.user.admin
     );
     let userExists = false;
     for (let i = 0; i < this.currentUsers.length; i++) {

@@ -7,6 +7,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { TimerObservable } from 'rxjs/observable/TimerObservable';
 import { FormsModule } from '@angular/forms';
 
+import { AuthenticationService } from '../_services/authentication.service';
 import { UpdateService } from '../_services/update.service';
 import { UserService } from '../_services/user.service';
 import { User } from '../_models/user';
@@ -109,9 +110,9 @@ import { DiceComponent } from '../dice/dice.component';
 })
 
 export class TheButtonComponent implements OnInit, OnDestroy {
-    public showDevValues = false;
-    public click = 1;
     @ViewChild(DiceComponent) dice;
+    public showDevValues = false;
+    public click: number = 1;
     public gambler = false;
     public maestro = false;
     public grinder = false;
@@ -119,7 +120,7 @@ export class TheButtonComponent implements OnInit, OnDestroy {
 
     public comboType: any;
     private lastComboType: any;
-    private user: User = new User(0, '', '', '', '', '', 0, '', true);
+    private user: User;
     private tick: number;
     public timeLimit: number;
     public countDown: number;
@@ -127,9 +128,8 @@ export class TheButtonComponent implements OnInit, OnDestroy {
     public noStart = false;
     public foreverAlone = false;
     private subscription: Subscription;
-    private currentUser: User;
 
-    private countdownValue = 20;
+    private countdownValue = 3;
     private countupValue = 5;
     private noStartValue = -5;
     private readyIn = 0;
@@ -562,18 +562,21 @@ export class TheButtonComponent implements OnInit, OnDestroy {
         });
     }
 
-    constructor(private data: UpdateService, private userService: UserService) {
+    constructor(
+      private data: UpdateService,
+      private userService: UserService,
+      private authenticationService: AuthenticationService) {
         this.comboType = '';
-        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
     ngOnInit() {
-        this.data.currentUserScore.subscribe(userScore => this.userScore = userScore);
-        this.countDown = this.countdownValue;
-        this.timeLimit = this.countdownValue;
-        const timer = TimerObservable.create(2000, 1000);
-        this.subscription = timer.subscribe(t => {
-            this.CalculateTimer(t);
-        });
+      this.authenticationService.currentUser.subscribe(user => this.user = user);
+      // this.data.currentUserScore.subscribe(userScore => this.userScore = userScore);
+      this.countDown = this.countdownValue;
+      this.timeLimit = this.countdownValue;
+      const timer = TimerObservable.create(2000, 1000);
+      this.subscription = timer.subscribe(t => {
+          this.CalculateTimer(t);
+      });
     }
 
     newUserScore() {
@@ -600,7 +603,10 @@ export class TheButtonComponent implements OnInit, OnDestroy {
             this.userScore *= 99;
         }
         const lvl = this.perseverance + ' ' + this.level;
-
+        alert('User: ' + this.user.username + ', current: ' + this.user.score + ', new: ' + this.userScore);
+        this.user.score = this.userScore;
+        this.userService.updateUser(this.user);
+        this.authenticationService.changeUser(this.user);
         // this.user.id = this.currentUser.id;
         // this.user.username = this.currentUser.username;
         // this.user.firstName = this.currentUser.firstName;

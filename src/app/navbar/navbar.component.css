@@ -8,10 +8,20 @@ a.navbar-brand {
 
 .wgNav {
   background-color: #222222;
-  padding: 0px !important;
-  max-height: 40px;
+  display: inline-block !important;
 }
 
 .wgNav:hover {
   color: #eeeeee;
 }
+
+/* .navigation {
+  padding: 4px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.navigation li {
+  padding: 8px;
+  margin-bottom: 10px;
+} */

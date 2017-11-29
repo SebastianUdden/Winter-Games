@@ -1,0 +1,53 @@
+body {
+  margin: 0;
+  height: 100%;
+  text-decoration: none;
+  font: 18px/1.4em 'Ubuntu', arial, sans-serif;
+  line-height: 1.428571429;
+  background-color: rgb(44, 44, 44);
+  color: #fff;
+}
+
+.user-list {
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 1px;
+  margin: 8px;
+  padding: 5px;
+  background-color: rgb(59, 59, 59);
+}
+
+.user-list:hover {
+  background-color: rgb(77, 77, 77);
+}
+
+.user input {
+  color: black;
+}
+
+a {
+  color: #00B7FF;
+  cursor: pointer;
+}
+
+a:hover,
+a:active {
+  color: #00B7FF;
+  text-decoration: underline;
+}
+
+a.danger {
+  color: red;
+}
+
+.spacing {
+  margin-bottom: 20px;
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+.container {
+  width: 1600px !important;
+}

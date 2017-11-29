@@ -2,37 +2,37 @@
 body {
   margin: 0;
   height: 100%;
-  padding-top: 60px;
+  /* padding-top: 60px; */
   text-decoration: none;
   font: 12px/1.4em 'Ubuntu', arial, sans-serif;
   line-height: 1.428571429;
-  color: #333;
-  background-color: #fff;
+  background-color: rgb(44, 44, 44);
+  color: #fff;
 }
 
 a {
-color: #00B7FF;
-cursor: pointer;
+  color: #00B7FF;
+  cursor: pointer;
 }
 
 a:hover,
 a:active {
-color: #00B7FF;
-text-decoration: underline;
+  color: #00B7FF;
+  text-decoration: underline;
 }
 
 a.danger {
-color: red;
+  color: red;
 }
 
 .spacing {
-margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 input.ng-invalid.ng-touched {
-border: 1px solid red;
+  border: 1px solid red;
 }
 
 .container {
-width: 1600px !important;
+  width: 100% !important;
 }

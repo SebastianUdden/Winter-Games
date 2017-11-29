@@ -12,11 +12,16 @@
     <div *ngIf="selectedTab === 1" class="box-content container">
       <h2>HIGH SCORE</h2>
       <hr />
-      <div *ngFor="let user of users" class="userInfo">
-        <div class="row userInfo-row">
+      <div *ngFor="let u of users" class="userInfo">
+        <div *ngIf="u.username === user.username" class="row userInfo-row currentUser">
           <div class="col-lg-2 centerText userInfo-item avatar">AVT</div>
-          <div class="col-lg-7 userInfo-item name">{{user.userName}}</div>
-          <div class="col-lg-3 centerText userInfo-item score">{{user.score}}</div>
+          <div class="col-lg-7 userInfo-item name">{{u.username}}</div>
+          <div class="col-lg-3 centerText userInfo-item score">{{u.score}}</div>
+        </div>
+        <div *ngIf="u.username !== user.username" class="row userInfo-row">
+          <div class="col-lg-2 centerText userInfo-item avatar">AVT</div>
+          <div class="col-lg-7 userInfo-item name">{{u.username}}</div>
+          <div class="col-lg-3 centerText userInfo-item score">{{u.score}}</div>
         </div>
         <!-- <span style="width:123px;">AVT</span>
         <span class="name">{{user.username}}</span>
@@ -28,14 +33,15 @@
       </div>
     </div>
     <div *ngIf="selectedTab === 2" class="box-content container">
-      <h2>PROFILE</h2>
+      <h2>PROFILE - {{user.username}}</h2>
       <hr />
       <div style="margin-left:9px; margin-top:30px;">
-        <h3>Name: Sebastian Uddén</h3>
-        <h3>Age: 29</h3>
-        <h3>Occupation: Developer</h3>
-        <h3>Sport of Choice: Basketball</h3>
-        <h3>Daily-drug: Coffee</h3>
+        <h4>Name: {{user.firstname}} {{user.lastname}}</h4>
+        <h4>Email: {{user.email}}</h4>
+        <h4>Age: 29</h4>
+        <h4>Occupation: Developer</h4>
+        <h4>Sport of Choice: Basketball</h4>
+        <h4>Daily-drug: Coffee</h4>
         <br />
         <p>Enthusiastically eccentric enduring</p>
         <p>endless events encompassing enemies, </p>

@@ -17,9 +17,16 @@ import { UsersComponent } from './users/users.component';
 
 import { UpdateService } from './_services/update.service';
 import { UserService } from './_services/user.service';
+import { AlertService } from './_services/alert.service';
+import { AuthenticationService } from './_services/authentication.service';
 import { DiceComponent } from './dice/dice.component';
 import { PowerBarComponent } from './power-bar/power-bar.component';
 import { RegisterComponent } from './authentication/register/register.component';
+import { LoginComponent } from './authentication/login/login.component';
+import { UserHomeComponent } from './authentication/home/home.component';
+import { AlertComponent } from './authentication/alert/alert.component';
+
+
 
 @NgModule({
   declarations: [
@@ -34,15 +41,19 @@ import { RegisterComponent } from './authentication/register/register.component'
     UsersComponent,
     DiceComponent,
     PowerBarComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginComponent,
+    UserHomeComponent,
+    AlertComponent
   ],
   imports: [
     HttpModule,
     HttpClientModule,
     BrowserModule,
+    FormsModule,
     routing
   ],
-  providers: [UpdateService, UserService],
+  providers: [UpdateService, UserService, AlertService, AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
