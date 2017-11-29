@@ -8,7 +8,7 @@
         </div>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
             <label for="lastname">Last Name</label>
-            <input type="text" class="form-control" name="lastname" [(ngModel)]="model.lastname" #lastName="ngModel" required />
+            <input type="text" class="form-control" name="lastname" [(ngModel)]="model.lastname" #lastname="ngModel" required />
             <div *ngIf="f.submitted && !lastname.valid" class="help-block">Last Name is required</div>
         </div>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">

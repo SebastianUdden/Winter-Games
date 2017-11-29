@@ -13,8 +13,8 @@ const httpOptions = {
 
 @Injectable()
 export class UserService {
-  private usersUrl = 'http://localhost:3000/api';
-  // private usersUrl = 'https://radiant-coast-25310.herokuapp.com/api';
+  // private usersUrl = 'http://localhost:3000/api';
+  private usersUrl = 'https://radiant-coast-25310.herokuapp.com/api';
 
   constructor(
     private http: HttpClient

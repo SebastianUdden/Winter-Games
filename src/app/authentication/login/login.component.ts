@@ -12,10 +12,10 @@ import { User } from '../../_models/user';
 })
 export class LoginComponent implements OnInit {
   model: any = {};
-  user: User;
-  private loggedIn = false;
-  private loginFailed = false;
-  private noUser = false;
+  public user: User;
+  public loggedIn = false;
+  public loginFailed = false;
+  public noUser = false;
   loading = false;
   returnUrl: string;
 
