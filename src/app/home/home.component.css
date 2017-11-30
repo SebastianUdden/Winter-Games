@@ -4,6 +4,9 @@
   #showMainBig {
     display: none;
   }
+  #showMainSmall {
+    width: 100em;
+  }
 }
 
 @media only screen and (

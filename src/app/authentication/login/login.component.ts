@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
     private alertService: AlertService) { }
 
   ngOnInit() {
+    document.getElementById('loginButton').addEventListener('touchstart', this.preventZoom);
     // reset login status
     this.authenticationService.logout();
 
@@ -45,7 +46,7 @@ export class LoginComponent implements OnInit {
             this.loginFailed = false;
             this.noUser = false;
             this.authenticationService.changeUser(data);
-            this.router.navigate([this.returnUrl]);
+            this.router.navigate(['/profile']);
           } else {
             this.loggedIn = false;
             this.loginFailed = true;
@@ -60,6 +61,18 @@ export class LoginComponent implements OnInit {
             this.loginFailed = true;
             this.noUser = false;
         });
+  }
+
+  preventZoom(e) {
+    const t2 = e.timeStamp;
+    const t1 = e.currentTarget.dataset.lastTouch || t2;
+    const dt = t2 - t1;
+    const fingers = e.touches.length;
+    e.currentTarget.dataset.lastTouch = t2;
+    if (!dt || dt > 500 || fingers > 1) { return this; } // not double-tap
+
+    e.preventDefault();
+    e.target.click();
   }
   //   .subscribe(user => {
   //     if (user.password === password) {

@@ -483,40 +483,40 @@ export class TheButtonComponent implements OnInit, OnDestroy {
     }
 
     Count() {
-        if (this.userScore > 49 && this.userScore < 70
-            || this.userScore > 99 && this.userScore < 120
-            || this.userScore > 149 && this.userScore < 170
-            || this.userScore > 199 && this.userScore < 220) {
-            this.spinMoveFade();
-        }
-        if (this.userScore >= 70 && this.userScore <= 98
-            || this.userScore >= 120 && this.userScore <= 148
-            || this.userScore >= 170 && this.userScore <= 198
-            || this.userScore >= 220 && this.userScore <= 298
-            || this.userScore >= 310 && this.userScore <= 348
-            || this.userScore >= 360 && this.userScore <= 1336
-            || this.userScore >= 1347 && this.userScore <= 4999
-            || this.userScore >= 5020 && this.userScore <= 9998) {
-            this.defaultState();
-        }
-        if (this.userScore > 299 && this.userScore < 310
-            || this.userScore > 349 && this.userScore < 360
-            || this.userScore > 1336 && this.userScore < 1347
-            || this.userScore > 4999 && this.userScore < 5020
-            || this.userScore > 9999 ) {
-            this.bigToSmall();
-        }
-        if (this.userScore > 1337 && !this.reached1337) {
-            this.bonus *= 2;
-            this.reached1337 = true;
-        }
-        if (this.userScore > 9999 && !this.reached9999) {
-            // this.TurnCheatsOff();
-            this.CheatToggle(20);
-            this.reached9999 = true;
-        }
-        this.CheckLevel(this.userScore);
-        this.userScore += this.bonus;
+      if (this.userScore > 49 && this.userScore < 70
+          || this.userScore > 99 && this.userScore < 120
+          || this.userScore > 149 && this.userScore < 170
+          || this.userScore > 199 && this.userScore < 220) {
+          this.spinMoveFade();
+      }
+      if (this.userScore >= 70 && this.userScore <= 98
+          || this.userScore >= 120 && this.userScore <= 148
+          || this.userScore >= 170 && this.userScore <= 198
+          || this.userScore >= 220 && this.userScore <= 298
+          || this.userScore >= 310 && this.userScore <= 348
+          || this.userScore >= 360 && this.userScore <= 1336
+          || this.userScore >= 1347 && this.userScore <= 4999
+          || this.userScore >= 5020 && this.userScore <= 9998) {
+          this.defaultState();
+      }
+      if (this.userScore > 299 && this.userScore < 310
+          || this.userScore > 349 && this.userScore < 360
+          || this.userScore > 1336 && this.userScore < 1347
+          || this.userScore > 4999 && this.userScore < 5020
+          || this.userScore > 9999 ) {
+          this.bigToSmall();
+      }
+      if (this.userScore > 1337 && !this.reached1337) {
+          this.bonus *= 2;
+          this.reached1337 = true;
+      }
+      if (this.userScore > 9999 && !this.reached9999) {
+          // this.TurnCheatsOff();
+          this.CheatToggle(20);
+          this.reached9999 = true;
+      }
+      this.CheckLevel(this.userScore);
+      this.userScore += this.bonus;
     }
 
     CalculateTimer(t) {
@@ -577,6 +577,7 @@ export class TheButtonComponent implements OnInit, OnDestroy {
         this.comboType = '';
     }
     ngOnInit() {
+      document.getElementById('countButton').addEventListener('touchstart', this.preventZoom);
       this.authenticationService.currentUser.subscribe(user => this.user = user);
       // this.data.currentUserScore.subscribe(userScore => this.userScore = userScore);
       this.countDown = this.countdownValue;
@@ -670,6 +671,18 @@ export class TheButtonComponent implements OnInit, OnDestroy {
 
     setClick(click) {
       this.click = click;
+    }
+
+    preventZoom(e) {
+      const t2 = e.timeStamp;
+      const t1 = e.currentTarget.dataset.lastTouch || t2;
+      const dt = t2 - t1;
+      const fingers = e.touches.length;
+      e.currentTarget.dataset.lastTouch = t2;
+      if (!dt || dt > 500 || fingers > 1) { return this; } // not double-tap
+
+      e.preventDefault();
+      e.target.click();
     }
 }
 
