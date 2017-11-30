@@ -7,7 +7,7 @@ export class UpdateService {
   private messageSource = new BehaviorSubject<string>('default message');
   currentMessage = this.messageSource.asObservable();
 
-  private userSource = new BehaviorSubject<User>(new User('', '', '', '', '', 0, '', false));
+  private userSource = new BehaviorSubject<User>(new User('', '', '', '', '', 0, 0, '', false, false));
   currentUser = this.userSource.asObservable();
 
   private userScoreSource = new BehaviorSubject<number>(0);

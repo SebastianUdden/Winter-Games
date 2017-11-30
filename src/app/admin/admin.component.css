@@ -1,5 +1,4 @@
-body {
-  margin: 0;
+.admin {
   height: 100%;
   text-decoration: none;
   font: 18px/1.4em 'Ubuntu', arial, sans-serif;
@@ -25,13 +24,13 @@ body {
   color: black;
 }
 
-a {
+.admin a {
   color: #00B7FF;
   cursor: pointer;
 }
 
-a:hover,
-a:active {
+.admin a:hover,
+.admin a:active {
   color: #00B7FF;
   text-decoration: underline;
 }

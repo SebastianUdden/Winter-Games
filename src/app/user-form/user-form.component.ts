@@ -13,7 +13,7 @@ export class UserFormComponent implements OnInit {
   user: User;
   message: string;
   submitted = false;
-  model = new User('', '', '', '', '', 0, '', false);
+  model = new User('', '', '', '', '', 0, 0, '', false);
 
   userForm = new FormGroup ({
       name: new FormControl(),
@@ -41,7 +41,7 @@ export class UserFormComponent implements OnInit {
       this.userForm.reset();
   }
   RegisterUser() {
-      this.model = new User('', '', '', '', '', 0, '', false);
+      this.model = new User('', '', '', '', '', 0, 0, '', false);
       this.submitted = false;
   }
 }

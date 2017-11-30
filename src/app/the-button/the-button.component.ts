@@ -125,9 +125,10 @@ export class TheButtonComponent implements OnInit, OnDestroy {
     private tick: number;
     public timeLimit: number;
     public countDown: number;
-    public gameOn = true;
-    public newRecord = false;
+    public getReady = false;
+    public gameOn = false;
     public noStart = false;
+    public newRecord = false;
     public foreverAlone = false;
     private subscription: Subscription;
 
@@ -524,6 +525,7 @@ export class TheButtonComponent implements OnInit, OnDestroy {
         }
         this.click = 1;
         this.tick = t;
+        this.getReady = false;
         this.bonusTime = 0;
         if (this.gameOn) {
             this.RandomExtraTimeBlock();
@@ -549,21 +551,23 @@ export class TheButtonComponent implements OnInit, OnDestroy {
     }
 
     StartOver() {
-        this.TurnCheatsOff();
-        this.gameOn = true;
-        this.userScore = 0;
-        this.perseverance = 'L053R';
-        this.level = 'N00B';
-        this.countDown = this.countdownValue;
-        this.timeLimit = this.countdownValue;
-        this.totalBonusTime = 0;
-        const timer = TimerObservable.create(2000, 1000);
-        this.comboType = '';
-        this.subscription = timer.subscribe(t => {
-            this.CalculateTimer(t);
-        });
-        this.users.getUsers();
-        this.newRecord = false;
+      this.getReady = true;
+      const timer = TimerObservable.create(2000, 1000);
+      this.subscription = timer.subscribe(t => {
+          this.CalculateTimer(t);
+      });
+      this.TurnCheatsOff();
+      this.gameOn = true;
+      this.userScore = 0;
+      this.perseverance = 'L053R';
+      this.level = 'N00B';
+      this.countDown = this.countdownValue;
+      this.timeLimit = this.countdownValue;
+      this.totalBonusTime = 0;
+      this.comboType = '';
+      this.user.playthroughs++;
+      this.users.getUsers();
+      this.newRecord = false;
     }
 
     constructor(
@@ -577,10 +581,6 @@ export class TheButtonComponent implements OnInit, OnDestroy {
       // this.data.currentUserScore.subscribe(userScore => this.userScore = userScore);
       this.countDown = this.countdownValue;
       this.timeLimit = this.countdownValue;
-      const timer = TimerObservable.create(2000, 1000);
-      this.subscription = timer.subscribe(t => {
-          this.CalculateTimer(t);
-      });
     }
 
     newUserScore() {
@@ -609,12 +609,12 @@ export class TheButtonComponent implements OnInit, OnDestroy {
         const lvl = this.perseverance + ' ' + this.level;
         if (this.user.score < this.userScore) {
           this.user.score = this.userScore;
-          this.userService.updateUser(this.user);
-          this.authenticationService.changeUser(this.user);
           this.newRecord = true;
         } else {
           this.newRecord = false;
         }
+        this.userService.updateUser(this.user);
+        this.authenticationService.changeUser(this.user);
         // this.user.id = this.currentUser.id;
         // this.user.username = this.currentUser.username;
         // this.user.firstName = this.currentUser.firstName;
@@ -628,7 +628,9 @@ export class TheButtonComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
+      if (this.subscription) {
         this.subscription.unsubscribe();
+      }
     }
 
     receiveCombo($event) {

@@ -107,6 +107,7 @@ export class UsersComponent implements OnInit {
       this.user.username,
       this.user.password,
       this.user.score,
+      this.user.playthroughs,
       this.user.level,
       this.user.current,
       this.user.admin

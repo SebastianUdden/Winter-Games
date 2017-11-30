@@ -6,6 +6,7 @@ export class User {
     public username: string = '',
     public password: string = '',
     public score: number = 0,
+    public playthroughs: number = 0,
     public level: string = '',
     public current: boolean = false,
     public admin: boolean = false
