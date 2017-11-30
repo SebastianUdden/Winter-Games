@@ -9,7 +9,7 @@
       </div>
       <div class="row">
         <div style="margin-bottom:0.7em;" class="red-text text-center medium unselectable empty-row"><span *ngIf="newRecord" style="color:#09b909;">New RECORD!!!</span><span *ngIf="!newRecord">{{ perseverance }} {{ level }}</span></div>
-        <div *ngIf="userScore >= 0 && gameOn" (click)="Count()" class="the-button-main center blue-oyster-background medium unselectable">
+        <div *ngIf="userScore >= 0 && gameOn && !getReady" (click)="Count()" class="the-button-main center blue-oyster-background medium unselectable">
             <span *ngIf="!cheatX20">BOSS</span>
             <span *ngIf="cheatX2">x2</span>
             <span *ngIf="cheatX3">x3</span>
@@ -18,8 +18,9 @@
             <span *ngIf="cheatX9">x9</span>
             <span *ngIf="cheatX20">NUKEM x20</span>
         </div>
-        <div *ngIf="!gameOn && noStart" (click)="foreverAlone = !foreverAlone" class="the-button-main center bland-error-background medium unselectable">Loading: {{ readyIn }}</div>
-        <div *ngIf="!gameOn && !noStart" (click)="StartOver()" class="the-button-main center sea-4-background medium unselectable">New Game</div>
+        <div *ngIf="getReady" class="the-button-main center bland-error-background medium unselectable">Get Ready</div>
+        <div *ngIf="!gameOn && noStart && !getReady" (click)="foreverAlone = !foreverAlone" class="the-button-main center bland-error-background medium unselectable">Loading: {{ readyIn }}</div>
+        <div *ngIf="!gameOn && !noStart && !getReady" (click)="StartOver()" class="the-button-main center sea-4-background medium unselectable">New Game</div>
       </div>
       <div class="row text-center" style="margin-top: 20px;">
           <div class="row" *ngIf="!newRecord">
@@ -215,8 +216,8 @@
                 <span *ngIf="cheatX9">x9</span>
                 <span *ngIf="cheatX20">NUKEM x20</span>
             </div>
-            <div *ngIf="!gameOn && !noStart && !getReady" (click)="StartOver()" class="the-button-main center sea-4-background medium unselectable">New Game</div>
             <div *ngIf="getReady" class="the-button-main center bland-error-background medium unselectable">Get Ready</div>
+            <div *ngIf="!gameOn && !noStart && !getReady" (click)="StartOver()" class="the-button-main center sea-4-background medium unselectable">New Game</div>
             <div *ngIf="!gameOn && noStart && !getReady" (click)="foreverAlone = !foreverAlone" class="the-button-main center bland-error-background medium unselectable">Loading: {{ readyIn }}</div>
         </div>
         <div class="row">

@@ -292,7 +292,6 @@ export class TheButtonComponent implements OnInit, OnDestroy {
             timeBlock.selected = false;
         });
     }
-
     SetExtraTimeBlock(number) {
         this.timeBlocks.forEach(timeBlock => {
             if (timeBlock.id === number) {
@@ -302,7 +301,6 @@ export class TheButtonComponent implements OnInit, OnDestroy {
             }
         });
     }
-
     RandomExtraTimeBlock() {
         this.randomNumber = Math.floor((Math.random() * this.randomNumberSpread) + 1);
         this.SetExtraTimeBlock(this.randomNumber);
@@ -520,41 +518,43 @@ export class TheButtonComponent implements OnInit, OnDestroy {
     }
 
     CalculateTimer(t) {
-        if (this.rage < 11) {
-          this.rage++;
-        }
-        this.click = 1;
-        this.tick = t;
+      if (this.rage < 11) {
+        this.rage++;
+      }
+      if (this.click > 0) {
         this.getReady = false;
-        this.bonusTime = 0;
-        if (this.gameOn) {
-            this.RandomExtraTimeBlock();
-            this.countDown = this.timeLimit - this.tick;
-        }
-        if (this.countDown <= 0 && !this.newUserScoreGiven) {
-            this.newUserScore();
-            this.NoExtraTimeBlock();
-            this.perseverance = 'N00B';
-            this.level = '';
-            this.gameOn = false;
-            this.noStart = true;
-        }
-        if (this.countDown <= 0 && this.newUserScoreGiven) {
-            this.countDown = this.timeLimit - this.tick;
-            this.readyIn = this.countupValue + this.timeLimit - t;
-        }
-        if (this.countDown === this.noStartValue) {
-            this.noStart = false;
-            this.newUserScoreGiven = false;
-            this.subscription.unsubscribe();
-        }
+      }
+      this.click = 1;
+      this.tick = t;
+      this.bonusTime = 0;
+      if (this.gameOn) {
+          this.RandomExtraTimeBlock();
+          this.countDown = this.timeLimit - this.tick;
+      }
+      if (this.countDown <= 0 && !this.newUserScoreGiven) {
+          this.newUserScore();
+          this.NoExtraTimeBlock();
+          this.perseverance = 'N00B';
+          this.level = '';
+          this.gameOn = false;
+          this.noStart = true;
+      }
+      if (this.countDown <= 0 && this.newUserScoreGiven) {
+          this.countDown = this.timeLimit - this.tick;
+          this.readyIn = this.countupValue + this.timeLimit - t;
+      }
+      if (this.countDown === this.noStartValue) {
+          this.noStart = false;
+          this.newUserScoreGiven = false;
+          this.subscription.unsubscribe();
+      }
     }
 
     StartOver() {
       this.getReady = true;
       const timer = TimerObservable.create(2000, 1000);
       this.subscription = timer.subscribe(t => {
-          this.CalculateTimer(t);
+        this.CalculateTimer(t);
       });
       this.TurnCheatsOff();
       this.gameOn = true;
@@ -577,9 +577,8 @@ export class TheButtonComponent implements OnInit, OnDestroy {
         this.comboType = '';
     }
     ngOnInit() {
-      document.getElementById('countButton').addEventListener('touchstart', this.preventZoom);
+      // document.getElementById('countButton').addEventListener('touchstart', this.preventZoom);
       this.authenticationService.currentUser.subscribe(user => this.user = user);
-      // this.data.currentUserScore.subscribe(userScore => this.userScore = userScore);
       this.countDown = this.countdownValue;
       this.timeLimit = this.countdownValue;
     }
@@ -616,22 +615,10 @@ export class TheButtonComponent implements OnInit, OnDestroy {
         }
         this.userService.updateUser(this.user);
         this.authenticationService.changeUser(this.user);
-        // this.user.id = this.currentUser.id;
-        // this.user.username = this.currentUser.username;
-        // this.user.firstName = this.currentUser.firstName;
-        // this.user.lastName = this.currentUser.lastName;
-        // this.user.score = this.userScore;
-        // this.user.level = lvl;
-
-        // this.data.changeUserScore(this.userScore);
-        // this.data.changeUserLevel(this.userLevel);
-        // this.data.changeUser(this.user);
     }
 
     ngOnDestroy() {
-      if (this.subscription) {
-        this.subscription.unsubscribe();
-      }
+      this.subscription.unsubscribe();
     }
 
     receiveCombo($event) {
