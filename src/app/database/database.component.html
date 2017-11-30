@@ -1,3 +1,16 @@
-<p>
-  database works!
-</p>
+<section *ngIf="user">
+  <div *ngIf="user.username === 'Zebudden'">
+      <h1 *ngIf="!showUsers">Users - <span class="btn btn-info" (click)="showAllJSON();">Show all</span></h1>
+      <h1 *ngIf="showUsers">Users - <span class="btn btn-info" (click)="hideAllJSON();">Hide all</span></h1>
+      <hr>
+      <div *ngFor="let usr of users; let i = index">
+        <h3>{{i + 1}}: <span class="btn btn-info" (click)="toggleShowJSON(i);">{{usr.username}}</span></h3>
+        <div *ngIf="usr && indexArray">
+          <pre *ngIf="indexArray[i]">
+            {{JSON.stringify(usr, null, 2)}}
+          </pre>
+        </div>
+      </div>
+      <hr>
+  </div>
+</section>

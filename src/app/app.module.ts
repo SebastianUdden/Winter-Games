@@ -12,7 +12,6 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { TheButtonComponent } from './the-button/the-button.component';
 import { DatabaseComponent } from './database/database.component';
 import { LightSwitchComponent } from './light-switch/light-switch.component';
-import { UserFormComponent } from './user-form/user-form.component';
 import { UsersComponent } from './users/users.component';
 
 import { UpdateService } from './_services/update.service';
@@ -21,7 +20,7 @@ import { AlertService } from './_services/alert.service';
 import { AuthenticationService } from './_services/authentication.service';
 import { DiceComponent } from './dice/dice.component';
 import { PowerBarComponent } from './power-bar/power-bar.component';
-import { RegisterComponent } from './authentication/register/register.component';
+import { SignupComponent } from './authentication/signup/signup.component';
 import { LoginComponent } from './authentication/login/login.component';
 import { AdminComponent } from './admin/admin.component';
 import { AlertComponent } from './authentication/alert/alert.component';
@@ -35,12 +34,11 @@ import { ProfileComponent } from './profile/profile.component';
     TheButtonComponent,
     DatabaseComponent,
     LightSwitchComponent,
-    UserFormComponent,
     DatabaseComponent,
     UsersComponent,
     DiceComponent,
     PowerBarComponent,
-    RegisterComponent,
+    SignupComponent,
     LoginComponent,
     AdminComponent,
     AlertComponent,

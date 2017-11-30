@@ -581,6 +581,10 @@ export class TheButtonComponent implements OnInit, OnDestroy {
       this.authenticationService.currentUser.subscribe(user => this.user = user);
       this.countDown = this.countdownValue;
       this.timeLimit = this.countdownValue;
+      // const timer = TimerObservable.create(2000, 1000);
+      // this.subscription = timer.subscribe(t => {
+      //   this.CalculateTimer(t);
+      // });
     }
 
     newUserScore() {
@@ -618,7 +622,9 @@ export class TheButtonComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-      this.subscription.unsubscribe();
+      if (this.subscription) {
+        this.subscription.unsubscribe();
+      }
     }
 
     receiveCombo($event) {

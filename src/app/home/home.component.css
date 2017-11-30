@@ -1,36 +1,53 @@
 @media only screen and (
     max-width: 1026px
   ) {
-  #showMainBig {
+  .welcome h1 {
+    font-size: 30px;
+  }
+  .welcome p, a {
+    font-size: 17px;
+  }
+  .svg-clock-white {
+    height: 228px;
+    width: 228px;
+  }
+  /* #showMainBig {
     display: none;
   }
   #showMainSmall {
     width: 100em;
-  }
+  } */
 }
 
 @media only screen and (
     min-width: 1026px
   ) {
-  #showMainSmall {
-    display: none;
+  .welcome h3 {
+    font-size: 25px;
   }
+  .svg-clock-white {
+    height: 298px;
+    width: 298px;
+  }
+  /* #showMainSmall {
+    display: none;
+  } */
 }
 
 .laptop {
-  margin: auto;
-  max-width: 900px;
+  /* margin: auto; */
+  /* max-width: 900px; */
 }
 
 .mobile {
-  color:white;
-  max-width: 290px;
+  /* color:white; */
+  /* max-width: 290px; */
 }
 
 .mobile p {
-  font-size: 16px;
+  /* font-size: 16px;
   word-break: break-word;
-  white-space: normal;
+  white-space: normal; */
 }
 
 body {
@@ -39,18 +56,16 @@ body {
 }
 
 .big {
-  font-size: 25px;
+  /* font-size: 25px; */
 }
 
 .small {
-  font-size: 15px;
+  /* font-size: 15px; */
 }
 
 .svg-clock-white {
   background-image: url('../../assets/images/clock-white.svg');
   background-size: cover;
-  height: 298px;
-  width: 298px;
   margin-left: auto;
   margin-right: auto;
 }

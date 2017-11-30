@@ -9,10 +9,8 @@ import { PowerBarComponent } from './power-bar/power-bar.component';
 import { AdminComponent } from './admin/admin.component';
 import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './authentication/login/login.component';
-import { RegisterComponent } from './authentication/register/register.component';
-
-// import { LoginComponent } from './login/index';
-// import { RegisterComponent } from './register/index';
+import { SignupComponent } from './authentication/signup/signup.component';
+import { DatabaseComponent } from './database/database.component';
 
 const APP_ROUTES: Routes = [
     { path: '', component: HomeComponent },
@@ -20,12 +18,10 @@ const APP_ROUTES: Routes = [
     { path: 'admin', component: AdminComponent },
     { path: 'profile', component: ProfileComponent },
     { path: 'login', component: LoginComponent },
-    { path: 'register', component: RegisterComponent },
+    { path: 'signup', component: SignupComponent },
+    { path: 'database', component: DatabaseComponent },
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
-    // { path: '', redirectTo: '/messages', pathMatch: 'full' },
-    // { path: 'messages', component: MessagesComponent },
-    // { path: 'auth', component: AuthenticationComponent, children: AUTH_ROUTES }
 ];
 
 export const routing = RouterModule.forRoot(APP_ROUTES);

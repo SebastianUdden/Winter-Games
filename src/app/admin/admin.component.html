@@ -1,12 +1,41 @@
 <div class="col-md-6 col-md-offset-3 admin">
     <h2 *ngIf="user">Welcome {{user.username}}!</h2>
+    <p>How are you feeling at this moment?</p>
+    <button class="btn btn-success" (click)="goStraightEvil(false);">Benevolent</button>
+    <button class="btn btn-danger" (click)="goStraightEvil(true);">Evil</button>
+    <button class="btn btn-default" (click)="goStraightEvil(undefined);">Meh..</button>
     <hr>
-    <h4>Your <b style="color: #fff81e;">minions</b> are shown below...</h4>
+    <p *ngIf="!choice">Your <b style="color: #fff81e;">minions</b> are waiting below... &nbsp;&nbsp;&nbsp;&nbsp;<span class="fa fa-free-code-camp"></span><span class="fa fa-coffee"></span></p>
+    <p *ngIf="choice && evil">Your <b style="color: #fff81e;">minions</b> are trembling below... &nbsp;&nbsp;&nbsp;<span class="fa fa-flash"></span><span class="fa fa-wheelchair-alt"></span></p>
+    <p *ngIf="choice && !evil">Your <b style="color: #fff81e;">minions</b> are cheering below! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="fa fa-gift" style="margin-right:1px;"></span><span class="fa fa-heart"></span></p>
     <div>
       <div *ngFor="let usr of users">
         <div class="user-list" *ngIf="!usr.admin">
-            {{usr.username}} ({{usr.firstname}} {{usr.lastname}})
-            - <a *ngIf="!usr.username !== 'Zebudden'" (click)="deleteUser(usr)">Delete</a><a *ngIf="usr.username === 'Zebudden'" (click)="gofuckyourself(user.username)">Delete</a>
+            <h3>{{usr.username}} ({{usr.firstname}} {{usr.lastname}})</h3>
+            <p>Current Score: {{usr.score}}</p>
+            <div *ngIf="choice && evil">
+              <p>Score <span style="color:#ec2d2a;">Penalties:</span></p>
+              <p>
+                <span class="btn btn-warning marginBottom" (click)="editScore(usr, 0.75);">Take Quarter</span>
+                <span class="btn btn-warning marginBottom" (click)="editScore(usr, 0.5);">Take Half</span>
+                <span class="btn btn-warning marginBottom" (click)="editScore(usr, 0.25);">Take Three Quarters</span></p>
+              <p>
+                <span class="btn btn-danger marginBottom" (click)="editScore(usr, 0);">Take All</span>
+                <span *ngIf="!deleteButton" class="btn btn-danger marginBottom" (click)="beforeDeleteUser();">Delete</span>
+                <span *ngIf="deleteButton"class="btn btn-danger marginBottom" (click)="deleteUser(usr);">Continue Delete (Irreversible!)</span>
+              </p>
+            </div>
+            <div *ngIf="choice && !evil">
+              <p>Score <span style="color:#43cc1a;">Boosts:</span></p>
+              <p>
+                <span class="btn btn-info marginBottom" (click)="editScore(usr, 1.25);">Give Quarter</span>
+                <span class="btn btn-info marginBottom" (click)="editScore(usr, 1.5);">Give Half</span>
+                <span class="btn btn-info marginBottom" (click)="editScore(usr, 1.75);">Give Three Quarters</span></p>
+              <p>
+                <span class="btn btn-success marginBottom" (click)="editScore(usr, 2);">Give Double</span>
+                <span class="btn btn-success marginBottom" (click)="promote(usr);">Promote</span>
+              </p>
+            </div>
         </div>
       </div>
     </div>
@@ -14,15 +43,39 @@
     <h4>And of course, your partner in crime/cardancing...</h4>
     <div *ngFor="let usr of users">
       <div class="user-list" *ngIf="usr.admin && usr.username !== user.username">
-          {{usr.username}} ({{usr.firstname}} {{usr.lastname}})
-          - <a *ngIf="usr.username !== 'Zebudden'" (click)="deleteUser(usr)">Delete</a>
-          <a *ngIf="usr.username === 'Zebudden'" (click)="gofuckyourself(user.username)">Delete</a>
+          <h3>{{usr.username}} ({{usr.firstname}} {{usr.lastname}})</h3>
+          <p>Current Score: {{usr.score}}</p>
+          <div *ngIf="usr.username !== 'Zebudden'">
+            <div *ngIf="choice && evil">
+              <p>Score <span style="color:#ec2d2a;">Penalties:</span></p>
+              <p>
+                <span class="btn btn-warning marginBottom" (click)="editScore(usr, 0.75);">Take Quarter</span>
+                <span class="btn btn-warning marginBottom" (click)="editScore(usr, 0.5);">Take Half</span>
+                <span class="btn btn-warning marginBottom" (click)="editScore(usr, 0.25);">Take Three Quarters</span></p>
+              <p>
+                <span class="btn btn-danger marginBottom" (click)="editScore(usr, 0);">Take All</span>
+                <span *ngIf="!deleteButton" class="btn btn-danger marginBottom" (click)="beforeDeleteUser();">Delete</span>
+                <span *ngIf="deleteButton"class="btn btn-danger marginBottom" (click)="deleteUser(usr);">Continue Delete (Irreversible!)</span>
+              </p>
+            </div>
+          </div>
+          <div *ngIf="usr.username !== 'Zebudden'">
+              <div *ngIf="choice && !evil">
+                <p>Score <span style="color:#43cc1a;">Boosts:</span></p>
+                <p>
+                  <span class="btn btn-info marginBottom" (click)="editScore(usr, 1.25);">Give Quarter</span>
+                  <span class="btn btn-info marginBottom" (click)="editScore(usr, 1.5);">Give Half</span>
+                  <span class="btn btn-info marginBottom" (click)="editScore(usr, 1.75);">Give Three Quarters</span></p>
+                <p>
+                  <span class="btn btn-success marginBottom" (click)="editScore(usr, 2);">Double</span>
+                  <span class="btn btn-success marginBottom" (click)="promote(usr);">Promote</span>
+                </p>
+              </div>
+            </div>
+          <span class="btn btn-danger" *ngIf="usr.username === 'Zebudden'" (click)="gofuckyourself(user.username)">Delete</span>
       </div>
     </div>
     <hr>
-    <!-- <div class="user">
-      <label for="user">User ID</label><br/>
-      <input class="input input-group-sm" type="text" id="user" (keyup)="loadUser($event)"/>
-      <p *ngIf="user">{{user.firstname}} {{user.lastname}}</p>
-    </div> -->
+    <button *ngIf="user.username === 'Zebudden'" [routerLink]="['/database']" class="btn btn-info">Show Database</button>
+    <hr>
 </div>
