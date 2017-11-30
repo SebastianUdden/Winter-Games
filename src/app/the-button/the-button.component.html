@@ -1,8 +1,62 @@
 <div id="showMainSmall" class="mobile">
-  <h2>Hi, you made it!</h2>
-  <p>But why the hell are you trying to play the game on a mobile device? Honestly?! You'll never win... in fact, you're not even allowed to try, stupid!</p>
-  <hr />
-  <h3>GET TO DA CHOPPAH!</h3>
+  <div class="row">
+    <div class="mobileLeft"></div>
+    <div class="mobileCenter">
+      <div class="row" style="margin-bottom:-2em;">
+          <div *ngIf="!gameOn" class="grayed-out-text text-center huge unselectable">0</div>
+          <div *ngIf="gameOn && countDown > 5" class="grayed-out-text text-center huge unselectable">{{countDown}}</div>
+          <div *ngIf="gameOn && countDown <= 5" class="red-text text-center huge unselectable">{{countDown}}</div>
+      </div>
+      <div class="row">
+        <div style="margin-bottom:0.7em;" class="red-text text-center medium unselectable empty-row"><span *ngIf="newRecord" style="color:#09b909;">New RECORD!!!</span><span *ngIf="!newRecord">{{ perseverance }} {{ level }}</span></div>
+        <div *ngIf="userScore >= 0 && gameOn" (click)="Count()" class="the-button-main center blue-oyster-background medium unselectable">
+            <span *ngIf="!cheatX20">BOSS</span>
+            <span *ngIf="cheatX2">x2</span>
+            <span *ngIf="cheatX3">x3</span>
+            <span *ngIf="cheatX4">x4</span>
+            <span *ngIf="cheatX5">x5</span>
+            <span *ngIf="cheatX9">x9</span>
+            <span *ngIf="cheatX20">NUKEM x20</span>
+        </div>
+        <div *ngIf="!gameOn && noStart" (click)="foreverAlone = !foreverAlone" class="the-button-main center bland-error-background medium unselectable">Loading: {{ readyIn }}</div>
+        <div *ngIf="!gameOn && !noStart" (click)="StartOver()" class="the-button-main center sea-4-background medium unselectable">New Game</div>
+      </div>
+      <div class="row text-center" style="margin-top: 20px;">
+          <div class="row" *ngIf="!newRecord">
+            <div *ngIf="userScore < 100 || userScore >= 2050000" class="the-counter border-gray grayed-out-text text-center big unselectable">{{ userScore }}</div>
+            <div *ngIf="(userScore >= 100 && userScore < 200) || (userScore >= 2000 && userScore < 3000)" class="the-counter border-dark-red grayed-out-text text-center big unselectable">{{ userScore }}</div>
+            <div *ngIf="(userScore >= 200 && userScore < 300) || (userScore >= 3000 && userScore < 4000)" class="the-counter border-red grayed-out-text text-center big unselectable">{{ userScore }}</div>
+            <div *ngIf="(userScore >= 300 && userScore < 400) || (userScore >= 4000 && userScore < 6000)" class="the-counter border-red-orange grayed-out-text text-center big unselectable">{{ userScore }}</div>
+            <div *ngIf="(userScore >= 400 && userScore < 500) || (userScore >= 6000 && userScore < 10000)" class="the-counter border-orange-yellow grayed-out-text text-center big unselectable">{{ userScore }}</div>
+            <div *ngIf="(userScore >= 500 && userScore < 600) || (userScore >= 10000 && userScore < 18000)" class="the-counter border-yellow grayed-out-text text-center big unselectable">{{ userScore }}</div>
+            <div *ngIf="(userScore >= 600 && userScore < 700) || (userScore >= 18000 && userScore < 34000)" class="the-counter border-green grayed-out-text text-center big unselectable">{{ userScore }}</div>
+            <div *ngIf="(userScore >= 700 && userScore < 800) || (userScore >= 34000 && userScore < 66000)" class="the-counter border-cyan-green grayed-out-text text-center big unselectable">{{ userScore }}</div>
+            <div *ngIf="(userScore >= 800 && userScore < 900) || (userScore >= 66000 && userScore < 130000)" class="the-counter border-cyan grayed-out-text text-center big unselectable">{{ userScore }}</div>
+            <div *ngIf="(userScore >= 900 && userScore < 1000) || (userScore >= 130000 && userScore < 258000)" class="the-counter border-light-blue grayed-out-text text-center big unselectable">{{ userScore }}</div>
+            <div *ngIf="(userScore >= 1000 && userScore < 1100) || (userScore >= 258000 && userScore < 514000)" class="the-counter border-blue grayed-out-text text-center big unselectable">{{ userScore }}</div>
+            <div *ngIf="(userScore >= 1100 && userScore < 1200) || (userScore >= 514000 && userScore < 1026000)" class="the-counter border-purple grayed-out-text text-center big unselectable">{{ userScore }}</div>
+            <div *ngIf="(userScore >= 1200 && userScore < 2000) || (userScore >= 1026000 && userScore < 2050000)" class="the-counter border-pink grayed-out-text text-center big unselectable">{{ userScore }}</div>
+          </div>
+          <div class="row" *ngIf="newRecord">
+            <div class="the-counter border-gray grayed-out-text text-center big unselectable"><span style="color:#09b909;">{{ userScore }}</span></div>
+          </div>
+          <div class="row">
+            <p class="grayed-out-text text-center medium unselectable">Score</p>
+          </div>
+      </div>
+    </div>
+    <div class="mobileRight"></div>
+  </div>
+  <div class="row">
+    <div class="col-lg-3">
+      <app-users
+        (gamblerEvent)="getGambler($event)"
+        (maestroEvent)="getMaestro($event)"
+        (grinderEvent)="getGrinder($event)"
+        (mcFlyEvent)="getMcFly($event)">
+      </app-users>
+    </div>
+  </div>
 </div>
 <div id="showMainBig">
   <div *ngIf="showDevValues" class="row">
@@ -18,28 +72,6 @@
     <div class="row red-text small">
         <div class="col-lg-1" *ngFor="let lightSwitch of lightSwitches">{{lightSwitch.color}}: {{lightSwitch.status}}</div>
     </div>
-  </div>
-  <div *ngIf="showCheats" class="row">
-    <div class="col-lg-4"></div>
-    <div class="col-lg-4">
-        <div>
-            <!--<div *ngIf="this.state === 'small'" (click)='bigToSmall()' class="the-button red center cheat-text levelOne">Big to small</div>
-            <div *ngIf="this.state === 'big'" (click)='bigToSmall()' class="the-button grey center cheat-text levelOne">Big to small</div>
-
-            <div *ngIf="this.state === 'original'" (click)='spinMoveFade()' class="the-button red center cheat-text levelOne">Spin move fade</div>
-            <div *ngIf="this.state === 'spinMoveFade'" (click)='spinMoveFade()' class="the-button grey center cheat-text levelOne">Spin move fade</div>-->
-
-            <div *ngIf="showCheats && cheatX2" (click)="CheatToggle(2)" class="the-button grey-background center cheat-text">Cheat X2</div>
-            <div *ngIf="showCheats && !cheatX2" (click)="CheatToggle(2)" class="the-button red-background center cheat-text">Cheat X2</div>
-
-            <div *ngIf="showCheats && cheatX3" (click)="CheatToggle(3)" class="the-button grey-background center cheat-text">Cheat X3</div>
-            <div *ngIf="showCheats && !cheatX3" (click)="CheatToggle(3)" class="the-button red-background center cheat-text">Cheat X3</div>
-
-            <div *ngIf="showCheats && cheatX9" (click)="CheatToggle(9)" class="the-button grey-background center cheat-text">Cheat X9</div>
-            <div *ngIf="showCheats && !cheatX9" (click)="CheatToggle(9)" class="the-button red-background center cheat-text">Cheat X9</div>
-        </div>
-    </div>
-    <div class="col-lg-4"></div>
   </div>
   <div class="row shake-hard" [ngClass]="{
     'troll': rage > 0 && rage < 4,
@@ -173,8 +205,7 @@
           </div>
         </div>
         <div class="row">
-            <!-- <user-form></user-form>     -->
-            <div class="red-text text-center medium unselectable empty-row">{{ perseverance }} {{ level }}</div>
+            <div class="red-text text-center medium unselectable empty-row"><span *ngIf="newRecord" style="color:#09b909;">Yehaaaw! A neeeew RECORD!!!</span><span *ngIf="!newRecord">{{ perseverance }} {{ level }}</span></div>
             <div *ngIf="userScore >= 0 && gameOn" (click)="Count()" class="the-button-main center blue-oyster-background medium unselectable">
                 <span *ngIf="!cheatX20">BOSS</span>
                 <span *ngIf="cheatX2">x2</span>
@@ -184,24 +215,16 @@
                 <span *ngIf="cheatX9">x9</span>
                 <span *ngIf="cheatX20">NUKEM x20</span>
             </div>
-            <!-- <div class="rage"></div> -->
             <div *ngIf="!gameOn && noStart" (click)="foreverAlone = !foreverAlone" class="the-button-main center bland-error-background medium unselectable">Loading: {{ readyIn }}</div>
             <div *ngIf="!gameOn && !noStart" (click)="StartOver()" class="the-button-main center sea-4-background medium unselectable">New Game</div>
-
-            <!-- <div *ngIf="gameOn" [@spinMoveFade]='state' [@bigToSmall]='state'>
-                <div class="red-text center text-center medium unselectable spin-text">{{ level }}</div>
-                <p *ngIf="userScore >= 9999" class="red-text text-center medium unselectable">You're here to kick ass and chew bubblegum, and you're all out of gum...</p>
-                <p *ngIf="userScore >= 9999 && userScore < 11000" class="red-text text-center medium unselectable">MVP NUKEM UNLOCKED!</p>
-            </div> -->
         </div>
         <div class="row">
             <div class="extra-time-row">
-                <!-- <input type="number" style="width: 100px;" class="input" [value]="userScore" (input)="userScore = $event.target.value" /> -->
                 <div class="text-center medium grayed-out-text unselectable">{{comboType}} x{{bonus}}</div>
             </div>
         </div>
         <div class="row text-center">
-            <div class="row">
+            <div class="row" *ngIf="!newRecord">
                 <div *ngIf="userScore < 100 || userScore >= 2050000" class="the-counter border-gray grayed-out-text text-center big unselectable">{{ userScore }}</div>
                 <div *ngIf="(userScore >= 100 && userScore < 200) || (userScore >= 2000 && userScore < 3000)" class="the-counter border-dark-red grayed-out-text text-center big unselectable">{{ userScore }}</div>
                 <div *ngIf="(userScore >= 200 && userScore < 300) || (userScore >= 3000 && userScore < 4000)" class="the-counter border-red grayed-out-text text-center big unselectable">{{ userScore }}</div>
@@ -215,6 +238,9 @@
                 <div *ngIf="(userScore >= 1000 && userScore < 1100) || (userScore >= 258000 && userScore < 514000)" class="the-counter border-blue grayed-out-text text-center big unselectable">{{ userScore }}</div>
                 <div *ngIf="(userScore >= 1100 && userScore < 1200) || (userScore >= 514000 && userScore < 1026000)" class="the-counter border-purple grayed-out-text text-center big unselectable">{{ userScore }}</div>
                 <div *ngIf="(userScore >= 1200 && userScore < 2000) || (userScore >= 1026000 && userScore < 2050000)" class="the-counter border-pink grayed-out-text text-center big unselectable">{{ userScore }}</div>
+            </div>
+            <div class="row" *ngIf="newRecord">
+                <div class="the-counter border-gray grayed-out-text text-center big unselectable"><span style="color:#09b909;">{{ userScore }}</span></div>
             </div>
             <div class="row">
               <p class="grayed-out-text text-center medium unselectable">Score</p>

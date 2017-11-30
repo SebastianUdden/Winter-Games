@@ -24,6 +24,12 @@
 .mobile {
   color:white;
   max-width: 290px;
+  margin-top: -2em !important;
+}
+
+.mobileCenter {
+  width: 80%;
+  margin-left: 3em;
 }
 
 .mobile p {

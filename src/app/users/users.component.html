@@ -1,105 +1,108 @@
-<!-- <span class="text-center big unselectable">High Scores -->
-  <!-- <button *ngIf="user.name !== '' && !duplicate" (click)="AddCurrentUser()" class="the-button small center red-background unselectable">Add {{user.username}}</button> -->
-  <!-- <button *ngIf="user.name !== '' && duplicate" (click)="addCurrentUser()" class="the-button small center grey-background unselectable">Add {{user.name}}</button> -->
-<!-- </span> -->
-<div class="side-menu">
-  <div class="row userMenu">
-      <div (click)="selectTab(1)" class="col-lg-4 userMenu-item"><div class="svg highscore"></div></div>
-      <div (click)="selectTab(2)" class="col-lg-4 userMenu-item"><div class="svg profile"></div></div>
-      <div (click)="selectTab(3)" class="col-lg-4 userMenu-item"><div class="svg settings"></div></div>
-  </div>
-  <div class="row">
-    <div *ngIf="selectedTab === 1" class="box-content container">
-      <h2>HIGH SCORE</h2>
-      <hr />
-      <div *ngFor="let u of users" class="userInfo">
-        <div *ngIf="u.username === user.username" class="row userInfo-row currentUser">
-          <div class="col-lg-2 centerText userInfo-item avatar">AVT</div>
-          <div class="col-lg-7 userInfo-item name">{{u.username}}</div>
-          <div class="col-lg-3 centerText userInfo-item score">{{u.score}}</div>
-        </div>
-        <div *ngIf="u.username !== user.username" class="row userInfo-row">
-          <div class="col-lg-2 centerText userInfo-item avatar">AVT</div>
-          <div class="col-lg-7 userInfo-item name">{{u.username}}</div>
-          <div class="col-lg-3 centerText userInfo-item score">{{u.score}}</div>
-        </div>
-        <!-- <span style="width:123px;">AVT</span>
-        <span class="name">{{user.username}}</span>
-        <span class="score">{{user.score}}</span> -->
-        <!-- <div *ngIf="!user.current && !displayFullName" class="high-score-entry unselectable pointer" (click)="ToggleFullName()">{{user.username}}: {{ user.score }}</div>
-          <div *ngIf="!user.current && displayFullName" class="high-score-entry unselectable pointer" (click)="ToggleFullName()">{{user.firstName}} {{user.lastName}}: {{ user.score }}</div>
-          <div *ngIf="user.current && !displayFullName" class="high-score-entry-current unselectable pointer" (click)="ToggleFullName()">{{user.username}}: {{ user.score }}</div>
-          <div *ngIf="user.current && displayFullName" class="high-score-entry-current unselectable pointer" (click)="ToggleFullName()">{{user.firstName}} {{user.lastName}}: {{ user.score }}</div> -->
+<div id="showUsersSmall">
+  <h2>HIGH SCORE</h2>
+  <hr />
+  <div *ngFor="let u of users" class="userInfo">
+      <div *ngIf="u.username === user.username" class="row userInfo-row currentUser">
+        <div style="margin-left:1em;" class="col-xs-7 userInfo-item name">{{u.username}}</div>
+        <div style="margin-left:-2em;"class="col-xs-3 centerText userInfo-item score">{{u.score}}</div>
       </div>
+      <div style="margin-left:1em;" *ngIf="u.username !== user.username" class="row userInfo-row">
+        <div class="col-xs-7 userInfo-item name">{{u.username}}</div>
+        <div class="col-xs-3 centerText userInfo-item score">{{u.score}}</div>
+      </div>
+  </div>
+</div>
+<div id="showUsersBig">
+  <div class="side-menu">
+    <div class="row userMenu">
+        <div (click)="selectTab(1); getUsers();" class="col-lg-4 userMenu-item"><div class="svg highscore"></div></div>
+        <div (click)="selectTab(2)" class="col-lg-4 userMenu-item"><div class="svg profile"></div></div>
+        <div (click)="selectTab(3)" class="col-lg-4 userMenu-item"><div class="svg settings"></div></div>
     </div>
-    <div *ngIf="selectedTab === 2" class="box-content container">
-      <h2>PROFILE - {{user.username}}</h2>
-      <hr />
-      <div style="margin-left:9px; margin-top:30px;">
-        <h4>Name: {{user.firstname}} {{user.lastname}}</h4>
-        <h4>Email: {{user.email}}</h4>
-        <h4>Age: 29</h4>
-        <h4>Occupation: Developer</h4>
-        <h4>Sport of Choice: Basketball</h4>
-        <h4>Daily-drug: Coffee</h4>
-        <br />
-        <p>Enthusiastically eccentric enduring</p>
-        <p>endless events encompassing enemies, </p>
-        <p>errors, eggronious eggplants, elderly</p>
-        <p>eskimoes etc.</p>
+    <div class="row">
+      <div *ngIf="selectedTab === 1" class="box-content container">
+        <h2>HIGH SCORE</h2>
+        <hr />
+        <div *ngFor="let u of users" class="userInfo">
+            <div *ngIf="u.username === user.username" class="row userInfo-row currentUser">
+              <div class="col-lg-2 centerText userInfo-item avatar">AVT</div>
+              <div class="col-lg-7 userInfo-item name">{{u.username}}</div>
+              <div class="col-lg-3 centerText userInfo-item score">{{u.score}}</div>
+            </div>
+            <div *ngIf="u.username !== user.username" class="row userInfo-row">
+              <div class="col-lg-2 centerText userInfo-item avatar">AVT</div>
+              <div class="col-lg-7 userInfo-item name">{{u.username}}</div>
+              <div class="col-lg-3 centerText userInfo-item score">{{u.score}}</div>
+            </div>
+        </div>
       </div>
 
-    </div>
-    <div *ngIf="selectedTab === 3" class="box-content container">
-      <h2>SETTINGS</h2>
-      <hr />
-      <div class="setting">
-        <div class="settings-left">
-          <span class="setting-label">Maestro</span>
+      <div *ngIf="selectedTab === 2" class="box-content container">
+        <h2>PROFILE - {{user.username}}</h2>
+        <hr />
+        <div style="margin-left:9px; margin-top:30px;">
+          <h4>Name: {{user.firstname}} {{user.lastname}}</h4>
+          <h4>Email: {{user.email}}</h4>
+          <h4>Age: 29</h4>
+          <h4>Occupation: Developer</h4>
+          <h4>Sport of Choice: Basketball</h4>
+          <h4>Daily-drug: Coffee</h4>
+          <br />
+          <p>Enthusiastically eccentric enduring</p>
+          <p>endless events encompassing enemies, </p>
+          <p>errors, eggronious eggplants, elderly</p>
+          <p>eskimoes etc.</p>
         </div>
-        <div class="settings-right">
-          <label class="switch">
-            <input type="checkbox" id="maestroCheckBox" (click)="setType('maestro');">
-            <span class="slider round"></span>
-          </label>
-        </div>
+
       </div>
-      <div class="setting">
-        <div class="settings-left">
-          <span class="setting-label">Marty McFly</span>
+      <div *ngIf="selectedTab === 3" class="box-content container">
+        <h2>SETTINGS</h2>
+        <hr />
+        <div class="setting">
+          <div class="settings-left">
+            <span class="setting-label">Maestro</span>
+          </div>
+          <div class="settings-right">
+            <label class="switch">
+              <input type="checkbox" id="maestroCheckBox" (click)="setType('maestro');">
+              <span class="slider round"></span>
+            </label>
+          </div>
         </div>
-        <div class="settings-right">
-          <label class="switch">
-            <input type="checkbox" id="mcFlyCheckBox" (click)="setType('mcFly');">
-            <span class="slider round"></span>
-          </label>
+        <div class="setting">
+          <div class="settings-left">
+            <span class="setting-label">Marty McFly</span>
+          </div>
+          <div class="settings-right">
+            <label class="switch">
+              <input type="checkbox" id="mcFlyCheckBox" (click)="setType('mcFly');">
+              <span class="slider round"></span>
+            </label>
+          </div>
         </div>
-      </div>
-      <div class="setting">
-        <div class="settings-left">
-          <span class="setting-label">Secret</span>
+        <div class="setting">
+          <div class="settings-left">
+            <span class="setting-label">Secret</span>
+          </div>
+          <div class="settings-right">
+            <label class="switch">
+              <input type="checkbox" id="grinderCheckBox" (click)="setType('grinder');">
+              <span class="slider round"></span>
+            </label>
+          </div>
         </div>
-        <div class="settings-right">
-          <label class="switch">
-            <input type="checkbox" id="grinderCheckBox" (click)="setType('grinder');">
-            <span class="slider round"></span>
-          </label>
-        </div>
-      </div>
-      <div class="setting">
-        <div class="settings-left">
-          <span class="setting-label">Gambler</span>
-        </div>
-        <div class="settings-right">
-          <label class="switch">
-            <input type="checkbox" id="gamblerCheckBox" (click)="setType('gambler');">
-            <span class="slider round"></span>
-          </label>
+        <div class="setting">
+          <div class="settings-left">
+            <span class="setting-label">Gambler</span>
+          </div>
+          <div class="settings-right">
+            <label class="switch">
+              <input type="checkbox" id="gamblerCheckBox" (click)="setType('gambler');">
+              <span class="slider round"></span>
+            </label>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-
-<!-- <div class="empty-row red big unselectable">LEVEL: {{userLevel}}</div> -->

@@ -8,7 +8,7 @@ a.navbar-brand {
 
 .wgNav {
   background-color: #222222;
-  display: inline-block !important;
+  /* display: inline-block !important; */
 }
 
 .wgNav:hover {

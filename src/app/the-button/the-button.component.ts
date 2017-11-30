@@ -11,7 +11,7 @@ import { AuthenticationService } from '../_services/authentication.service';
 import { UpdateService } from '../_services/update.service';
 import { UserService } from '../_services/user.service';
 import { User } from '../_models/user';
-import { UserFormComponent } from '../user-form/user-form.component';
+import { UsersComponent } from '../users/users.component';
 import { LightSwitchComponent } from '../light-switch/light-switch.component';
 import { DiceComponent } from '../dice/dice.component';
 
@@ -111,8 +111,9 @@ import { DiceComponent } from '../dice/dice.component';
 
 export class TheButtonComponent implements OnInit, OnDestroy {
     @ViewChild(DiceComponent) dice;
+    @ViewChild(UsersComponent) users;
     public showDevValues = false;
-    public click: number = 1;
+    public click = 1;
     public gambler = false;
     public maestro = false;
     public grinder = false;
@@ -125,6 +126,7 @@ export class TheButtonComponent implements OnInit, OnDestroy {
     public timeLimit: number;
     public countDown: number;
     public gameOn = true;
+    public newRecord = false;
     public noStart = false;
     public foreverAlone = false;
     private subscription: Subscription;
@@ -560,6 +562,8 @@ export class TheButtonComponent implements OnInit, OnDestroy {
         this.subscription = timer.subscribe(t => {
             this.CalculateTimer(t);
         });
+        this.users.getUsers();
+        this.newRecord = false;
     }
 
     constructor(
@@ -603,10 +607,14 @@ export class TheButtonComponent implements OnInit, OnDestroy {
             this.userScore *= 99;
         }
         const lvl = this.perseverance + ' ' + this.level;
-        alert('User: ' + this.user.username + ', current: ' + this.user.score + ', new: ' + this.userScore);
-        this.user.score = this.userScore;
-        this.userService.updateUser(this.user);
-        this.authenticationService.changeUser(this.user);
+        if (this.user.score < this.userScore) {
+          this.user.score = this.userScore;
+          this.userService.updateUser(this.user);
+          this.authenticationService.changeUser(this.user);
+          this.newRecord = true;
+        } else {
+          this.newRecord = false;
+        }
         // this.user.id = this.currentUser.id;
         // this.user.username = this.currentUser.username;
         // this.user.firstName = this.currentUser.firstName;

@@ -99,12 +99,17 @@ export class UserService {
   }
 
   /** PUT: update the user on the server */
-  updateUser (user: User): Observable<any> {
+  updateUser (user: User) {
     const url = `${this.usersUrl}/users/${user.username}`;
-    return this.http.put(url, user, httpOptions).pipe(
-      tap(_ => this.log(`updated user ${user.username}`)),
-      catchError(this.handleError<any>('updateUser'))
-    );
+    return this.http
+      .put(url, JSON.stringify(user), httpOptions)
+      .toPromise()
+      .then(() => user)
+      .catch(this.handleError);
+    // return this.http.put<User>(url, user, httpOptions).pipe(
+    //   tap(_ => this.log(`updated user ${user.username}`)),
+    //   catchError(this.handleError<User>('updateUser'))
+    // );
   }
 
   /**

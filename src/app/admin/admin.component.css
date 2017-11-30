@@ -47,7 +47,3 @@ a.danger {
 input.ng-invalid.ng-touched {
   border: 1px solid red;
 }
-
-.container {
-  width: 1600px !important;
-}

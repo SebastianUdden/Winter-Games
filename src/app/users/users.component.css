@@ -1,3 +1,22 @@
+@media only screen and (
+  max-width: 1026px
+) {
+#showUsersBig {
+  display: none;
+}
+#showUsersSmall {
+  width:26em;
+}
+}
+
+@media only screen and (
+  min-width: 1026px
+) {
+#showUsersSmall {
+  display: none;
+}
+}
+
 .svg {
   background-size: cover;
   height: 20px;
