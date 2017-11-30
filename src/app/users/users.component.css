@@ -14,6 +14,7 @@
 ) {
 #showUsersSmall {
   display: none;
+  width:auto;
 }
 }
 
