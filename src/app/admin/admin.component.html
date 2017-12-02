@@ -54,24 +54,25 @@
                 <span class="btn btn-warning marginBottom" (click)="editScore(usr, 0.25);">Take Three Quarters</span></p>
               <p>
                 <span class="btn btn-danger marginBottom" (click)="editScore(usr, 0);">Take All</span>
+                <span class="btn btn-danger marginBottom" (click)="demote(usr);">Demote</span>
                 <span *ngIf="!deleteButton" class="btn btn-danger marginBottom" (click)="beforeDeleteUser();">Delete</span>
                 <span *ngIf="deleteButton"class="btn btn-danger marginBottom" (click)="deleteUser(usr);">Continue Delete (Irreversible!)</span>
               </p>
             </div>
           </div>
           <div *ngIf="usr.username !== 'Zebudden'">
-              <div *ngIf="choice && !evil">
-                <p>Score <span style="color:#43cc1a;">Boosts:</span></p>
-                <p>
-                  <span class="btn btn-info marginBottom" (click)="editScore(usr, 1.25);">Give Quarter</span>
-                  <span class="btn btn-info marginBottom" (click)="editScore(usr, 1.5);">Give Half</span>
-                  <span class="btn btn-info marginBottom" (click)="editScore(usr, 1.75);">Give Three Quarters</span></p>
-                <p>
-                  <span class="btn btn-success marginBottom" (click)="editScore(usr, 2);">Double</span>
-                  <span class="btn btn-success marginBottom" (click)="promote(usr);">Promote</span>
-                </p>
-              </div>
+            <div *ngIf="choice && !evil">
+              <p>Score <span style="color:#43cc1a;">Boosts:</span></p>
+              <p>
+                <span class="btn btn-info marginBottom" (click)="editScore(usr, 1.25);">Give Quarter</span>
+                <span class="btn btn-info marginBottom" (click)="editScore(usr, 1.5);">Give Half</span>
+                <span class="btn btn-info marginBottom" (click)="editScore(usr, 1.75);">Give Three Quarters</span></p>
+              <p>
+                <span class="btn btn-success marginBottom" (click)="editScore(usr, 2);">Double</span>
+                <span class="btn btn-success marginBottom" (click)="promote(usr);">Promote</span>
+              </p>
             </div>
+          </div>
           <span class="btn btn-danger" *ngIf="usr.username === 'Zebudden'" (click)="gofuckyourself(user.username)">Delete</span>
       </div>
     </div>

@@ -1,25 +1,17 @@
 <!-- <div id="showMainBig" class="laptop"> -->
-  <div class="col-xs-12 col-md-6 col-md-offset-3 welcome" style="max-width: 100em !important;">
-    <h1>Welcome to the Winter Games</h1>
-    <hr />
-    <p>
-      You've been selected to go on a grand challenge of great adventure and mystery, where you will voyage beyond the furthest limits of your capacity towards greatness. Ultimately you may even find the Answer to the Ultimate Question of Life, the Universe, and Everything
-    </p>
-    <hr />
-    <p class="big"><a class="big" routerLink="/register">Begin</a> / <a class="big" routerLink="/login">Continue</a> your journey</p>
-    <div class="svg-clock-white"></div>
-  </div>
-<!-- </div> -->
-<!--
-<div id="showMainSmall" class="mobile">
-  <div class="col-xs-12" style="max-width: 100em !important;">
-    <h3>Welcome to the Winter Games</h3>
-    <hr />
-    <p>
-      You've been selected to go on a grand challenge of great adventure and mystery, you will voyage beyond the furthest limits of your capacity towards greatness.
-    </p>
-    <hr />
-    <p class="small"><a class="small" routerLink="/register">Begin</a> / <a class="small" routerLink="/login">Continue</a> your journey</p>
-    <div class="svg-clock-white"></div>
-  </div>
-</div> -->
+<div class="col-xs-12 col-md-6 col-md-offset-3 welcome" style="max-width: 100em !important;">
+  <h1>Welcome to the Winter Games</h1>
+  <hr />
+  <p>
+    You've been selected to go on a grand challenge of great adventure and mystery, where you will voyage beyond the furthest limits of your capacity towards greatness. Ultimately you may even find the Answer to the Ultimate Question of Life, the Universe, and Everything
+  </p>
+  <hr />
+  <p class="big">
+    <span *ngIf="!user"><a class="big" routerLink="/signup">Begin</a> /</span>
+    <span *ngIf="user"><span *ngIf="!user.username"><a class="big" routerLink="/signup">Begin</a> /</span></span>
+    <a *ngIf="!user" class="big" routerLink="/login">Continue</a>
+    <span *ngIf="user"><a *ngIf="!user.username" class="big" routerLink="/login">Continue</a></span>
+    <span *ngIf="user"><a *ngIf="user.username" class="big" routerLink="/profile">Continue</a></span>
+      your journey</p>
+  <div class="svg-clock-white"></div>
+</div>

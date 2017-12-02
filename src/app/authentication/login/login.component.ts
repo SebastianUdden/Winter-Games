@@ -74,21 +74,4 @@ export class LoginComponent implements OnInit {
     e.preventDefault();
     e.target.click();
   }
-  //   .subscribe(user => {
-  //     if (user.password === password) {
-  //       return true;
-  //     } else {
-  //       return false;
-  //     }
-  //   });
-  //   this.authenticationService.login(this.model.username, this.model.password)
-  //       .subscribe(
-  //           data => {
-  //               this.router.navigate([this.returnUrl]);
-  //           },
-  //           error => {
-  //               this.alertService.error(error);
-  //               this.loading = false;
-  //           });
-  // }
 }

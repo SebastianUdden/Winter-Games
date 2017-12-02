@@ -19,7 +19,6 @@ import { User } from '../_models/user';
 export class UsersComponent implements OnInit {
   public user: User;
   public selectedTab: number;
-
   public gambler = false;
   public maestro = false;
   public grinder = false;
@@ -103,7 +102,6 @@ export class UsersComponent implements OnInit {
     }
     this.users = this.SortDescending(this.users);
   }
-
   ToggleFullName() {
     return this.displayFullName = !this.displayFullName;
   }

@@ -48,6 +48,11 @@ export class AdminComponent implements OnInit {
     user.admin = true;
     this.userService.updateUser(user);
   }
+  demote(user) {
+    this.deleteButton = false;
+    user.admin = false;
+    this.userService.updateUser(user);
+  }
   loadUser(event: KeyboardEvent) {
     // const id = Number((<HTMLInputElement>event.target).value);
     const username = (<HTMLInputElement>event.target).value;

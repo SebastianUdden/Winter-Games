@@ -1,15 +1,51 @@
 <div id="showUsersSmall">
   <h2>HIGH SCORE</h2>
   <hr />
-  <div *ngFor="let u of users" class="userInfo">
-      <div *ngIf="u.username === user.username" class="row userInfo-row currentUser">
-        <div style="margin-left:1em;" class="col-xs-7 userInfo-item name">{{u.username}}</div>
-        <div style="margin-left:-2em;"class="col-xs-3 centerText userInfo-item score">{{u.score}}</div>
+  <div *ngFor="let u of users" class="userInfo userInfo-row">
+    <div *ngIf="user">
+      <div *ngIf="u.username === user.username" class="currentUser">
+        <div class="row topRow">
+          <div class="col-xs-1"></div>
+          <div *ngIf="u.png === 'Sebbe.png'" class="col-xs-2 img sebbe"></div>
+          <div *ngIf="u.png === 'Mattis.png'" class="col-xs-2 img mattis"></div>
+          <div *ngIf="u.png === 'Dennan.png'" class="col-xs-2 img dennan"></div>
+          <div *ngIf="u.png === 'Robin.png'" class="col-xs-2 img robin"></div>
+          <div *ngIf="u.png === 'Kling.png'" class="col-xs-2 img kling"></div>
+          <div *ngIf="u.png === 'Fredde.png'" class="col-xs-2 img fredde"></div>
+          <div *ngIf="u.png === 'Virre.png'" class="col-xs-2 img virre"></div>
+          <div *ngIf="u.png === 'Schaeran.png'" class="col-xs-2 img schaeran"></div>
+          <div *ngIf="u.png === 'Nemer.png'" class="col-xs-2 img nemer"></div>
+          <div *ngIf="u.png === 'Ivar.png'" class="col-xs-2 img ivar"></div>
+          <div *ngIf="u.png === 'Amanda.png'" class="col-xs-2 img amanda"></div>
+          <div *ngIf="u.png === 'Robban.png'" class="col-xs-2 img robban"></div>
+          <div class="col-xs-7 userInfo-item name">{{u.username}}</div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 centerText userInfo-item score botRow">{{u.score}}</div>
+        </div>
       </div>
-      <div style="margin-left:1em;" *ngIf="u.username !== user.username" class="row userInfo-row">
-        <div class="col-xs-7 userInfo-item name">{{u.username}}</div>
-        <div class="col-xs-3 centerText userInfo-item score">{{u.score}}</div>
+      <div *ngIf="u.username !== user.username">
+        <div class="row topRow">
+          <div class="col-xs-1"></div>
+          <div *ngIf="u.png === 'Sebbe.png'" class="col-xs-2 img sebbe"></div>
+          <div *ngIf="u.png === 'Mattis.png'" class="col-xs-2 img mattis"></div>
+          <div *ngIf="u.png === 'Dennan.png'" class="col-xs-2 img dennan"></div>
+          <div *ngIf="u.png === 'Robin.png'" class="col-xs-2 img robin"></div>
+          <div *ngIf="u.png === 'Kling.png'" class="col-xs-2 img kling"></div>
+          <div *ngIf="u.png === 'Fredde.png'" class="col-xs-2 img fredde"></div>
+          <div *ngIf="u.png === 'Virre.png'" class="col-xs-2 img virre"></div>
+          <div *ngIf="u.png === 'Schaeran.png'" class="col-xs-2 img schaeran"></div>
+          <div *ngIf="u.png === 'Nemer.png'" class="col-xs-2 img nemer"></div>
+          <div *ngIf="u.png === 'Ivar.png'" class="col-xs-2 img ivar"></div>
+          <div *ngIf="u.png === 'Amanda.png'" class="col-xs-2 img amanda"></div>
+          <div *ngIf="u.png === 'Robban.png'" class="col-xs-2 img robban"></div>
+          <div class="col-xs-7 userInfo-item name">{{u.username}}</div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 centerText userInfo-item score botRow">{{u.score}}</div>
+        </div>
       </div>
+    </div>
   </div>
 </div>
 <div id="showUsersBig">
@@ -23,17 +59,51 @@
       <div *ngIf="selectedTab === 1" class="box-content container">
         <h2>HIGH SCORE</h2>
         <hr />
-        <div *ngFor="let u of users" class="userInfo">
-            <div *ngIf="u.username === user.username" class="row userInfo-row currentUser">
-              <div class="col-lg-2 centerText userInfo-item avatar">AVT</div>
-              <div class="col-lg-7 userInfo-item name">{{u.username}}</div>
-              <div class="col-lg-3 centerText userInfo-item score">{{u.score}}</div>
+        <div *ngFor="let u of users" class="userInfo userInfo-row">
+          <div *ngIf="user">
+            <div *ngIf="u.username === user.username" class="currentUser">
+              <div class="row topRow">
+                <div class="col-xs-1"></div>
+                <div *ngIf="u.png === 'Sebbe.png'" class="col-xs-2 img sebbe"></div>
+                <div *ngIf="u.png === 'Mattis.png'" class="col-xs-2 img mattis"></div>
+                <div *ngIf="u.png === 'Dennan.png'" class="col-xs-2 img dennan"></div>
+                <div *ngIf="u.png === 'Robin.png'" class="col-xs-2 img robin"></div>
+                <div *ngIf="u.png === 'Kling.png'" class="col-xs-2 img kling"></div>
+                <div *ngIf="u.png === 'Fredde.png'" class="col-xs-2 img fredde"></div>
+                <div *ngIf="u.png === 'Virre.png'" class="col-xs-2 img virre"></div>
+                <div *ngIf="u.png === 'Schaeran.png'" class="col-xs-2 img schaeran"></div>
+                <div *ngIf="u.png === 'Nemer.png'" class="col-xs-2 img nemer"></div>
+                <div *ngIf="u.png === 'Ivar.png'" class="col-xs-2 img ivar"></div>
+                <div *ngIf="u.png === 'Amanda.png'" class="col-xs-2 img amanda"></div>
+                <div *ngIf="u.png === 'Robban.png'" class="col-xs-2 img robban"></div>
+                <div class="col-xs-7 userInfo-item name">{{u.username}}</div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12 centerText userInfo-item score botRow">{{u.score}}</div>
+              </div>
             </div>
-            <div *ngIf="u.username !== user.username" class="row userInfo-row">
-              <div class="col-lg-2 centerText userInfo-item avatar">AVT</div>
-              <div class="col-lg-7 userInfo-item name">{{u.username}}</div>
-              <div class="col-lg-3 centerText userInfo-item score">{{u.score}}</div>
+            <div *ngIf="u.username !== user.username">
+              <div class="row topRow">
+                <div class="col-xs-1"></div>
+                <div *ngIf="u.png === 'Sebbe.png'" class="col-xs-2 img sebbe"></div>
+                <div *ngIf="u.png === 'Mattis.png'" class="col-xs-2 img mattis"></div>
+                <div *ngIf="u.png === 'Dennan.png'" class="col-xs-2 img dennan"></div>
+                <div *ngIf="u.png === 'Robin.png'" class="col-xs-2 img robin"></div>
+                <div *ngIf="u.png === 'Kling.png'" class="col-xs-2 img kling"></div>
+                <div *ngIf="u.png === 'Fredde.png'" class="col-xs-2 img fredde"></div>
+                <div *ngIf="u.png === 'Virre.png'" class="col-xs-2 img virre"></div>
+                <div *ngIf="u.png === 'Schaeran.png'" class="col-xs-2 img schaeran"></div>
+                <div *ngIf="u.png === 'Nemer.png'" class="col-xs-2 img nemer"></div>
+                <div *ngIf="u.png === 'Ivar.png'" class="col-xs-2 img ivar"></div>
+                <div *ngIf="u.png === 'Amanda.png'" class="col-xs-2 img amanda"></div>
+                <div *ngIf="u.png === 'Robban.png'" class="col-xs-2 img robban"></div>
+                <div class="col-xs-7 userInfo-item name">{{u.username}}</div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12 centerText userInfo-item score botRow">{{u.score}}</div>
+              </div>
             </div>
+          </div>
         </div>
       </div>
 
