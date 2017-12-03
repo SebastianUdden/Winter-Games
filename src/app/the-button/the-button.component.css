@@ -440,7 +440,8 @@ li {
 	border-style: solid;
 	border-width: 5px;
 	max-width: 350px;
-	padding: 15px 25px;
+  padding: 15px 25px;
+  touch-action: manipulation;
 }
 
 .the-button-main:active {
@@ -461,7 +462,8 @@ li {
 	border-style: solid;
 	border-width: 5px;
 	max-width: 350px;
-	padding: 15px 25px;
+  padding: 15px 25px;
+  touch-action: manipulation;
 }
 
 .the-button:active {
