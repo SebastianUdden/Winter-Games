@@ -11,7 +11,7 @@
       <div class="col-lg-2" *ngFor="let die of dice">
         <!-- <pre class="dieFace done unselectable" *ngIf="die.rollFinished && die.lastRoll">{{ die.lastRoll.face }}</pre> -->
         <!-- <pre class="dieFace rolling unselectable" *ngIf="!die.rollFinished">{{ die.lastRoll.face }}</pre> -->
-        <div class="diceSpeed18 svg-dice" *ngIf="!die.rollFinished"></div>
+        <div class="diceSpeed9 svg-dice" *ngIf="!die.rollFinished"></div>
         <div class="dice1 svg-dice" *ngIf="die.rollFinished && die.lastRoll.number == 1"></div>
         <div class="dice2 svg-dice" *ngIf="die.rollFinished && die.lastRoll.number == 2"></div>
         <div class="dice3 svg-dice" *ngIf="die.rollFinished && die.lastRoll.number == 3"></div>

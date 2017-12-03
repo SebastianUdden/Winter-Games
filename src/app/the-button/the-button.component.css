@@ -474,11 +474,11 @@ li {
 /*///////////////////
 // Random boss items
 ///////////////////////////////////////////////////////////////////////////////*/
-.bottleCap1 { background-image: url('../../assets/images/bossItems/bottleCap1.png'); }
-.bottleCap2 { background-image: url('../../assets/images/bossItems/bottleCap2.png'); }
-.bottleCap3 { background-image: url('../../assets/images/bossItems/bottleCap3.png'); }
-.bottleCap4 { background-image: url('../../assets/images/bossItems/bottleCap4.png'); }
-.bottleCap5 { background-image: url('../../assets/images/bossItems/bottleCap5.png'); }
+.beerCap1 { background-image: url('../../assets/images/bossItems/beerCap1.png'); }
+.beerCap2 { background-image: url('../../assets/images/bossItems/beerCap2.png'); }
+.beerCap3 { background-image: url('../../assets/images/bossItems/beerCap3.png'); }
+.beerCap4 { background-image: url('../../assets/images/bossItems/beerCap4.png'); }
+.beerCap5 { background-image: url('../../assets/images/bossItems/beerCap5.png'); }
 .floater1 { background-image: url('../../assets/images/bossItems/floater1.png'); }
 .floater2 { background-image: url('../../assets/images/bossItems/floater2.png'); }
 .floater3 { background-image: url('../../assets/images/bossItems/floater3.png'); }
@@ -495,7 +495,7 @@ li {
 .oldOx4 { background-image: url('../../assets/images/bossItems/oldOx4.png'); }
 .oldOx5 { background-image: url('../../assets/images/bossItems/oldOx5.png'); }
 
-.img {
+.random-img {
 	cursor: pointer;
   width: 8em;
   height: 8em;

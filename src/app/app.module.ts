@@ -25,6 +25,7 @@ import { LoginComponent } from './authentication/login/login.component';
 import { AdminComponent } from './admin/admin.component';
 import { AlertComponent } from './authentication/alert/alert.component';
 import { ProfileComponent } from './profile/profile.component';
+import { TheMazeComponent } from './the-maze/the-maze.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { ProfileComponent } from './profile/profile.component';
     LoginComponent,
     AdminComponent,
     AlertComponent,
-    ProfileComponent
+    ProfileComponent,
+    TheMazeComponent
   ],
   imports: [
     HttpModule,
