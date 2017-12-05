@@ -1,6 +1,8 @@
-<h1>Welcome to THE MAZE</h1>
-<!-- <div class="row">
-  <div *ngIf="user.png === 'Sebbe.png'" class="col-xs-2 img sebbe"></div>
+<h1>Testing Canvas</h1>
+<div class="row">
+  <!-- <div id="profileImage" class="col-xs-2 img sebbe"></div> -->
+  <img id="profileImage" src="../../assets/images/avatars/Sebbe.png" alt="The Scream" width="100" height="100" style="display:none">
+  <!-- <div *ngIf="user.png === 'Sebbe.png'" class="col-xs-2 img sebbe"></div>
   <div *ngIf="user.png === 'Mattis.png'" class="col-xs-2 img mattis"></div>
   <div *ngIf="user.png === 'Dennan.png'" class="col-xs-2 img dennan"></div>
   <div *ngIf="user.png === 'Robin.png'" class="col-xs-2 img robin"></div>
@@ -12,14 +14,21 @@
   <div *ngIf="user.png === 'Ivar.png'" class="col-xs-2 img ivar"></div>
   <div *ngIf="user.png === 'Amanda.png'" class="col-xs-2 img amanda"></div>
   <div *ngIf="user.png === 'Robban.png'" class="col-xs-2 img robban"></div>
-  <div class="col-xs-7 userInfo-item name">{{user.username}}</div>
-</div> -->
-<h3>Description</h3>
-<p>This will be a quick timed game, the (currently) fastest BOSS will hold the attribute "Maze Runner"</p>
+  <div class="col-xs-7 userInfo-item name">{{user.username}}</div> -->
+</div>
+<br />
+
+<!-- <h3>Description</h3>
+<p>This will be a quick timed game, the (currently) fastest BOSS will hold the attribute "Maze Runner"</p> -->
 
 <div class="row">
-  <div class="col-xs-12">
-    <canvas id="maze" width="500" height="500">
+  <div class="col-xs-10">
+    <canvas id="maze" width="501" height="501" style="background-color: #444444; border:1px solid #ffffff;">
+      Canvas is not supported!
+    </canvas>
+  </div>
+  <div class="col-xs-2">
+    <canvas id="clock" width="720" height="720" style="background-color: #444444; border:1px solid #ffffff;">
       Canvas is not supported!
     </canvas>
   </div>

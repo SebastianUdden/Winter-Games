@@ -1,5 +1,7 @@
 .svg-dice {
+  background-color: white;
   background-size: cover;
+  border-radius: 11px;
   height: 75px;
   width: 75px;
   margin-left: auto;
@@ -7,37 +9,29 @@
 }
 
 .dice1 {
-  background-color: white;
   background-image: url('../../assets/images/dice/dice1.png');
 }
 .dice2 {
-  background-color: white;
   background-image: url('../../assets/images/dice/dice2.png');
 }
 .dice3 {
-  background-color: white;
   background-image: url('../../assets/images/dice/dice3.png');
 }
 .dice4 {
-  background-color: white;
   background-image: url('../../assets/images/dice/dice4.png');
 }
 .dice5 {
-  background-color: white;
   background-image: url('../../assets/images/dice/dice5.png');
 }
 .dice6 {
-  background-color: white;
   background-image: url('../../assets/images/dice/dice6.png');
 }
 
 .diceSpeed3 {
-  background-color: white;
   background-image: url('/assets/images/dice/diceSpeed3.GIF');
 }
 
 .diceSpeed9 {
-  background-color: white;
   background-image: url('/assets/images/dice/diceSpeed9.GIF');
 }
 
