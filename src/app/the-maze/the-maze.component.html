@@ -15,6 +15,7 @@
   <div *ngIf="user.png === 'Amanda.png'" class="col-xs-2 img amanda"></div>
   <div *ngIf="user.png === 'Robban.png'" class="col-xs-2 img robban"></div>
   <div class="col-xs-7 userInfo-item name">{{user.username}}</div> -->
+    <button class="btn btn-success" (click)="startNewGame();">New Game</button>
 </div>
 <br />
 
@@ -23,13 +24,35 @@
 
 <div class="row">
   <div class="col-xs-10">
-    <canvas id="maze" width="501" height="501" style="background-color: #444444; border:1px solid #ffffff;">
+    <canvas id="maze" tabindex='1' width="501" height="501" style="background-color: #444444; border:1px solid #ffffff;">
       Canvas is not supported!
     </canvas>
   </div>
-  <div class="col-xs-2">
+  <!-- <div class="col-xs-2">
     <canvas id="clock" width="720" height="720" style="background-color: #444444; border:1px solid #ffffff;">
       Canvas is not supported!
     </canvas>
+  </div> -->
+</div>
+<div class="row">
+  <div class="col-xs-2"><span class="btn btn-info">Player 1:</span> Up/Left/Down/Right</div>
+  <div class="col-xs-2 info"><span class="btn btn-info">Player 2:</span> WASD</div>
+  <div class="col-xs-2 info"><span class="btn btn-info">Player 3:</span> FCVB</div>
+  <div class="col-xs-2 info"><span class="btn btn-info">Player 4:</span> KM,.</div>
+</div>
+<!-- <div class="row">
+  <div class="col-xs-12" style="margin-left: 40px;">
+    <button class="btn btn-info" (mousedown)="moveUp()" (mouseup)="stopMove()" (touchstart)="moveUp()">UP</button>
   </div>
 </div>
+<div class="row">
+  <div class="col-xs-12">
+      <button class="btn btn-info" (mousedown)="moveLeft()" (mouseup)="stopMove()" (touchstart)="moveLeft()">LEFT</button>
+      <button class="btn btn-info" (mousedown)="moveRight()" (mouseup)="stopMove()" (touchstart)="moveRight()">RIGHT</button>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12" style="margin-left: 30px;">
+      <button class="btn btn-info" (mousedown)="moveDown()" (mouseup)="stopMove()" (touchstart)="moveDown()">DOWN</button>
+  </div>
+</div> -->

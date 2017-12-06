@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { DecimalPipe } from '@angular/common';
+
 import { UserService } from '../_services/user.service';
 import { AuthenticationService } from '../_services/authentication.service';
 import { User } from '../_models/user';

@@ -1,7 +1,7 @@
 <section *ngIf="user">
   <h1 *ngIf="user.username">{{user.username}}<span *ngIf="user.admin"> - Admin</span></h1>
   <hr>
-  <h2 *ngIf="user.score">Score: {{user.score}}</h2>
+  <h2 *ngIf="user.score">Score: {{user.score | number:'1.0-0' }}</h2>
   <h2 *ngIf="user.level">Level: {{user.level}}</h2>
   <hr>
   <h4 *ngIf="user.firstname && user.lastname">Name: {{user.firstname}} {{user.lastname}}</h4>

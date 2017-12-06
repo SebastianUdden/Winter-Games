@@ -3,11 +3,14 @@ import {
   OnInit,
   ViewEncapsulation,
   ViewChild,
-  ElementRef } from '@angular/core';
-import { UserService } from '../_services/user.service';
-import { AuthenticationService } from '../_services/authentication.service';
-import { User } from '../_models/user';
+  ElementRef
+} from '@angular/core';
 import { AfterViewInit } from '@angular/core/src/metadata/lifecycle_hooks';
+import { AuthenticationService } from '../_services/authentication.service';
+import { UserService } from '../_services/user.service';
+
+import { Player } from '../_models/player';
+import { User } from '../_models/user';
 
 @Component({
   selector: 'app-the-maze',
@@ -18,8 +21,18 @@ import { AfterViewInit } from '@angular/core/src/metadata/lifecycle_hooks';
 export class TheMazeComponent implements OnInit, AfterViewInit {
   @ViewChild('maze') mazeCanvas: ElementRef;
   public context: CanvasRenderingContext2D;
+  public players = [
+    new Player,
+    new Player,
+    new Player,
+    new Player
+  ];
+
   public user: User;
+  public welcomeScreen = true;
   public myGameArea;
+  public myGamePiece;
+  public speed;
 
   constructor(
     private userService: UserService,
@@ -33,62 +46,85 @@ export class TheMazeComponent implements OnInit, AfterViewInit {
     this.userService.updateUser(this.user);
   }
 
+  startNewGame() {
+    const self = this;
+    self.speed = 4;
+    self.welcomeScreen = true;
+
+    // Generic variables
+    const fillColor = '#702121';
+    const drawColor1 = '#efefef';
+    const drawColor2 = '#00efef';
+    const font = '30px Arial';
+
+    // Game setup
+    this.myGameArea = {
+      gameCanvas : (<HTMLCanvasElement>document.getElementById('maze')),
+      start : function() {
+          this.gameCanvas.width = 1080;
+          this.gameCanvas.height = 720;
+          this.context = this.gameCanvas.getContext('2d');
+          this.interval = setInterval(() => {
+            self.updateGameArea();
+          }, 20);
+          window.addEventListener('keydown', function (e) {
+            self.welcomeScreen = false;
+            self.myGameArea.keys = (self.myGameArea.keys || []);
+            self.myGameArea.keys[e.keyCode] = true;
+          });
+          window.addEventListener('keyup', function (e) {
+            self.myGameArea.keys[e.keyCode] = false;
+          });
+      },
+      clear : function() {
+          this.context.clearRect(0, 0, this.gameCanvas.width, this.gameCanvas.height);
+      },
+      stop : function() {
+          clearInterval(this.interval);
+      }
+    };
+
+    this.startGame(drawColor2);
+  }
   ngAfterViewInit(): void {
     window.onload = () => {
-      // Setup
-      const canvas = (<HTMLCanvasElement>document.getElementById('clock'));
-      let ctx = canvas.getContext('2d');
+      const self = this;
+      self.speed = 4;
+      self.welcomeScreen = true;
+
+      // Generic variables
       const fillColor = '#702121';
       const drawColor1 = '#efefef';
       const drawColor2 = '#00efef';
       const font = '30px Arial';
-      let radius = canvas.height / 2;
 
-      ctx.translate(radius, radius);
-      radius = radius * 0.90;
-
-      // -------------- Tutorial Functions -------------- //
-      // this.fillCanvas(ctx, fillColor);
-      // this.drawLine(ctx, drawColor1);
-      // this.drawCircle(ctx, drawColor1);
-      // this.drawText(ctx, drawColor1, font);
-      // this.drawStrokeText(ctx, drawColor1, font);
-      // this.drawCenteredText(ctx, drawColor1, font, canvas);
-      // this.drawLinearGradient(ctx, drawColor1,);
-      // this.drawCircularGradient(ctx, drawColor1);
-      // this.drawImage(ctx, 'profileImage', drawColor1);
-
-      // -------------- Clock Functions -------------- //
-      setInterval(() => {
-        this.drawClock(ctx, drawColor1, radius);
-      }, 1000);
-
-      // -------------- Interactive Functions -------------- //
-      const gameArea = {
+      // Game setup
+      this.myGameArea = {
         gameCanvas : (<HTMLCanvasElement>document.getElementById('maze')),
         start : function() {
             this.gameCanvas.width = 1080;
             this.gameCanvas.height = 720;
             this.context = this.gameCanvas.getContext('2d');
-            this.interval = setInterval(this.updateGameArea, 20);
+            this.interval = setInterval(() => {
+              self.updateGameArea();
+            }, 20);
+            window.addEventListener('keydown', function (e) {
+              self.welcomeScreen = false;
+              self.myGameArea.keys = (self.myGameArea.keys || []);
+              self.myGameArea.keys[e.keyCode] = true;
+            });
+            window.addEventListener('keyup', function (e) {
+              self.myGameArea.keys[e.keyCode] = false;
+            });
         },
         clear : function() {
             this.context.clearRect(0, 0, this.gameCanvas.width, this.gameCanvas.height);
+        },
+        stop : function() {
+            clearInterval(this.interval);
         }
       };
-      const myComponent = {
-        width: 50,
-        height: 50,
-        x: 250,
-        y: 250,
-        update: function(){
-          // ctx = gameArea.context;
-          ctx.fillStyle = drawColor2;
-          ctx.fillRect(this.x, this.y, this.width, this.height);
-        }
-      };
-
-      this.startGame(gameArea, drawColor2, myComponent);
+      this.startGame(drawColor2);
     };
   }
 
@@ -99,212 +135,356 @@ export class TheMazeComponent implements OnInit, AfterViewInit {
   /////////////////////////////
   // Interactive canvas functions
   ////////////////////////////////////////////////////////////////////////////////
-  startGame(gameArea, color, component) {
-    gameArea.start();
-    const startCtx = gameArea.context;
-    startCtx.fillStyle = color;
-    startCtx.fillRect(component.x, component.y, component.width, component.height);
+
+  startGame(color) {
+    this.myGameArea.start();
+    const startCtx = this.myGameArea.context;
+    this.players[0] = new Player(1, startCtx, color, 50, 50, 0, 0, 20);
+    this.players[1] = new Player(2, startCtx, 'DeepSkyBlue', 50, 50, 0, 0, 80);
+    this.players[2] = new Player(3, startCtx, 'Yellow', 50, 50, 0, 0, 140);
+    this.players[3] = new Player(4, startCtx, 'Green', 50, 50, 0, 0, 200);
   }
+
   updateGameArea() {
-    console.log('testing...');
-    // gameArea.clear();
-    // gamePiece.x += 1;
-    // gamePiece.update();
-  }
+    if (
+      // Player 1
+      this.players[0].crashWith(this.players[1]) ||
+      this.players[0].crashWith(this.players[2]) ||
+      this.players[0].crashWith(this.players[3]) ||
 
-  /////////////////////////////
-  // Clock canvas functions
-  ////////////////////////////////////////////////////////////////////////////////
-  drawClock(ctx, color, radius) {
-    this.drawFace(ctx, color, radius);
-    this.drawNumbers(ctx, radius);
-    this.drawTime(ctx, radius);
-  }
+      // Player 2
+      this.players[1].crashWith(this.players[0]) ||
+      this.players[1].crashWith(this.players[2]) ||
+      this.players[1].crashWith(this.players[3]) ||
 
-  drawFace(ctx, color, radius) {
-    let grad;
+      // Player 3
+      this.players[2].crashWith(this.players[0]) ||
+      this.players[2].crashWith(this.players[1]) ||
+      this.players[2].crashWith(this.players[3]) ||
 
-    this.drawCircle(ctx, color, radius);
-    grad = ctx.createRadialGradient(0, 0, radius * 0.95, 0, 0, radius * 1.05);
-    grad.addColorStop(0, '#333');
-    grad.addColorStop(0.5, color);
-    grad.addColorStop(1, '#333');
-    ctx.strokeStyle = grad;
-    ctx.lineWidth = radius * 0.1;
-    ctx.stroke();
+      // Player 4
+      this.players[3].crashWith(this.players[0]) ||
+      this.players[3].crashWith(this.players[1]) ||
+      this.players[3].crashWith(this.players[2])
+    ) {
+      // Player 1
+      if (this.players[0].crashWith(this.players[1])) {
+        if (this.players[0].eat) {
+          this.players[1].destroy(1);
+        } else {
+          this.players[0].x = 5;
+          this.players[0].y = 5;
+        }
+      }
+      if (this.players[0].crashWith(this.players[2])) {
+        if (this.players[0].eat) {
+          this.players[2].destroy(2);
+        } else {
+          this.players[0].x = 5;
+          this.players[0].y = 5;
+        }
+      }
+      if (this.players[0].crashWith(this.players[3])) {
+        if (this.players[0].eat) {
+          this.players[3].destroy(3);
+        } else {
+          this.players[0].x = 5;
+          this.players[0].y = 5;
+        }
+      }
 
-    ctx.beginPath();
-    ctx.arc(0, 0, radius * 0.1, 0, 2 * Math.PI);
-    ctx.fillStyle = '#333';
-    ctx.fill();
-  }
+      // Player 2
+      if (this.players[1].crashWith(this.players[0])) {
+        if (this.players[1].eat) {
+          this.players[0].destroy(0);
+        } else {
+          this.players[1].x = 5;
+          this.players[1].y = 50;
+        }
+      }
+      if (this.players[1].crashWith(this.players[2])) {
+        if (this.players[1].eat) {
+          this.players[2].destroy(2);
+        } else {
+          this.players[1].x = 5;
+          this.players[1].y = 50;
+        }
+      }
+      if (this.players[1].crashWith(this.players[3])) {
+        if (this.players[1].eat) {
+          this.players[3].destroy(3);
+        } else {
+          this.players[1].x = 5;
+          this.players[1].y = 50;
+        }
+      }
 
-  drawNumbers(ctx, radius) {
-    let ang;
-    let num;
-    ctx.font = radius * 0.15 + 'px arial';
-    ctx.textBaseline = 'middle';
-    ctx.textAlign = 'center';
-    for ( num = 1; num < 13; num++) {
-      ang = num * Math.PI / 6;
-      ctx.rotate(ang);
-      ctx.translate(0, -radius * 0.85);
-      ctx.rotate(-ang);
-      ctx.fillText(num.toString(), 0, 0);
-      ctx.rotate(ang);
-      ctx.translate(0, radius * 0.85);
-      ctx.rotate(-ang);
+      // Player 3
+      if (this.players[2].crashWith(this.players[0])) {
+        if (this.players[2].eat) {
+          this.players[0].destroy(0);
+        } else {
+          this.players[2].x = 5;
+          this.players[2].y = 100;
+        }
+      }
+      if (this.players[2].crashWith(this.players[1])) {
+        if (this.players[2].eat) {
+          this.players[1].destroy(1);
+        } else {
+          this.players[2].x = 5;
+          this.players[2].y = 100;
+        }
+      }
+      if (this.players[2].crashWith(this.players[3])) {
+        if (this.players[2].eat) {
+          this.players[3].destroy(3);
+        } else {
+          this.players[2].x = 5;
+          this.players[2].y = 100;
+        }
+      }
+
+      // Player 4
+      if (this.players[3].crashWith(this.players[0])) {
+        if (this.players[3].eat) {
+          this.players[0].destroy(0);
+        } else {
+          this.players[2].x = 5;
+          this.players[2].y = 150;
+        }
+      }
+      if (this.players[3].crashWith(this.players[1])) {
+        if (this.players[3].eat) {
+          this.players[1].destroy(1);
+        } else {
+          this.players[2].x = 5;
+          this.players[2].y = 150;
+        }
+      }
+      if (this.players[3].crashWith(this.players[2])) {
+        if (this.players[3].eat) {
+          this.players[2].destroy(2);
+        } else {
+          this.players[3].x = 5;
+          this.players[3].y = 150;
+        }
+      }
+    } else {
+      this.myGameArea.clear();
+
+      let deathCount = 0;
+      for (let i = 0; i < this.players.length; i++) {
+        this.players[i].speedX = 0;
+        this.players[i].speedY = 0;
+        if (this.players[i].dead) {
+          deathCount++;
+        }
+      }
+      if (this.welcomeScreen) {
+        this.myGameArea.context.font = '130px Arial';
+        this.myGameArea.context.textAlign = 'center';
+        this.myGameArea.context.strokeStyle = 'red';
+        this.myGameArea.context.lineWidth = 5;
+        this.myGameArea.context.strokeText(
+          'GAME ON',
+          this.myGameArea.gameCanvas.width / 2,
+          this.myGameArea.gameCanvas.height / 2);
+      }
+
+      if (deathCount === this.players.length - 1) {
+        for (let i = 0; i < this.players.length; i++) {
+          if (!this.players[i].dead) {
+            this.myGameArea.context.font = '130px Arial';
+            this.myGameArea.context.textAlign = 'center';
+            this.myGameArea.context.strokeStyle = 'red';
+            this.myGameArea.context.lineWidth = 5;
+            this.myGameArea.context.strokeText(
+              'GAME OVER',
+              this.myGameArea.gameCanvas.width / 2,
+              this.myGameArea.gameCanvas.height / 2);
+
+            this.myGameArea.context.font = '70px Arial';
+            this.myGameArea.context.fillStyle = 'white';
+            this.myGameArea.context.fillText(
+              'Player ' + this.players[i].number + ' is the winner!',
+              this.myGameArea.gameCanvas.width / 2,
+              this.myGameArea.gameCanvas.height / 1.63);
+          }
+        }
+        this.myGameArea.stop();
+      }
+      if (this.myGameArea.keys && this.myGameArea.keys[37]) { this.moveLeft(1); }
+      if (this.myGameArea.keys && this.myGameArea.keys[39]) { this.moveRight(1); }
+      if (this.myGameArea.keys && this.myGameArea.keys[38]) { this.moveUp(1); }
+      if (this.myGameArea.keys && this.myGameArea.keys[40]) { this.moveDown(1); }
+
+      if (this.myGameArea.keys && this.myGameArea.keys[65]) { this.moveLeft(2); }
+      if (this.myGameArea.keys && this.myGameArea.keys[68]) { this.moveRight(2); }
+      if (this.myGameArea.keys && this.myGameArea.keys[87]) { this.moveUp(2); }
+      if (this.myGameArea.keys && this.myGameArea.keys[83]) { this.moveDown(2); }
+
+      if (this.myGameArea.keys && this.myGameArea.keys[67]) { this.moveLeft(3); }
+      if (this.myGameArea.keys && this.myGameArea.keys[66]) { this.moveRight(3); }
+      if (this.myGameArea.keys && this.myGameArea.keys[70]) { this.moveUp(3); }
+      if (this.myGameArea.keys && this.myGameArea.keys[86]) { this.moveDown(3); }
+
+      if (this.myGameArea.keys && this.myGameArea.keys[77]) { this.moveLeft(4); }
+      if (this.myGameArea.keys && this.myGameArea.keys[190]) { this.moveRight(4); }
+      if (this.myGameArea.keys && this.myGameArea.keys[75]) { this.moveUp(4); }
+      if (this.myGameArea.keys && this.myGameArea.keys[188]) { this.moveDown(4); }
+
+      for (let i = 0; i < this.players.length; i++) {
+        this.players[i].newPos();
+        this.players[i].update();
+      }
     }
   }
 
-  drawTime(ctx, radius) {
-    const now = new Date();
-    let hour = now.getHours();
-    let minute = now.getMinutes();
-    let second = now.getSeconds();
-    // hour
-    hour = hour % 12;
-    hour = (hour * Math.PI / 6) + (minute * Math.PI / (6 * 60)) + (second * Math.PI / (360 * 60));
-    this.drawHand(ctx, hour, radius * 0.5, radius * 0.07);
-    // minute
-    minute = (minute * Math.PI / 30) + (second * Math.PI / (30 * 60));
-    this.drawHand(ctx, minute, radius * 0.8, radius * 0.07);
-    // second
-    second = (second * Math.PI / 30);
-    this.drawHand(ctx, second, radius * 0.9, radius * 0.02);
-  }
-
-  drawHand(ctx, pos, length, width) {
-    ctx.beginPath();
-    ctx.lineWidth = width;
-    ctx.lineCap = 'round';
-    ctx.moveTo(0,0);
-    ctx.rotate(pos);
-    ctx.lineTo(0, -length);
-    ctx.stroke();
-    ctx.rotate(-pos);
-  }
-  //////////////////////////////
-  // Canvas tutorial functions
-  ////////////////////////////////////////////////////////////////////////////////
-  fillCanvas(ctx, color) {
-    ctx.fillStyle = color;
-    ctx.fillRect(0, 0, 500, 500);
-  }
-  drawLine(ctx, color) {
-    ctx.fillStyle = color;
-    ctx.moveTo(0, 0);
-    ctx.lineTo(500, 500);
-    ctx.stroke();
-  }
-
-  drawCircle(ctx, color, radius) {
-    ctx.beginPath();
-    ctx.arc(0, 0, radius, 0, 2 * Math.PI);
-    ctx.fillStyle = color;
-    ctx.fill();
-  }
-  // drawCircle(ctx, color) {
-  //   ctx.fillStyle = color;
-  //   ctx.beginPath();
-  //   ctx.arc(95, 50, 40, 0, 2 * Math.PI);
-  //   ctx.stroke();
-  // }
-
-  drawText(ctx, color, font) {
-    ctx.fillStyle = color;
-    ctx.font = font;
-    ctx.fillText('Hello World', 10, 50);
-  }
-
-  drawStrokeText(ctx, color, font) {
-    ctx.fillStyle = color;
-    ctx.font = font;
-    ctx.strokeText('Hello World', 10, 50);
-  }
-
-  drawCenteredText(ctx, color, font, canvas) {
-    ctx.fillStyle = color;
-    ctx.font = font;
-    ctx.textAlign = 'center';
-    ctx.fillText('Hello World', canvas.width / 2, canvas.height / 2);
-  }
-
-  drawLinearGradient(ctx, color1, color2) {
-    const grd = ctx.createLinearGradient(0 , 0, 200, 0);
-    grd.addColorStop(0, color1);
-    grd.addColorStop(1, color2);
-
-    // Fill with gradient
-    ctx.fillStyle = grd;
-    ctx.fillRect(10, 10, 150, 80);
-  }
-
-  drawCircularGradient(ctx, color1, color2) {
-    const grd = ctx.createRadialGradient(75, 50, 5, 90, 60, 100);
-    grd.addColorStop(0, color1);
-    grd.addColorStop(1, color2);
-
-    // Fill with gradient
-    ctx.fillStyle = grd;
-    ctx.fillRect(10, 10, 150, 80);
-  }
-
-  drawImage(ctx, imagePath) {
-    const img = document.getElementById(imagePath);
-    ctx.drawImage(img, -7, 0);
-  }
-
-
-  ////////////////////
-  // Canvas examples
-  ////////////////////////////////////////////////////////////////////////////////
-  displayCtxTest(ctx) {
-    // Draw the clip path that will mask everything else
-    // that we'll draw later.
-    ctx.beginPath();
-    ctx.moveTo(250, 60);
-    ctx.lineTo(63.8, 126.4);
-    ctx.lineTo(92.2, 372.6);
-    ctx.lineTo(250, 460);
-    ctx.lineTo(407.8, 372.6);
-    ctx.lineTo(436.2, 126.4);
-    ctx.moveTo(250, 104.2);
-    ctx.lineTo(133.6, 365.2);
-    ctx.lineTo(177, 365.2);
-    ctx.lineTo(200.4, 306.8);
-    ctx.lineTo(299.2, 306.8);
-    ctx.lineTo(325.2, 365.2);
-    ctx.lineTo(362.6, 365.2);
-    ctx.lineTo(250, 104.2);
-    ctx.moveTo(304, 270.8);
-    ctx.lineTo(216, 270.8);
-    ctx.lineTo(250, 189);
-    ctx.lineTo(284, 270.8);
-    ctx.clip('evenodd');
-
-    // Draw 50,000 circles at random points
-    ctx.beginPath();
-    ctx.fillStyle = '#DD0031';
-    for (let i = 0 ; i < 50000 ; i++) {
-      const x = Math.random() * 500;
-      const y = Math.random() * 500;
-      ctx.moveTo(x, y);
-      ctx.arc(x, y, 1, 0, Math.PI * 2);
+  moveUp(player) {
+    switch (player) {
+      case 1:
+        this.players[0].direction = 'Up';
+        if (this.players[0].y > 2) {
+          this.players[0].speedY -= this.speed;
+        }
+        break;
+      case 2:
+        this.players[1].direction = 'Up';
+        if (this.players[1].y > 2) {
+          this.players[1].speedY -= this.speed;
+        }
+        break;
+      case 3:
+        this.players[2].direction = 'Up';
+        if (this.players[2].y > 2) {
+          this.players[2].speedY -= this.speed;
+        }
+        break;
+      case 4:
+        this.players[3].direction = 'Up';
+        if (this.players[3].y > 2) {
+          this.players[3].speedY -= this.speed;
+        }
+        break;
+      default:
+        break;
     }
-    ctx.fill();
   }
 
-  // drawStars() {
-  //   for (let i = 0; i < 1500; i++) {
-  //     // Generate random parameters for the star
-  //     let x = Math.round(Math.random() * this._width);
-  //     let y = Math.round(Math.random() * this._height);
-  //     let rad = Math.ceil(Math.random() * 2);
-  //     let alpha = Math.min(Math.random() * 0.25, 1);
+  moveDown(player) {
+    switch (player) {
+      case 1:
+        this.players[0].direction = 'Down';
+        if (this.players[0].y < 663) {
+          this.players[0].speedY += this.speed;
+        }
+        break;
+      case 2:
+        this.players[1].direction = 'Down';
+        if (this.players[1].y < 663) {
+          this.players[1].speedY += this.speed;
+        }
+        break;
+      case 3:
+        this.players[2].direction = 'Down';
+        if (this.players[2].y < 663) {
+          this.players[2].speedY += this.speed;
+        }
+        break;
+      case 4:
+        this.players[3].direction = 'Down';
+        if (this.players[3].y < 663) {
+          this.players[3].speedY += this.speed;
+        }
+        break;
+      default:
+        break;
+    }
+  }
 
-  //     // Draw the star
-  //     let star = new PIXI
-  //   }
-  // }
+  moveLeft(player) {
+    switch (player) {
+      case 1:
+        this.players[0].direction = 'Left';
+        if (this.players[0].x > 2) {
+          this.players[0].speedX -= this.speed;
+        }
+        break;
+      case 2:
+        this.players[1].direction = 'Left';
+        if (this.players[1].x > 2) {
+          this.players[1].speedX -= this.speed;
+        }
+        break;
+      case 3:
+        this.players[2].direction = 'Left';
+        if (this.players[2].x > 2) {
+          this.players[2].speedX -= this.speed;
+        }
+        break;
+      case 4:
+        this.players[3].direction = 'Left';
+        if (this.players[3].x > 2) {
+          this.players[3].speedX -= this.speed;
+        }
+        break;
+      default:
+        break;
+    }
+  }
+
+  moveRight(player) {
+    switch (player) {
+      case 1:
+        this.players[0].direction = 'Right';
+        if (this.players[0].x < 1021) {
+          this.players[0].speedX += this.speed;
+        }
+        break;
+      case 2:
+        this.players[1].direction = 'Right';
+        if (this.players[1].x < 1021) {
+          this.players[1].speedX += this.speed;
+        }
+        break;
+      case 3:
+        this.players[2].direction = 'Right';
+        if (this.players[2].x < 1021) {
+          this.players[2].speedX += this.speed;
+        }
+        break;
+      case 4:
+        this.players[3].direction = 'Right';
+        if (this.players[3].x < 1021) {
+          this.players[3].speedX += this.speed;
+        }
+        break;
+      default:
+        break;
+    }
+  }
+
+  stopMove(player) {
+    switch (player) {
+      case 1:
+        this.players[0].speedX = 0;
+        this.players[0].speedY = 0;
+        break;
+      case 2:
+        this.players[1].speedX = 0;
+        this.players[1].speedY = 0;
+        break;
+      case 3:
+        this.players[2].speedX = 0;
+        this.players[2].speedY = 0;
+        break;
+      case 4:
+        this.players[3].speedX = 0;
+        this.players[3].speedY = 0;
+        break;
+      default:
+        break;
+    }
+  }
 }

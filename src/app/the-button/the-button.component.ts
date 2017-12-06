@@ -6,6 +6,7 @@ import {
 import { Subscription } from 'rxjs/Subscription';
 import { TimerObservable } from 'rxjs/observable/TimerObservable';
 import { FormsModule } from '@angular/forms';
+import { DecimalPipe } from '@angular/common';
 
 import { AuthenticationService } from '../_services/authentication.service';
 import { UpdateService } from '../_services/update.service';

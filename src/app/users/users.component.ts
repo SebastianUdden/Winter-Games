@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
+import { DecimalPipe } from '@angular/common';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 

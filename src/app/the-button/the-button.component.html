@@ -227,22 +227,22 @@
         </div>
         <div class="row text-center">
             <div class="row" *ngIf="!newRecord">
-                <div *ngIf="userScore < 100 || userScore >= 2050000" class="the-counter border-gray grayed-out-text text-center big unselectable">{{ userScore }}</div>
-                <div *ngIf="(userScore >= 100 && userScore < 200) || (userScore >= 2000 && userScore < 3000)" class="the-counter border-dark-red grayed-out-text text-center big unselectable">{{ userScore }}</div>
-                <div *ngIf="(userScore >= 200 && userScore < 300) || (userScore >= 3000 && userScore < 4000)" class="the-counter border-red grayed-out-text text-center big unselectable">{{ userScore }}</div>
-                <div *ngIf="(userScore >= 300 && userScore < 400) || (userScore >= 4000 && userScore < 6000)" class="the-counter border-red-orange grayed-out-text text-center big unselectable">{{ userScore }}</div>
-                <div *ngIf="(userScore >= 400 && userScore < 500) || (userScore >= 6000 && userScore < 10000)" class="the-counter border-orange-yellow grayed-out-text text-center big unselectable">{{ userScore }}</div>
-                <div *ngIf="(userScore >= 500 && userScore < 600) || (userScore >= 10000 && userScore < 18000)" class="the-counter border-yellow grayed-out-text text-center big unselectable">{{ userScore }}</div>
-                <div *ngIf="(userScore >= 600 && userScore < 700) || (userScore >= 18000 && userScore < 34000)" class="the-counter border-green grayed-out-text text-center big unselectable">{{ userScore }}</div>
-                <div *ngIf="(userScore >= 700 && userScore < 800) || (userScore >= 34000 && userScore < 66000)" class="the-counter border-cyan-green grayed-out-text text-center big unselectable">{{ userScore }}</div>
-                <div *ngIf="(userScore >= 800 && userScore < 900) || (userScore >= 66000 && userScore < 130000)" class="the-counter border-cyan grayed-out-text text-center big unselectable">{{ userScore }}</div>
-                <div *ngIf="(userScore >= 900 && userScore < 1000) || (userScore >= 130000 && userScore < 258000)" class="the-counter border-light-blue grayed-out-text text-center big unselectable">{{ userScore }}</div>
-                <div *ngIf="(userScore >= 1000 && userScore < 1100) || (userScore >= 258000 && userScore < 514000)" class="the-counter border-blue grayed-out-text text-center big unselectable">{{ userScore }}</div>
-                <div *ngIf="(userScore >= 1100 && userScore < 1200) || (userScore >= 514000 && userScore < 1026000)" class="the-counter border-purple grayed-out-text text-center big unselectable">{{ userScore }}</div>
-                <div *ngIf="(userScore >= 1200 && userScore < 2000) || (userScore >= 1026000 && userScore < 2050000)" class="the-counter border-pink grayed-out-text text-center big unselectable">{{ userScore }}</div>
+                <div *ngIf="userScore < 100 || userScore >= 2050000" class="the-counter border-gray grayed-out-text text-center big unselectable">{{ userScore | number:'1.0-0' }}</div>
+                <div *ngIf="(userScore >= 100 && userScore < 200) || (userScore >= 2000 && userScore < 3000)" class="the-counter border-dark-red grayed-out-text text-center big unselectable">{{ userScore | number:'1.0-0' }}</div>
+                <div *ngIf="(userScore >= 200 && userScore < 300) || (userScore >= 3000 && userScore < 4000)" class="the-counter border-red grayed-out-text text-center big unselectable">{{ userScore | number:'1.0-0' }}</div>
+                <div *ngIf="(userScore >= 300 && userScore < 400) || (userScore >= 4000 && userScore < 6000)" class="the-counter border-red-orange grayed-out-text text-center big unselectable">{{ userScore | number:'1.0-0' }}</div>
+                <div *ngIf="(userScore >= 400 && userScore < 500) || (userScore >= 6000 && userScore < 10000)" class="the-counter border-orange-yellow grayed-out-text text-center big unselectable">{{ userScore | number:'1.0-0' }}</div>
+                <div *ngIf="(userScore >= 500 && userScore < 600) || (userScore >= 10000 && userScore < 18000)" class="the-counter border-yellow grayed-out-text text-center big unselectable">{{ userScore | number:'1.0-0' }}</div>
+                <div *ngIf="(userScore >= 600 && userScore < 700) || (userScore >= 18000 && userScore < 34000)" class="the-counter border-green grayed-out-text text-center big unselectable">{{ userScore | number:'1.0-0' }}</div>
+                <div *ngIf="(userScore >= 700 && userScore < 800) || (userScore >= 34000 && userScore < 66000)" class="the-counter border-cyan-green grayed-out-text text-center big unselectable">{{ userScore | number:'1.0-0' }}</div>
+                <div *ngIf="(userScore >= 800 && userScore < 900) || (userScore >= 66000 && userScore < 130000)" class="the-counter border-cyan grayed-out-text text-center big unselectable">{{ userScore | number:'1.0-0' }}</div>
+                <div *ngIf="(userScore >= 900 && userScore < 1000) || (userScore >= 130000 && userScore < 258000)" class="the-counter border-light-blue grayed-out-text text-center big unselectable">{{ userScore | number:'1.0-0' }}</div>
+                <div *ngIf="(userScore >= 1000 && userScore < 1100) || (userScore >= 258000 && userScore < 514000)" class="the-counter border-blue grayed-out-text text-center big unselectable">{{ userScore | number:'1.0-0' }}</div>
+                <div *ngIf="(userScore >= 1100 && userScore < 1200) || (userScore >= 514000 && userScore < 1026000)" class="the-counter border-purple grayed-out-text text-center big unselectable">{{ userScore | number:'1.0-0' }}</div>
+                <div *ngIf="(userScore >= 1200 && userScore < 2000) || (userScore >= 1026000 && userScore < 2050000)" class="the-counter border-pink grayed-out-text text-center big unselectable">{{ userScore | number:'1.0-0' }}</div>
             </div>
             <div class="row" *ngIf="newRecord">
-                <div class="the-counter border-gray grayed-out-text text-center big unselectable"><span style="color:#09b909;">{{ userScore }}</span></div>
+                <div class="the-counter border-gray grayed-out-text text-center big unselectable"><span style="color:#09b909;">{{ userScore | number:'1.0-0' }}</span></div>
             </div>
             <div class="row">
               <p class="grayed-out-text text-center medium unselectable">Score</p>
