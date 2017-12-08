@@ -2,7 +2,8 @@ export class Player {
   constructor(
     public number = 0,
     public ctx = '',
-    public color = 'teal',
+    public color = '',
+    public teamColor = '',
     public width = 50,
     public height = 50,
     public speedX = 0,

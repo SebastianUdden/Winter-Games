@@ -25,17 +25,29 @@
     <div *ngIf="user.png === 'Robban.png'" class="col-xs-2 img robban"></div>
     <div class="col-xs-7 userInfo-item name">{{user.username}}</div> -->
     <button *ngIf="gameOver" class="btn btn-success" (click)="startNewGame();">New Game</button>
-    <button *ngIf="!gameOver" class="btn btn-warning">Game {{gameCount}}</button>
+
   </div>
   <div class="col-xs-6"></div>
 </div>
 <br />
 
 <div class="row">
+  <div class="col-xs-1"><button *ngIf="!gameOver" class="btn btn-warning playerBox info">Game {{gameCount}}</button></div>
+  <div class="col-xs-2"></div>
+  <div *ngFor="let team of teams" class="col-xs-3 teamBox info" [style.border-color]="team.color">
+    <h1 [style.color]="team.color">{{team.name}}</h1>
+    Wins:<span class="score">{{team.score}}</span>
+    Kills:<span class="kills">{{team.kills}}</span>
+    Team kills:<span class="kills">{{team.teamKills}}</span>
+    Deaths:<span class="deaths">{{team.deaths}}</span>
+  </div>
+  <div class="col-xs-3"></div>
+</div>
+<div class="row">
   <div class="col-xs-2">
-    <div *ngFor="let player of players.slice(0, 4); let i = index" class="playerBox" [style.background-color]="player.color">
+    <div *ngFor="let player of players.slice(0, 4); let i = index" class="playerBox" [style.background-color]="player.color" [style.border-color]="player.teamColor">
       <div class="row playerName">Player {{player.number}}</div>
-      <div class="row playerInfo">
+      <div class="row info">
         W:<span class="score">{{player.score}}</span>
         K:<span class="kills">{{player.kills}}</span>
         D:<span class="deaths">{{player.deaths}}</span>
@@ -44,18 +56,18 @@
         <div class="row" style="margin-bottom: 4px;">
             <div class="col-xs-4"></div>
             <div class="col-xs-8">
-              <button class="btn btn-info arrow" (click)="point('Up', i);" [innerHTML]="player.moveUp | keepHtml"></button>
+              <button class="btn btn-info arrow" (click)="point('Up', i); welcomeScreen = false;" [innerHTML]="player.moveUp | keepHtml"></button>
             </div>
           </div>
           <div class="row">
             <div class="col-xs-4">
-              <button class="btn btn-info arrow" (click)="point('Left', i);" [innerHTML]="player.moveLeft | keepHtml"></button>
+              <button class="btn btn-info arrow" (click)="point('Left', i); welcomeScreen = false;" [innerHTML]="player.moveLeft | keepHtml"></button>
             </div>
             <div class="col-xs-4">
-              <button class="btn btn-info arrow" (click)="point('Down', i);" [innerHTML]="player.moveDown | keepHtml"></button>
+              <button class="btn btn-info arrow" (click)="point('Down', i); welcomeScreen = false;" [innerHTML]="player.moveDown | keepHtml"></button>
             </div>
             <div class="col-xs-4">
-              <button class="btn btn-info arrow" (click)="point('Right', i);" [innerHTML]="player.moveRight | keepHtml"></button>
+              <button class="btn btn-info arrow" (click)="point('Right', i); welcomeScreen = false;" [innerHTML]="player.moveRight | keepHtml"></button>
             </div>
           </div>
       </div>
@@ -67,9 +79,9 @@
     </canvas>
   </div>
   <div class="col-xs-2">
-    <div *ngFor="let player of players.slice(4, 8); let i = index" class="playerBox" [style.background-color]="player.color">
+    <div *ngFor="let player of players.slice(4, 8); let i = index" class="playerBox" [style.background-color]="player.color" [style.border-color]="player.teamColor">
       <div class="row playerName">Player {{player.number}}</div>
-      <div class="row playerInfo">
+      <div class="row info">
         W:<span class="score">{{player.score}}</span>
         K:<span class="kills">{{player.kills}}</span>
         D:<span class="deaths">{{player.deaths}}</span>
@@ -78,18 +90,18 @@
         <div class="row" style="margin-bottom: 4px;">
             <div class="col-xs-4"></div>
             <div class="col-xs-8">
-              <button class="btn btn-info arrow" (click)="point('Up', i);" [innerHTML]="player.moveUp | keepHtml"></button>
+              <button class="btn btn-info arrow" (click)="point('Up', i + 4); welcomeScreen = false;" [innerHTML]="player.moveUp | keepHtml"></button>
             </div>
           </div>
           <div class="row">
             <div class="col-xs-4">
-              <button class="btn btn-info arrow" (click)="point('Left', i);" [innerHTML]="player.moveLeft | keepHtml"></button>
+              <button class="btn btn-info arrow" (click)="point('Left', i + 4); welcomeScreen = false;" [innerHTML]="player.moveLeft | keepHtml"></button>
             </div>
             <div class="col-xs-4">
-              <button class="btn btn-info arrow" (click)="point('Down', i);" [innerHTML]="player.moveDown | keepHtml"></button>
+              <button class="btn btn-info arrow" (click)="point('Down', i + 4); welcomeScreen = false;" [innerHTML]="player.moveDown | keepHtml"></button>
             </div>
             <div class="col-xs-4">
-              <button class="btn btn-info arrow" (click)="point('Right', i);" [innerHTML]="player.moveRight | keepHtml"></button>
+              <button class="btn btn-info arrow" (click)="point('Right', i + 4); welcomeScreen = false;" [innerHTML]="player.moveRight | keepHtml"></button>
             </div>
           </div>
       </div>
@@ -103,9 +115,9 @@
 </div>
 <div class="row">
   <div class="col-xs-3"></div>
-  <div *ngFor="let player of players.slice(8, 12); let i = index" class="col-xs-2 playerBox" [style.background-color]="player.color">
+  <div *ngFor="let player of players.slice(8, 12); let i = index" class="col-xs-2 playerBox" [style.background-color]="player.color" [style.border-color]="player.teamColor">
     <div class="row playerName">Player {{player.number}}</div>
-    <div class="row playerInfo">
+    <div class="row info">
       W:<span class="score">{{player.score}}</span>
       K:<span class="kills">{{player.kills}}</span>
       D:<span class="deaths">{{player.deaths}}</span>
@@ -114,18 +126,18 @@
       <div class="row" style="margin-bottom: 4px;">
           <div class="col-xs-4"></div>
           <div class="col-xs-8">
-            <button class="btn btn-info arrow" (click)="point('Up', i);" [innerHTML]="player.moveUp | keepHtml"></button>
+            <button class="btn btn-info arrow" (click)="point('Up', i + 8); welcomeScreen = false;" [innerHTML]="player.moveUp | keepHtml"></button>
           </div>
         </div>
         <div class="row">
           <div class="col-xs-4">
-            <button class="btn btn-info arrow" (click)="point('Left', i);" [innerHTML]="player.moveLeft | keepHtml"></button>
+            <button class="btn btn-info arrow" (click)="point('Left', i + 8); welcomeScreen = false;" [innerHTML]="player.moveLeft | keepHtml"></button>
           </div>
           <div class="col-xs-4">
-            <button class="btn btn-info arrow" (click)="point('Down', i);" [innerHTML]="player.moveDown | keepHtml"></button>
+            <button class="btn btn-info arrow" (click)="point('Down', i + 8); welcomeScreen = false;" [innerHTML]="player.moveDown | keepHtml"></button>
           </div>
           <div class="col-xs-4">
-            <button class="btn btn-info arrow" (click)="point('Right', i);" [innerHTML]="player.moveRight | keepHtml"></button>
+            <button class="btn btn-info arrow" (click)="point('Right', i + 8); welcomeScreen = false;" [innerHTML]="player.moveRight | keepHtml"></button>
           </div>
         </div>
     </div>

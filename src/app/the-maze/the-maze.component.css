@@ -2,8 +2,36 @@
   border-radius: 8px;
 }
 
+.info {
+  margin-left: 10px;
+  margin-bottom: 3px;
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.teamBox {
+  border: solid 6px rgb(65, 62, 62);
+  border-radius: 8px;
+  background-color: #464646;
+  padding: 15px;
+  margin: 5px;
+  margin-bottom: 25px;
+}
+
+.teamBox h1 {
+  font-size: 35px;
+}
+
+.teamOne {
+  color: #974ca8;
+}
+
+.teamTwo {
+  color: #2f9267;
+}
+
 .playerBox {
-  border: solid 1px rgb(65, 62, 62);
+  border: solid 6px rgb(65, 62, 62);
   border-radius: 8px;
   background-color: #464646;
   padding: 5px;
@@ -16,13 +44,6 @@
   margin-top: 5px;
   margin-bottom: 3px;
   font-size: 27px;
-  font-weight: 600;
-}
-
-.playerInfo {
-  margin-left: 10px;
-  margin-bottom: 3px;
-  font-size: 25px;
   font-weight: 600;
 }
 
