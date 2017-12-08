@@ -35,6 +35,11 @@ export class TheMazeComponent implements OnInit, AfterViewInit {
   public welcomeScreen = true;
   public myGameArea;
   public myGamePiece;
+  public mapWidth = 1080;
+  public mapHeight = 720;
+  public fps = 60;
+  public second = 1000;
+  public refreshRate = this.second / this.fps;
   public baseSpeed = 2;
   public playerSpeed;
 
@@ -73,7 +78,7 @@ export class TheMazeComponent implements OnInit, AfterViewInit {
           this.context = this.gameCanvas.getContext('2d');
           this.interval = setInterval(() => {
             self.updateGameArea();
-          }, 20);
+          }, this.refreshRate);
           window.addEventListener('keydown', function (e) {
             self.welcomeScreen = false;
             self.myGameArea.keys = (self.myGameArea.keys || []);
@@ -111,20 +116,20 @@ export class TheMazeComponent implements OnInit, AfterViewInit {
       this.myGameArea = {
         gameCanvas : (<HTMLCanvasElement>document.getElementById('maze')),
         start : function() {
-            this.gameCanvas.width = 1080;
-            this.gameCanvas.height = 720;
-            this.context = this.gameCanvas.getContext('2d');
-            this.interval = setInterval(() => {
-              self.updateGameArea();
-            }, 20);
-            window.addEventListener('keydown', function (e) {
-              self.welcomeScreen = false;
-              self.myGameArea.keys = (self.myGameArea.keys || []);
-              self.myGameArea.keys[e.keyCode] = true;
-            });
-            window.addEventListener('keyup', function (e) {
-              self.myGameArea.keys[e.keyCode] = false;
-            });
+          this.gameCanvas.width = 1080;
+          this.gameCanvas.height = 720;
+          this.context = this.gameCanvas.getContext('2d');
+          this.interval = setInterval(() => {
+            self.updateGameArea();
+          }, this.refreshRate);
+          window.addEventListener('keydown', function (e) {
+            self.welcomeScreen = false;
+            self.myGameArea.keys = (self.myGameArea.keys || []);
+            self.myGameArea.keys[e.keyCode] = true;
+          });
+          window.addEventListener('keyup', function (e) {
+            self.myGameArea.keys[e.keyCode] = false;
+          });
         },
         clear : function() {
             this.context.clearRect(0, 0, this.gameCanvas.width, this.gameCanvas.height);
@@ -146,68 +151,96 @@ export class TheMazeComponent implements OnInit, AfterViewInit {
   ////////////////////////////////////////////////////////////////////////////////
 
   startGame(color) {
+    const startY = 520;
     this.myGameArea.start();
     const startCtx = this.myGameArea.context;
     if (this.firstGame) {
       this.players[0] = new Player(1, startCtx, color,
-        50, 50, 0, 0, 20, 0,
+        50, 50, 0, 0, 160, startY,
         '2', 'Q', 'W', 'E');
       this.players[1] = new Player(2, startCtx, 'DeepSkyBlue',
-        50, 50, 0, 0, 80, 0,
+        50, 50, 0, 0, 220, startY,
         '5', 'R', 'T', 'Y');
       this.players[2] = new Player(3, startCtx, 'DarkOrange',
-        50, 50, 0, 0, 140, 0,
+        50, 50, 0, 0, 280, startY,
         '8', 'U', 'I', 'O');
       this.players[3] = new Player(4, startCtx, 'Green',
-        50, 50, 0, 0, 200, 0,
+        50, 50, 0, 0, 340, startY,
         '+', 'O', 'P', 'Å');
       this.players[4] = new Player(5, startCtx, 'GoldenRod',
-        50, 50, 0, 0, 260, 0,
+        50, 50, 0, 0, 400, startY,
         'A', '&lt;', 'Z', 'X');
       this.players[5] = new Player(6, startCtx, 'Violet',
-        50, 50, 0, 0, 320, 0,
+        50, 50, 0, 0, 460, startY,
         'F', 'C', 'V', 'B');
       this.players[6] = new Player(7, startCtx, 'LightSteelBlue',
-        50, 50, 0, 0, 380, 0,
+        50, 50, 0, 0, 520, startY,
         'J', 'N', 'M', ',');
       this.players[7] = new Player(8, startCtx, 'Olive',
-        50, 50, 0, 0, 440, 0,
+        50, 50, 0, 0, 580, startY,
         'Ö', '.', '-', 'Ä');
+      this.players[8] = new Player(9, startCtx, 'BurlyWood',
+        50, 50, 0, 0, 640, startY,
+        '^', '&crarr;', '&#x232b;', '`');
+      this.players[9] = new Player(10, startCtx, 'MediumOrchid',
+        50, 50, 0, 0, 700, startY,
+        'Ins', 'Pd', 'Pu', 'End');
+      this.players[10] = new Player(11, startCtx, 'Peru',
+        50, 50, 0, 0, 760, startY,
+        '3', '4', '1', '§');
+      this.players[11] = new Player(12, startCtx, 'SlateGray',
+        50, 50, 0, 0, 820, startY,
+        '&uarr;', '&larr;', '&darr;', '&rarr;');
     }
 
     this.players[0] = new Player(1, startCtx, color,
-                                50, 50, 0, 0, 20, 0,
+                                50, 50, 0, 0, 160, startY,
                                 '2', 'Q', 'W', 'E',
                                 this.players[0].score, this.players[0].kills, this.players[0].deaths);
     this.players[1] = new Player(2, startCtx, 'DeepSkyBlue',
-                                50, 50, 0, 0, 80, 0,
+                                50, 50, 0, 0, 220, startY,
                                 '5', 'R', 'T', 'Y',
                                 this.players[1].score, this.players[1].kills, this.players[1].deaths);
     this.players[2] = new Player(3, startCtx, 'DarkOrange',
-                                50, 50, 0, 0, 140, 0,
+                                50, 50, 0, 0, 280, startY,
                                 '8', 'U', 'I', 'O',
                                 this.players[2].score, this.players[2].kills, this.players[2].deaths);
     this.players[3] = new Player(4, startCtx, 'LightSeaGreen',
-                                50, 50, 0, 0, 200, 0,
+                                50, 50, 0, 0, 340, startY,
                                 '+', 'O', 'P', 'Å',
                                 this.players[3].score, this.players[3].kills, this.players[3].deaths);
     this.players[4] = new Player(5, startCtx, 'GoldenRod',
-                                50, 50, 0, 0, 260, 0,
+                                50, 50, 0, 0, 400, startY,
                                 'A', '&lt;', 'Z', 'X',
                                 this.players[4].score, this.players[4].kills, this.players[4].deaths);
     this.players[5] = new Player(6, startCtx, 'Violet',
-                                50, 50, 0, 0, 320, 0,
+                                50, 50, 0, 0, 460, startY,
                                 'F', 'C', 'V', 'B',
                                 this.players[5].score, this.players[5].kills, this.players[5].deaths);
     this.players[6] = new Player(7, startCtx, 'LightSteelBlue',
-                                50, 50, 0, 0, 380, 0,
+                                50, 50, 0, 0, 520, startY,
                                 'J', 'N', 'M', ',',
                                 this.players[6].score, this.players[6].kills, this.players[6].deaths);
     this.players[7] = new Player(8, startCtx, 'OliveDrab',
-                                50, 50, 0, 0, 440, 0,
+                                50, 50, 0, 0, 580, startY,
                                 'Ö', '.', '-', 'Ä',
                                 this.players[7].score, this.players[7].kills, this.players[7].deaths);
-
+    this.players[8] = new Player(9, startCtx, 'BurlyWood',
+                                50, 50, 0, 0, 640, startY,
+                                '^', '&crarr;', '&#x232b;', '`',
+                                this.players[8].score, this.players[8].kills, this.players[8].deaths);
+    this.players[9] = new Player(10, startCtx, 'MediumOrchid',
+                                50, 50, 0, 0, 700, startY,
+                                'In', 'Pd', 'Pu', 'En',
+                                this.players[9].score, this.players[9].kills, this.players[9].deaths);
+    this.players[10] = new Player(11, startCtx, 'Peru',
+                                50, 50, 0, 0, 760, startY,
+                                '3', '4', '1', '§',
+                                this.players[10].score, this.players[10].kills, this.players[10].deaths);
+    this.players[11] = new Player(12, startCtx, 'SlateGray',
+                                50, 50, 0, 0, 820, startY,
+                                '&uarr;', '&larr;', '&darr;', '&rarr;',
+                                this.players[11].score, this.players[11].kills, this.players[11].deaths);
   }
 
   updateGameArea() {
@@ -240,6 +273,10 @@ export class TheMazeComponent implements OnInit, AfterViewInit {
       this.players[0].crashWith(this.players[5]) ||
       this.players[0].crashWith(this.players[6]) ||
       this.players[0].crashWith(this.players[7]) ||
+      this.players[0].crashWith(this.players[8]) ||
+      this.players[0].crashWith(this.players[9]) ||
+      this.players[0].crashWith(this.players[10]) ||
+      this.players[0].crashWith(this.players[11]) ||
 
       // Player 2
       this.players[1].crashWith(this.players[0]) ||
@@ -249,6 +286,10 @@ export class TheMazeComponent implements OnInit, AfterViewInit {
       this.players[1].crashWith(this.players[5]) ||
       this.players[1].crashWith(this.players[6]) ||
       this.players[1].crashWith(this.players[7]) ||
+      this.players[1].crashWith(this.players[8]) ||
+      this.players[1].crashWith(this.players[9]) ||
+      this.players[1].crashWith(this.players[10]) ||
+      this.players[1].crashWith(this.players[11]) ||
 
       // Player 3
       this.players[2].crashWith(this.players[0]) ||
@@ -258,6 +299,10 @@ export class TheMazeComponent implements OnInit, AfterViewInit {
       this.players[2].crashWith(this.players[5]) ||
       this.players[2].crashWith(this.players[6]) ||
       this.players[2].crashWith(this.players[7]) ||
+      this.players[2].crashWith(this.players[8]) ||
+      this.players[2].crashWith(this.players[9]) ||
+      this.players[2].crashWith(this.players[10]) ||
+      this.players[2].crashWith(this.players[11]) ||
 
       // Player 4
       this.players[3].crashWith(this.players[0]) ||
@@ -267,6 +312,10 @@ export class TheMazeComponent implements OnInit, AfterViewInit {
       this.players[3].crashWith(this.players[5]) ||
       this.players[3].crashWith(this.players[6]) ||
       this.players[3].crashWith(this.players[7]) ||
+      this.players[3].crashWith(this.players[8]) ||
+      this.players[3].crashWith(this.players[9]) ||
+      this.players[3].crashWith(this.players[10]) ||
+      this.players[3].crashWith(this.players[11]) ||
 
       // Player 5
       this.players[4].crashWith(this.players[0]) ||
@@ -276,6 +325,10 @@ export class TheMazeComponent implements OnInit, AfterViewInit {
       this.players[4].crashWith(this.players[5]) ||
       this.players[4].crashWith(this.players[6]) ||
       this.players[4].crashWith(this.players[7]) ||
+      this.players[4].crashWith(this.players[8]) ||
+      this.players[4].crashWith(this.players[9]) ||
+      this.players[4].crashWith(this.players[10]) ||
+      this.players[4].crashWith(this.players[11]) ||
 
       // Player 6
       this.players[5].crashWith(this.players[0]) ||
@@ -285,6 +338,10 @@ export class TheMazeComponent implements OnInit, AfterViewInit {
       this.players[5].crashWith(this.players[4]) ||
       this.players[5].crashWith(this.players[6]) ||
       this.players[5].crashWith(this.players[7]) ||
+      this.players[5].crashWith(this.players[8]) ||
+      this.players[5].crashWith(this.players[9]) ||
+      this.players[5].crashWith(this.players[10]) ||
+      this.players[5].crashWith(this.players[11]) ||
 
       // Player 7
       this.players[6].crashWith(this.players[0]) ||
@@ -294,15 +351,75 @@ export class TheMazeComponent implements OnInit, AfterViewInit {
       this.players[6].crashWith(this.players[4]) ||
       this.players[6].crashWith(this.players[5]) ||
       this.players[6].crashWith(this.players[7]) ||
+      this.players[6].crashWith(this.players[8]) ||
+      this.players[6].crashWith(this.players[9]) ||
+      this.players[6].crashWith(this.players[10]) ||
+      this.players[6].crashWith(this.players[11]) ||
 
-      // Player 7
+      // Player 8
       this.players[7].crashWith(this.players[0]) ||
       this.players[7].crashWith(this.players[1]) ||
       this.players[7].crashWith(this.players[2]) ||
       this.players[7].crashWith(this.players[3]) ||
       this.players[7].crashWith(this.players[4]) ||
       this.players[7].crashWith(this.players[5]) ||
-      this.players[7].crashWith(this.players[6])
+      this.players[7].crashWith(this.players[6]) ||
+      this.players[7].crashWith(this.players[8]) ||
+      this.players[7].crashWith(this.players[9]) ||
+      this.players[7].crashWith(this.players[10]) ||
+      this.players[7].crashWith(this.players[11]) ||
+
+      // Player 9
+      this.players[8].crashWith(this.players[0]) ||
+      this.players[8].crashWith(this.players[1]) ||
+      this.players[8].crashWith(this.players[2]) ||
+      this.players[8].crashWith(this.players[3]) ||
+      this.players[8].crashWith(this.players[4]) ||
+      this.players[8].crashWith(this.players[5]) ||
+      this.players[8].crashWith(this.players[6]) ||
+      this.players[8].crashWith(this.players[7]) ||
+      this.players[8].crashWith(this.players[9]) ||
+      this.players[8].crashWith(this.players[10]) ||
+      this.players[8].crashWith(this.players[11]) ||
+
+      // Player 10
+      this.players[9].crashWith(this.players[0]) ||
+      this.players[9].crashWith(this.players[1]) ||
+      this.players[9].crashWith(this.players[2]) ||
+      this.players[9].crashWith(this.players[3]) ||
+      this.players[9].crashWith(this.players[4]) ||
+      this.players[9].crashWith(this.players[5]) ||
+      this.players[9].crashWith(this.players[6]) ||
+      this.players[9].crashWith(this.players[7]) ||
+      this.players[9].crashWith(this.players[8]) ||
+      this.players[9].crashWith(this.players[10]) ||
+      this.players[9].crashWith(this.players[11]) ||
+
+      // Player 11
+      this.players[10].crashWith(this.players[0]) ||
+      this.players[10].crashWith(this.players[1]) ||
+      this.players[10].crashWith(this.players[2]) ||
+      this.players[10].crashWith(this.players[3]) ||
+      this.players[10].crashWith(this.players[4]) ||
+      this.players[10].crashWith(this.players[5]) ||
+      this.players[10].crashWith(this.players[6]) ||
+      this.players[10].crashWith(this.players[7]) ||
+      this.players[10].crashWith(this.players[8]) ||
+      this.players[10].crashWith(this.players[9]) ||
+      this.players[10].crashWith(this.players[11]) ||
+
+      // Player 12
+      this.players[11].crashWith(this.players[0]) ||
+      this.players[11].crashWith(this.players[1]) ||
+      this.players[11].crashWith(this.players[2]) ||
+      this.players[11].crashWith(this.players[3]) ||
+      this.players[11].crashWith(this.players[4]) ||
+      this.players[11].crashWith(this.players[5]) ||
+      this.players[11].crashWith(this.players[6]) ||
+      this.players[11].crashWith(this.players[7]) ||
+      this.players[11].crashWith(this.players[8]) ||
+      this.players[11].crashWith(this.players[9]) ||
+      this.players[11].crashWith(this.players[10])
     ) {
       // Player 1
       if (this.players[0].eat) {
@@ -313,6 +430,10 @@ export class TheMazeComponent implements OnInit, AfterViewInit {
         if (this.players[0].crashWith(this.players[5])) { this.players[5].destroy(); this.players[0].kills++; }
         if (this.players[0].crashWith(this.players[6])) { this.players[6].destroy(); this.players[0].kills++; }
         if (this.players[0].crashWith(this.players[7])) { this.players[7].destroy(); this.players[0].kills++; }
+        if (this.players[0].crashWith(this.players[8])) { this.players[8].destroy(); this.players[0].kills++; }
+        if (this.players[0].crashWith(this.players[9])) { this.players[9].destroy(); this.players[0].kills++; }
+        if (this.players[0].crashWith(this.players[10])) { this.players[10].destroy(); this.players[0].kills++; }
+        if (this.players[0].crashWith(this.players[11])) { this.players[11].destroy(); this.players[0].kills++; }
       }
 
       // Player 2
@@ -324,6 +445,10 @@ export class TheMazeComponent implements OnInit, AfterViewInit {
         if (this.players[1].crashWith(this.players[5])) { this.players[5].destroy(); this.players[1].kills++; }
         if (this.players[1].crashWith(this.players[6])) { this.players[6].destroy(); this.players[1].kills++; }
         if (this.players[1].crashWith(this.players[7])) { this.players[7].destroy(); this.players[1].kills++; }
+        if (this.players[1].crashWith(this.players[8])) { this.players[8].destroy(); this.players[1].kills++; }
+        if (this.players[1].crashWith(this.players[9])) { this.players[9].destroy(); this.players[1].kills++; }
+        if (this.players[1].crashWith(this.players[10])) { this.players[10].destroy(); this.players[1].kills++; }
+        if (this.players[1].crashWith(this.players[11])) { this.players[11].destroy(); this.players[1].kills++; }
       }
 
       // Player 3
@@ -335,6 +460,10 @@ export class TheMazeComponent implements OnInit, AfterViewInit {
         if (this.players[2].crashWith(this.players[5])) { this.players[5].destroy(); this.players[2].kills++; }
         if (this.players[2].crashWith(this.players[6])) { this.players[6].destroy(); this.players[2].kills++; }
         if (this.players[2].crashWith(this.players[7])) { this.players[7].destroy(); this.players[2].kills++; }
+        if (this.players[2].crashWith(this.players[8])) { this.players[8].destroy(); this.players[2].kills++; }
+        if (this.players[2].crashWith(this.players[9])) { this.players[9].destroy(); this.players[2].kills++; }
+        if (this.players[2].crashWith(this.players[10])) { this.players[10].destroy(); this.players[2].kills++; }
+        if (this.players[2].crashWith(this.players[11])) { this.players[11].destroy(); this.players[2].kills++; }
       }
       // Player 4
       if (this.players[3].eat) {
@@ -345,6 +474,10 @@ export class TheMazeComponent implements OnInit, AfterViewInit {
         if (this.players[3].crashWith(this.players[5])) { this.players[5].destroy(); this.players[3].kills++; }
         if (this.players[3].crashWith(this.players[6])) { this.players[6].destroy(); this.players[3].kills++; }
         if (this.players[3].crashWith(this.players[7])) { this.players[7].destroy(); this.players[3].kills++; }
+        if (this.players[3].crashWith(this.players[8])) { this.players[8].destroy(); this.players[3].kills++; }
+        if (this.players[3].crashWith(this.players[9])) { this.players[9].destroy(); this.players[3].kills++; }
+        if (this.players[3].crashWith(this.players[10])) { this.players[10].destroy(); this.players[3].kills++; }
+        if (this.players[3].crashWith(this.players[11])) { this.players[11].destroy(); this.players[3].kills++; }
       }
 
       // Player 5
@@ -356,6 +489,10 @@ export class TheMazeComponent implements OnInit, AfterViewInit {
         if (this.players[4].crashWith(this.players[5])) { this.players[5].destroy(); this.players[4].kills++; }
         if (this.players[4].crashWith(this.players[6])) { this.players[6].destroy(); this.players[4].kills++; }
         if (this.players[4].crashWith(this.players[7])) { this.players[7].destroy(); this.players[4].kills++; }
+        if (this.players[4].crashWith(this.players[7])) { this.players[8].destroy(); this.players[4].kills++; }
+        if (this.players[4].crashWith(this.players[7])) { this.players[9].destroy(); this.players[4].kills++; }
+        if (this.players[4].crashWith(this.players[7])) { this.players[10].destroy(); this.players[4].kills++; }
+        if (this.players[4].crashWith(this.players[7])) { this.players[11].destroy(); this.players[4].kills++; }
       }
 
       // Player 6
@@ -367,6 +504,10 @@ export class TheMazeComponent implements OnInit, AfterViewInit {
         if (this.players[5].crashWith(this.players[4])) { this.players[4].destroy(); this.players[5].kills++; }
         if (this.players[5].crashWith(this.players[6])) { this.players[6].destroy(); this.players[5].kills++; }
         if (this.players[5].crashWith(this.players[7])) { this.players[7].destroy(); this.players[5].kills++; }
+        if (this.players[5].crashWith(this.players[8])) { this.players[8].destroy(); this.players[5].kills++; }
+        if (this.players[5].crashWith(this.players[9])) { this.players[9].destroy(); this.players[5].kills++; }
+        if (this.players[5].crashWith(this.players[10])) { this.players[10].destroy(); this.players[5].kills++; }
+        if (this.players[5].crashWith(this.players[11])) { this.players[11].destroy(); this.players[5].kills++; }
       }
 
       // Player 7
@@ -378,6 +519,10 @@ export class TheMazeComponent implements OnInit, AfterViewInit {
         if (this.players[6].crashWith(this.players[4])) { this.players[4].destroy(); this.players[6].kills++; }
         if (this.players[6].crashWith(this.players[5])) { this.players[5].destroy(); this.players[6].kills++; }
         if (this.players[6].crashWith(this.players[7])) { this.players[7].destroy(); this.players[6].kills++; }
+        if (this.players[6].crashWith(this.players[8])) { this.players[8].destroy(); this.players[6].kills++; }
+        if (this.players[6].crashWith(this.players[9])) { this.players[9].destroy(); this.players[6].kills++; }
+        if (this.players[6].crashWith(this.players[10])) { this.players[10].destroy(); this.players[6].kills++; }
+        if (this.players[6].crashWith(this.players[11])) { this.players[11].destroy(); this.players[6].kills++; }
       }
 
       // Player 8
@@ -389,6 +534,70 @@ export class TheMazeComponent implements OnInit, AfterViewInit {
         if (this.players[7].crashWith(this.players[4])) { this.players[4].destroy(); this.players[7].kills++; }
         if (this.players[7].crashWith(this.players[5])) { this.players[5].destroy(); this.players[7].kills++; }
         if (this.players[7].crashWith(this.players[6])) { this.players[6].destroy(); this.players[7].kills++; }
+        if (this.players[7].crashWith(this.players[8])) { this.players[8].destroy(); this.players[7].kills++; }
+        if (this.players[7].crashWith(this.players[9])) { this.players[9].destroy(); this.players[7].kills++; }
+        if (this.players[7].crashWith(this.players[10])) { this.players[10].destroy(); this.players[7].kills++; }
+        if (this.players[7].crashWith(this.players[11])) { this.players[11].destroy(); this.players[7].kills++; }
+      }
+
+      // Player 9
+      if (this.players[8].eat) {
+        if (this.players[8].crashWith(this.players[0])) { this.players[0].destroy(); this.players[8].kills++; }
+        if (this.players[8].crashWith(this.players[1])) { this.players[1].destroy(); this.players[8].kills++; }
+        if (this.players[8].crashWith(this.players[2])) { this.players[2].destroy(); this.players[8].kills++; }
+        if (this.players[8].crashWith(this.players[3])) { this.players[3].destroy(); this.players[8].kills++; }
+        if (this.players[8].crashWith(this.players[4])) { this.players[4].destroy(); this.players[8].kills++; }
+        if (this.players[8].crashWith(this.players[5])) { this.players[5].destroy(); this.players[8].kills++; }
+        if (this.players[8].crashWith(this.players[6])) { this.players[6].destroy(); this.players[8].kills++; }
+        if (this.players[8].crashWith(this.players[7])) { this.players[7].destroy(); this.players[8].kills++; }
+        if (this.players[8].crashWith(this.players[9])) { this.players[9].destroy(); this.players[8].kills++; }
+        if (this.players[8].crashWith(this.players[10])) { this.players[10].destroy(); this.players[8].kills++; }
+        if (this.players[8].crashWith(this.players[11])) { this.players[11].destroy(); this.players[8].kills++; }
+      }
+
+      // Player 10
+      if (this.players[9].eat) {
+        if (this.players[9].crashWith(this.players[0])) { this.players[0].destroy(); this.players[9].kills++; }
+        if (this.players[9].crashWith(this.players[1])) { this.players[1].destroy(); this.players[9].kills++; }
+        if (this.players[9].crashWith(this.players[2])) { this.players[2].destroy(); this.players[9].kills++; }
+        if (this.players[9].crashWith(this.players[3])) { this.players[3].destroy(); this.players[9].kills++; }
+        if (this.players[9].crashWith(this.players[4])) { this.players[4].destroy(); this.players[9].kills++; }
+        if (this.players[9].crashWith(this.players[5])) { this.players[5].destroy(); this.players[9].kills++; }
+        if (this.players[9].crashWith(this.players[6])) { this.players[6].destroy(); this.players[9].kills++; }
+        if (this.players[9].crashWith(this.players[7])) { this.players[7].destroy(); this.players[9].kills++; }
+        if (this.players[9].crashWith(this.players[8])) { this.players[8].destroy(); this.players[9].kills++; }
+        if (this.players[9].crashWith(this.players[10])) { this.players[10].destroy(); this.players[9].kills++; }
+        if (this.players[9].crashWith(this.players[11])) { this.players[11].destroy(); this.players[9].kills++; }
+      }
+
+      // Player 11
+      if (this.players[10].eat) {
+        if (this.players[10].crashWith(this.players[0])) { this.players[0].destroy(); this.players[10].kills++; }
+        if (this.players[10].crashWith(this.players[1])) { this.players[1].destroy(); this.players[10].kills++; }
+        if (this.players[10].crashWith(this.players[2])) { this.players[2].destroy(); this.players[10].kills++; }
+        if (this.players[10].crashWith(this.players[3])) { this.players[3].destroy(); this.players[10].kills++; }
+        if (this.players[10].crashWith(this.players[4])) { this.players[4].destroy(); this.players[10].kills++; }
+        if (this.players[10].crashWith(this.players[5])) { this.players[5].destroy(); this.players[10].kills++; }
+        if (this.players[10].crashWith(this.players[6])) { this.players[6].destroy(); this.players[10].kills++; }
+        if (this.players[10].crashWith(this.players[7])) { this.players[7].destroy(); this.players[10].kills++; }
+        if (this.players[10].crashWith(this.players[8])) { this.players[8].destroy(); this.players[10].kills++; }
+        if (this.players[10].crashWith(this.players[9])) { this.players[9].destroy(); this.players[10].kills++; }
+        if (this.players[10].crashWith(this.players[11])) { this.players[11].destroy(); this.players[10].kills++; }
+      }
+
+      // Player 12
+      if (this.players[11].eat) {
+        if (this.players[11].crashWith(this.players[0])) { this.players[0].destroy(); this.players[11].kills++; }
+        if (this.players[11].crashWith(this.players[1])) { this.players[1].destroy(); this.players[11].kills++; }
+        if (this.players[11].crashWith(this.players[2])) { this.players[2].destroy(); this.players[11].kills++; }
+        if (this.players[11].crashWith(this.players[3])) { this.players[3].destroy(); this.players[11].kills++; }
+        if (this.players[11].crashWith(this.players[4])) { this.players[4].destroy(); this.players[11].kills++; }
+        if (this.players[11].crashWith(this.players[5])) { this.players[5].destroy(); this.players[11].kills++; }
+        if (this.players[11].crashWith(this.players[6])) { this.players[6].destroy(); this.players[11].kills++; }
+        if (this.players[11].crashWith(this.players[7])) { this.players[7].destroy(); this.players[11].kills++; }
+        if (this.players[11].crashWith(this.players[8])) { this.players[8].destroy(); this.players[11].kills++; }
+        if (this.players[11].crashWith(this.players[9])) { this.players[9].destroy(); this.players[11].kills++; }
+        if (this.players[11].crashWith(this.players[10])) { this.players[10].destroy(); this.players[11].kills++; }
       }
     } else {
       this.myGameArea.clear();
@@ -458,6 +667,30 @@ export class TheMazeComponent implements OnInit, AfterViewInit {
       if (this.myGameArea.keys && this.myGameArea.keys[189]) { this.point('Down', 7); }
       if (this.myGameArea.keys && this.myGameArea.keys[222]) { this.point('Right', 7); }
 
+      // Player 9
+      if (this.myGameArea.keys && this.myGameArea.keys[186]) { this.point('Up', 8); }
+      if (this.myGameArea.keys && this.myGameArea.keys[191]) { this.point('Left', 8); }
+      if (this.myGameArea.keys && this.myGameArea.keys[13]) { this.point('Down', 8); }
+      if (this.myGameArea.keys && this.myGameArea.keys[8]) { this.point('Right', 8); }
+
+      // Player 10
+      if (this.myGameArea.keys && this.myGameArea.keys[45]) { this.point('Up', 9); }
+      if (this.myGameArea.keys && this.myGameArea.keys[34]) { this.point('Left', 9); }
+      if (this.myGameArea.keys && this.myGameArea.keys[33]) { this.point('Down', 9); }
+      if (this.myGameArea.keys && this.myGameArea.keys[35]) { this.point('Right', 9); }
+
+      // Player 11
+      if (this.myGameArea.keys && this.myGameArea.keys[51]) { this.point('Up', 10); }
+      if (this.myGameArea.keys && this.myGameArea.keys[52]) { this.point('Left', 10); }
+      if (this.myGameArea.keys && this.myGameArea.keys[49]) { this.point('Down', 10); }
+      if (this.myGameArea.keys && this.myGameArea.keys[220]) { this.point('Right', 10); }
+
+      // Player 12
+      if (this.myGameArea.keys && this.myGameArea.keys[38]) { this.point('Up', 11); }
+      if (this.myGameArea.keys && this.myGameArea.keys[37]) { this.point('Left', 11); }
+      if (this.myGameArea.keys && this.myGameArea.keys[40]) { this.point('Down', 11); }
+      if (this.myGameArea.keys && this.myGameArea.keys[39]) { this.point('Right', 11); }
+
       for (let i = 0; i < this.players.length; i++) {
         this.players[i].newPos();
         this.players[i].update();
@@ -496,262 +729,8 @@ export class TheMazeComponent implements OnInit, AfterViewInit {
     this.players[player].direction = direction;
   }
 
-  moveUp(player) {
-    switch (player) {
-      case 0:
-        this.players[0].direction = 'Up';
-        if (this.players[0].y > 2) {
-          this.players[0].speedY -= this.playerSpeed;
-        }
-        break;
-      case 1:
-        this.players[1].direction = 'Up';
-        if (this.players[1].y > 2) {
-          this.players[1].speedY -= this.playerSpeed;
-        }
-        break;
-      case 2:
-        this.players[2].direction = 'Up';
-        if (this.players[2].y > 2) {
-          this.players[2].speedY -= this.playerSpeed;
-        }
-        break;
-      case 3:
-        this.players[3].direction = 'Up';
-        if (this.players[3].y > 2) {
-          this.players[3].speedY -= this.playerSpeed;
-        }
-        break;
-      case 4:
-        this.players[4].direction = 'Up';
-        if (this.players[4].y > 2) {
-          this.players[4].speedY -= this.playerSpeed;
-        }
-        break;
-      case 5:
-        this.players[5].direction = 'Up';
-        if (this.players[5].y > 2) {
-          this.players[5].speedY -= this.playerSpeed;
-        }
-        break;
-      case 6:
-        this.players[6].direction = 'Up';
-        if (this.players[6].y > 2) {
-          this.players[6].speedY -= this.playerSpeed;
-        }
-        break;
-      case 7:
-        this.players[7].direction = 'Up';
-        if (this.players[7].y > 2) {
-          this.players[7].speedY -= this.playerSpeed;
-        }
-        break;
-      default:
-        break;
-    }
-  }
-
-  moveDown(player) {
-    switch (player) {
-      case 0:
-        this.players[0].direction = 'Down';
-        if (this.players[0].y < 663) {
-          this.players[0].speedY += this.playerSpeed;
-        }
-        break;
-      case 1:
-        this.players[1].direction = 'Down';
-        if (this.players[1].y < 663) {
-          this.players[1].speedY += this.playerSpeed;
-        }
-        break;
-      case 2:
-        this.players[2].direction = 'Down';
-        if (this.players[2].y < 663) {
-          this.players[2].speedY += this.playerSpeed;
-        }
-        break;
-      case 3:
-        this.players[3].direction = 'Down';
-        if (this.players[3].y < 663) {
-          this.players[3].speedY += this.playerSpeed;
-        }
-        break;
-      case 4:
-        this.players[4].direction = 'Down';
-        if (this.players[4].y < 663) {
-          this.players[4].speedY += this.playerSpeed;
-        }
-        break;
-      case 5:
-        this.players[5].direction = 'Down';
-        if (this.players[5].y < 663) {
-          this.players[5].speedY += this.playerSpeed;
-        }
-        break;
-      case 6:
-        this.players[6].direction = 'Down';
-        if (this.players[6].y < 663) {
-          this.players[6].speedY += this.playerSpeed;
-        }
-        break;
-      case 7:
-        this.players[7].direction = 'Down';
-        if (this.players[7].y < 663) {
-          this.players[7].speedY += this.playerSpeed;
-        }
-        break;
-      default:
-        break;
-    }
-  }
-
-  moveLeft(player) {
-    switch (player) {
-      case 0:
-        this.players[0].direction = 'Left';
-        if (this.players[0].x > 2) {
-          this.players[0].speedX -= this.playerSpeed;
-        }
-        break;
-      case 1:
-        this.players[1].direction = 'Left';
-        if (this.players[1].x > 2) {
-          this.players[1].speedX -= this.playerSpeed;
-        }
-        break;
-      case 2:
-        this.players[2].direction = 'Left';
-        if (this.players[2].x > 2) {
-          this.players[2].speedX -= this.playerSpeed;
-        }
-        break;
-      case 3:
-        this.players[3].direction = 'Left';
-        if (this.players[3].x > 2) {
-          this.players[3].speedX -= this.playerSpeed;
-        }
-        break;
-      case 4:
-        this.players[4].direction = 'Left';
-        if (this.players[4].x > 2) {
-          this.players[4].speedX -= this.playerSpeed;
-        }
-        break;
-      case 5:
-        this.players[5].direction = 'Left';
-        if (this.players[5].x > 2) {
-          this.players[5].speedX -= this.playerSpeed;
-        }
-        break;
-      case 6:
-        this.players[6].direction = 'Left';
-        if (this.players[6].x > 2) {
-          this.players[6].speedX -= this.playerSpeed;
-        }
-        break;
-      case 7:
-        this.players[7].direction = 'Left';
-        if (this.players[7].x > 2) {
-          this.players[7].speedX -= this.playerSpeed;
-        }
-        break;
-      default:
-        break;
-    }
-  }
-
-  moveRight(player) {
-    switch (player) {
-      case 0:
-        this.players[0].direction = 'Right';
-        if (this.players[0].x < 1021) {
-          this.players[0].speedX += this.playerSpeed;
-        }
-        break;
-      case 1:
-        this.players[1].direction = 'Right';
-        if (this.players[1].x < 1021) {
-          this.players[1].speedX += this.playerSpeed;
-        }
-        break;
-      case 2:
-        this.players[2].direction = 'Right';
-        if (this.players[2].x < 1021) {
-          this.players[2].speedX += this.playerSpeed;
-        }
-        break;
-      case 3:
-        this.players[3].direction = 'Right';
-        if (this.players[3].x < 1021) {
-          this.players[3].speedX += this.playerSpeed;
-        }
-        break;
-      case 4:
-        this.players[4].direction = 'Right';
-        if (this.players[4].x < 1021) {
-          this.players[4].speedX += this.playerSpeed;
-        }
-        break;
-      case 5:
-        this.players[5].direction = 'Right';
-        if (this.players[5].x < 1021) {
-          this.players[5].speedX += this.playerSpeed;
-        }
-        break;
-      case 6:
-        this.players[6].direction = 'Right';
-        if (this.players[6].x < 1021) {
-          this.players[6].speedX += this.playerSpeed;
-        }
-        break;
-      case 7:
-        this.players[7].direction = 'Right';
-        if (this.players[7].x < 1021) {
-          this.players[7].speedX += this.playerSpeed;
-        }
-        break;
-      default:
-        break;
-    }
-  }
-
   stopMove(player) {
-    switch (player) {
-      case 0:
-        this.players[0].speedX = 0;
-        this.players[0].speedY = 0;
-        break;
-      case 1:
-        this.players[1].speedX = 0;
-        this.players[1].speedY = 0;
-        break;
-      case 2:
-        this.players[2].speedX = 0;
-        this.players[2].speedY = 0;
-        break;
-      case 3:
-        this.players[3].speedX = 0;
-        this.players[3].speedY = 0;
-        break;
-      case 4:
-        this.players[4].speedX = 0;
-        this.players[4].speedY = 0;
-        break;
-      case 5:
-        this.players[5].speedX = 0;
-        this.players[5].speedY = 0;
-        break;
-      case 6:
-        this.players[6].speedX = 0;
-        this.players[6].speedY = 0;
-        break;
-      case 7:
-        this.players[7].speedX = 0;
-        this.players[7].speedY = 0;
-        break;
-      default:
-        break;
-    }
+    this.players[player].speedX = 0;
+    this.players[player].speedY = 0;
   }
 }

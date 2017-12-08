@@ -67,7 +67,7 @@
     </canvas>
   </div>
   <div class="col-xs-2">
-    <div *ngFor="let player of players.slice(4, players.length); let i = index" class="playerBox" [style.background-color]="player.color">
+    <div *ngFor="let player of players.slice(4, 8); let i = index" class="playerBox" [style.background-color]="player.color">
       <div class="row playerName">Player {{player.number}}</div>
       <div class="row playerInfo">
         W:<span class="score">{{player.score}}</span>
@@ -100,6 +100,36 @@
       Canvas is not supported!
     </canvas>
   </div> -->
+</div>
+<div class="row">
+  <div class="col-xs-3"></div>
+  <div *ngFor="let player of players.slice(8, 12); let i = index" class="col-xs-2 playerBox" [style.background-color]="player.color">
+    <div class="row playerName">Player {{player.number}}</div>
+    <div class="row playerInfo">
+      W:<span class="score">{{player.score}}</span>
+      K:<span class="kills">{{player.kills}}</span>
+      D:<span class="deaths">{{player.deaths}}</span>
+    </div>
+    <div class="arrows">
+      <div class="row" style="margin-bottom: 4px;">
+          <div class="col-xs-4"></div>
+          <div class="col-xs-8">
+            <button class="btn btn-info arrow" (click)="point('Up', i);" [innerHTML]="player.moveUp | keepHtml"></button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-4">
+            <button class="btn btn-info arrow" (click)="point('Left', i);" [innerHTML]="player.moveLeft | keepHtml"></button>
+          </div>
+          <div class="col-xs-4">
+            <button class="btn btn-info arrow" (click)="point('Down', i);" [innerHTML]="player.moveDown | keepHtml"></button>
+          </div>
+          <div class="col-xs-4">
+            <button class="btn btn-info arrow" (click)="point('Right', i);" [innerHTML]="player.moveRight | keepHtml"></button>
+          </div>
+        </div>
+    </div>
+  </div>
 </div>
 <!-- <div class="row">
   <h3>12 Player - Controls</h3>
