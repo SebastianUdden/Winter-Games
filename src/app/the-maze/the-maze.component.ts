@@ -229,13 +229,6 @@ export class TheMazeComponent implements OnInit, AfterViewInit {
       } else if (this.players[i].direction === 'Right' && this.players[i].x < 1021) {
         this.players[i].speedX += this.playerSpeed;
       }
-      // else {
-      //   alert(this.players[i].direction);
-      // }
-      // else {
-      //   this.players[i].x = 510;
-      //   this.players[i].y = 330;
-      // }
     }
 
     if (
