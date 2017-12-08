@@ -1,3 +1,54 @@
+.canvas {
+  border-radius: 8px;
+}
+
+.playerBox {
+  border: solid 1px rgb(65, 62, 62);
+  border-radius: 8px;
+  background-color: #464646;
+  padding: 5px;
+  margin: 5px;
+  width: 200px;
+}
+
+.playerName {
+  margin-left: 10px;
+  margin-top: 5px;
+  margin-bottom: 3px;
+  font-size: 27px;
+  font-weight: 600;
+}
+
+.playerInfo {
+  margin-left: 10px;
+  margin-bottom: 3px;
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.score {
+  color: rgb(172, 131, 20);
+}
+
+.kills {
+  color: rgb(54, 194, 54);
+}
+
+.deaths {
+  color: rgb(211, 55, 55);
+}
+
+.arrows {
+  margin-left: 10px;
+  margin-right: 50px;
+}
+
+.arrow {
+  margin: 2px;
+  width: 40px !important;
+  background-color: #2e2c2c;
+}
+
 .userInfo-item {
   padding: 5px;
   font-size:25px;

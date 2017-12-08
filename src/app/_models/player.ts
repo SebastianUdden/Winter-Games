@@ -9,15 +9,28 @@ export class Player {
     public speedY = 0,
     public x = 50,
     public y = 50,
+    public moveUp = '',
+    public moveLeft = '',
+    public moveDown = '',
+    public moveRight = '',
+    public score = 0,
+    public kills = 0,
+    public deaths = 0,
     public mouth = 6,
     public direction = 'Up',
     public eat = false,
     public dead = false,
+    public killAnimation = 0,
+    public killAnimationDuration = 45,
+    public mouthColor = 'red',
     public newPos = function() {
       this.x += this.speedX;
       this.y += this.speedY;
     },
     public crashWith = function(otherobj) {
+      // if (this.eat) {
+      //   otherobj.destroy(); this.kills++;
+      // }
       const myleft = this.x;
       const myright = this.x + (this.width);
       const mytop = this.y;
@@ -48,31 +61,36 @@ export class Player {
         crash = true;
         if (otherobj.direction !== 'Down') { this.eat = true; } else {
           this.y += 10;
+          this.eat = false;
         }
       }
       if (alignedVertically && (lowerThanTop && !lowerThanTopEdge) && this.direction === 'Down') {
         crash = true;
         if (otherobj.direction !== 'Up') { this.eat = true; } else {
           this.y -= 10;
+          this.eat = false;
         }
       }
       if (alignedHorizontally && (higherThanRight && !higherThanRightEdge) && this.direction === 'Left') {
         crash = true;
         if (otherobj.direction !== 'Right') { this.eat = true; } else {
           this.x += 10;
+          this.eat = false;
         }
       }
       if (alignedHorizontally && (lowerThanLeft && !lowerThanLeftEdge) && this.direction === 'Right') {
         crash = true;
         if (otherobj.direction !== 'Left') { this.eat = true; } else {
           this.x -= 10;
+          this.eat = false;
         }
       }
       return crash;
     },
-    public destroy = function(playerNumber) {
+    public destroy = function() {
       this.dead = true;
-      this.x = playerNumber - 13;
+      this.deaths++;
+      this.x = this.number - 23;
       this.y = 0;
       this.width = 0;
       this.height = 0;
@@ -80,7 +98,22 @@ export class Player {
     public update = function() {
       this.ctx.fillStyle = this.color;
       this.ctx.fillRect(this.x, this.y, this.width, this.height);
-      this.ctx.fillStyle = 'Red';
+      this.ctx.fillStyle = this.mouthColor;
+      if (this.eat && this.killAnimation < this.killAnimationDuration) {
+        if (this.killAnimation % 15 === 0) {
+          this.mouthColor = 'Red';
+          this.mouth = 8;
+        } else if (this.killAnimation % 15 === 4) {
+          this.mouthColor = 'Yellow';
+          this.mouth = 12;
+        }
+        this.killAnimation++;
+      } else {
+        this.ctx.fillStyle = 'Red';
+        this.mouth = 6;
+        this.eat = false;
+        this.killAnimation = 0;
+      }
       if (this.direction === 'Up') {
         this.ctx.fillRect(this.x, this.y, this.width, this.mouth);
       }

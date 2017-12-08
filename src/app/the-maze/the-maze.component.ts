@@ -21,6 +21,9 @@ import { User } from '../_models/user';
 export class TheMazeComponent implements OnInit, AfterViewInit {
   @ViewChild('maze') mazeCanvas: ElementRef;
   public context: CanvasRenderingContext2D;
+  public gameCount = 1;
+  public firstGame = true;
+  public gameOver = true;
   public players = [
     new Player,
     new Player,
@@ -32,7 +35,8 @@ export class TheMazeComponent implements OnInit, AfterViewInit {
   public welcomeScreen = true;
   public myGameArea;
   public myGamePiece;
-  public speed;
+  public baseSpeed = 2;
+  public playerSpeed;
 
   constructor(
     private userService: UserService,
@@ -47,8 +51,11 @@ export class TheMazeComponent implements OnInit, AfterViewInit {
   }
 
   startNewGame() {
+    this.firstGame = false;
+    this.gameOver = false;
+    this.gameCount++;
     const self = this;
-    self.speed = 4;
+    self.playerSpeed = this.baseSpeed;
     self.welcomeScreen = true;
 
     // Generic variables
@@ -88,9 +95,11 @@ export class TheMazeComponent implements OnInit, AfterViewInit {
   }
   ngAfterViewInit(): void {
     window.onload = () => {
+      this.firstGame = true;
+      this.gameOver = false;
       const self = this;
-      self.speed = 4;
       self.welcomeScreen = true;
+      self.playerSpeed = this.baseSpeed;
 
       // Generic variables
       const fillColor = '#702121';
@@ -121,7 +130,7 @@ export class TheMazeComponent implements OnInit, AfterViewInit {
             this.context.clearRect(0, 0, this.gameCanvas.width, this.gameCanvas.height);
         },
         stop : function() {
-            clearInterval(this.interval);
+          clearInterval(this.interval);
         }
       };
       this.startGame(drawColor2);
@@ -139,144 +148,260 @@ export class TheMazeComponent implements OnInit, AfterViewInit {
   startGame(color) {
     this.myGameArea.start();
     const startCtx = this.myGameArea.context;
-    this.players[0] = new Player(1, startCtx, color, 50, 50, 0, 0, 20);
-    this.players[1] = new Player(2, startCtx, 'DeepSkyBlue', 50, 50, 0, 0, 80);
-    this.players[2] = new Player(3, startCtx, 'Yellow', 50, 50, 0, 0, 140);
-    this.players[3] = new Player(4, startCtx, 'Green', 50, 50, 0, 0, 200);
+    if (this.firstGame) {
+      this.players[0] = new Player(1, startCtx, color,
+        50, 50, 0, 0, 20, 0,
+        '2', 'Q', 'W', 'E');
+      this.players[1] = new Player(2, startCtx, 'DeepSkyBlue',
+        50, 50, 0, 0, 80, 0,
+        '5', 'R', 'T', 'Y');
+      this.players[2] = new Player(3, startCtx, 'DarkOrange',
+        50, 50, 0, 0, 140, 0,
+        '8', 'U', 'I', 'O');
+      this.players[3] = new Player(4, startCtx, 'Green',
+        50, 50, 0, 0, 200, 0,
+        '+', 'O', 'P', 'Å');
+      this.players[4] = new Player(5, startCtx, 'GoldenRod',
+        50, 50, 0, 0, 260, 0,
+        'A', '&lt;', 'Z', 'X');
+      this.players[5] = new Player(6, startCtx, 'Violet',
+        50, 50, 0, 0, 320, 0,
+        'F', 'C', 'V', 'B');
+      this.players[6] = new Player(7, startCtx, 'LightSteelBlue',
+        50, 50, 0, 0, 380, 0,
+        'J', 'N', 'M', ',');
+      this.players[7] = new Player(8, startCtx, 'Olive',
+        50, 50, 0, 0, 440, 0,
+        'Ö', '.', '-', 'Ä');
+    }
+
+    this.players[0] = new Player(1, startCtx, color,
+                                50, 50, 0, 0, 20, 0,
+                                '2', 'Q', 'W', 'E',
+                                this.players[0].score, this.players[0].kills, this.players[0].deaths);
+    this.players[1] = new Player(2, startCtx, 'DeepSkyBlue',
+                                50, 50, 0, 0, 80, 0,
+                                '5', 'R', 'T', 'Y',
+                                this.players[1].score, this.players[1].kills, this.players[1].deaths);
+    this.players[2] = new Player(3, startCtx, 'DarkOrange',
+                                50, 50, 0, 0, 140, 0,
+                                '8', 'U', 'I', 'O',
+                                this.players[2].score, this.players[2].kills, this.players[2].deaths);
+    this.players[3] = new Player(4, startCtx, 'LightSeaGreen',
+                                50, 50, 0, 0, 200, 0,
+                                '+', 'O', 'P', 'Å',
+                                this.players[3].score, this.players[3].kills, this.players[3].deaths);
+    this.players[4] = new Player(5, startCtx, 'GoldenRod',
+                                50, 50, 0, 0, 260, 0,
+                                'A', '&lt;', 'Z', 'X',
+                                this.players[4].score, this.players[4].kills, this.players[4].deaths);
+    this.players[5] = new Player(6, startCtx, 'Violet',
+                                50, 50, 0, 0, 320, 0,
+                                'F', 'C', 'V', 'B',
+                                this.players[5].score, this.players[5].kills, this.players[5].deaths);
+    this.players[6] = new Player(7, startCtx, 'LightSteelBlue',
+                                50, 50, 0, 0, 380, 0,
+                                'J', 'N', 'M', ',',
+                                this.players[6].score, this.players[6].kills, this.players[6].deaths);
+    this.players[7] = new Player(8, startCtx, 'OliveDrab',
+                                50, 50, 0, 0, 440, 0,
+                                'Ö', '.', '-', 'Ä',
+                                this.players[7].score, this.players[7].kills, this.players[7].deaths);
+
   }
 
   updateGameArea() {
+    this.playerSpeed = this.baseSpeed;
+
+    if (this.welcomeScreen) {
+      this.playerSpeed = this.baseSpeed;
+    }
+    for (let i = 0; i < this.players.length; i++) {
+      this.players[i].speedX = 0;
+      this.players[i].speedY = 0;
+
+      if (this.players[i].direction === 'Up' && this.players[i].y > 2) {
+        this.players[i].speedY -= this.playerSpeed;
+      } else if (this.players[i].direction === 'Left' && this.players[i].x > 2) {
+        this.players[i].speedX -= this.playerSpeed;
+      } else if (this.players[i].direction === 'Down' && this.players[i].y < 663) {
+        this.players[i].speedY += this.playerSpeed;
+      } else if (this.players[i].direction === 'Right' && this.players[i].x < 1021) {
+        this.players[i].speedX += this.playerSpeed;
+      }
+      // else {
+      //   alert(this.players[i].direction);
+      // }
+      // else {
+      //   this.players[i].x = 510;
+      //   this.players[i].y = 330;
+      // }
+    }
+
     if (
       // Player 1
       this.players[0].crashWith(this.players[1]) ||
       this.players[0].crashWith(this.players[2]) ||
       this.players[0].crashWith(this.players[3]) ||
+      this.players[0].crashWith(this.players[4]) ||
+      this.players[0].crashWith(this.players[5]) ||
+      this.players[0].crashWith(this.players[6]) ||
+      this.players[0].crashWith(this.players[7]) ||
 
       // Player 2
       this.players[1].crashWith(this.players[0]) ||
       this.players[1].crashWith(this.players[2]) ||
       this.players[1].crashWith(this.players[3]) ||
+      this.players[1].crashWith(this.players[4]) ||
+      this.players[1].crashWith(this.players[5]) ||
+      this.players[1].crashWith(this.players[6]) ||
+      this.players[1].crashWith(this.players[7]) ||
 
       // Player 3
       this.players[2].crashWith(this.players[0]) ||
       this.players[2].crashWith(this.players[1]) ||
       this.players[2].crashWith(this.players[3]) ||
+      this.players[2].crashWith(this.players[4]) ||
+      this.players[2].crashWith(this.players[5]) ||
+      this.players[2].crashWith(this.players[6]) ||
+      this.players[2].crashWith(this.players[7]) ||
 
       // Player 4
       this.players[3].crashWith(this.players[0]) ||
       this.players[3].crashWith(this.players[1]) ||
-      this.players[3].crashWith(this.players[2])
+      this.players[3].crashWith(this.players[2]) ||
+      this.players[3].crashWith(this.players[4]) ||
+      this.players[3].crashWith(this.players[5]) ||
+      this.players[3].crashWith(this.players[6]) ||
+      this.players[3].crashWith(this.players[7]) ||
+
+      // Player 5
+      this.players[4].crashWith(this.players[0]) ||
+      this.players[4].crashWith(this.players[1]) ||
+      this.players[4].crashWith(this.players[2]) ||
+      this.players[4].crashWith(this.players[3]) ||
+      this.players[4].crashWith(this.players[5]) ||
+      this.players[4].crashWith(this.players[6]) ||
+      this.players[4].crashWith(this.players[7]) ||
+
+      // Player 6
+      this.players[5].crashWith(this.players[0]) ||
+      this.players[5].crashWith(this.players[1]) ||
+      this.players[5].crashWith(this.players[2]) ||
+      this.players[5].crashWith(this.players[3]) ||
+      this.players[5].crashWith(this.players[4]) ||
+      this.players[5].crashWith(this.players[6]) ||
+      this.players[5].crashWith(this.players[7]) ||
+
+      // Player 7
+      this.players[6].crashWith(this.players[0]) ||
+      this.players[6].crashWith(this.players[1]) ||
+      this.players[6].crashWith(this.players[2]) ||
+      this.players[6].crashWith(this.players[3]) ||
+      this.players[6].crashWith(this.players[4]) ||
+      this.players[6].crashWith(this.players[5]) ||
+      this.players[6].crashWith(this.players[7]) ||
+
+      // Player 7
+      this.players[7].crashWith(this.players[0]) ||
+      this.players[7].crashWith(this.players[1]) ||
+      this.players[7].crashWith(this.players[2]) ||
+      this.players[7].crashWith(this.players[3]) ||
+      this.players[7].crashWith(this.players[4]) ||
+      this.players[7].crashWith(this.players[5]) ||
+      this.players[7].crashWith(this.players[6])
     ) {
       // Player 1
-      if (this.players[0].crashWith(this.players[1])) {
-        if (this.players[0].eat) {
-          this.players[1].destroy(1);
-        } else {
-          this.players[0].x = 5;
-          this.players[0].y = 5;
-        }
-      }
-      if (this.players[0].crashWith(this.players[2])) {
-        if (this.players[0].eat) {
-          this.players[2].destroy(2);
-        } else {
-          this.players[0].x = 5;
-          this.players[0].y = 5;
-        }
-      }
-      if (this.players[0].crashWith(this.players[3])) {
-        if (this.players[0].eat) {
-          this.players[3].destroy(3);
-        } else {
-          this.players[0].x = 5;
-          this.players[0].y = 5;
-        }
+      if (this.players[0].eat) {
+        if (this.players[0].crashWith(this.players[1])) { this.players[1].destroy(); this.players[0].kills++; }
+        if (this.players[0].crashWith(this.players[2])) { this.players[2].destroy(); this.players[0].kills++; }
+        if (this.players[0].crashWith(this.players[3])) { this.players[3].destroy(); this.players[0].kills++; }
+        if (this.players[0].crashWith(this.players[4])) { this.players[4].destroy(); this.players[0].kills++; }
+        if (this.players[0].crashWith(this.players[5])) { this.players[5].destroy(); this.players[0].kills++; }
+        if (this.players[0].crashWith(this.players[6])) { this.players[6].destroy(); this.players[0].kills++; }
+        if (this.players[0].crashWith(this.players[7])) { this.players[7].destroy(); this.players[0].kills++; }
       }
 
       // Player 2
-      if (this.players[1].crashWith(this.players[0])) {
-        if (this.players[1].eat) {
-          this.players[0].destroy(0);
-        } else {
-          this.players[1].x = 5;
-          this.players[1].y = 50;
-        }
-      }
-      if (this.players[1].crashWith(this.players[2])) {
-        if (this.players[1].eat) {
-          this.players[2].destroy(2);
-        } else {
-          this.players[1].x = 5;
-          this.players[1].y = 50;
-        }
-      }
-      if (this.players[1].crashWith(this.players[3])) {
-        if (this.players[1].eat) {
-          this.players[3].destroy(3);
-        } else {
-          this.players[1].x = 5;
-          this.players[1].y = 50;
-        }
+      if (this.players[1].eat) {
+        if (this.players[1].crashWith(this.players[0])) { this.players[0].destroy(); this.players[1].kills++; }
+        if (this.players[1].crashWith(this.players[2])) { this.players[2].destroy(); this.players[1].kills++; }
+        if (this.players[1].crashWith(this.players[3])) { this.players[3].destroy(); this.players[1].kills++; }
+        if (this.players[1].crashWith(this.players[4])) { this.players[4].destroy(); this.players[1].kills++; }
+        if (this.players[1].crashWith(this.players[5])) { this.players[5].destroy(); this.players[1].kills++; }
+        if (this.players[1].crashWith(this.players[6])) { this.players[6].destroy(); this.players[1].kills++; }
+        if (this.players[1].crashWith(this.players[7])) { this.players[7].destroy(); this.players[1].kills++; }
       }
 
       // Player 3
-      if (this.players[2].crashWith(this.players[0])) {
-        if (this.players[2].eat) {
-          this.players[0].destroy(0);
-        } else {
-          this.players[2].x = 5;
-          this.players[2].y = 100;
-        }
+      if (this.players[2].eat) {
+        if (this.players[2].crashWith(this.players[0])) { this.players[0].destroy(); this.players[2].kills++; }
+        if (this.players[2].crashWith(this.players[1])) { this.players[1].destroy(); this.players[2].kills++; }
+        if (this.players[2].crashWith(this.players[3])) { this.players[3].destroy(); this.players[2].kills++; }
+        if (this.players[2].crashWith(this.players[4])) { this.players[4].destroy(); this.players[2].kills++; }
+        if (this.players[2].crashWith(this.players[5])) { this.players[5].destroy(); this.players[2].kills++; }
+        if (this.players[2].crashWith(this.players[6])) { this.players[6].destroy(); this.players[2].kills++; }
+        if (this.players[2].crashWith(this.players[7])) { this.players[7].destroy(); this.players[2].kills++; }
       }
-      if (this.players[2].crashWith(this.players[1])) {
-        if (this.players[2].eat) {
-          this.players[1].destroy(1);
-        } else {
-          this.players[2].x = 5;
-          this.players[2].y = 100;
-        }
-      }
-      if (this.players[2].crashWith(this.players[3])) {
-        if (this.players[2].eat) {
-          this.players[3].destroy(3);
-        } else {
-          this.players[2].x = 5;
-          this.players[2].y = 100;
-        }
+      // Player 4
+      if (this.players[3].eat) {
+        if (this.players[3].crashWith(this.players[0])) { this.players[0].destroy(); this.players[3].kills++; }
+        if (this.players[3].crashWith(this.players[1])) { this.players[1].destroy(); this.players[3].kills++; }
+        if (this.players[3].crashWith(this.players[2])) { this.players[2].destroy(); this.players[3].kills++; }
+        if (this.players[3].crashWith(this.players[4])) { this.players[4].destroy(); this.players[3].kills++; }
+        if (this.players[3].crashWith(this.players[5])) { this.players[5].destroy(); this.players[3].kills++; }
+        if (this.players[3].crashWith(this.players[6])) { this.players[6].destroy(); this.players[3].kills++; }
+        if (this.players[3].crashWith(this.players[7])) { this.players[7].destroy(); this.players[3].kills++; }
       }
 
-      // Player 4
-      if (this.players[3].crashWith(this.players[0])) {
-        if (this.players[3].eat) {
-          this.players[0].destroy(0);
-        } else {
-          this.players[2].x = 5;
-          this.players[2].y = 150;
-        }
+      // Player 5
+      if (this.players[4].eat) {
+        if (this.players[4].crashWith(this.players[0])) { this.players[0].destroy(); this.players[4].kills++; }
+        if (this.players[4].crashWith(this.players[1])) { this.players[1].destroy(); this.players[4].kills++; }
+        if (this.players[4].crashWith(this.players[2])) { this.players[2].destroy(); this.players[4].kills++; }
+        if (this.players[4].crashWith(this.players[3])) { this.players[3].destroy(); this.players[4].kills++; }
+        if (this.players[4].crashWith(this.players[5])) { this.players[5].destroy(); this.players[4].kills++; }
+        if (this.players[4].crashWith(this.players[6])) { this.players[6].destroy(); this.players[4].kills++; }
+        if (this.players[4].crashWith(this.players[7])) { this.players[7].destroy(); this.players[4].kills++; }
       }
-      if (this.players[3].crashWith(this.players[1])) {
-        if (this.players[3].eat) {
-          this.players[1].destroy(1);
-        } else {
-          this.players[2].x = 5;
-          this.players[2].y = 150;
-        }
+
+      // Player 6
+      if (this.players[5].eat) {
+        if (this.players[5].crashWith(this.players[0])) { this.players[0].destroy(); this.players[5].kills++; }
+        if (this.players[5].crashWith(this.players[1])) { this.players[1].destroy(); this.players[5].kills++; }
+        if (this.players[5].crashWith(this.players[2])) { this.players[2].destroy(); this.players[5].kills++; }
+        if (this.players[5].crashWith(this.players[3])) { this.players[3].destroy(); this.players[5].kills++; }
+        if (this.players[5].crashWith(this.players[4])) { this.players[4].destroy(); this.players[5].kills++; }
+        if (this.players[5].crashWith(this.players[6])) { this.players[6].destroy(); this.players[5].kills++; }
+        if (this.players[5].crashWith(this.players[7])) { this.players[7].destroy(); this.players[5].kills++; }
       }
-      if (this.players[3].crashWith(this.players[2])) {
-        if (this.players[3].eat) {
-          this.players[2].destroy(2);
-        } else {
-          this.players[3].x = 5;
-          this.players[3].y = 150;
-        }
+
+      // Player 7
+      if (this.players[6].eat) {
+        if (this.players[6].crashWith(this.players[0])) { this.players[0].destroy(); this.players[6].kills++; }
+        if (this.players[6].crashWith(this.players[1])) { this.players[1].destroy(); this.players[6].kills++; }
+        if (this.players[6].crashWith(this.players[2])) { this.players[2].destroy(); this.players[6].kills++; }
+        if (this.players[6].crashWith(this.players[3])) { this.players[3].destroy(); this.players[6].kills++; }
+        if (this.players[6].crashWith(this.players[4])) { this.players[4].destroy(); this.players[6].kills++; }
+        if (this.players[6].crashWith(this.players[5])) { this.players[5].destroy(); this.players[6].kills++; }
+        if (this.players[6].crashWith(this.players[7])) { this.players[7].destroy(); this.players[6].kills++; }
+      }
+
+      // Player 8
+      if (this.players[7].eat) {
+        if (this.players[7].crashWith(this.players[0])) { this.players[0].destroy(); this.players[7].kills++; }
+        if (this.players[7].crashWith(this.players[1])) { this.players[1].destroy(); this.players[7].kills++; }
+        if (this.players[7].crashWith(this.players[2])) { this.players[2].destroy(); this.players[7].kills++; }
+        if (this.players[7].crashWith(this.players[3])) { this.players[3].destroy(); this.players[7].kills++; }
+        if (this.players[7].crashWith(this.players[4])) { this.players[4].destroy(); this.players[7].kills++; }
+        if (this.players[7].crashWith(this.players[5])) { this.players[5].destroy(); this.players[7].kills++; }
+        if (this.players[7].crashWith(this.players[6])) { this.players[6].destroy(); this.players[7].kills++; }
       }
     } else {
       this.myGameArea.clear();
 
       let deathCount = 0;
       for (let i = 0; i < this.players.length; i++) {
-        this.players[i].speedX = 0;
-        this.players[i].speedY = 0;
         if (this.players[i].dead) {
           deathCount++;
         }
@@ -292,8 +417,65 @@ export class TheMazeComponent implements OnInit, AfterViewInit {
           this.myGameArea.gameCanvas.height / 2);
       }
 
+      // Player 1
+      if (this.myGameArea.keys && this.myGameArea.keys[50]) { this.point('Up', 0); }
+      if (this.myGameArea.keys && this.myGameArea.keys[81]) { this.point('Left', 0); }
+      if (this.myGameArea.keys && this.myGameArea.keys[87]) { this.point('Down', 0); }
+      if (this.myGameArea.keys && this.myGameArea.keys[69]) { this.point('Right', 0); }
+
+      // Player 2
+      if (this.myGameArea.keys && this.myGameArea.keys[53]) { this.point('Up', 1); }
+      if (this.myGameArea.keys && this.myGameArea.keys[82]) { this.point('Left', 1); }
+      if (this.myGameArea.keys && this.myGameArea.keys[84]) { this.point('Down', 1); }
+      if (this.myGameArea.keys && this.myGameArea.keys[89]) { this.point('Right', 1); }
+
+      // Player 3
+      if (this.myGameArea.keys && this.myGameArea.keys[56]) { this.point('Up', 2); }
+      if (this.myGameArea.keys && this.myGameArea.keys[85]) { this.point('Left', 2); }
+      if (this.myGameArea.keys && this.myGameArea.keys[73]) { this.point('Down', 2); }
+      if (this.myGameArea.keys && this.myGameArea.keys[79]) { this.point('Right', 2); }
+
+      // Player 4
+      if (this.myGameArea.keys && this.myGameArea.keys[187]) { this.point('Up', 3); }
+      if (this.myGameArea.keys && this.myGameArea.keys[80]) { this.point('Left', 3); }
+      if (this.myGameArea.keys && this.myGameArea.keys[221]) { this.point('Down', 3); }
+      if (this.myGameArea.keys && this.myGameArea.keys[186]) { this.point('Right', 3); }
+
+      // Player 5
+      if (this.myGameArea.keys && this.myGameArea.keys[65]) { this.point('Up', 4); }
+      if (this.myGameArea.keys && this.myGameArea.keys[226]) { this.point('Left', 4); }
+      if (this.myGameArea.keys && this.myGameArea.keys[90]) { this.point('Down', 4); }
+      if (this.myGameArea.keys && this.myGameArea.keys[88]) { this.point('Right', 4); }
+
+      // Player 6
+      if (this.myGameArea.keys && this.myGameArea.keys[70]) { this.point('Up', 5); }
+      if (this.myGameArea.keys && this.myGameArea.keys[67]) { this.point('Left', 5); }
+      if (this.myGameArea.keys && this.myGameArea.keys[86]) { this.point('Down', 5); }
+      if (this.myGameArea.keys && this.myGameArea.keys[66]) { this.point('Right', 5); }
+
+      // Player 7
+      if (this.myGameArea.keys && this.myGameArea.keys[74]) { this.point('Up', 6); }
+      if (this.myGameArea.keys && this.myGameArea.keys[78]) { this.point('Left', 6); }
+      if (this.myGameArea.keys && this.myGameArea.keys[77]) { this.point('Down', 6); }
+      if (this.myGameArea.keys && this.myGameArea.keys[188]) { this.point('Right', 6); }
+
+      // Player 8
+      if (this.myGameArea.keys && this.myGameArea.keys[192]) { this.point('Up', 7); }
+      if (this.myGameArea.keys && this.myGameArea.keys[190]) { this.point('Left', 7); }
+      if (this.myGameArea.keys && this.myGameArea.keys[189]) { this.point('Down', 7); }
+      if (this.myGameArea.keys && this.myGameArea.keys[222]) { this.point('Right', 7); }
+
+      for (let i = 0; i < this.players.length; i++) {
+        this.players[i].newPos();
+        this.players[i].update();
+      }
+
       if (deathCount === this.players.length - 1) {
+        this.myGameArea.stop();
+        this.gameOver = true;
         for (let i = 0; i < this.players.length; i++) {
+          this.players[i].speedX = 0;
+          this.players[i].speedY = 0;
           if (!this.players[i].dead) {
             this.myGameArea.context.font = '130px Arial';
             this.myGameArea.context.textAlign = 'center';
@@ -310,61 +492,65 @@ export class TheMazeComponent implements OnInit, AfterViewInit {
               'Player ' + this.players[i].number + ' is the winner!',
               this.myGameArea.gameCanvas.width / 2,
               this.myGameArea.gameCanvas.height / 1.63);
+            this.players[i].score++;
           }
         }
-        this.myGameArea.stop();
-      }
-      if (this.myGameArea.keys && this.myGameArea.keys[37]) { this.moveLeft(1); }
-      if (this.myGameArea.keys && this.myGameArea.keys[39]) { this.moveRight(1); }
-      if (this.myGameArea.keys && this.myGameArea.keys[38]) { this.moveUp(1); }
-      if (this.myGameArea.keys && this.myGameArea.keys[40]) { this.moveDown(1); }
-
-      if (this.myGameArea.keys && this.myGameArea.keys[65]) { this.moveLeft(2); }
-      if (this.myGameArea.keys && this.myGameArea.keys[68]) { this.moveRight(2); }
-      if (this.myGameArea.keys && this.myGameArea.keys[87]) { this.moveUp(2); }
-      if (this.myGameArea.keys && this.myGameArea.keys[83]) { this.moveDown(2); }
-
-      if (this.myGameArea.keys && this.myGameArea.keys[67]) { this.moveLeft(3); }
-      if (this.myGameArea.keys && this.myGameArea.keys[66]) { this.moveRight(3); }
-      if (this.myGameArea.keys && this.myGameArea.keys[70]) { this.moveUp(3); }
-      if (this.myGameArea.keys && this.myGameArea.keys[86]) { this.moveDown(3); }
-
-      if (this.myGameArea.keys && this.myGameArea.keys[77]) { this.moveLeft(4); }
-      if (this.myGameArea.keys && this.myGameArea.keys[190]) { this.moveRight(4); }
-      if (this.myGameArea.keys && this.myGameArea.keys[75]) { this.moveUp(4); }
-      if (this.myGameArea.keys && this.myGameArea.keys[188]) { this.moveDown(4); }
-
-      for (let i = 0; i < this.players.length; i++) {
-        this.players[i].newPos();
-        this.players[i].update();
       }
     }
   }
 
+  point(direction, player) {
+    this.players[player].direction = direction;
+  }
+
   moveUp(player) {
     switch (player) {
-      case 1:
+      case 0:
         this.players[0].direction = 'Up';
         if (this.players[0].y > 2) {
-          this.players[0].speedY -= this.speed;
+          this.players[0].speedY -= this.playerSpeed;
+        }
+        break;
+      case 1:
+        this.players[1].direction = 'Up';
+        if (this.players[1].y > 2) {
+          this.players[1].speedY -= this.playerSpeed;
         }
         break;
       case 2:
-        this.players[1].direction = 'Up';
-        if (this.players[1].y > 2) {
-          this.players[1].speedY -= this.speed;
+        this.players[2].direction = 'Up';
+        if (this.players[2].y > 2) {
+          this.players[2].speedY -= this.playerSpeed;
         }
         break;
       case 3:
-        this.players[2].direction = 'Up';
-        if (this.players[2].y > 2) {
-          this.players[2].speedY -= this.speed;
+        this.players[3].direction = 'Up';
+        if (this.players[3].y > 2) {
+          this.players[3].speedY -= this.playerSpeed;
         }
         break;
       case 4:
-        this.players[3].direction = 'Up';
-        if (this.players[3].y > 2) {
-          this.players[3].speedY -= this.speed;
+        this.players[4].direction = 'Up';
+        if (this.players[4].y > 2) {
+          this.players[4].speedY -= this.playerSpeed;
+        }
+        break;
+      case 5:
+        this.players[5].direction = 'Up';
+        if (this.players[5].y > 2) {
+          this.players[5].speedY -= this.playerSpeed;
+        }
+        break;
+      case 6:
+        this.players[6].direction = 'Up';
+        if (this.players[6].y > 2) {
+          this.players[6].speedY -= this.playerSpeed;
+        }
+        break;
+      case 7:
+        this.players[7].direction = 'Up';
+        if (this.players[7].y > 2) {
+          this.players[7].speedY -= this.playerSpeed;
         }
         break;
       default:
@@ -374,28 +560,52 @@ export class TheMazeComponent implements OnInit, AfterViewInit {
 
   moveDown(player) {
     switch (player) {
-      case 1:
+      case 0:
         this.players[0].direction = 'Down';
         if (this.players[0].y < 663) {
-          this.players[0].speedY += this.speed;
+          this.players[0].speedY += this.playerSpeed;
+        }
+        break;
+      case 1:
+        this.players[1].direction = 'Down';
+        if (this.players[1].y < 663) {
+          this.players[1].speedY += this.playerSpeed;
         }
         break;
       case 2:
-        this.players[1].direction = 'Down';
-        if (this.players[1].y < 663) {
-          this.players[1].speedY += this.speed;
+        this.players[2].direction = 'Down';
+        if (this.players[2].y < 663) {
+          this.players[2].speedY += this.playerSpeed;
         }
         break;
       case 3:
-        this.players[2].direction = 'Down';
-        if (this.players[2].y < 663) {
-          this.players[2].speedY += this.speed;
+        this.players[3].direction = 'Down';
+        if (this.players[3].y < 663) {
+          this.players[3].speedY += this.playerSpeed;
         }
         break;
       case 4:
-        this.players[3].direction = 'Down';
-        if (this.players[3].y < 663) {
-          this.players[3].speedY += this.speed;
+        this.players[4].direction = 'Down';
+        if (this.players[4].y < 663) {
+          this.players[4].speedY += this.playerSpeed;
+        }
+        break;
+      case 5:
+        this.players[5].direction = 'Down';
+        if (this.players[5].y < 663) {
+          this.players[5].speedY += this.playerSpeed;
+        }
+        break;
+      case 6:
+        this.players[6].direction = 'Down';
+        if (this.players[6].y < 663) {
+          this.players[6].speedY += this.playerSpeed;
+        }
+        break;
+      case 7:
+        this.players[7].direction = 'Down';
+        if (this.players[7].y < 663) {
+          this.players[7].speedY += this.playerSpeed;
         }
         break;
       default:
@@ -405,28 +615,52 @@ export class TheMazeComponent implements OnInit, AfterViewInit {
 
   moveLeft(player) {
     switch (player) {
-      case 1:
+      case 0:
         this.players[0].direction = 'Left';
         if (this.players[0].x > 2) {
-          this.players[0].speedX -= this.speed;
+          this.players[0].speedX -= this.playerSpeed;
+        }
+        break;
+      case 1:
+        this.players[1].direction = 'Left';
+        if (this.players[1].x > 2) {
+          this.players[1].speedX -= this.playerSpeed;
         }
         break;
       case 2:
-        this.players[1].direction = 'Left';
-        if (this.players[1].x > 2) {
-          this.players[1].speedX -= this.speed;
+        this.players[2].direction = 'Left';
+        if (this.players[2].x > 2) {
+          this.players[2].speedX -= this.playerSpeed;
         }
         break;
       case 3:
-        this.players[2].direction = 'Left';
-        if (this.players[2].x > 2) {
-          this.players[2].speedX -= this.speed;
+        this.players[3].direction = 'Left';
+        if (this.players[3].x > 2) {
+          this.players[3].speedX -= this.playerSpeed;
         }
         break;
       case 4:
-        this.players[3].direction = 'Left';
-        if (this.players[3].x > 2) {
-          this.players[3].speedX -= this.speed;
+        this.players[4].direction = 'Left';
+        if (this.players[4].x > 2) {
+          this.players[4].speedX -= this.playerSpeed;
+        }
+        break;
+      case 5:
+        this.players[5].direction = 'Left';
+        if (this.players[5].x > 2) {
+          this.players[5].speedX -= this.playerSpeed;
+        }
+        break;
+      case 6:
+        this.players[6].direction = 'Left';
+        if (this.players[6].x > 2) {
+          this.players[6].speedX -= this.playerSpeed;
+        }
+        break;
+      case 7:
+        this.players[7].direction = 'Left';
+        if (this.players[7].x > 2) {
+          this.players[7].speedX -= this.playerSpeed;
         }
         break;
       default:
@@ -436,28 +670,52 @@ export class TheMazeComponent implements OnInit, AfterViewInit {
 
   moveRight(player) {
     switch (player) {
-      case 1:
+      case 0:
         this.players[0].direction = 'Right';
         if (this.players[0].x < 1021) {
-          this.players[0].speedX += this.speed;
+          this.players[0].speedX += this.playerSpeed;
+        }
+        break;
+      case 1:
+        this.players[1].direction = 'Right';
+        if (this.players[1].x < 1021) {
+          this.players[1].speedX += this.playerSpeed;
         }
         break;
       case 2:
-        this.players[1].direction = 'Right';
-        if (this.players[1].x < 1021) {
-          this.players[1].speedX += this.speed;
+        this.players[2].direction = 'Right';
+        if (this.players[2].x < 1021) {
+          this.players[2].speedX += this.playerSpeed;
         }
         break;
       case 3:
-        this.players[2].direction = 'Right';
-        if (this.players[2].x < 1021) {
-          this.players[2].speedX += this.speed;
+        this.players[3].direction = 'Right';
+        if (this.players[3].x < 1021) {
+          this.players[3].speedX += this.playerSpeed;
         }
         break;
       case 4:
-        this.players[3].direction = 'Right';
-        if (this.players[3].x < 1021) {
-          this.players[3].speedX += this.speed;
+        this.players[4].direction = 'Right';
+        if (this.players[4].x < 1021) {
+          this.players[4].speedX += this.playerSpeed;
+        }
+        break;
+      case 5:
+        this.players[5].direction = 'Right';
+        if (this.players[5].x < 1021) {
+          this.players[5].speedX += this.playerSpeed;
+        }
+        break;
+      case 6:
+        this.players[6].direction = 'Right';
+        if (this.players[6].x < 1021) {
+          this.players[6].speedX += this.playerSpeed;
+        }
+        break;
+      case 7:
+        this.players[7].direction = 'Right';
+        if (this.players[7].x < 1021) {
+          this.players[7].speedX += this.playerSpeed;
         }
         break;
       default:
@@ -467,21 +725,37 @@ export class TheMazeComponent implements OnInit, AfterViewInit {
 
   stopMove(player) {
     switch (player) {
-      case 1:
+      case 0:
         this.players[0].speedX = 0;
         this.players[0].speedY = 0;
         break;
-      case 2:
+      case 1:
         this.players[1].speedX = 0;
         this.players[1].speedY = 0;
         break;
-      case 3:
+      case 2:
         this.players[2].speedX = 0;
         this.players[2].speedY = 0;
         break;
-      case 4:
+      case 3:
         this.players[3].speedX = 0;
         this.players[3].speedY = 0;
+        break;
+      case 4:
+        this.players[4].speedX = 0;
+        this.players[4].speedY = 0;
+        break;
+      case 5:
+        this.players[5].speedX = 0;
+        this.players[5].speedY = 0;
+        break;
+      case 6:
+        this.players[6].speedX = 0;
+        this.players[6].speedY = 0;
+        break;
+      case 7:
+        this.players[7].speedX = 0;
+        this.players[7].speedY = 0;
         break;
       default:
         break;

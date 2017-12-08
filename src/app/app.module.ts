@@ -28,6 +28,9 @@ import { UserService } from './_services/user.service';
 
 import { TheMazeComponent } from './the-maze/the-maze.component';
 
+// Pipes
+import { EscapeHtmlPipe } from './_pipes/keep-html.pipe';
+
 @NgModule({
   declarations: [
     AdminComponent,
@@ -46,7 +49,10 @@ import { TheMazeComponent } from './the-maze/the-maze.component';
     UsersComponent,
 
     // The Maze classes
-    TheMazeComponent
+    TheMazeComponent,
+
+    // Pipes
+    EscapeHtmlPipe
   ],
   imports: [
     HttpModule,
