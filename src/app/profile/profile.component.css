@@ -1,0 +1,13 @@
+.bossCoin {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center;
+  width: 20px;
+  height: 28px;
+  margin-left: 5px;
+  margin-top: 1.1px;
+  /* background-image: url('../../assets/images/bossItems/bossCoin.png'); */
+  background-image: url('../../assets/images/bossItems/bossCoinSymbol.png');
+}

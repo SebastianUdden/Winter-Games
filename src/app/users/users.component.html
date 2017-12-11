@@ -62,7 +62,7 @@
         <div *ngFor="let u of users" class="userInfo userInfo-row">
           <div *ngIf="user">
             <div *ngIf="u.username === user.username" class="currentUser">
-              <div class="row topRow">
+              <div (click)="selectUser(u);" class="row topRow">
                 <div class="col-xs-1"></div>
                 <div *ngIf="u.png === 'Sebbe.png'" class="col-xs-2 img sebbe"></div>
                 <div *ngIf="u.png === 'Mattis.png'" class="col-xs-2 img mattis"></div>
@@ -78,12 +78,12 @@
                 <div *ngIf="u.png === 'Robban.png'" class="col-xs-2 img robban"></div>
                 <div class="col-xs-7 userInfo-item name">{{u.username}}</div>
               </div>
-              <div class="row">
+              <div (click)="selectUser(u);" class="row">
                 <div class="col-xs-12 centerText userInfo-item score botRow">{{u.score | number:'1.0-0' }}</div>
               </div>
             </div>
             <div *ngIf="u.username !== user.username">
-              <div class="row topRow">
+              <div (click)="selectUser(u);" class="row topRow">
                 <div class="col-xs-1"></div>
                 <div *ngIf="u.png === 'Sebbe.png'" class="col-xs-2 img sebbe"></div>
                 <div *ngIf="u.png === 'Mattis.png'" class="col-xs-2 img mattis"></div>
@@ -99,7 +99,7 @@
                 <div *ngIf="u.png === 'Robban.png'" class="col-xs-2 img robban"></div>
                 <div class="col-xs-7 userInfo-item name">{{u.username}}</div>
               </div>
-              <div class="row">
+              <div (click)="selectUser(u);" class="row">
                 <div class="col-xs-12 centerText userInfo-item score botRow">{{u.score | number:'1.0-0' }}</div>
               </div>
             </div>
@@ -108,12 +108,32 @@
       </div>
 
       <div *ngIf="selectedTab === 2" class="box-content container">
-        <h2>PROFILE - {{user.username}}</h2>
+        <h2 style="text-align:center">{{selectedUser.firstname}} {{selectedUser.lastname}}</h2>
         <hr />
-        <div style="margin-left:9px; margin-top:30px;">
-          <h4>Name: {{user.firstname}} {{user.lastname}}</h4>
-          <h4>Email: {{user.email}}</h4>
-          <h4>Age: 29</h4>
+        <div *ngIf="selectedUser.png === 'Sebbe.png'" class="img userprofile sebbe" style="width: 20em; height: 20em;"></div>
+        <div *ngIf="selectedUser.png === 'Mattis.png'" class="img userprofile mattis" style="width: 20em; height: 20em;"></div>
+        <div *ngIf="selectedUser.png === 'Dennan.png'" class="img userprofile dennan" style="width: 20em; height: 20em;"></div>
+        <div *ngIf="selectedUser.png === 'Robin.png'" class="img userprofile robin" style="width: 20em; height: 20em;"></div>
+        <div *ngIf="selectedUser.png === 'Kling.png'" class="img userprofile kling" style="width: 20em; height: 20em;"></div>
+        <div *ngIf="selectedUser.png === 'Fredde.png'" class="img userprofile fredde" style="width: 20em; height: 20em;"></div>
+        <div *ngIf="selectedUser.png === 'Virre.png'" class="img userprofile virre" style="width: 20em; height: 20em;"></div>
+        <div *ngIf="selectedUser.png === 'Schaeran.png'" class="img userprofile schaeran" style="width: 20em; height: 20em;"></div>
+        <div *ngIf="selectedUser.png === 'Nemer.png'" class="img userprofile nemer" style="width: 20em; height: 20em;"></div>
+        <div *ngIf="selectedUser.png === 'Ivar.png'" class="img userprofile ivar" style="width: 20em; height: 20em;"></div>
+        <div *ngIf="selectedUser.png === 'Amanda.png'" class="img userprofile amanda" style="width: 20em; height: 20em;"></div>
+        <div *ngIf="selectedUser.png === 'Robban.png'" class="img userprofile robban" style="width: 20em; height: 20em;"></div>
+        <!-- <hr /> -->
+        <div class="profileInfo" style="margin-left:9px; margin-top:30px;">
+          <h2>Highscore: <span style="float:right">{{selectedUser.score | number:'1.0-0' }}</span></h2>
+          <h2>Wallet: <span style="float:right;" class="bossCoin"></span> <span style="float:right;">{{selectedUser.wallet | number:'1.0-0' }}</span></h2>
+          <!-- <div class="attribute box"></div>
+          <div class="attribute box"></div>
+          <div class="attribute box"></div>
+          <div class="attribute box"></div> -->
+          <!-- <div class="attribute red">Duke Nukem</div>
+          <div class="attribute blue">SloMo Dude</div>
+          <div class="attribute teal">Ninja Turtle</div> -->
+          <!-- <h4>Age: 29</h4>
           <h4>Occupation: Developer</h4>
           <h4>Sport of Choice: Basketball</h4>
           <h4>Daily-drug: Coffee</h4>
@@ -121,7 +141,7 @@
           <p>Enthusiastically eccentric enduring</p>
           <p>endless events encompassing enemies, </p>
           <p>errors, eggronious eggplants, elderly</p>
-          <p>eskimoes etc.</p>
+          <p>eskimoes etc.</p> -->
         </div>
 
       </div>
@@ -139,9 +159,9 @@
             </label>
           </div>
         </div>
-        <div class="setting">
+        <!-- <div class="setting">
           <div class="settings-left">
-            <span class="setting-label">Marty McFly</span>
+            <span class="setting-label">Time Warp</span>
           </div>
           <div class="settings-right">
             <label class="switch">
@@ -149,8 +169,8 @@
               <span class="slider round"></span>
             </label>
           </div>
-        </div>
-        <div class="setting">
+        </div> -->
+        <!-- <div class="setting">
           <div class="settings-left">
             <span class="setting-label">Secret</span>
           </div>
@@ -171,7 +191,7 @@
               <span class="slider round"></span>
             </label>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>

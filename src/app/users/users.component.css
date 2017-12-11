@@ -223,6 +223,52 @@ input:checked + .slider:before {
   background-position: center;
 }
 
+.userprofile {
+  width: 20em;
+  height: 20em;
+}
+
+.attribute {
+  /* border: rgb(152, 182, 165) 3px solid; */
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center;
+  /* border-radius: 15px; */
+  font-size: 25px;
+  margin-top: 9px;
+  width: 380px;
+  height: 94px;
+}
+
+.bossCoin {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center;
+  width: 20px;
+  height: 28px;
+  margin-left: 5px;
+  margin-top: 1.1px;
+  /* background-image: url('../../assets/images/bossItems/bossCoin.png'); */
+  background-image: url('../../assets/images/bossItems/bossCoinSymbol.png');
+}
+
+.doubleEspresso { background-image: url('../../assets/images/attributes/doubleEspresso.png'); }
+.box { background-image: url('../../assets/images/attributes/box.png'); }
+
+.green { background-color: #14941a; }
+.red { background-color: #941414; }
+.blue { background-color: #141c94; }
+.yellow { background-color: #947214; }
+.teal { background-color: #149474; }
+
+/* .profileInfo h4 {
+  font-size: 25px;
+} */
+
 /*///////////////
 // Media Queries
 ///////////////////////////////////////////////////////////////////////////////*/
@@ -247,12 +293,13 @@ input:checked + .slider:before {
 }
 .img {
   margin-top: 0.3em;
-  width: 3em;
-  height: 3em;
+  width: 3.7em;
+  height: 3.7em;
+  margin-bottom: -0.6em;
 }
 .name {
   margin-top: 0.4em;
-  margin-left: 1.6em;
+  /* margin-left: 1.6em; */
 }
 }
 

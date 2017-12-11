@@ -497,8 +497,8 @@ li {
 
 .random-img {
 	cursor: pointer;
-  width: 8em;
-  height: 8em;
+  width: 10em;
+  height: 10em;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

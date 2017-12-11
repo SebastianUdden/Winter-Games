@@ -118,7 +118,7 @@ export class TheButtonComponent implements OnInit, OnDestroy {
     public gambler = false;
     public maestro = false;
     public grinder = false;
-    public mcFly = false;
+    public mcFly = true;
 
     public comboType: any;
     private lastComboType: any;
@@ -614,6 +614,7 @@ export class TheButtonComponent implements OnInit, OnDestroy {
         const lvl = this.perseverance + ' ' + this.level;
         if (this.user.score < this.userScore) {
           this.user.score = this.userScore;
+          this.user.wallet += this.userScore;
           this.newRecord = true;
         } else {
           this.newRecord = false;

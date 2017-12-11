@@ -30,6 +30,7 @@ import { TheMazeComponent } from './the-maze/the-maze.component';
 
 // Pipes
 import { EscapeHtmlPipe } from './_pipes/keep-html.pipe';
+import { TheStoryComponent } from './the-story/the-story.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,9 @@ import { EscapeHtmlPipe } from './_pipes/keep-html.pipe';
     TheMazeComponent,
 
     // Pipes
-    EscapeHtmlPipe
+    EscapeHtmlPipe,
+
+    TheStoryComponent
   ],
   imports: [
     HttpModule,

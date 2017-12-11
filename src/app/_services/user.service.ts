@@ -71,7 +71,7 @@ export class UserService {
 
   /** POST: add a new user to the server */
   addUser (model: any): Observable<User> {
-    const user = new User(model.firstname, model.lastname, model.email, model.username, model.password, 0, 0, '', false);
+    const user = new User(model.firstname, model.lastname, model.email, model.username, model.password, 0, 0, 0, '', false);
     // const url = `${this.usersUrl}/users/${user.username}`;
     // console.log(user.firstname);
     // console.log(user.lastname);

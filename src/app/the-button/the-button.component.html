@@ -1,4 +1,4 @@
-<div id="showMainSmall" class="mobile">
+<div id="showMainSmall" class="mobile" *ngIf="user">
   <div class="row">
     <div class="mobileLeft"></div>
     <div class="mobileCenter">
@@ -59,7 +59,7 @@
     </div>
   </div>
 </div>
-<div id="showMainBig">
+<div id="showMainBig" *ngIf="user">
   <div *ngIf="showDevValues" class="row">
     <div class="col-lg-1" class="red-text small unselectable">countDown: {{countDown}}</div>
     <div class="col-lg-1" class="red-text small unselectable">noStartValue: {{noStartValue}}</div>
@@ -194,11 +194,10 @@
           </div>
         </div>
 
-        <div class="row">
+        <div class="row" style="margin-top: 3em; margin-bottom: -3em;">
           <div class="row">
             <p class="grayed-out-text text-center medium unselectable">Time <span *ngIf="bonusTime !== 0" class="red-text medium unselectable">+ {{bonusTime}}</span></p>
           </div>
-
           <div class="row">
             <div *ngIf="!gameOn" class="grayed-out-text text-center huge unselectable">0</div>
             <div *ngIf="gameOn && countDown > 5" class="grayed-out-text text-center huge unselectable">{{countDown}}</div>
@@ -340,6 +339,9 @@
           <div *ngIf="gambler">
             <app-dice (comboEvent)="receiveCombo($event)"></app-dice>
           </div>
+          <!-- <div *ngIf="weapons">
+            <app-weapons></app-weapons>
+          </div> -->
         </div>
     </div>
     <div class="col-lg-1 right-bar full-height">

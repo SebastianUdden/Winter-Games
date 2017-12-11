@@ -19,11 +19,12 @@ import { User } from '../_models/user';
 })
 export class UsersComponent implements OnInit {
   public user: User;
+  public selectedUser: User;
   public selectedTab: number;
   public gambler = false;
   public maestro = false;
   public grinder = false;
-  public mcFly = false;
+  public mcFly = true;
 
   @Output() gamblerEvent = new EventEmitter<boolean>();
   @Output() maestroEvent = new EventEmitter<boolean>();
@@ -50,16 +51,17 @@ export class UsersComponent implements OnInit {
   ngOnInit() {
     this.getUsers();
     this.authenticationService.currentUser.subscribe(user => this.user = user);
+    this.selectUser(this.user);
   }
 
   selectTab(tab) {
     this.selectedTab = tab;
     if (this.selectedTab === 3) {
       setTimeout (() => {
-        this.toggle('gambler');
         this.toggle('maestro');
-        this.toggle('grinder');
-        this.toggle('mcFly');
+        // this.toggle('gambler');
+        // this.toggle('grinder');
+        // this.toggle('mcFly');
       }, 1);
     }
   }
@@ -85,6 +87,7 @@ export class UsersComponent implements OnInit {
       this.user.username,
       this.user.password,
       this.user.score,
+      this.user.wallet,
       this.user.playthroughs,
       this.user.level,
       this.user.admin
@@ -121,6 +124,11 @@ export class UsersComponent implements OnInit {
 
   ReverseAlphabetically(array) {
     return array.sort();
+  }
+
+  selectUser(user) {
+    this.selectedUser = user;
+    this.selectTab(2);
   }
 }
 
