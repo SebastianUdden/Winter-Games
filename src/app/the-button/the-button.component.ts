@@ -122,7 +122,7 @@ export class TheButtonComponent implements OnInit, OnDestroy {
 
     public comboType: any;
     private lastComboType: any;
-    private user: User;
+    public user: User;
     private tick: number;
     public timeLimit: number;
     public countDown: number;

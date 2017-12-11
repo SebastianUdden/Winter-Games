@@ -18,8 +18,8 @@
           <li class="wgNav" *ngIf="user"><a *ngIf="user.admin" routerLink="/admin"><span class="fa fa-user-secret"></span> Admin</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right" data-toggle="collapse" data-target="#myNavbar .nav-collapse.in">
-          <li class="wgNav" *ngIf="!user"><a routerLink="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-          <li class="wgNav" *ngIf="user"><a *ngIf="user.username === ''" routerLink="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+          <!-- <li class="wgNav" *ngIf="!user"><a routerLink="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+          <li class="wgNav" *ngIf="user"><a *ngIf="user.username === ''" routerLink="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li> -->
           <li class="wgNav" *ngIf="!user"><a routerLink="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
           <li class="wgNav" *ngIf="user"><a *ngIf="user.username === ''" routerLink="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
           <li class="wgNav" *ngIf="user"><a *ngIf="user.username !== ''" routerLink="/profile"><span class="glyphicon glyphicon-user"></span> {{user.username}}</a></li>
