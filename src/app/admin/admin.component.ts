@@ -24,7 +24,6 @@ export class AdminComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.user = JSON.parse(localStorage.getItem('currentUser'));
     this.authenticationService.currentUser.subscribe(user => this.user = user);
     this.loadAllUsers();
   }
@@ -57,7 +56,6 @@ export class AdminComponent implements OnInit {
     this.userService.updateUser(user);
   }
   loadUser(event: KeyboardEvent) {
-    // const id = Number((<HTMLInputElement>event.target).value);
     const username = (<HTMLInputElement>event.target).value;
     this.userService.getUser(username).subscribe(user => { this.user = user; });
   }

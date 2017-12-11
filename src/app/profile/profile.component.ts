@@ -20,15 +20,7 @@ export class ProfileComponent implements OnInit {
     }
 
   ngOnInit() {
-    // this.user = JSON.parse(localStorage.getItem('currentUser'));
-    // if (this.authenticationService.currentUser) {
-      this.authenticationService.currentUser.subscribe(user => this.user = user);
-    // } else
-    // if (loggedInUser) {
-    //   this.user = JSON.parse(loggedInUser);
-    // } else {
-    //   alert('no user');
-    // }
+    this.authenticationService.currentUser.subscribe(user => this.user = user);
   }
 
   update() {

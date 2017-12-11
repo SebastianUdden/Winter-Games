@@ -15,9 +15,7 @@
   <div *ngIf="user.png === 'Robban.png'" class="img userprofile robban" style="width: 20em; height: 20em;"></div>
   <hr>
   <h2>Score: <span style="float:right;">{{user.score | number:'1.0-0' }}</span></h2>
-  <!-- <h2 *ngIf="user.wallet">Wallet: {{user.wallet | number:'1.0-0' }}</h2> -->
   <h2>Wallet: <span style="float:right;" class="bossCoin"></span> <span style="float:right;">{{user.wallet | number:'1.0-0' }}</span></h2>
-  <!-- <h2 *ngIf="user.level">Level: {{user.level}}</h2> -->
   <br>
   <hr>
   <h2>Username: {{user.username}}</h2>

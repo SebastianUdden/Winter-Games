@@ -514,30 +514,3 @@ li {
   background-position-x: 250px !important;
   background-repeat: no-repeat;
 }
-
-.rage {
-  background-image: url("../../assets/images/random/rage.png");
-  background-size: 1100px 900px;
-  background-position: center;
-  background-position-y: 160px !important;
-  background-position-x: 400px !important;
-  background-repeat: no-repeat;
-}
-
-.fff {
-  background-image: url("../../assets/images/random/fff.png");
-  background-size: 700px 700px;
-  background-position: center;
-  background-position-y: 260px !important;
-  background-position-x: 400px !important;
-  background-repeat: no-repeat;
-}
-
-.troll {
-  background-image: url("../../assets/images/random/ProblemTroll.png");
-  background-size: 500px 400px;
-  background-position: center;
-  background-position-y: 140px !important;
-  background-position-x: 910px !important;
-  background-repeat: no-repeat;
-}

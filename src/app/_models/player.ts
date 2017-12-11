@@ -29,9 +29,6 @@ export class Player {
       this.y += this.speedY;
     },
     public crashWith = function(otherobj) {
-      // if (this.eat) {
-      //   otherobj.destroy(); this.kills++;
-      // }
       const myleft = this.x;
       const myright = this.x + (this.width);
       const mytop = this.y;

@@ -12,9 +12,6 @@
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav" data-toggle="collapse" data-target="#myNavbar .nav-collapse.in">
           <li class="wgNav" *ngIf="user"><a *ngIf="user.username !== ''" routerLink="/the-button"><span class="fa fa-dot-circle-o" ></span> The Button</a></li>
-          <!-- <li class="wgNav" *ngIf="user"><a *ngIf="user.username !== ''" routerLink="/the-maze"><span class="fa fa-arrows" ></span> The Maze</a></li> -->
-          <!-- <li class="wgNav"><a routerLink="/the-story"><span class="fa fa-book" ></span> The Story</a></li> -->
-          <!-- <li class="wgNav"><a routerLink="/the-maze"><span class="fa fa-arrows" ></span> The Maze</a></li> -->
           <li class="wgNav" *ngIf="user"><a *ngIf="user.admin" routerLink="/admin"><span class="fa fa-user-secret"></span> Admin</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right" data-toggle="collapse" data-target="#myNavbar .nav-collapse.in">

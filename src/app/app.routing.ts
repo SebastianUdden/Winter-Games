@@ -2,10 +2,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 // Content
 import { TheButtonComponent } from './the-button/the-button.component';
-import { TheMazeComponent } from './the-maze/the-maze.component';
-import { TheStoryComponent } from './the-story/the-story.component';
 import { HomeComponent } from './home/home.component';
-import { DiceComponent } from './dice/dice.component';
 import { PowerBarComponent } from './power-bar/power-bar.component';
 
 import { AdminComponent } from './admin/admin.component';
@@ -19,8 +16,6 @@ import { AuthGuard } from './authentication/_guards/auth.guard';
 const APP_ROUTES: Routes = [
     { path: '', component: HomeComponent },
     { path: 'the-button', component: TheButtonComponent  },
-    { path: 'the-maze', component: TheMazeComponent  },
-    { path: 'the-story', component: TheStoryComponent  },
     { path: 'admin', component: AdminComponent  },
     { path: 'profile', component: ProfileComponent },
     { path: 'login', component: LoginComponent },

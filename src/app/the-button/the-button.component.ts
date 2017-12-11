@@ -14,7 +14,6 @@ import { UserService } from '../_services/user.service';
 import { User } from '../_models/user';
 import { UsersComponent } from '../users/users.component';
 import { LightSwitchComponent } from '../light-switch/light-switch.component';
-import { DiceComponent } from '../dice/dice.component';
 
 @Component({
     selector: 'app-the-button',
@@ -26,92 +25,9 @@ import { DiceComponent } from '../dice/dice.component';
         './shakeHard.css',
         './shakeLittle.css'
     ]
-    // ,
-    // animations: [
-    //     trigger('spin', [
-    //         state('original', style({
-    //             transform: 'rotate(0deg)'
-    //         })),
-    //         state('oneEighty', style({
-    //             transform: 'rotate(-180deg)'
-    //         })),
-    //         state('threeSixty', style({
-    //             transform: 'rotate(-360deg)'
-    //         })),
-    //         transition('* <=> original', animate('1500ms ease-out'))
-    //     ]),
-    //     trigger('spinMoveFade', [
-    //         state('original', style({
-    //             transform: 'rotate(0deg)',
-    //             opacity: 0
-    //         })),
-    //         state('spinMoveFade', style({
-    //             transform: 'rotate(-360deg)',
-    //             opacity: 1
-    //         })),
-    //         transition('* => spinMoveFade', [
-    //             animate(1000, keyframes([
-    //                 style({
-    //                     opacity: 0,
-    //                     transform: 'translateY(-50px)',
-    //                     offset: 0
-    //                 }),
-    //                 style({
-    //                     opacity: .8,
-    //                     transform: 'translateY(-100px)',
-    //                     offset: 0.5
-    //                 }),
-    //                 style({
-    //                     opacity: 1,
-    //                     transform: 'translateY(-150px)',
-    //                     offset: 0.8
-    //                 }),
-    //                 style({
-    //                     opacity: 1,
-    //                     offset: 1
-    //                 })
-    //             ]))
-    //         ])
-    //     ]),
-    //     trigger('bigToSmall', [
-    //         state('big', style({
-    //             transform: 'scale(1)',
-    //             opacity: 0
-    //         })),
-    //         state('small', style({
-    //             transform: 'scale(1)',
-    //             opacity: 1
-    //         })),
-    //         transition('* => small', [
-    //             animate(1500, keyframes([
-    //                 style({
-    //                     opacity: 0,
-    //                     transform: 'scale(0)',
-    //                     offset: 0
-    //                 }),
-    //                 style({
-    //                     opacity: 1,
-    //                     transform: 'scale(10)',
-    //                     offset: 0.2
-    //                 }),
-    //                 style({
-    //                     opacity: .1,
-    //                     transform: 'scale(3)',
-    //                     offset: 0.9
-    //                 }),
-    //                 style({
-    //                     opacity: 1,
-    //                     transform: 'scale(1)',
-    //                     offset: 1
-    //                 })
-    //             ]))
-    //         ])
-    //     ])
-    // ]
 })
 
 export class TheButtonComponent implements OnInit, OnDestroy {
-    @ViewChild(DiceComponent) dice;
     @ViewChild(UsersComponent) users;
     public showDevValues = false;
     public click = 1;

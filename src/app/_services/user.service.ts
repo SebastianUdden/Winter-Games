@@ -72,16 +72,6 @@ export class UserService {
   /** POST: add a new user to the server */
   addUser (model: any): Observable<User> {
     const user = new User(model.firstname, model.lastname, model.email, model.username, model.password, 0, 0, 0, '', false);
-    // const url = `${this.usersUrl}/users/${user.username}`;
-    // console.log(user.firstname);
-    // console.log(user.lastname);
-    // console.log(user.username);
-    // console.log(user.email);
-    // console.log(user.password);
-    // return this.http.get<User>(url).pipe(
-    //   tap(_ => this.log(`fetched user ${user.username}`)),
-    //   catchError(this.handleError<User>(`getUser ${user.username}`))
-    // );
     return this.http.post<User>(this.usersUrl + '/users', user, httpOptions).pipe(
       tap((urer: User) => this.log(`added user :${user.username}`)),
       catchError(this.handleError<User>('addUser'))
@@ -106,10 +96,6 @@ export class UserService {
       .toPromise()
       .then(() => user)
       .catch(this.handleError);
-    // return this.http.put<User>(url, user, httpOptions).pipe(
-    //   tap(_ => this.log(`updated user ${user.username}`)),
-    //   catchError(this.handleError<User>('updateUser'))
-    // );
   }
 
   /**
@@ -135,64 +121,5 @@ export class UserService {
   /** Log a UserService message with the MessageService */
   private log(message: string) {
     console.log(message);
-    // this.messageService.add('UserService: ' + message);
   }
 }
-
-
-
-
-
-
-
-//////////////////////////////////////////////////////////////////////////////
-// import { Injectable } from '@angular/core';
-// import { Http, Headers, RequestOptions, Response } from '@angular/http';
-// import 'rxjs/add/operator/map';
-
-
-
-// @Injectable()
-// export class UserService {
-//   data: any = null;
-//   public url = 'https://radiant-coast-25310.herokuapp.com';
-
-//   constructor(private _http: Http) {
-//     this.getUsers();
-//   }
-
-//   private getUsers() {
-//       return this._http.get(this.url + '/users')
-//         .map((res: Response) => res.json())
-//         .subscribe(data => {
-//           this.data = data;
-//           console.log(this.data);
-//         });
-//   }
-
-//     // getById(id: number) {
-//     //     return this.http.get('/api/users/' + id, this.jwt()).map((response: Response) => response.json());
-//     // }
-
-//     // create(user: User) {
-//     //     return this.http.post('/api/users', user, this.jwt()).map((response: Response) => response.json());
-//     // }
-
-//     // update(user: User) {
-//     //     return this.http.put('/api/users/' + user.id, user, this.jwt()).map((response: Response) => response.json());
-//     // }
-
-//     // delete(id: number) {
-//     //     return this.http.delete('/api/users/' + id, this.jwt()).map((response: Response) => response.json());
-//     // }
-
-//     // private helper methods
-//     private jwt() {
-//         // create authorization header with jwt token
-//         const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-//         if (currentUser && currentUser.token) {
-//             const headers = new Headers({ 'Authorization': 'Bearer ' + currentUser.token });
-//             return new RequestOptions({ headers: headers });
-//         }
-//     }
-// }

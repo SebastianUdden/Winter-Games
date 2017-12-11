@@ -14,14 +14,3 @@ a.navbar-brand {
 .wgNav:hover {
   color: #eeeeee;
 }
-
-/* .navigation {
-  padding: 4px;
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-}
-
-.navigation li {
-  padding: 8px;
-  margin-bottom: 10px;
-} */

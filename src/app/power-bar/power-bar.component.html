@@ -1,8 +1,6 @@
 <div class="row bar-container">
   <div class="col-lg-2 second half bar power-bar" [style.height.%]="totalBonusTime / 3"></div>
   <div class="col-lg-1"></div>
-  <!-- <div *ngIf="totalBonusTime < 240" class="col-lg-2 first half bar power-bar" [style.height.%]="levelHeight * 4"></div> -->
-  <!-- <div *ngIf="totalBonusTime >= 240" class="col-lg-2 first half bar power-bar" [style.height.%]="levelHeight / 4"></div> -->
   <div class="col-lg-1"></div>
   <div *ngIf="pbScore < 100" class="col-lg-5 full bar health-bar" [style.height.%]="pbScore * 0.9"></div>
   <div *ngIf="pbScore >= 100 && pbScore < 1000" class="col-lg-5 full bar health-bar" [style.height.%]="pbScore * 0.09"></div>
@@ -24,5 +22,4 @@
   <div *ngIf="pbScore >= 100000000 && pbScore < 1000000000" class="col-lg-5 power sign">8</div>
   <div class="col-lg-2"></div>
   <div class="col-lg-5 health sign">{{level}}</div>
-  <!-- <button (click)="extraTime(bonusTimePerClick)">Cheat</button> -->
 </div>

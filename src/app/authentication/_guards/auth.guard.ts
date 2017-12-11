@@ -5,11 +5,9 @@ import { Routes, RouterModule } from '@angular/router';
 @Injectable()
 export class AuthGuard implements CanActivate {
     constructor(private router: Router) {
-      // alert('running auth');
     }
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         if (localStorage.getItem('currentUser')) {
-          // alert('Logged in');
           // logged in so return true
           return true;
         } else {

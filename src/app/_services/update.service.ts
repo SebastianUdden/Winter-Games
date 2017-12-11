@@ -23,7 +23,6 @@ export class UpdateService {
 
   changeUser(user: User) {
     this.userSource.next(user);
-    // localStorage.setItem('currentUser', JSON.stringify(user));
   }
 
   changeUserScore(userScore: number) {
