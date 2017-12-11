@@ -488,6 +488,7 @@ li {
   -o-background-size: cover;
   background-size: cover;
   background-position: center;
+  touch-action: manipulation;
 }
 
 .alone {
@@ -512,6 +513,7 @@ li {
 }
 .extra-time-row {
   height: 10vh;
+  touch-action: manipulation;
 }
 .random-img {
   width: 4em;
