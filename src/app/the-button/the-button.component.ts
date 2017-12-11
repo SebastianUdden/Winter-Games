@@ -49,7 +49,7 @@ export class TheButtonComponent implements OnInit, OnDestroy {
     public foreverAlone = false;
     private subscription: Subscription;
 
-    private countdownValue = 15;
+    private countdownValue = 3;
     private countupValue = 5;
     private noStartValue = -5;
     private readyIn = 0;
@@ -501,27 +501,27 @@ export class TheButtonComponent implements OnInit, OnDestroy {
 
     newUserScore() {
         this.newUserScoreGiven = true;
-        if (this.perseverance === this.timeLevel[0]) {
-            this.userScore += 0;
-        } else if (this.perseverance === this.timeLevel[1]) {
-            this.userScore *= 1.2;
-        } else if (this.perseverance === this.timeLevel[2]) {
-            this.userScore *= 1.4;
-        } else if (this.perseverance === this.timeLevel[3]) {
-            this.userScore *= 1.6;
-        } else if (this.perseverance === this.timeLevel[4]) {
-            this.userScore *= 2;
-        } else if (this.perseverance === this.timeLevel[5]) {
-            this.userScore *= 4;
-        } else if (this.perseverance === this.timeLevel[6]) {
-            this.userScore *= 7;
-        } else if (this.perseverance === this.timeLevel[7]) {
-            this.userScore *= 10;
-        } else if (this.perseverance === this.timeLevel[8]) {
-            this.userScore *= 20;
-        } else if (this.perseverance === this.timeLevel[9]) {
-            this.userScore *= 99;
-        }
+        // if (this.perseverance === this.timeLevel[0]) {
+        //     this.userScore += 0;
+        // } else if (this.perseverance === this.timeLevel[1]) {
+        //     this.userScore *= 1.2;
+        // } else if (this.perseverance === this.timeLevel[2]) {
+        //     this.userScore *= 1.4;
+        // } else if (this.perseverance === this.timeLevel[3]) {
+        //     this.userScore *= 1.6;
+        // } else if (this.perseverance === this.timeLevel[4]) {
+        //     this.userScore *= 2;
+        // } else if (this.perseverance === this.timeLevel[5]) {
+        //     this.userScore *= 4;
+        // } else if (this.perseverance === this.timeLevel[6]) {
+        //     this.userScore *= 7;
+        // } else if (this.perseverance === this.timeLevel[7]) {
+        //     this.userScore *= 10;
+        // } else if (this.perseverance === this.timeLevel[8]) {
+        //     this.userScore *= 20;
+        // } else if (this.perseverance === this.timeLevel[9]) {
+        //     this.userScore *= 99;
+        // }
         const lvl = this.perseverance + ' ' + this.level;
         if (this.user.score < this.userScore) {
           this.user.score = this.userScore;

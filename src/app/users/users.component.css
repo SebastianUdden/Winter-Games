@@ -193,6 +193,9 @@ input:checked + .slider:before {
   margin-top: -1.2em;
 }
 
+.selected {
+  background-color:#555555;
+}
 
 /*///////////////
 // Avatars
@@ -210,12 +213,10 @@ input:checked + .slider:before {
 .virre { background-image: url('../../assets/images/avatars/Virre.png'); }
 .robban { background-image: url('../../assets/images/avatars/Robban.png'); }
 
-.img {
+.users-img {
   margin-top: 1em;
   padding-top: 4px;
 	cursor: pointer;
-  width: 8em;
-  height: 8em;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -282,6 +283,10 @@ input:checked + .slider:before {
   width:80vw;
   margin-left:6vw;
 }
+.highscore-img {
+  width: 8em;
+  height: 8em;
+}
 }
 
 @media only screen and (
@@ -291,10 +296,10 @@ input:checked + .slider:before {
   display: none;
   width:auto;
 }
-.img {
-  margin-top: 0.3em;
+.highscore-img {
   width: 3.7em;
   height: 3.7em;
+  margin-top: 0.3em;
   margin-bottom: -0.6em;
 }
 .name {

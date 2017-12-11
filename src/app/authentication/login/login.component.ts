@@ -75,4 +75,8 @@ export class LoginComponent implements OnInit {
     e.preventDefault();
     e.target.click();
   }
+
+  refreshPage() {
+    location.reload();
+  }
 }
