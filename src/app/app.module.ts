@@ -18,7 +18,6 @@ import { AdminComponent } from './admin/admin.component';
 import { AlertService } from './_services/alert.service';
 import { AlertComponent } from './authentication/alert/alert.component';
 import { AuthenticationService } from './_services/authentication.service';
-import { DiceComponent } from './dice/dice.component';
 import { LoginComponent } from './authentication/login/login.component';
 import { PowerBarComponent } from './power-bar/power-bar.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -26,14 +25,11 @@ import { SignupComponent } from './authentication/signup/signup.component';
 import { UpdateService } from './_services/update.service';
 import { UserService } from './_services/user.service';
 
-import { TheMazeComponent } from './the-maze/the-maze.component';
-
 // Guards
 import { AuthGuard } from './authentication/_guards/auth.guard';
 
 // Pipes
 import { EscapeHtmlPipe } from './_pipes/keep-html.pipe';
-import { TheStoryComponent } from './the-story/the-story.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +37,6 @@ import { TheStoryComponent } from './the-story/the-story.component';
     AlertComponent,
     AppComponent,
     DatabaseComponent,
-    DiceComponent,
     HomeComponent,
     LightSwitchComponent,
     LoginComponent,
@@ -52,13 +47,8 @@ import { TheStoryComponent } from './the-story/the-story.component';
     TheButtonComponent,
     UsersComponent,
 
-    // The Maze classes
-    TheMazeComponent,
-
     // Pipes
-    EscapeHtmlPipe,
-
-    TheStoryComponent
+    EscapeHtmlPipe
   ],
   imports: [
     HttpModule,
