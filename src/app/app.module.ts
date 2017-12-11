@@ -28,6 +28,9 @@ import { UserService } from './_services/user.service';
 
 import { TheMazeComponent } from './the-maze/the-maze.component';
 
+// Guards
+import { AuthGuard } from './authentication/_guards/auth.guard';
+
 // Pipes
 import { EscapeHtmlPipe } from './_pipes/keep-html.pipe';
 import { TheStoryComponent } from './the-story/the-story.component';
@@ -68,7 +71,8 @@ import { TheStoryComponent } from './the-story/the-story.component';
     AlertService,
     AuthenticationService,
     UpdateService,
-    UserService
+    UserService,
+    AuthGuard
     ],
   bootstrap: [AppComponent]
 })

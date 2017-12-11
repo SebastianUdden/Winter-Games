@@ -44,6 +44,7 @@
     <hr>
     <h4>And of course, your partner in crime/cardancing...</h4>
     <div *ngFor="let usr of users">
+      <!-- <div class="user-list" *ngIf="usr.admin && usr.username !== user.username"> -->
       <div class="user-list" *ngIf="usr.admin && usr.username !== user.username">
           <h3>{{usr.username}} ({{usr.firstname}} {{usr.lastname}})</h3>
           <p>Highscore: {{usr.score | number:'1.0-2' }}</p>

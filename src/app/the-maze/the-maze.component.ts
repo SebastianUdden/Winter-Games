@@ -48,6 +48,7 @@ export class TheMazeComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
+    // this.user = JSON.parse(localStorage.getItem('currentUser'));
     this.authenticationService.currentUser.subscribe(user => this.user = user);
   }
   update() {

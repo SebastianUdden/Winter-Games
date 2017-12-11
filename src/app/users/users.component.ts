@@ -50,6 +50,7 @@ export class UsersComponent implements OnInit {
 
   ngOnInit() {
     this.getUsers();
+    // this.user = JSON.parse(localStorage.getItem('currentUser'));
     this.authenticationService.currentUser.subscribe(user => this.user = user);
     this.selectUser(this.user);
   }

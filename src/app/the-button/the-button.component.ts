@@ -133,7 +133,7 @@ export class TheButtonComponent implements OnInit, OnDestroy {
     public foreverAlone = false;
     private subscription: Subscription;
 
-    private countdownValue = 15;
+    private countdownValue = 3;
     private countupValue = 5;
     private noStartValue = -5;
     private readyIn = 0;
@@ -578,6 +578,7 @@ export class TheButtonComponent implements OnInit, OnDestroy {
         this.comboType = '';
     }
     ngOnInit() {
+
       // document.getElementById('countButton').addEventListener('touchstart', this.preventZoom);
       this.authenticationService.currentUser.subscribe(user => this.user = user);
       this.countDown = this.countdownValue;
@@ -614,13 +615,16 @@ export class TheButtonComponent implements OnInit, OnDestroy {
         const lvl = this.perseverance + ' ' + this.level;
         if (this.user.score < this.userScore) {
           this.user.score = this.userScore;
-          this.user.wallet += this.userScore;
           this.newRecord = true;
         } else {
           this.newRecord = false;
         }
+        this.user.wallet += this.userScore;
         this.userService.updateUser(this.user);
         this.authenticationService.changeUser(this.user);
+        localStorage.removeItem('currentUser');
+        localStorage.setItem('currentUser', JSON.stringify(this.user));
+        this.userScore = 0;
     }
 
     ngOnDestroy() {

@@ -14,18 +14,20 @@ import { LoginComponent } from './authentication/login/login.component';
 import { SignupComponent } from './authentication/signup/signup.component';
 import { DatabaseComponent } from './database/database.component';
 
+import { AuthGuard } from './authentication/_guards/auth.guard';
+
 const APP_ROUTES: Routes = [
     { path: '', component: HomeComponent },
-    { path: 'the-button', component: TheButtonComponent },
-    { path: 'the-maze', component: TheMazeComponent },
-    { path: 'the-story', component: TheStoryComponent },
-    { path: 'admin', component: AdminComponent },
+    { path: 'the-button', component: TheButtonComponent  },
+    { path: 'the-maze', component: TheMazeComponent  },
+    { path: 'the-story', component: TheStoryComponent  },
+    { path: 'admin', component: AdminComponent  },
     { path: 'profile', component: ProfileComponent },
     { path: 'login', component: LoginComponent },
     { path: 'signup', component: SignupComponent },
-    { path: 'database', component: DatabaseComponent },
+    { path: 'database', component: DatabaseComponent  },
     // otherwise redirect to home
-    { path: '**', redirectTo: '' }
+    { path: '**', redirectTo: ''  }
 ];
 
 export const routing = RouterModule.forRoot(APP_ROUTES);

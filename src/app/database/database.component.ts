@@ -28,6 +28,7 @@ export class DatabaseComponent implements OnInit {
   }
 
   ngOnInit() {
+    // this.user = JSON.parse(localStorage.getItem('currentUser'));
     this.authenticationService.currentUser.subscribe(user => this.user = user);
     this.getUsers();
   }
