@@ -279,8 +279,8 @@ input:checked + .slider:before {
   display: none;
 }
 #showUsersSmall {
-  width:26em;
-  max-width: 92vw !important;
+  width:80vw;
+  margin-left:6vw;
 }
 }
 

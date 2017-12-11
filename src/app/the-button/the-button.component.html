@@ -2,13 +2,101 @@
   <div class="row">
     <div class="mobileLeft"></div>
     <div class="mobileCenter">
+      <div *ngIf="showExtraTime" class="row extra-time-row" style="margin-top:3vh;">
+        <div *ngIf="mcFly">
+          <div class="col-xs-1">
+            <div *ngIf="this.timeBlocks[0].selected && click === 1" (click)="powerbar.extraTime(bonusTimePerClick); setClick(2);" class="beerCap1 random-img"></div>
+            <div *ngIf="this.timeBlocks[0].selected && click === 2" (click)="powerbar.extraTime(bonusTimePerClick); setClick(3);" class="beerCap2 random-img"></div>
+            <div *ngIf="this.timeBlocks[0].selected && click === 3" (click)="powerbar.extraTime(bonusTimePerClick); setClick(4);" class="beerCap3 random-img"></div>
+            <div *ngIf="this.timeBlocks[0].selected && click === 4" (click)="powerbar.extraTime(bonusTimePerClick); setClick(5);" class="beerCap4 random-img"></div>
+            <div *ngIf="this.timeBlocks[0].selected && click === 5" (click)="powerbar.extraTime(bonusTimePerClick); setClick(1);" class="beerCap5 random-img"></div>
+          </div>
+          <div class="col-xs-1">
+            <div *ngIf="this.timeBlocks[1].selected && click === 1" (click)="powerbar.extraTime(bonusTimePerClick); setClick(2);" class="floater1 random-img"></div>
+            <div *ngIf="this.timeBlocks[1].selected && click === 2" (click)="powerbar.extraTime(bonusTimePerClick); setClick(3);" class="floater2 random-img"></div>
+            <div *ngIf="this.timeBlocks[1].selected && click === 3" (click)="powerbar.extraTime(bonusTimePerClick); setClick(4);" class="floater3 random-img"></div>
+            <div *ngIf="this.timeBlocks[1].selected && click === 4" (click)="powerbar.extraTime(bonusTimePerClick); setClick(5);" class="floater4 random-img"></div>
+            <div *ngIf="this.timeBlocks[1].selected && click === 5" (click)="powerbar.extraTime(bonusTimePerClick); setClick(1);" class="floater5 random-img"></div>
+          </div>
+          <div class="col-xs-1">
+            <div *ngIf="this.timeBlocks[2].selected && click === 1" (click)="powerbar.extraTime(bonusTimePerClick); setClick(2);" class="meatClub1 random-img"></div>
+            <div *ngIf="this.timeBlocks[2].selected && click === 2" (click)="powerbar.extraTime(bonusTimePerClick); setClick(3);" class="meatClub2 random-img"></div>
+            <div *ngIf="this.timeBlocks[2].selected && click === 3" (click)="powerbar.extraTime(bonusTimePerClick); setClick(4);" class="meatClub3 random-img"></div>
+            <div *ngIf="this.timeBlocks[2].selected && click === 4" (click)="powerbar.extraTime(bonusTimePerClick); setClick(5);" class="meatClub4 random-img"></div>
+            <div *ngIf="this.timeBlocks[2].selected && click === 5" (click)="powerbar.extraTime(bonusTimePerClick); setClick(1);" class="meatClub5 random-img"></div>
+          </div>
+          <div class="col-xs-1">
+            <div *ngIf="this.timeBlocks[3].selected && click === 1" (click)="powerbar.extraTime(bonusTimePerClick); setClick(2);" class="oldOx1 random-img"></div>
+            <div *ngIf="this.timeBlocks[3].selected && click === 2" (click)="powerbar.extraTime(bonusTimePerClick); setClick(3);" class="oldOx2 random-img"></div>
+            <div *ngIf="this.timeBlocks[3].selected && click === 3" (click)="powerbar.extraTime(bonusTimePerClick); setClick(4);" class="oldOx3 random-img"></div>
+            <div *ngIf="this.timeBlocks[3].selected && click === 4" (click)="powerbar.extraTime(bonusTimePerClick); setClick(5);" class="oldOx4 random-img"></div>
+            <div *ngIf="this.timeBlocks[3].selected && click === 5" (click)="powerbar.extraTime(bonusTimePerClick); setClick(1);" class="oldOx5 random-img"></div>
+          </div>
+          <div class="col-xs-1">
+            <div *ngIf="this.timeBlocks[4].selected && click === 1" (click)="powerbar.extraTime(bonusTimePerClick); setClick(2);" class="beerCap1 random-img"></div>
+            <div *ngIf="this.timeBlocks[4].selected && click === 2" (click)="powerbar.extraTime(bonusTimePerClick); setClick(3);" class="beerCap2 random-img"></div>
+            <div *ngIf="this.timeBlocks[4].selected && click === 3" (click)="powerbar.extraTime(bonusTimePerClick); setClick(4);" class="beerCap3 random-img"></div>
+            <div *ngIf="this.timeBlocks[4].selected && click === 4" (click)="powerbar.extraTime(bonusTimePerClick); setClick(5);" class="beerCap4 random-img"></div>
+            <div *ngIf="this.timeBlocks[4].selected && click === 5" (click)="powerbar.extraTime(bonusTimePerClick); setClick(1);" class="beerCap5 random-img"></div>
+          </div>
+          <div class="col-xs-1">
+            <div *ngIf="this.timeBlocks[5].selected && click === 1" (click)="powerbar.extraTime(bonusTimePerClick); setClick(2);" class="floater1 random-img"></div>
+            <div *ngIf="this.timeBlocks[5].selected && click === 2" (click)="powerbar.extraTime(bonusTimePerClick); setClick(3);" class="floater2 random-img"></div>
+            <div *ngIf="this.timeBlocks[5].selected && click === 3" (click)="powerbar.extraTime(bonusTimePerClick); setClick(4);" class="floater3 random-img"></div>
+            <div *ngIf="this.timeBlocks[5].selected && click === 4" (click)="powerbar.extraTime(bonusTimePerClick); setClick(5);" class="floater4 random-img"></div>
+            <div *ngIf="this.timeBlocks[5].selected && click === 5" (click)="powerbar.extraTime(bonusTimePerClick); setClick(1);" class="floater5 random-img"></div>
+          </div>
+          <div class="col-xs-1">
+            <div *ngIf="this.timeBlocks[6].selected && click === 1" (click)="powerbar.extraTime(bonusTimePerClick); setClick(2);" class="meatClub1 random-img"></div>
+            <div *ngIf="this.timeBlocks[6].selected && click === 2" (click)="powerbar.extraTime(bonusTimePerClick); setClick(3);" class="meatClub2 random-img"></div>
+            <div *ngIf="this.timeBlocks[6].selected && click === 3" (click)="powerbar.extraTime(bonusTimePerClick); setClick(4);" class="meatClub3 random-img"></div>
+            <div *ngIf="this.timeBlocks[6].selected && click === 4" (click)="powerbar.extraTime(bonusTimePerClick); setClick(5);" class="meatClub4 random-img"></div>
+            <div *ngIf="this.timeBlocks[6].selected && click === 5" (click)="powerbar.extraTime(bonusTimePerClick); setClick(1);" class="meatClub5 random-img"></div>
+          </div>
+          <div class="col-xs-1">
+            <div *ngIf="this.timeBlocks[7].selected && click === 1" (click)="powerbar.extraTime(bonusTimePerClick); setClick(2);" class="oldOx1 random-img"></div>
+            <div *ngIf="this.timeBlocks[7].selected && click === 2" (click)="powerbar.extraTime(bonusTimePerClick); setClick(3);" class="oldOx2 random-img"></div>
+            <div *ngIf="this.timeBlocks[7].selected && click === 3" (click)="powerbar.extraTime(bonusTimePerClick); setClick(4);" class="oldOx3 random-img"></div>
+            <div *ngIf="this.timeBlocks[7].selected && click === 4" (click)="powerbar.extraTime(bonusTimePerClick); setClick(5);" class="oldOx4 random-img"></div>
+            <div *ngIf="this.timeBlocks[7].selected && click === 5" (click)="powerbar.extraTime(bonusTimePerClick); setClick(1);" class="oldOx5 random-img"></div>
+          </div>
+          <div class="col-xs-1">
+            <div *ngIf="this.timeBlocks[8].selected && click === 1" (click)="powerbar.extraTime(bonusTimePerClick); setClick(2);" class="beerCap1 random-img"></div>
+            <div *ngIf="this.timeBlocks[8].selected && click === 2" (click)="powerbar.extraTime(bonusTimePerClick); setClick(3);" class="beerCap2 random-img"></div>
+            <div *ngIf="this.timeBlocks[8].selected && click === 3" (click)="powerbar.extraTime(bonusTimePerClick); setClick(4);" class="beerCap3 random-img"></div>
+            <div *ngIf="this.timeBlocks[8].selected && click === 4" (click)="powerbar.extraTime(bonusTimePerClick); setClick(5);" class="beerCap4 random-img"></div>
+            <div *ngIf="this.timeBlocks[8].selected && click === 5" (click)="powerbar.extraTime(bonusTimePerClick); setClick(1);" class="beerCap5 random-img"></div>
+          </div>
+          <div class="col-xs-1">
+            <div *ngIf="this.timeBlocks[9].selected && click === 1" (click)="powerbar.extraTime(bonusTimePerClick); setClick(2);" class="floater1 random-img"></div>
+            <div *ngIf="this.timeBlocks[9].selected && click === 2" (click)="powerbar.extraTime(bonusTimePerClick); setClick(3);" class="floater2 random-img"></div>
+            <div *ngIf="this.timeBlocks[9].selected && click === 3" (click)="powerbar.extraTime(bonusTimePerClick); setClick(4);" class="floater3 random-img"></div>
+            <div *ngIf="this.timeBlocks[9].selected && click === 4" (click)="powerbar.extraTime(bonusTimePerClick); setClick(5);" class="floater4 random-img"></div>
+            <div *ngIf="this.timeBlocks[9].selected && click === 5" (click)="powerbar.extraTime(bonusTimePerClick); setClick(1);" class="floater5 random-img"></div>
+          </div>
+          <div class="col-xs-1">
+            <div *ngIf="this.timeBlocks[10].selected && click === 1" (click)="powerbar.extraTime(bonusTimePerClick); setClick(2);" class="meatClub1 random-img"></div>
+            <div *ngIf="this.timeBlocks[10].selected && click === 2" (click)="powerbar.extraTime(bonusTimePerClick); setClick(3);" class="meatClub2 random-img"></div>
+            <div *ngIf="this.timeBlocks[10].selected && click === 3" (click)="powerbar.extraTime(bonusTimePerClick); setClick(4);" class="meatClub3 random-img"></div>
+            <div *ngIf="this.timeBlocks[10].selected && click === 4" (click)="powerbar.extraTime(bonusTimePerClick); setClick(5);" class="meatClub4 random-img"></div>
+            <div *ngIf="this.timeBlocks[10].selected && click === 5" (click)="powerbar.extraTime(bonusTimePerClick); setClick(1);" class="meatClub5 random-img"></div>
+          </div>
+          <div class="col-xs-1">
+            <div *ngIf="this.timeBlocks[11].selected && click === 1" (click)="powerbar.extraTime(bonusTimePerClick); setClick(2);" class="oldOx1 random-img"></div>
+            <div *ngIf="this.timeBlocks[11].selected && click === 2" (click)="powerbar.extraTime(bonusTimePerClick); setClick(3);" class="oldOx2 random-img"></div>
+            <div *ngIf="this.timeBlocks[11].selected && click === 3" (click)="powerbar.extraTime(bonusTimePerClick); setClick(4);" class="oldOx3 random-img"></div>
+            <div *ngIf="this.timeBlocks[11].selected && click === 4" (click)="powerbar.extraTime(bonusTimePerClick); setClick(5);" class="oldOx4 random-img"></div>
+            <div *ngIf="this.timeBlocks[11].selected && click === 5" (click)="powerbar.extraTime(bonusTimePerClick); setClick(1);" class="oldOx5 random-img"></div>
+          </div>
+        </div>
+      </div>
       <div class="row" style="margin-bottom:-2em;">
-          <div *ngIf="!gameOn" class="grayed-out-text text-center huge unselectable">0</div>
-          <div *ngIf="gameOn && countDown > 5" class="grayed-out-text text-center huge unselectable">{{countDown}}</div>
-          <div *ngIf="gameOn && countDown <= 5" class="red-text text-center huge unselectable">{{countDown}}</div>
+          <div *ngIf="!gameOn" class="grayed-out-text text-center huge unselectable" style="margin-top:-3vh;">0</div>
+          <div *ngIf="gameOn && countDown > 5" class="grayed-out-text text-center huge unselectable" style="margin-top:-3vh;">{{countDown}}</div>
+          <div *ngIf="gameOn && countDown <= 5" class="red-text text-center huge unselectable" style="margin-top:-3vh;">{{countDown}}</div>
       </div>
       <div class="row">
-        <div style="margin-bottom:0.7em;" class="red-text text-center medium unselectable empty-row"><span *ngIf="newRecord" style="color:#09b909;">New RECORD!!!</span><span *ngIf="!newRecord">{{ perseverance }} {{ level }}</span></div>
+        <!-- <div style="margin-bottom:0.7em;" class="red-text text-center medium unselectable empty-row"><span *ngIf="newRecord" style="color:#09b909;">New RECORD!!!</span><span *ngIf="!newRecord">{{ perseverance }} {{ level }}</span></div> -->
         <div *ngIf="userScore >= 0 && gameOn && !getReady" (click)="Count()" class="the-button-main center blue-oyster-background medium unselectable">
             <span *ngIf="!cheatX20">BOSS</span>
             <span *ngIf="cheatX2">x2</span>
@@ -44,6 +132,106 @@
           <div class="row">
             <p class="grayed-out-text text-center medium unselectable">Score</p>
           </div>
+      </div>
+      <div [hidden]="true">
+        <app-power-bar
+          [pbScore]="userScore"
+          [pbTimeLimit]="timeLimit"
+          (timeLimitEvent)="getTimeLimit($event)"
+          [pbTotalBonusTime]="totalBonusTime"
+          (totalBonusTimeEvent)="getTotalBonusTime($event)"
+          (perseveranceEvent)="getPerseverance($event)"
+          (randomNumberSpreadEvent)="getRandomNumberSpread($event)"
+          #powerbar>
+        </app-power-bar>
+      </div>
+      <div *ngIf="showExtraTime" class="row extra-time-row">
+        <div *ngIf="mcFly">
+            <div class="col-xs-1">
+              <div *ngIf="this.timeBlocks[12].selected && click === 1" (click)="powerbar.extraTime(bonusTimePerClick); setClick(2);" class="beerCap1 random-img"></div>
+              <div *ngIf="this.timeBlocks[12].selected && click === 2" (click)="powerbar.extraTime(bonusTimePerClick); setClick(3);" class="beerCap2 random-img"></div>
+              <div *ngIf="this.timeBlocks[12].selected && click === 3" (click)="powerbar.extraTime(bonusTimePerClick); setClick(4);" class="beerCap3 random-img"></div>
+              <div *ngIf="this.timeBlocks[12].selected && click === 4" (click)="powerbar.extraTime(bonusTimePerClick); setClick(5);" class="beerCap4 random-img"></div>
+              <div *ngIf="this.timeBlocks[12].selected && click === 5" (click)="powerbar.extraTime(bonusTimePerClick); setClick(1);" class="beerCap5 random-img"></div>
+            </div>
+            <div class="col-xs-1">
+              <div *ngIf="this.timeBlocks[13].selected && click === 1" (click)="powerbar.extraTime(bonusTimePerClick); setClick(2);" class="floater1 random-img"></div>
+              <div *ngIf="this.timeBlocks[13].selected && click === 2" (click)="powerbar.extraTime(bonusTimePerClick); setClick(3);" class="floater2 random-img"></div>
+              <div *ngIf="this.timeBlocks[13].selected && click === 3" (click)="powerbar.extraTime(bonusTimePerClick); setClick(4);" class="floater3 random-img"></div>
+              <div *ngIf="this.timeBlocks[13].selected && click === 4" (click)="powerbar.extraTime(bonusTimePerClick); setClick(5);" class="floater4 random-img"></div>
+              <div *ngIf="this.timeBlocks[13].selected && click === 5" (click)="powerbar.extraTime(bonusTimePerClick); setClick(1);" class="floater5 random-img"></div>
+            </div>
+            <div class="col-xs-1">
+              <div *ngIf="this.timeBlocks[14].selected && click === 1" (click)="powerbar.extraTime(bonusTimePerClick); setClick(2);" class="meatClub1 random-img"></div>
+              <div *ngIf="this.timeBlocks[14].selected && click === 2" (click)="powerbar.extraTime(bonusTimePerClick); setClick(3);" class="meatClub2 random-img"></div>
+              <div *ngIf="this.timeBlocks[14].selected && click === 3" (click)="powerbar.extraTime(bonusTimePerClick); setClick(4);" class="meatClub3 random-img"></div>
+              <div *ngIf="this.timeBlocks[14].selected && click === 4" (click)="powerbar.extraTime(bonusTimePerClick); setClick(5);" class="meatClub4 random-img"></div>
+              <div *ngIf="this.timeBlocks[14].selected && click === 5" (click)="powerbar.extraTime(bonusTimePerClick); setClick(1);" class="meatClub5 random-img"></div>
+            </div>
+            <div class="col-xs-1">
+              <div *ngIf="this.timeBlocks[15].selected && click === 1" (click)="powerbar.extraTime(bonusTimePerClick); setClick(2);" class="oldOx1 random-img"></div>
+              <div *ngIf="this.timeBlocks[15].selected && click === 2" (click)="powerbar.extraTime(bonusTimePerClick); setClick(3);" class="oldOx2 random-img"></div>
+              <div *ngIf="this.timeBlocks[15].selected && click === 3" (click)="powerbar.extraTime(bonusTimePerClick); setClick(4);" class="oldOx3 random-img"></div>
+              <div *ngIf="this.timeBlocks[15].selected && click === 4" (click)="powerbar.extraTime(bonusTimePerClick); setClick(5);" class="oldOx4 random-img"></div>
+              <div *ngIf="this.timeBlocks[15].selected && click === 5" (click)="powerbar.extraTime(bonusTimePerClick); setClick(1);" class="oldOx5 random-img"></div>
+            </div>
+            <div class="col-xs-1">
+              <div *ngIf="this.timeBlocks[16].selected && click === 1" (click)="powerbar.extraTime(bonusTimePerClick); setClick(2);" class="beerCap1 random-img"></div>
+              <div *ngIf="this.timeBlocks[16].selected && click === 2" (click)="powerbar.extraTime(bonusTimePerClick); setClick(3);" class="beerCap2 random-img"></div>
+              <div *ngIf="this.timeBlocks[16].selected && click === 3" (click)="powerbar.extraTime(bonusTimePerClick); setClick(4);" class="beerCap3 random-img"></div>
+              <div *ngIf="this.timeBlocks[16].selected && click === 4" (click)="powerbar.extraTime(bonusTimePerClick); setClick(5);" class="beerCap4 random-img"></div>
+              <div *ngIf="this.timeBlocks[16].selected && click === 5" (click)="powerbar.extraTime(bonusTimePerClick); setClick(1);" class="beerCap5 random-img"></div>
+            </div>
+            <div class="col-xs-1">
+              <div *ngIf="this.timeBlocks[17].selected && click === 1" (click)="powerbar.extraTime(bonusTimePerClick); setClick(2);" class="floater1 random-img"></div>
+              <div *ngIf="this.timeBlocks[17].selected && click === 2" (click)="powerbar.extraTime(bonusTimePerClick); setClick(3);" class="floater2 random-img"></div>
+              <div *ngIf="this.timeBlocks[17].selected && click === 3" (click)="powerbar.extraTime(bonusTimePerClick); setClick(4);" class="floater3 random-img"></div>
+              <div *ngIf="this.timeBlocks[17].selected && click === 4" (click)="powerbar.extraTime(bonusTimePerClick); setClick(5);" class="floater4 random-img"></div>
+              <div *ngIf="this.timeBlocks[17].selected && click === 5" (click)="powerbar.extraTime(bonusTimePerClick); setClick(1);" class="floater5 random-img"></div>
+            </div>
+            <div class="col-xs-1">
+              <div *ngIf="this.timeBlocks[18].selected && click === 1" (click)="powerbar.extraTime(bonusTimePerClick); setClick(2);" class="meatClub1 random-img"></div>
+              <div *ngIf="this.timeBlocks[18].selected && click === 2" (click)="powerbar.extraTime(bonusTimePerClick); setClick(3);" class="meatClub2 random-img"></div>
+              <div *ngIf="this.timeBlocks[18].selected && click === 3" (click)="powerbar.extraTime(bonusTimePerClick); setClick(4);" class="meatClub3 random-img"></div>
+              <div *ngIf="this.timeBlocks[18].selected && click === 4" (click)="powerbar.extraTime(bonusTimePerClick); setClick(5);" class="meatClub4 random-img"></div>
+              <div *ngIf="this.timeBlocks[18].selected && click === 5" (click)="powerbar.extraTime(bonusTimePerClick); setClick(1);" class="meatClub5 random-img"></div>
+            </div>
+            <div class="col-xs-1">
+              <div *ngIf="this.timeBlocks[19].selected && click === 1" (click)="powerbar.extraTime(bonusTimePerClick); setClick(2);" class="oldOx1 random-img"></div>
+              <div *ngIf="this.timeBlocks[19].selected && click === 2" (click)="powerbar.extraTime(bonusTimePerClick); setClick(3);" class="oldOx2 random-img"></div>
+              <div *ngIf="this.timeBlocks[19].selected && click === 3" (click)="powerbar.extraTime(bonusTimePerClick); setClick(4);" class="oldOx3 random-img"></div>
+              <div *ngIf="this.timeBlocks[19].selected && click === 4" (click)="powerbar.extraTime(bonusTimePerClick); setClick(5);" class="oldOx4 random-img"></div>
+              <div *ngIf="this.timeBlocks[19].selected && click === 5" (click)="powerbar.extraTime(bonusTimePerClick); setClick(1);" class="oldOx5 random-img"></div>
+            </div>
+            <div class="col-xs-1">
+              <div *ngIf="this.timeBlocks[20].selected && click === 1" (click)="powerbar.extraTime(bonusTimePerClick); setClick(2);" class="beerCap1 random-img"></div>
+              <div *ngIf="this.timeBlocks[20].selected && click === 2" (click)="powerbar.extraTime(bonusTimePerClick); setClick(3);" class="beerCap2 random-img"></div>
+              <div *ngIf="this.timeBlocks[20].selected && click === 3" (click)="powerbar.extraTime(bonusTimePerClick); setClick(4);" class="beerCap3 random-img"></div>
+              <div *ngIf="this.timeBlocks[20].selected && click === 4" (click)="powerbar.extraTime(bonusTimePerClick); setClick(5);" class="beerCap4 random-img"></div>
+              <div *ngIf="this.timeBlocks[20].selected && click === 5" (click)="powerbar.extraTime(bonusTimePerClick); setClick(1);" class="beerCap5 random-img"></div>
+            </div>
+            <div class="col-xs-1">
+              <div *ngIf="this.timeBlocks[21].selected && click === 1" (click)="powerbar.extraTime(bonusTimePerClick); setClick(2);" class="floater1 random-img"></div>
+              <div *ngIf="this.timeBlocks[21].selected && click === 2" (click)="powerbar.extraTime(bonusTimePerClick); setClick(3);" class="floater2 random-img"></div>
+              <div *ngIf="this.timeBlocks[21].selected && click === 3" (click)="powerbar.extraTime(bonusTimePerClick); setClick(4);" class="floater3 random-img"></div>
+              <div *ngIf="this.timeBlocks[21].selected && click === 4" (click)="powerbar.extraTime(bonusTimePerClick); setClick(5);" class="floater4 random-img"></div>
+              <div *ngIf="this.timeBlocks[21].selected && click === 5" (click)="powerbar.extraTime(bonusTimePerClick); setClick(1);" class="floater5 random-img"></div>
+            </div>
+            <div class="col-xs-1">
+              <div *ngIf="this.timeBlocks[22].selected && click === 1" (click)="powerbar.extraTime(bonusTimePerClick); setClick(2);" class="meatClub1 random-img"></div>
+              <div *ngIf="this.timeBlocks[22].selected && click === 2" (click)="powerbar.extraTime(bonusTimePerClick); setClick(3);" class="meatClub2 random-img"></div>
+              <div *ngIf="this.timeBlocks[22].selected && click === 3" (click)="powerbar.extraTime(bonusTimePerClick); setClick(4);" class="meatClub3 random-img"></div>
+              <div *ngIf="this.timeBlocks[22].selected && click === 4" (click)="powerbar.extraTime(bonusTimePerClick); setClick(5);" class="meatClub4 random-img"></div>
+              <div *ngIf="this.timeBlocks[22].selected && click === 5" (click)="powerbar.extraTime(bonusTimePerClick); setClick(1);" class="meatClub5 random-img"></div>
+            </div>
+            <div class="col-xs-1">
+              <div *ngIf="this.timeBlocks[23].selected && click === 1" (click)="powerbar.extraTime(bonusTimePerClick); setClick(2);" class="oldOx1 random-img"></div>
+              <div *ngIf="this.timeBlocks[23].selected && click === 2" (click)="powerbar.extraTime(bonusTimePerClick); setClick(3);" class="oldOx2 random-img"></div>
+              <div *ngIf="this.timeBlocks[23].selected && click === 3" (click)="powerbar.extraTime(bonusTimePerClick); setClick(4);" class="oldOx3 random-img"></div>
+              <div *ngIf="this.timeBlocks[23].selected && click === 4" (click)="powerbar.extraTime(bonusTimePerClick); setClick(5);" class="oldOx4 random-img"></div>
+              <div *ngIf="this.timeBlocks[23].selected && click === 5" (click)="powerbar.extraTime(bonusTimePerClick); setClick(1);" class="oldOx5 random-img"></div>
+            </div>
+        </div>
       </div>
     </div>
     <div class="mobileRight"></div>
