@@ -4,7 +4,10 @@
   .welcome h1 {
     font-size: 30px;
   }
-  .welcome p, a {
+  .welcome p {
+    font-size: 17px !important;
+  }
+  .welcome a {
     font-size: 17px !important;
   }
   .svg-clock-white {
@@ -22,7 +25,10 @@
 @media only screen and (
     min-width: 1026px
   ) {
-  .welcome p, a {
+  .welcome p {
+    font-size: 25px !important;
+  }
+  .welcome a {
     font-size: 25px !important;
   }
   .svg-clock-white {
@@ -53,14 +59,6 @@
 body {
   background-color: rgb(44, 44, 44);
   color: white;
-}
-
-.big {
-  /* font-size: 25px; */
-}
-
-.small {
-  /* font-size: 15px; */
 }
 
 .svg-clock-white {

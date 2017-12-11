@@ -1,3 +1,37 @@
+/*///////////////
+// Avatars
+///////////////////////////////////////////////////////////////////////////////*/
+.sebbe { background-image: url('../../assets/images/avatars/Sebbe.png'); }
+.mattis { background-image: url('../../assets/images/avatars/Mattis.png'); }
+.kling { background-image: url('../../assets/images/avatars/Kling.png'); }
+.robin { background-image: url('../../assets/images/avatars/Robin.png'); }
+.nemer { background-image: url('../../assets/images/avatars/Nemer.png'); }
+.fredde { background-image: url('../../assets/images/avatars/Fredde.png'); }
+.dennan { background-image: url('../../assets/images/avatars/Dennan.png'); }
+.schaeran { background-image: url('../../assets/images/avatars/Schaeran.png'); }
+.amanda { background-image: url('../../assets/images/avatars/Amanda.png'); }
+.ivar { background-image: url('../../assets/images/avatars/Ivar.png'); }
+.virre { background-image: url('../../assets/images/avatars/Virre.png'); }
+.robban { background-image: url('../../assets/images/avatars/Robban.png'); }
+
+.img {
+  margin-top: 1em;
+  padding-top: 4px;
+	cursor: pointer;
+  width: 8em;
+  height: 8em;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center;
+}
+
+.userprofile {
+  width: 20em;
+  height: 20em;
+}
+
 .bossCoin {
   -webkit-background-size: cover;
   -moz-background-size: cover;

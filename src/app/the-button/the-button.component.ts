@@ -578,15 +578,9 @@ export class TheButtonComponent implements OnInit, OnDestroy {
         this.comboType = '';
     }
     ngOnInit() {
-
-      // document.getElementById('countButton').addEventListener('touchstart', this.preventZoom);
       this.authenticationService.currentUser.subscribe(user => this.user = user);
       this.countDown = this.countdownValue;
       this.timeLimit = this.countdownValue;
-      // const timer = TimerObservable.create(2000, 1000);
-      // this.subscription = timer.subscribe(t => {
-      //   this.CalculateTimer(t);
-      // });
     }
 
     newUserScore() {

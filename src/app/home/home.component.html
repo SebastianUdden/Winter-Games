@@ -7,8 +7,8 @@
   </p>
   <hr />
   <p class="big">
-    <span *ngIf="!user"><a class="big" routerLink="/signup">Begin</a> /</span>
-    <span *ngIf="user"><span *ngIf="!user.username"><a class="big" routerLink="/signup">Begin</a> /</span></span>
+    <!-- <span *ngIf="!user"><a class="big" routerLink="/signup">Begin</a> /</span>
+    <span *ngIf="user"><span *ngIf="!user.username"><a class="big" routerLink="/signup">Begin</a> /</span></span> -->
     <a *ngIf="!user" class="big" routerLink="/login">Continue</a>
     <span *ngIf="user"><a *ngIf="!user.username" class="big" routerLink="/login">Continue</a></span>
     <span *ngIf="user"><a *ngIf="user.username" class="big" routerLink="/profile">Continue</a></span>
