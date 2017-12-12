@@ -1,0 +1,44 @@
+<section *ngIf="user">
+  <h1 style="text-align:center">The Duel</h1>
+  <hr />
+  <h2>{{user.username}}</h2>
+  <div *ngIf="user.png === 'Sebbe.png'" class="duel users-img myprofile sebbe" style="width: 20em; height: 20em;"></div>
+  <div *ngIf="user.png === 'Mattis.png'" class="duel users-img myprofile mattis" style="width: 20em; height: 20em;"></div>
+  <div *ngIf="user.png === 'Dennan.png'" class="duel users-img myprofile dennan" style="width: 20em; height: 20em;"></div>
+  <div *ngIf="user.png === 'Robin.png'" class="duel users-img myprofile robin" style="width: 20em; height: 20em;"></div>
+  <div *ngIf="user.png === 'Kling.png'" class="duel users-img myprofile kling" style="width: 20em; height: 20em;"></div>
+  <div *ngIf="user.png === 'Fredde.png'" class="duel users-img myprofile fredde" style="width: 20em; height: 20em;"></div>
+  <div *ngIf="user.png === 'Virre.png'" class="duel users-img myprofile virre" style="width: 20em; height: 20em;"></div>
+  <div *ngIf="user.png === 'Schaeran.png'" class="duel users-img myprofile schaeran" style="width: 20em; height: 20em;"></div>
+  <div *ngIf="user.png === 'Nemer.png'" class="duel users-img myprofile nemer" style="width: 20em; height: 20em;"></div>
+  <div *ngIf="user.png === 'Ivar.png'" class="duel users-img myprofile ivar" style="width: 20em; height: 20em;"></div>
+  <div *ngIf="user.png === 'Amanda.png'" class="duel users-img myprofile amanda" style="width: 20em; height: 20em;"></div>
+  <div *ngIf="user.png === 'Robban.png'" class="duel users-img myprofile robban" style="width: 20em; height: 20em;"></div>
+  <hr>
+  <h2>Choose your opponent</h2>
+  <div *ngFor="let u of users" class="duel userInfo userInfo-row">
+    <div *ngIf="user">
+      <div *ngIf="u.username !== user.username">
+        <div (click)="selectUser(u);" class="row duel topRow">
+          <div class="col-xs-1"></div>
+          <div *ngIf="u.png === 'Sebbe.png'" class="col-xs-2 duel users-img highscore-img sebbe"></div>
+          <div *ngIf="u.png === 'Mattis.png'" class="col-xs-2 duel users-img highscore-img mattis"></div>
+          <div *ngIf="u.png === 'Dennan.png'" class="col-xs-2 duel users-img highscore-img dennan"></div>
+          <div *ngIf="u.png === 'Robin.png'" class="col-xs-2 duel users-img highscore-img robin"></div>
+          <div *ngIf="u.png === 'Kling.png'" class="col-xs-2 duel users-img highscore-img kling"></div>
+          <div *ngIf="u.png === 'Fredde.png'" class="col-xs-2 duel users-img highscore-img fredde"></div>
+          <div *ngIf="u.png === 'Virre.png'" class="col-xs-2 duel users-img highscore-img virre"></div>
+          <div *ngIf="u.png === 'Schaeran.png'" class="col-xs-2 duel users-img highscore-img schaeran"></div>
+          <div *ngIf="u.png === 'Nemer.png'" class="col-xs-2 duel users-img highscore-img nemer"></div>
+          <div *ngIf="u.png === 'Ivar.png'" class="col-xs-2 duel users-img highscore-img ivar"></div>
+          <div *ngIf="u.png === 'Amanda.png'" class="col-xs-2 duel users-img highscore-img amanda"></div>
+          <div *ngIf="u.png === 'Robban.png'" class="col-xs-2 duel users-img highscore-img robban"></div>
+          <div class="col-xs-7 userInfo-item name">{{u.username}}</div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 centerText userInfo-item score botRow">{{u.score | number:'1.0-0' }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

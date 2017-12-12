@@ -2,6 +2,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 // Content
 import { TheButtonComponent } from './the-button/the-button.component';
+import { TheDuelComponent } from './the-duel/the-duel.component';
 import { HomeComponent } from './home/home.component';
 import { PowerBarComponent } from './power-bar/power-bar.component';
 
@@ -16,6 +17,7 @@ import { AuthGuard } from './authentication/_guards/auth.guard';
 const APP_ROUTES: Routes = [
     { path: '', component: HomeComponent },
     { path: 'the-button', component: TheButtonComponent  },
+    { path: 'the-duel', component: TheDuelComponent  },
     { path: 'admin', component: AdminComponent  },
     { path: 'profile', component: ProfileComponent },
     { path: 'login', component: LoginComponent },

@@ -49,7 +49,7 @@ export class TheButtonComponent implements OnInit, OnDestroy {
     public foreverAlone = false;
     private subscription: Subscription;
 
-    private countdownValue = 3;
+    private countdownValue = 15;
     private countupValue = 5;
     private noStartValue = -5;
     private readyIn = 0;

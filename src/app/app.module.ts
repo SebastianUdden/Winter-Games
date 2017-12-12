@@ -30,6 +30,7 @@ import { AuthGuard } from './authentication/_guards/auth.guard';
 
 // Pipes
 import { EscapeHtmlPipe } from './_pipes/keep-html.pipe';
+import { TheDuelComponent } from './the-duel/the-duel.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,9 @@ import { EscapeHtmlPipe } from './_pipes/keep-html.pipe';
     UsersComponent,
 
     // Pipes
-    EscapeHtmlPipe
+    EscapeHtmlPipe,
+
+    TheDuelComponent
   ],
   imports: [
     HttpModule,
