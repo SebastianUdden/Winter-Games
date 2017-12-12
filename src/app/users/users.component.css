@@ -1,3 +1,19 @@
+.the-button-info {
+  background-color: rgb(89, 137, 181);
+  text-align: center;
+	border: none;
+	border-radius: 5px;
+	box-shadow: 0 1px #999;
+	cursor: pointer;
+ 	outline: none;
+
+	border-color: #DDDDDD;
+	border-style: solid;
+	border-width: 1px;
+  padding: 2px 5px;
+  touch-action: manipulation;
+}
+
 .svg {
   background-size: cover;
   height: 20px;

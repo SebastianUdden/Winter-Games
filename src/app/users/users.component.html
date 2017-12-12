@@ -1,9 +1,11 @@
 <div id="showUsersSmall">
   <div class="row userMenu">
-    <div *ngIf="selectedTab === 1" (click)="selectTab(1); getUsers();" class="col-xs-6 userMenu-item selected"><div class="svg highscore"></div></div>
-    <div *ngIf="selectedTab !== 1" (click)="selectTab(1); getUsers();" class="col-xs-6 userMenu-item"><div class="svg highscore"></div></div>
-    <div *ngIf="selectedTab !== 2" (click)="selectTab(2)" class="col-xs-6 userMenu-item"><div class="svg profile"></div></div>
-    <div *ngIf="selectedTab === 2" (click)="selectTab(2)" class="col-xs-6 userMenu-item selected"><div class="svg profile"></div></div>
+    <div *ngIf="selectedTab === 1" (click)="selectTab(1); getUsers();" class="col-xs-4 userMenu-item selected"><div class="svg highscore"></div></div>
+    <div *ngIf="selectedTab !== 1" (click)="selectTab(1); getUsers();" class="col-xs-4 userMenu-item"><div class="svg highscore"></div></div>
+    <div *ngIf="selectedTab !== 2" (click)="selectTab(2)" class="col-xs-4 userMenu-item"><div class="svg profile"></div></div>
+    <div *ngIf="selectedTab === 2" (click)="selectTab(2)" class="col-xs-4 userMenu-item selected"><div class="svg profile"></div></div>
+    <div *ngIf="selectedTab === 3" (click)="selectTab(3)" class="col-xs-4 userMenu-item selected" style="height: 40px;"><span class="svg fa fa-info"></span></div>
+    <div *ngIf="selectedTab !== 3" (click)="selectTab(3)" class="col-xs-4 userMenu-item" style="height: 40px;"><span class="svg fa fa-info"></span></div>
     <!-- <div (click)="selectTab(3)" class="col-xs-4 userMenu-item"><div class="svg settings"></div></div> -->
   </div>
   <div class="row">
@@ -78,17 +80,35 @@
         <h2>Wallet: <span style="float:right;" class="bossCoin"></span> <span style="float:right;">{{selectedUser.wallet | number:'1.0-0' }}</span></h2>
       </div>
     </div>
+    <div *ngIf="selectedTab === 3">
+      <h2>HIGH SCORE</h2>
+      <hr />
+      <p>The Button game is a game of <em>clicks</em>, with each <em>click</em> on the <span class="the-button-info">BOSS button</span>
+        bringing sweet sweet BossCoins <img style="height: 20px;" src="../../assets/images/bossItems/bossCoin.png"> and fame & glory on the Highscore <img style="height: 20px;" src="../../assets/images/menu/trophy.svg">,
+        relishing in your opponents shitty performance...
+        <em>Click</em> the historic BOSS-items
+        <img style="height: 20px;" src="../../assets/images/bossItems/beerCap1.png">
+        <img style="height: 20px;" src="../../assets/images/bossItems/floater1.png">
+        <img style="height: 20px;" src="../../assets/images/bossItems/meatClub1.png">
+        <img style="height: 20px;" src="../../assets/images/bossItems/oldOx1.png"> to increase your time and check the Highscore <img style="height: 20px;" src="../../assets/images/menu/trophy.svg">
+        to see how your best turn stacks up against your friends' and foes'.
+        Your Wallet <img style="height: 20px;" src="../../assets/images/bossItems/bossCoinSymbol.png"> contains all your accumulated BossCoin <img style="height: 20px;" src="../../assets/images/bossItems/bossCoin.png"> wealth, which can be spent
+        at a later date...
+      </p>
+    </div>
   </div>
 </div>
 <div id="showUsersBig">
   <div class="side-menu">
     <div class="row userMenu">
-        <div *ngIf="selectedTab === 1" (click)="selectTab(1); getUsers();" class="col-lg-4 userMenu-item selected"><div class="svg highscore"></div></div>
-        <div *ngIf="selectedTab !== 1" (click)="selectTab(1); getUsers();" class="col-lg-4 userMenu-item"><div class="svg highscore"></div></div>
-        <div *ngIf="selectedTab === 2" (click)="selectTab(2)" class="col-lg-4 userMenu-item selected"><div class="svg profile"></div></div>
-        <div *ngIf="selectedTab !== 2" (click)="selectTab(2)" class="col-lg-4 userMenu-item"><div class="svg profile"></div></div>
-        <div *ngIf="selectedTab === 3" (click)="selectTab(3)" class="col-lg-4 userMenu-item selected"><div class="svg settings"></div></div>
-        <div *ngIf="selectedTab !== 3" (click)="selectTab(3)" class="col-lg-4 userMenu-item"><div class="svg settings"></div></div>
+        <div *ngIf="selectedTab === 1" (click)="selectTab(1); getUsers();" class="col-lg-3 userMenu-item selected"><div class="svg highscore"></div></div>
+        <div *ngIf="selectedTab !== 1" (click)="selectTab(1); getUsers();" class="col-lg-3 userMenu-item"><div class="svg highscore"></div></div>
+        <div *ngIf="selectedTab === 2" (click)="selectTab(2)" class="col-lg-3 userMenu-item selected"><div class="svg profile"></div></div>
+        <div *ngIf="selectedTab !== 2" (click)="selectTab(2)" class="col-lg-3 userMenu-item"><div class="svg profile"></div></div>
+        <div *ngIf="selectedTab === 3" (click)="selectTab(3)" class="col-lg-3 userMenu-item selected" style="height: 40px;"><span class="svg fa fa-info"></span></div>
+        <div *ngIf="selectedTab !== 3" (click)="selectTab(3)" class="col-lg-3 userMenu-item" style="height: 40px;"><span class="svg fa fa-info"></span></div>
+        <div *ngIf="selectedTab === 4" (click)="selectTab(4)" class="col-lg-3 userMenu-item selected"><div class="svg settings"></div></div>
+        <div *ngIf="selectedTab !== 4" (click)="selectTab(4)" class="col-lg-3 userMenu-item"><div class="svg settings"></div></div>
     </div>
     <div class="row">
       <div *ngIf="selectedTab === 1" class="box-content container">
@@ -162,9 +182,24 @@
           <h2>Highscore: <span style="float:right">{{selectedUser.score | number:'1.0-0' }}</span></h2>
           <h2>Wallet: <span style="float:right;" class="bossCoin"></span> <span style="float:right;">{{selectedUser.wallet | number:'1.0-0' }}</span></h2>
         </div>
-
       </div>
       <div *ngIf="selectedTab === 3" class="box-content container">
+        <h2>HIGH SCORE</h2>
+        <hr />
+        <p>The Button game is a game of <em>clicks</em>, with each <em>click</em> on the <span class="the-button-info">BOSS button</span>
+          bringing sweet sweet BossCoins <img style="height: 20px;" src="../../assets/images/bossItems/bossCoin.png"> and fame & glory on the Highscore <img style="height: 20px;" src="../../assets/images/menu/trophy.svg">,
+          relishing in your opponents shitty performance...
+          <em>Click</em> the historic BOSS-items
+          <img style="height: 20px;" src="../../assets/images/bossItems/beerCap1.png">
+          <img style="height: 20px;" src="../../assets/images/bossItems/floater1.png">
+          <img style="height: 20px;" src="../../assets/images/bossItems/meatClub1.png">
+          <img style="height: 20px;" src="../../assets/images/bossItems/oldOx1.png"> to increase your time and check the Highscore <img style="height: 20px;" src="../../assets/images/menu/trophy.svg">
+          to see how your best turn stacks up against your friends' and foes'.
+          Your Wallet <img style="height: 20px;" src="../../assets/images/bossItems/bossCoinSymbol.png"> contains all your accumulated BossCoin <img style="height: 20px;" src="../../assets/images/bossItems/bossCoin.png"> wealth, which can be spent
+          at a later date...
+        </p>
+      </div>
+      <div *ngIf="selectedTab === 4" class="box-content container">
         <h2>SETTINGS</h2>
         <hr />
         <div class="setting">

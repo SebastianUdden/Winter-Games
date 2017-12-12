@@ -1,30 +1,30 @@
-.duel .topRow {
+.topRow {
   margin-bottom: -1.2em;
 }
-.duel .botRow {
+.botRow {
   margin-top: -1.2em;
 }
 
-.duel .userInfo {
+.userInfo {
   margin:4px;
 }
 
-.duel .userInfo-item {
+.userInfo-item {
   padding: 5px;
   font-size:25px;
   border-color: black;
   color:white;
 }
 
-.duel .userInfo-item:hover {
+.userInfo-item:hover {
   font-weight: 800;
 }
 
-.duel .userInfo:nth-child(even) {
+.userInfo:nth-child(even) {
   background-color: #383838;
 }
 
-.duel .userInfo-row:hover {
+.userInfo-row:hover {
   border-radius: 8px;
   color:rgb(179, 179, 179);
   background-color:rgb(158, 158, 158);
@@ -46,7 +46,7 @@
 .virre { background-image: url('../../assets/images/avatars/Virre.png'); }
 .robban { background-image: url('../../assets/images/avatars/Robban.png'); }
 
-.duel .users-img {
+.users-img {
   margin-top: 1em;
   padding-top: 4px;
 	cursor: pointer;
@@ -57,12 +57,12 @@
   background-position: center;
 }
 
-.duel .userprofile {
+.user-profile {
   width: 20em;
   height: 20em;
 }
 
-.duel .myprofile {
+.myprofile {
   width: 20em;
   height: 20em;
 }
@@ -73,7 +73,7 @@
 @media only screen and (
   max-width: 1026px
 ) {
-.duel .highscore-img {
+.user-list {
   width: 8em;
   height: 8em;
 }
@@ -82,7 +82,7 @@
 @media only screen and (
   min-width: 1026px
 ) {
-.duel .highscore-img {
+.user-list {
   width: 3.7em;
   height: 3.7em;
   margin-top: 0.3em;
