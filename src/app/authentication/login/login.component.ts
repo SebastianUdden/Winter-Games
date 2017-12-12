@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.noUser = true;
+    this.startNoUserCount();
     this.loading = true;
     this.userService.getUser(this.model.username)
       .subscribe(
@@ -64,6 +64,11 @@ export class LoginComponent implements OnInit {
         });
   }
 
+  startNoUserCount() {
+    setTimeout(() => {
+      this.noUser = true;
+    }, 4000);
+  }
   preventZoom(e) {
     const t2 = e.timeStamp;
     const t1 = e.currentTarget.dataset.lastTouch || t2;
