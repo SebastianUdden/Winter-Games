@@ -4,13 +4,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
+import { routing } from './app.routing';
 
 import { AppComponent } from './app.component';
 import { DatabaseComponent } from './database/database.component';
 import { HomeComponent } from './home/home.component';
 import { LightSwitchComponent } from './light-switch/light-switch.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { routing } from './app.routing';
 import { TheButtonComponent } from './the-button/the-button.component';
 import { UsersComponent } from './users/users.component';
 

@@ -14,6 +14,8 @@ import { User } from '../_models/user';
 export class TheDuelComponent implements OnInit {
   public user: User;
   public selectedUser: User;
+  public challenge = false;
+  public challengeAccept = false;
 
   constructor(
     private data: UpdateService,
@@ -39,5 +41,15 @@ export class TheDuelComponent implements OnInit {
 
   selectUser(user) {
     this.selectedUser = user;
+  }
+
+  challengeOpponent() {
+    alert('Challenging ' + this.selectedUser.username);
+    this.challenge = true;
+  }
+
+  chickenOut() {
+    alert('Scared of ' + this.selectedUser.username + '?');
+    this.challenge = false;
   }
 }

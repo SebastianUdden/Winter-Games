@@ -2,7 +2,7 @@
   margin-bottom: -1.2em;
 }
 .botRow {
-  margin-top: -1.2em;
+  margin-top: -2.2em;
 }
 
 .userInfo {
@@ -28,6 +28,32 @@
   border-radius: 8px;
   color:rgb(179, 179, 179);
   background-color:rgb(158, 158, 158);
+}
+
+.VS {
+  margin-top: 50px;
+  text-align: center;
+  font-size: 130px;
+}
+
+.vsbutton {
+  margin: 0 auto;
+  margin-left: 33%;
+  font-size: 20px;
+  padding: 8px;
+  border-radius: 10px;
+}
+
+.challenge {
+  background-color: #790a0a;
+}
+
+.chicken {
+  background-color: #993c9c;
+}
+
+.challengeAccept {
+  background-color: #229248;
 }
 
 /*///////////////
@@ -62,11 +88,6 @@
   height: 20em;
 }
 
-.myprofile {
-  width: 20em;
-  height: 20em;
-}
-
 /*///////////////
 // Media Queries
 ///////////////////////////////////////////////////////////////////////////////*/
@@ -83,8 +104,8 @@
   min-width: 1026px
 ) {
 .user-list {
-  width: 3.7em;
-  height: 3.7em;
+  width: 9em;
+  height: 9em;
   margin-top: 0.3em;
   margin-bottom: -0.6em;
 }

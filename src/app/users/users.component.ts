@@ -21,6 +21,7 @@ export class UsersComponent implements OnInit {
   public user: User;
   public selectedUser: User;
   public selectedTab: number;
+  public showHighscore = true;
   public gambler = false;
   public maestro = false;
   public grinder = false;
@@ -69,9 +70,11 @@ export class UsersComponent implements OnInit {
 
   toggle(type) {
     const element = document.getElementById(type + 'CheckBox');
-    if (this[type] !== (element as any).checked) {
-      this[type] = !this[type];
-      element.click();
+    if (element) {
+      if (this[type] !== (element as any).checked) {
+        this[type] = !this[type];
+        element.click();
+      }
     }
   }
 
@@ -109,6 +112,10 @@ export class UsersComponent implements OnInit {
   }
   ToggleFullName() {
     return this.displayFullName = !this.displayFullName;
+  }
+
+  toggleHighscore() {
+    return this.showHighscore = !this.showHighscore;
   }
 
   SortDescending(array) {

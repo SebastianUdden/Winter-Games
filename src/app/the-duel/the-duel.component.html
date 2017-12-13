@@ -1,46 +1,75 @@
 <section *ngIf="user">
   <h1 style="text-align:center">The Duel</h1>
   <hr />
-  <h2>{{user.username}}</h2>
-  <div *ngIf="user.png === 'Sebbe.png'" class="users-img user-profile sebbe" style="width: 20em; height: 20em;"></div>
-  <div *ngIf="user.png === 'Mattis.png'" class="users-img user-profile mattis" style="width: 20em; height: 20em;"></div>
-  <div *ngIf="user.png === 'Dennan.png'" class="users-img user-profile dennan" style="width: 20em; height: 20em;"></div>
-  <div *ngIf="user.png === 'Robin.png'" class="users-img user-profile robin" style="width: 20em; height: 20em;"></div>
-  <div *ngIf="user.png === 'Kling.png'" class="users-img user-profile kling" style="width: 20em; height: 20em;"></div>
-  <div *ngIf="user.png === 'Fredde.png'" class="users-img user-profile fredde" style="width: 20em; height: 20em;"></div>
-  <div *ngIf="user.png === 'Virre.png'" class="users-img user-profile virre" style="width: 20em; height: 20em;"></div>
-  <div *ngIf="user.png === 'Schaeran.png'" class="users-img user-profile schaeran" style="width: 20em; height: 20em;"></div>
-  <div *ngIf="user.png === 'Nemer.png'" class="users-img user-profile nemer" style="width: 20em; height: 20em;"></div>
-  <div *ngIf="user.png === 'Ivar.png'" class="users-img user-profile ivar" style="width: 20em; height: 20em;"></div>
-  <div *ngIf="user.png === 'Amanda.png'" class="users-img user-profile amanda" style="width: 20em; height: 20em;"></div>
-  <div *ngIf="user.png === 'Robban.png'" class="users-img user-profile robban" style="width: 20em; height: 20em;"></div>
+  <div class="row">
+    <div *ngIf="user" class="col-xs-5">
+      <div style="width: 33%; margin: 0 auto; text-align: center;">
+        <h2>{{user.username}}</h2>
+        <div *ngIf="user.png === 'Sebbe.png'" class="users-img user-profile sebbe" style="width: 20em; height: 20em;"></div>
+        <div *ngIf="user.png === 'Mattis.png'" class="users-img user-profile mattis" style="width: 20em; height: 20em;"></div>
+        <div *ngIf="user.png === 'Dennan.png'" class="users-img user-profile dennan" style="width: 20em; height: 20em;"></div>
+        <div *ngIf="user.png === 'Robin.png'" class="users-img user-profile robin" style="width: 20em; height: 20em;"></div>
+        <div *ngIf="user.png === 'Kling.png'" class="users-img user-profile kling" style="width: 20em; height: 20em;"></div>
+        <div *ngIf="user.png === 'Fredde.png'" class="users-img user-profile fredde" style="width: 20em; height: 20em;"></div>
+        <div *ngIf="user.png === 'Virre.png'" class="users-img user-profile virre" style="width: 20em; height: 20em;"></div>
+        <div *ngIf="user.png === 'Schaeran.png'" class="users-img user-profile schaeran" style="width: 20em; height: 20em;"></div>
+        <div *ngIf="user.png === 'Nemer.png'" class="users-img user-profile nemer" style="width: 20em; height: 20em;"></div>
+        <div *ngIf="user.png === 'Ivar.png'" class="users-img user-profile ivar" style="width: 20em; height: 20em;"></div>
+        <div *ngIf="user.png === 'Amanda.png'" class="users-img user-profile amanda" style="width: 20em; height: 20em;"></div>
+        <div *ngIf="user.png === 'Robban.png'" class="users-img user-profile robban" style="width: 20em; height: 20em;"></div>
+      </div>
+    </div>
+    <div class="col-xs-2">
+      <div class="row VS">VS</div>
+      <div class="row">
+        <button *ngIf="!challenge && !challengeAccept" class="vsbutton challenge" (click)="challengeOpponent();">Challenge</button>
+        <button *ngIf="challenge && !challengeAccept" class="vsbutton chicken" (click)="chickenOut();">Chicken out</button>
+        <button *ngIf="challengeAccept" class="vsbutton challengeAccept">Challenge Accepted</button>
+      </div>
+    </div>
+    <div *ngIf="selectedUser" class="col-xs-5">
+      <div style="width: 33%; margin: 0 auto; text-align: center;">
+        <h2>{{selectedUser.username}}</h2>
+        <div *ngIf="selectedUser.png === 'Sebbe.png'" class="users-img user-profile sebbe" style="width: 20em; height: 20em;"></div>
+        <div *ngIf="selectedUser.png === 'Mattis.png'" class="users-img user-profile mattis" style="width: 20em; height: 20em;"></div>
+        <div *ngIf="selectedUser.png === 'Dennan.png'" class="users-img user-profile dennan" style="width: 20em; height: 20em;"></div>
+        <div *ngIf="selectedUser.png === 'Robin.png'" class="users-img user-profile robin" style="width: 20em; height: 20em;"></div>
+        <div *ngIf="selectedUser.png === 'Kling.png'" class="users-img user-profile kling" style="width: 20em; height: 20em;"></div>
+        <div *ngIf="selectedUser.png === 'Fredde.png'" class="users-img user-profile fredde" style="width: 20em; height: 20em;"></div>
+        <div *ngIf="selectedUser.png === 'Virre.png'" class="users-img user-profile virre" style="width: 20em; height: 20em;"></div>
+        <div *ngIf="selectedUser.png === 'Schaeran.png'" class="users-img user-profile schaeran" style="width: 20em; height: 20em;"></div>
+        <div *ngIf="selectedUser.png === 'Nemer.png'" class="users-img user-profile nemer" style="width: 20em; height: 20em;"></div>
+        <div *ngIf="selectedUser.png === 'Ivar.png'" class="users-img user-profile ivar" style="width: 20em; height: 20em;"></div>
+        <div *ngIf="selectedUser.png === 'Amanda.png'" class="users-img user-profile amanda" style="width: 20em; height: 20em;"></div>
+        <div *ngIf="selectedUser.png === 'Robban.png'" class="users-img user-profile robban" style="width: 20em; height: 20em;"></div>
+      </div>
+    </div>
+  </div>
   <hr>
   <h2>Choose your opponent</h2>
   <div *ngFor="let u of users" class="userInfo userInfo-row">
-    <div *ngIf="user">
-      <div *ngIf="u.username !== user.username">
-        <div (click)="selectUser(u);" class="row topRow">
-          <div class="col-xs-1"></div>
-          <div *ngIf="u.png === 'Sebbe.png'" class="col-xs-2 users-img user-list sebbe"></div>
-          <div *ngIf="u.png === 'Mattis.png'" class="col-xs-2 users-img user-list mattis"></div>
-          <div *ngIf="u.png === 'Dennan.png'" class="col-xs-2 users-img user-list dennan"></div>
-          <div *ngIf="u.png === 'Robin.png'" class="col-xs-2 users-img user-list robin"></div>
-          <div *ngIf="u.png === 'Kling.png'" class="col-xs-2 users-img user-list kling"></div>
-          <div *ngIf="u.png === 'Fredde.png'" class="col-xs-2 users-img user-list fredde"></div>
-          <div *ngIf="u.png === 'Virre.png'" class="col-xs-2 users-img user-list virre"></div>
-          <div *ngIf="u.png === 'Schaeran.png'" class="col-xs-2 users-img user-list schaeran"></div>
-          <div *ngIf="u.png === 'Nemer.png'" class="col-xs-2 users-img user-list nemer"></div>
-          <div *ngIf="u.png === 'Ivar.png'" class="col-xs-2 users-img user-list ivar"></div>
-          <div *ngIf="u.png === 'Amanda.png'" class="col-xs-2 users-img user-list amanda"></div>
-          <div *ngIf="u.png === 'Robban.png'" class="col-xs-2 users-img user-list robban"></div>
-          <div class="col-xs-9 userInfo-item name">{{u.username}}</div>
-        </div>
-        <div class="row">
-          <div class="col-xs-3"></div>
-          <div class="col-xs-9 centerText userInfo-item score botRow">
-            <h4>Score: <span style="float:right;">{{u.score | number:'1.0-0' }}</span></h4>
-            <h4>Wallet: <span style="float:right;" class="bossCoin"></span> <span style="float:right;">{{u.wallet | number:'1.0-0' }}</span></h4>
-          </div>
+    <div *ngIf="u" (click)="selectUser(u);">
+      <div (click)="selectUser(u);" class="row topRow">
+        <div class="col-xs-1"></div>
+        <div *ngIf="u.png === 'Sebbe.png'" class="col-xs-2 users-img user-list sebbe"></div>
+        <div *ngIf="u.png === 'Mattis.png'" class="col-xs-2 users-img user-list mattis"></div>
+        <div *ngIf="u.png === 'Dennan.png'" class="col-xs-2 users-img user-list dennan"></div>
+        <div *ngIf="u.png === 'Robin.png'" class="col-xs-2 users-img user-list robin"></div>
+        <div *ngIf="u.png === 'Kling.png'" class="col-xs-2 users-img user-list kling"></div>
+        <div *ngIf="u.png === 'Fredde.png'" class="col-xs-2 users-img user-list fredde"></div>
+        <div *ngIf="u.png === 'Virre.png'" class="col-xs-2 users-img user-list virre"></div>
+        <div *ngIf="u.png === 'Schaeran.png'" class="col-xs-2 users-img user-list schaeran"></div>
+        <div *ngIf="u.png === 'Nemer.png'" class="col-xs-2 users-img user-list nemer"></div>
+        <div *ngIf="u.png === 'Ivar.png'" class="col-xs-2 users-img user-list ivar"></div>
+        <div *ngIf="u.png === 'Amanda.png'" class="col-xs-2 users-img user-list amanda"></div>
+        <div *ngIf="u.png === 'Robban.png'" class="col-xs-2 users-img user-list robban"></div>
+        <div class="col-xs-9 userInfo-item name">{{u.username}}</div>
+      </div>
+      <div class="row">
+        <div class="col-xs-3"></div>
+        <div class="col-xs-9 centerText userInfo-item score botRow">
+          <h4>Score: <span style="float:right;">{{u.score | number:'1.0-0' }}</span></h4>
+          <h4>Wallet: <span style="float:right;">{{u.wallet | number:'1.0-0' }} <img style="height: 20px; margin-bottom:5px;" src="assets/images/bossItems/bossCoinSymbol.png"></span></h4>
         </div>
       </div>
     </div>

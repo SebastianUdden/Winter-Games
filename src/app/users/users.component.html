@@ -6,11 +6,11 @@
     <div *ngIf="selectedTab === 2" (click)="selectTab(2)" class="col-xs-4 userMenu-item selected"><div class="svg profile"></div></div>
     <div *ngIf="selectedTab === 3" (click)="selectTab(3)" class="col-xs-4 userMenu-item selected" style="height: 40px;"><span class="svg fa fa-info"></span></div>
     <div *ngIf="selectedTab !== 3" (click)="selectTab(3)" class="col-xs-4 userMenu-item" style="height: 40px;"><span class="svg fa fa-info"></span></div>
-    <!-- <div (click)="selectTab(3)" class="col-xs-4 userMenu-item"><div class="svg settings"></div></div> -->
   </div>
   <div class="row">
     <div *ngIf="selectedTab === 1">
-      <h2>HIGH SCORE</h2>
+      <h2 *ngIf="showHighscore" style="cursor:pointer;" (click)="toggleHighscore();">HIGH SCORE</h2>
+      <h2 *ngIf="!showHighscore" style="cursor:pointer;" (click)="toggleHighscore();">WALLET</h2>
       <hr />
       <div *ngFor="let u of users" class="userInfo userInfo-row">
         <div *ngIf="user">
@@ -32,7 +32,8 @@
               <div class="col-xs-7 userInfo-item name">{{u.username}}</div>
             </div>
             <div class="row">
-              <div class="col-xs-12 centerText userInfo-item score botRow">{{u.score | number:'1.0-0' }}</div>
+              <div *ngIf="showHighscore" class="col-xs-12 centerText userInfo-item score botRow">{{u.score | number:'1.0-0' }}</div>
+              <div *ngIf="!showHighscore" class="col-xs-12 centerText userInfo-item score botRow">{{u.wallet | number:'1.0-0' }} <img style="height: 20px; margin-bottom:5px;" src="assets/images/bossItems/bossCoinSymbol.png"></div>
             </div>
           </div>
           <div *ngIf="u.username !== user.username">
@@ -53,7 +54,8 @@
               <div class="col-xs-7 userInfo-item name">{{u.username}}</div>
             </div>
             <div class="row">
-              <div class="col-xs-12 centerText userInfo-item score botRow">{{u.score | number:'1.0-0' }}</div>
+              <div *ngIf="showHighscore" class="col-xs-12 centerText userInfo-item score botRow">{{u.score | number:'1.0-0' }}</div>
+              <div *ngIf="!showHighscore" class="col-xs-12 centerText userInfo-item score botRow">{{u.wallet | number:'1.0-0' }} <img style="height: 20px; margin-bottom:5px;" src="assets/images/bossItems/bossCoinSymbol.png"></div>
             </div>
           </div>
         </div>
@@ -81,7 +83,7 @@
       </div>
     </div>
     <div *ngIf="selectedTab === 3">
-      <h2>HIGH SCORE</h2>
+      <h2>About</h2>
       <hr />
       <p>The Button game is a game of <em>clicks</em>, with each <em>click</em> on the <span class="the-button-info">BOSS button</span>
         bringing sweet sweet BossCoins <img style="height: 20px;" src="assets/images/bossItems/bossCoin.png"> and fame & glory on the Highscore <img style="height: 20px;" src="assets/images/menu/trophy.svg">,
@@ -112,7 +114,8 @@
     </div>
     <div class="row">
       <div *ngIf="selectedTab === 1" class="box-content container">
-        <h2>HIGH SCORE</h2>
+        <h2 *ngIf="showHighscore" style="cursor:pointer;" (click)="toggleHighscore();">HIGH SCORE</h2>
+        <h2 *ngIf="!showHighscore" style="cursor:pointer;" (click)="toggleHighscore();">WALLET</h2>
         <hr />
         <div *ngFor="let u of users" class="userInfo userInfo-row">
           <div *ngIf="user">
@@ -134,7 +137,8 @@
                 <div class="col-xs-7 userInfo-item name">{{u.username}}</div>
               </div>
               <div (click)="selectUser(u);" class="row">
-                <div class="col-xs-12 centerText userInfo-item score botRow">{{u.score | number:'1.0-0' }}</div>
+                <div *ngIf="showHighscore" class="col-xs-12 centerText userInfo-item score botRow">{{u.score | number:'1.0-0' }}</div>
+                <div *ngIf="!showHighscore" class="col-xs-12 centerText userInfo-item score botRow">{{u.wallet | number:'1.0-0' }} <img style="height: 20px; margin-bottom:5px;" src="assets/images/bossItems/bossCoinSymbol.png"></div>
               </div>
             </div>
             <div *ngIf="u.username !== user.username">
@@ -155,7 +159,8 @@
                 <div class="col-xs-7 userInfo-item name">{{u.username}}</div>
               </div>
               <div (click)="selectUser(u);" class="row">
-                <div class="col-xs-12 centerText userInfo-item score botRow">{{u.score | number:'1.0-0' }}</div>
+                <div *ngIf="showHighscore" class="col-xs-12 centerText userInfo-item score botRow">{{u.score | number:'1.0-0' }}</div>
+                <div *ngIf="!showHighscore" class="col-xs-12 centerText userInfo-item score botRow">{{u.wallet | number:'1.0-0' }} <img style="height: 20px; margin-bottom:5px;" src="assets/images/bossItems/bossCoinSymbol.png"></div>
               </div>
             </div>
           </div>
@@ -184,7 +189,7 @@
         </div>
       </div>
       <div *ngIf="selectedTab === 3" class="box-content container">
-        <h2>HIGH SCORE</h2>
+        <h2>About</h2>
         <hr />
         <p>The Button game is a game of <em>clicks</em>, with each <em>click</em> on the <span class="the-button-info">BOSS button</span>
           bringing sweet sweet BossCoins <img style="height: 20px;" src="assets/images/bossItems/bossCoin.png"> and fame & glory on the Highscore <img style="height: 20px;" src="assets/images/menu/trophy.svg">,
