@@ -50,7 +50,7 @@
           <p>Highscore: {{usr.score | number:'1.0-2' }}</p>
           <p>Wallet: {{usr.wallet | number:'1.0-2' }}</p>
           <p>Playthroughs: {{usr.playthroughs | number:'1.0-2' }}</p>
-          <div *ngIf="usr.username !== 'Zebudden'">
+          <div *ngIf="usr.username !== 'Sebbe'">
             <div *ngIf="choice && evil">
               <p>Score <span style="color:#ec2d2a;">Penalties:</span></p>
               <p>
@@ -65,7 +65,7 @@
               </p>
             </div>
           </div>
-          <div *ngIf="usr.username !== 'Zebudden'">
+          <div *ngIf="usr.username !== 'Sebbe'">
             <div *ngIf="choice && !evil">
               <p>Score <span style="color:#43cc1a;">Boosts:</span></p>
               <p>
@@ -78,10 +78,10 @@
               </p>
             </div>
           </div>
-          <span class="btn btn-danger" *ngIf="usr.username === 'Zebudden'" (click)="gofuckyourself(user.username)">Delete</span>
+          <span class="btn btn-danger" *ngIf="usr.username === 'Sebbe'" (click)="gofuckyourself(user.username)">Delete</span>
       </div>
     </div>
     <hr>
-    <button *ngIf="user.username === 'Zebudden'" [routerLink]="['/database']" class="btn btn-info">Show Database</button>
+    <button *ngIf="user.username === 'Sebbe'" [routerLink]="['/database']" class="btn btn-info">Show Database</button>
     <hr>
 </div>

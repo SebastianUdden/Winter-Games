@@ -12,7 +12,7 @@ export class AuthenticationService {
   user: User;
   public token: string;
 
-  private userSource = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
+  private userSource = new BehaviorSubject<User>(JSON.parse(sessionStorage.getItem('currentUser')));
   public currentUser = this.userSource.asObservable();
 
   constructor(private userService: UserService, private http: Http) {
@@ -23,6 +23,6 @@ export class AuthenticationService {
   }
   logout() {
     this.userSource.next(new User());
-    localStorage.removeItem('currentUser');
+    sessionStorage.removeItem('currentUser');
   }
 }

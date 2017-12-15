@@ -71,7 +71,7 @@ export class UserService {
 
   /** POST: add a new user to the server */
   addUser (model: any): Observable<User> {
-    const user = new User(model.firstname, model.lastname, model.email, model.username, model.password, 0, 0, 0, '', false);
+    const user = new User(model.firstname, model.lastname, model.email, model.username, model.password, 0, 0, 0, [], '', false);
     return this.http.post<User>(this.usersUrl + '/users', user, httpOptions).pipe(
       tap((urer: User) => this.log(`added user :${user.username}`)),
       catchError(this.handleError<User>('addUser'))

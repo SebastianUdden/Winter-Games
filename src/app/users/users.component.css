@@ -268,8 +268,7 @@ input:checked + .slider:before {
   width: 20px;
   height: 28px;
   margin-left: 5px;
-  margin-top: 1.1px;
-  /* background-image: url('../../assets/images/bossItems/bossCoin.png'); */
+  margin-top: -1.1px;
   background-image: url('../../assets/images/bossItems/bossCoinSymbol.png');
 }
 

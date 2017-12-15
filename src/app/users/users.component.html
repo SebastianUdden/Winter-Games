@@ -1,11 +1,13 @@
 <div id="showUsersSmall">
   <div class="row userMenu">
-    <div *ngIf="selectedTab === 1" (click)="selectTab(1); getUsers();" class="col-xs-4 userMenu-item selected"><div class="svg highscore"></div></div>
-    <div *ngIf="selectedTab !== 1" (click)="selectTab(1); getUsers();" class="col-xs-4 userMenu-item"><div class="svg highscore"></div></div>
-    <div *ngIf="selectedTab !== 2" (click)="selectTab(2)" class="col-xs-4 userMenu-item"><div class="svg profile"></div></div>
-    <div *ngIf="selectedTab === 2" (click)="selectTab(2)" class="col-xs-4 userMenu-item selected"><div class="svg profile"></div></div>
-    <div *ngIf="selectedTab === 3" (click)="selectTab(3)" class="col-xs-4 userMenu-item selected" style="height: 40px;"><span class="svg fa fa-info"></span></div>
-    <div *ngIf="selectedTab !== 3" (click)="selectTab(3)" class="col-xs-4 userMenu-item" style="height: 40px;"><span class="svg fa fa-info"></span></div>
+    <div *ngIf="selectedTab === 1" (click)="selectTab(1); getUsers();" class="col-xs-3 userMenu-item selected"><div class="svg highscore"></div></div>
+    <div *ngIf="selectedTab !== 1" (click)="selectTab(1); getUsers();" class="col-xs-3 userMenu-item"><div class="svg highscore"></div></div>
+    <div *ngIf="selectedTab !== 2" (click)="selectTab(2)" class="col-xs-3 userMenu-item"><div class="svg profile"></div></div>
+    <div *ngIf="selectedTab === 2" (click)="selectTab(2)" class="col-xs-3 userMenu-item selected"><div class="svg profile"></div></div>
+    <div *ngIf="selectedTab === 3" (click)="selectTab(3)" class="col-xs-3 userMenu-item selected" style="height: 40px;"><span class="svg fa fa-info"></span></div>
+    <div *ngIf="selectedTab !== 3" (click)="selectTab(3)" class="col-xs-3 userMenu-item" style="height: 40px;"><span class="svg fa fa-info"></span></div>
+    <div *ngIf="selectedTab === 4" (click)="selectTab(4)" class="col-xs-3 userMenu-item selected" style="height: 40px;"><img style="height: 20px; margin-bottom:4px;" src="assets/images/bossItems/bossCoin.png" /></div>
+    <div *ngIf="selectedTab !== 4" (click)="selectTab(4)" class="col-xs-3 userMenu-item" style="height: 40px;"><img style="height: 20px; margin-bottom:4px;" src="assets/images/bossItems/bossCoin.png" /></div>
   </div>
   <div class="row">
     <div *ngIf="selectedTab === 1">
@@ -61,7 +63,7 @@
         </div>
       </div>
     </div>
-    <div *ngIf="selectedTab === 2">
+    <div *ngIf="selectedTab === 2" style="min-height: 80vh;">
       <h2 style="text-align:center">{{selectedUser.firstname}} {{selectedUser.lastname}}</h2>
       <hr />
       <div *ngIf="selectedUser.png === 'Sebbe.png'" class="users-img userprofile sebbe" style="width: 20; height: 20em;"></div>
@@ -82,7 +84,7 @@
         <h2>Wallet: <span style="float:right;" class="bossCoin"></span> <span style="float:right;">{{selectedUser.wallet | number:'1.0-0' }}</span></h2>
       </div>
     </div>
-    <div *ngIf="selectedTab === 3">
+    <div *ngIf="selectedTab === 3" style="min-height: 80vh;">
       <h2>About</h2>
       <hr />
       <p>The Button game is a game of <em>clicks</em>, with each <em>click</em> on the <span class="the-button-info">BOSS button</span>
@@ -98,19 +100,47 @@
         at a later date...
       </p>
     </div>
+    <div *ngIf="selectedTab === 4" style="min-height: 80vh;">
+      <h2>Marketplace</h2>
+      <hr />
+      <p>Buy our BOSSy goods and services! There are no in-game purchases, microtransactions and buy-to-win,
+        we accept no credit cards, only sweet sweet BossCoins
+        <img style="height: 20px;" src="assets/images/bossItems/bossCoin.png">
+      </p>
+      <h3>Wallet: <span style="float:right;" class="bossCoin"></span> <span style="float:right;">{{user.wallet | number:'1.0-0' }}</span></h3>
+      <hr />
+      <div *ngIf="user.admin">
+        <h3>Attributes for sale</h3>
+        <hr />
+        <div *ngFor="let marketAttribute of marketAttributes">
+          <div *ngIf="marketAttribute.owned !== true">
+            <app-attribute [attribute]="marketAttribute" [owned]="false"></app-attribute>
+          </div>
+        </div>
+        <h3 style="color:rgb(44, 44, 44);">.</h3>
+        <hr />
+        <h3>Owned attributes</h3>
+        <hr />
+        <div *ngFor="let userAttribute of user.attributes">
+          <app-attribute [attribute]="userAttribute" [owned]="true"></app-attribute>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 <div id="showUsersBig">
   <div class="side-menu">
     <div class="row userMenu">
-        <div *ngIf="selectedTab === 1" (click)="selectTab(1); getUsers();" class="col-lg-3 userMenu-item selected"><div class="svg highscore"></div></div>
-        <div *ngIf="selectedTab !== 1" (click)="selectTab(1); getUsers();" class="col-lg-3 userMenu-item"><div class="svg highscore"></div></div>
-        <div *ngIf="selectedTab === 2" (click)="selectTab(2)" class="col-lg-3 userMenu-item selected"><div class="svg profile"></div></div>
-        <div *ngIf="selectedTab !== 2" (click)="selectTab(2)" class="col-lg-3 userMenu-item"><div class="svg profile"></div></div>
-        <div *ngIf="selectedTab === 3" (click)="selectTab(3)" class="col-lg-3 userMenu-item selected" style="height: 40px;"><span class="svg fa fa-info"></span></div>
-        <div *ngIf="selectedTab !== 3" (click)="selectTab(3)" class="col-lg-3 userMenu-item" style="height: 40px;"><span class="svg fa fa-info"></span></div>
-        <div *ngIf="selectedTab === 4" (click)="selectTab(4)" class="col-lg-3 userMenu-item selected"><div class="svg settings"></div></div>
-        <div *ngIf="selectedTab !== 4" (click)="selectTab(4)" class="col-lg-3 userMenu-item"><div class="svg settings"></div></div>
+      <div *ngIf="selectedTab === 1" (click)="selectTab(1); getUsers();" class="col-lg-2 userMenu-item selected"><div class="svg highscore"></div></div>
+      <div *ngIf="selectedTab !== 1" (click)="selectTab(1); getUsers();" class="col-lg-2 userMenu-item"><div class="svg highscore"></div></div>
+      <div *ngIf="selectedTab === 2" (click)="selectTab(2)" class="col-lg-2 userMenu-item selected"><div class="svg profile"></div></div>
+      <div *ngIf="selectedTab !== 2" (click)="selectTab(2)" class="col-lg-2 userMenu-item"><div class="svg profile"></div></div>
+      <div *ngIf="selectedTab === 3" (click)="selectTab(3)" class="col-lg-2 userMenu-item selected" style="height: 40px;"><span class="svg fa fa-info"></span></div>
+      <div *ngIf="selectedTab !== 3" (click)="selectTab(3)" class="col-lg-2 userMenu-item" style="height: 40px;"><span class="svg fa fa-info"></span></div>
+      <div *ngIf="selectedTab === 4" (click)="selectTab(4)" class="col-lg-2 userMenu-item selected"><div class="svg settings"></div></div>
+      <div *ngIf="selectedTab !== 4" (click)="selectTab(4)" class="col-lg-2 userMenu-item"><div class="svg settings"></div></div>
+      <div *ngIf="selectedTab === 5" (click)="selectTab(5)" class="col-lg-4 userMenu-item selected" style="height: 40px;"><img style="height: 20px; margin-bottom:4px;" src="assets/images/bossItems/bossCoin.png" /></div>
+      <div *ngIf="selectedTab !== 5" (click)="selectTab(5)" class="col-lg-4 userMenu-item" style="height: 40px;"><img style="height: 20px; margin-bottom:4px;" src="assets/images/bossItems/bossCoin.png" /></div>
     </div>
     <div class="row">
       <div *ngIf="selectedTab === 1" class="box-content container">
@@ -216,6 +246,32 @@
               <input type="checkbox" id="maestroCheckBox" (click)="setType('maestro');">
               <span class="slider round"></span>
             </label>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="selectedTab === 5" class="box-content container">
+        <h2>Marketplace</h2>
+        <hr />
+        <p>Buy our BOSSy goods and services! Ther are no in-game purchases, microtransactions and buy-to-win,
+          we accept no credit cards, only sweet sweet BossCoins
+          <img style="height: 20px;" src="assets/images/bossItems/bossCoin.png">
+        </p>
+        <h3>Wallet: <span style="float:right;" class="bossCoin"></span> <span style="float:right;">{{user.wallet | number:'1.0-0' }}</span></h3>
+        <hr />
+        <div *ngIf="user.admin">
+          <h3>Attributes for sale</h3>
+          <hr />
+          <div *ngFor="let marketAttribute of marketAttributes">
+            <div *ngIf="marketAttribute.owned !== true">
+              <app-attribute [attribute]="marketAttribute" [owned]="marketAttribute.owned"></app-attribute>
+            </div>
+          </div>
+          <h3 style="color:rgb(44, 44, 44);">.</h3>
+          <hr />
+          <h3>Owned attributes</h3>
+          <hr />
+          <div *ngFor="let userAttribute of user.attributes">
+            <app-attribute [attribute]="userAttribute" [owned]="true"></app-attribute>
           </div>
         </div>
       </div>

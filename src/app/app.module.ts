@@ -31,6 +31,7 @@ import { AuthGuard } from './authentication/_guards/auth.guard';
 // Pipes
 import { EscapeHtmlPipe } from './_pipes/keep-html.pipe';
 import { TheDuelComponent } from './the-duel/the-duel.component';
+import { AttributeComponent } from './attribute/attribute.component';
 
 @NgModule({
   declarations: [
@@ -51,12 +52,15 @@ import { TheDuelComponent } from './the-duel/the-duel.component';
     // Pipes
     EscapeHtmlPipe,
 
-    TheDuelComponent
+    TheDuelComponent,
+
+    AttributeComponent,
   ],
   imports: [
     HttpModule,
     HttpClientModule,
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     routing
   ],

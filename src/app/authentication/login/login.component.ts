@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
             this.loginFailed = false;
             this.noUser = false;
             this.authenticationService.changeUser(data);
-            localStorage.setItem('currentUser', JSON.stringify(data));
+            sessionStorage.setItem('currentUser', JSON.stringify(data));
             this.router.navigate(['/profile']);
           } else {
             this.loggedIn = false;

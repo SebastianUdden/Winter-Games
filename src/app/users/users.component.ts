@@ -7,6 +7,9 @@ import { UpdateService } from '../_services/update.service';
 import { UserService } from '../_services/user.service';
 import { AuthenticationService } from '../_services/authentication.service';
 import { User } from '../_models/user';
+import { Attribute } from '../attribute/attribute';
+
+import { AttributeComponent } from '../attribute/attribute.component';
 
 @Component({
   selector: 'app-users',
@@ -26,7 +29,13 @@ export class UsersComponent implements OnInit {
   public maestro = false;
   public grinder = false;
   public mcFly = true;
-
+  public marketAttributes = [
+    new Attribute('Leech', 'Steal 1% of an opponents wealth per hour during a total of 3 hours.', 'Every three hours.', 30000, '#cc33cc', 'url("assets/images/attributes/box.png");', false),
+    new Attribute('Dual-Wield', 'Get X2, permanently, like a BOSS.', 'Always active.', 100, '#cc33cc', 'url("assets/images/attributes/box.png");', false),
+    new Attribute('Minigun', 'Get X40 for a 10 second period.', 'Once per day.', 60000, '#cc33cc', 'url("assets/images/attributes/box.png");', false),
+    new Attribute('Time-Lord', 'Get an extra 30 seconds for each round.', 'Always active.', 10000, '#cc33cc', 'url("assets/images/attributes/box.png");', false),
+    new Attribute('Captains Badge', 'You will be a team captain on the DAY.', '28th December.', 99999, '#cc33cc', 'url("assets/images/attributes/box.png");', false)
+  ];
   @Output() gamblerEvent = new EventEmitter<boolean>();
   @Output() maestroEvent = new EventEmitter<boolean>();
   @Output() grinderEvent = new EventEmitter<boolean>();
@@ -51,9 +60,16 @@ export class UsersComponent implements OnInit {
 
   ngOnInit() {
     this.getUsers();
-    // this.user = JSON.parse(localStorage.getItem('currentUser'));
     this.authenticationService.currentUser.subscribe(user => this.user = user);
     this.selectUser(this.user);
+    for (let i = 0; i < this.marketAttributes.length; i++) {
+      this.marketAttributes[i].owned = false;
+      for (let x = 0; x < this.user.attributes.length; x++) {
+        if (this.marketAttributes[i].name === this.user.attributes[x].name) {
+          this.marketAttributes[i].owned = true;
+        }
+      }
+    }
   }
 
   selectTab(tab) {
@@ -93,6 +109,7 @@ export class UsersComponent implements OnInit {
       this.user.score,
       this.user.wallet,
       this.user.playthroughs,
+      this.user.attributes,
       this.user.level,
       this.user.admin
     );

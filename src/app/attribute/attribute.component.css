@@ -1,0 +1,60 @@
+.attributeContainer {
+  /* display: inline-block; */
+  float:left;
+  border-radius: 10px;
+  background-color: #bd631a;
+  height: 70px;
+  margin-bottom: 10px;
+  width: 87%;
+  cursor: pointer;
+}
+
+.attributeName {
+  text-align: right;
+  color:whitesmoke;
+  font-size: 30px !important;
+  margin-right: 10px;
+  margin-bottom: 1px !important;
+}
+
+.attributeDescription {
+  text-align: left;
+  color:whitesmoke;
+  font-size: 15px !important;
+  padding:4px;
+  margin-right: 10px;
+  margin-bottom: 1px !important;
+}
+
+.attributePrice {
+  text-align: right;
+  color:rgb(243, 241, 205);
+  font-size: 20px !important;
+  margin-top: -5px !important;
+  margin-right: 10px;
+}
+
+.buyButton {
+  border-radius: 10px;
+  margin-left: 1%;
+  margin-bottom: 10px;
+  float:left;
+  width: 12%;
+  height: 70px;
+}
+
+.available {
+  background-color: rgb(60, 143, 60);
+  cursor: pointer;
+}
+
+.notAvailable {
+  background-color: rgb(168, 168, 168);
+  cursor: not-allowed;
+}
+
+.deal {
+  margin-top: 20%;
+  margin-left: 12%;
+  font-size: 24px;
+}

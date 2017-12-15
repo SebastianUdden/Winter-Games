@@ -524,6 +524,18 @@
           </div>
         </div>
         <div class="row gambling-bar extra-time-row">
+          <div class="col-xs-2" *ngIf="dualWieldAvailable">
+            <button class="buttonAttributeContainer buttonAttributeUsed" *ngIf="gameOn && !getReady && dualWield">Dual-Wield X2</button>
+            <button class="buttonAttributeContainer buttonAttributeNotUsed" *ngIf="gameOn && !getReady && !dualWield" (click)="toggleDualWield();">Dual-Wield X2</button>
+          </div>
+          <div class="col-xs-2" *ngIf="timeLordAvailable">
+            <button class="buttonAttributeContainer buttonAttributeUsed" *ngIf="gameOn && !getReady && timeLord">Time-Lord +30</button>
+            <button class="buttonAttributeContainer buttonAttributeNotUsed" *ngIf="gameOn && !getReady && !timeLord" (click)="toggleTimeLord();">Time-Lord +30</button>
+          </div>
+          <div class="col-xs-2" *ngIf="minigunAvailable">
+            <button class="buttonAttributeContainer buttonAttributeUsed" *ngIf="gameOn && !getReady && minigun">Minigun X30 (10s)</button>
+            <button class="buttonAttributeContainer buttonAttributeNotUsed" *ngIf="gameOn && !getReady && !minigun" (click)="toggleMinigun();">Minigun X30 (10s)</button>
+          </div>
         </div>
     </div>
     <div class="col-lg-1 right-bar full-height">

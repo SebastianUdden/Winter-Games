@@ -30,6 +30,17 @@ import { LightSwitchComponent } from '../light-switch/light-switch.component';
 export class TheButtonComponent implements OnInit, OnDestroy {
     @ViewChild(UsersComponent) users;
     public showDevValues = false;
+
+    public leech = false;
+    public dualWield = false;
+    public dualWieldAvailable = false;
+    public minigun = false;
+    public minigunAvailable = false;
+    public minigunCount = -1;
+    public timeLord = false;
+    public timeLordAvailable = false;
+    public timeLordBonus = 30;
+
     public click = 1;
     public gambler = false;
     public maestro = false;
@@ -306,13 +317,13 @@ export class TheButtonComponent implements OnInit, OnDestroy {
                 this.CheatToggle(2);
             }
             if (rgb) {
-                this.CheatToggle(3);
+                // this.CheatToggle(3);
             }
             if (roCgCLb) {
-                this.CheatToggle(4);
+                // this.CheatToggle(4);
             }
             if (sunset) {
-                this.CheatToggle(5);
+                // this.CheatToggle(5);
             }
         } else {
             this.TurnCheatsOff();
@@ -397,6 +408,19 @@ export class TheButtonComponent implements OnInit, OnDestroy {
       }
     }
 
+    toggleDualWield() {
+      this.SetCheat(true, 2);
+      this.dualWield = true;
+    }
+    toggleMinigun() {
+      this.SetCheat(true, 30);
+      this.minigun = true;
+      this.minigunCount = 0;
+      console.log('minigun: ' + this.minigunCount);
+    }
+    toggleTimeLord() {
+      this.timeLord = true;
+    }
     Count() {
       if (this.userScore > 49 && this.userScore < 70
           || this.userScore > 99 && this.userScore < 120
@@ -435,6 +459,12 @@ export class TheButtonComponent implements OnInit, OnDestroy {
     }
 
     CalculateTimer(t) {
+      if (this.minigunCount > -1 && this.minigunCount < 10) {
+        this.minigunCount++;
+      } else if (this.minigunCount >= 10) {
+        this.minigunCount = -1;
+        this.SetCheat(false, 30);
+      }
       if (this.rage < 11) {
         this.rage++;
       }
@@ -445,25 +475,31 @@ export class TheButtonComponent implements OnInit, OnDestroy {
       this.tick = t;
       this.bonusTime = 0;
       if (this.gameOn) {
-          this.RandomExtraTimeBlock();
-          this.countDown = this.timeLimit - this.tick;
+        this.RandomExtraTimeBlock();
+        this.countDown = this.timeLimit - this.tick;
+        if (this.timeLord) { this.countDown += this.timeLordBonus; }
       }
       if (this.countDown <= 0 && !this.newUserScoreGiven) {
-          this.newUserScore();
-          this.NoExtraTimeBlock();
-          this.perseverance = 'N00B';
-          this.level = '';
-          this.gameOn = false;
-          this.noStart = true;
+        this.newUserScore();
+        this.NoExtraTimeBlock();
+        this.perseverance = 'N00B';
+        this.level = '';
+        this.gameOn = false;
+        this.noStart = true;
       }
       if (this.countDown <= 0 && this.newUserScoreGiven) {
+        if (this.timeLord) {
+          this.countDown = this.timeLimit - this.tick + this.timeLordBonus;
+          this.readyIn = this.countupValue + this.timeLimit - t + this.timeLordBonus;
+        } else {
           this.countDown = this.timeLimit - this.tick;
           this.readyIn = this.countupValue + this.timeLimit - t;
+        }
       }
       if (this.countDown === this.noStartValue) {
-          this.noStart = false;
-          this.newUserScoreGiven = false;
-          this.subscription.unsubscribe();
+        this.noStart = false;
+        this.newUserScoreGiven = false;
+        this.subscription.unsubscribe();
       }
     }
 
@@ -485,6 +521,10 @@ export class TheButtonComponent implements OnInit, OnDestroy {
       this.user.playthroughs++;
       this.users.getUsers();
       this.newRecord = false;
+      this.dualWield = false;
+      this.minigun = false;
+      this.timeLord = false;
+      this.userScore = 0;
     }
 
     constructor(
@@ -495,6 +535,19 @@ export class TheButtonComponent implements OnInit, OnDestroy {
     }
     ngOnInit() {
       this.authenticationService.currentUser.subscribe(user => this.user = user);
+      if (this.user.attributes) {
+        for (let i = 0; i < this.user.attributes.length; i++) {
+          if (this.user.attributes[i].name === 'Dual-Wield') {
+            this.dualWieldAvailable = true;
+          }
+          if (this.user.attributes[i].name === 'Time-Lord') {
+            this.timeLordAvailable = true;
+          }
+          if (this.user.attributes[i].name === 'Minigun') {
+            this.minigunAvailable = true;
+          }
+        }
+      }
       this.countDown = this.countdownValue;
       this.timeLimit = this.countdownValue;
     }
@@ -532,9 +585,8 @@ export class TheButtonComponent implements OnInit, OnDestroy {
         this.user.wallet += this.userScore;
         this.userService.updateUser(this.user);
         this.authenticationService.changeUser(this.user);
-        localStorage.removeItem('currentUser');
-        localStorage.setItem('currentUser', JSON.stringify(this.user));
-        this.userScore = 0;
+        sessionStorage.removeItem('currentUser');
+        sessionStorage.setItem('currentUser', JSON.stringify(this.user));
     }
 
     ngOnDestroy() {

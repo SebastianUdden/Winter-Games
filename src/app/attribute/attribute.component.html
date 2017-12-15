@@ -1,0 +1,18 @@
+<div *ngIf="!owned">
+  <div class="attributeContainer" [style.background]="attribute.img" (click)="toggled = !toggled">
+    <p *ngIf="toggled" class="attributeDescription">{{attribute.description}}<br>Use: {{attribute.usage}}</p>
+    <p *ngIf="!toggled" class="attributeName">{{attribute.name}}</p>
+    <p *ngIf="!toggled" class="attributePrice">{{attribute.price | number:'1.0-0' }} <img style="height: 20px; margin-bottom:4px;" src="assets/images/bossItems/bossCoin.png"></p>
+  </div>
+  <div>
+    <div *ngIf="user.wallet >= attribute.price" class="buyButton available" (click)="buyAttribute();"><i class="fa fa-handshake-o deal" aria-hidden="true"></i></div>
+    <div *ngIf="user.wallet < attribute.price" class="buyButton notAvailable"><i class="fa fa-handshake-o deal" aria-hidden="true"></i></div>
+  </div>
+</div>
+<div *ngIf="owned">
+  <div class="attributeContainer" [style.background]="attribute.img" (click)="toggled = !toggled">
+    <p *ngIf="toggled" class="attributeDescription">{{attribute.description}}<br>Use: {{attribute.usage}}</p>
+    <p *ngIf="!toggled" class="attributeName">{{attribute.name}}</p>
+    <p *ngIf="!toggled" class="attributePrice">{{attribute.price | number:'1.0-0' }} <img style="height: 20px; margin-bottom:4px;" src="assets/images/bossItems/bossCoin.png"></p>
+  </div>
+</div>
