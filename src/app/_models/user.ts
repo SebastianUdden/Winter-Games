@@ -11,6 +11,7 @@ export class User {
     public playthroughs: number = 0,
     public attributes: Array<Attribute> = [],
     public level: string = '',
-    public admin: boolean = false
+    public admin: boolean = false,
+    public nextLeech: number
   ) {  }
 }

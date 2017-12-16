@@ -44,6 +44,8 @@ export class AttributeComponent implements OnInit {
       this.authenticationService.changeUser(this.user);
       sessionStorage.removeItem('currentUser');
       sessionStorage.setItem('currentUser', JSON.stringify(this.user));
+    } else {
+      alert('You already own this attribute!');
     }
   }
 }

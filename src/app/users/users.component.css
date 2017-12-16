@@ -129,7 +129,6 @@ p{
 
 .settings-left {
   float:left;
-  display:inline-block;
   width:80%;
 }
 
@@ -281,9 +280,15 @@ input:checked + .slider:before {
 .yellow { background-color: #947214; }
 .teal { background-color: #149474; }
 
-/* .profileInfo h4 {
-  font-size: 25px;
-} */
+
+.leech {
+  width: 100%;
+  background-color: #be5010;
+  border-radius: 10px;
+  font-size: 22px;
+  padding: 3px;
+  margin-bottom: 15px;
+}
 
 /*///////////////
 // Media Queries

@@ -25,15 +25,17 @@ export class UsersComponent implements OnInit {
   public selectedUser: User;
   public selectedTab: number;
   public showHighscore = true;
+  public leecher = false;
+  public dateTime = new Date();
   public gambler = false;
   public maestro = false;
   public grinder = false;
   public mcFly = true;
   public marketAttributes = [
-    new Attribute('Leech', 'Steal 1% of an opponents wealth per hour during a total of 3 hours.', 'Every three hours.', 30000, '#cc33cc', 'url("assets/images/attributes/box.png");', false),
+    new Attribute('Leech', 'Steal 1% of an opponents wealth per hour during a total of 3 hours.', 'Every three hours.', 50, '#cc33cc', 'url("assets/images/attributes/box.png");', false),
     new Attribute('Dual-Wield', 'Get X2, permanently, like a BOSS.', 'Always active.', 100, '#cc33cc', 'url("assets/images/attributes/box.png");', false),
-    new Attribute('Minigun', 'Get X40 for a 10 second period.', 'Once per day.', 60000, '#cc33cc', 'url("assets/images/attributes/box.png");', false),
-    new Attribute('Time-Lord', 'Get an extra 30 seconds for each round.', 'Always active.', 10000, '#cc33cc', 'url("assets/images/attributes/box.png");', false),
+    new Attribute('Minigun', 'Get X40 for a 10 second period.', 'Once per day.', 200, '#cc33cc', 'url("assets/images/attributes/box.png");', false),
+    new Attribute('Time-Lord', 'Get an extra 30 seconds for each round.', 'Always active.', 300, '#cc33cc', 'url("assets/images/attributes/box.png");', false),
     new Attribute('Captains Badge', 'You will be a team captain on the DAY.', '28th December.', 99999, '#cc33cc', 'url("assets/images/attributes/box.png");', false)
   ];
   @Output() gamblerEvent = new EventEmitter<boolean>();
@@ -68,6 +70,10 @@ export class UsersComponent implements OnInit {
         if (this.marketAttributes[i].name === this.user.attributes[x].name) {
           this.marketAttributes[i].owned = true;
         }
+        if (this.user.attributes[x].name === 'Leech') {
+          this.leecher = true;
+          this.dateTime = new Date();
+        }
       }
     }
   }
@@ -99,6 +105,38 @@ export class UsersComponent implements OnInit {
     this[type + 'Event'].emit(this[type]);
   }
 
+  leech(user) {
+    let latestLeech = new Date();
+    this.dateTime = new Date();
+    if (!this.user.nextLeech) {
+      let leechAmount = Math.floor(user.wallet * 0.01)
+      latestLeech.setTime(latestLeech.getTime() + (1*60*60*1000));
+      this.user.nextLeech = latestLeech.getTime();
+      user.wallet -= leechAmount;
+      this.user.wallet += leechAmount;
+
+      this.userService.updateUser(this.user);
+      this.userService.updateUser(user);
+      this.authenticationService.changeUser(this.user);
+      sessionStorage.removeItem('currentUser');
+      sessionStorage.setItem('currentUser', JSON.stringify(this.user));
+    } else if (this.user.nextLeech < latestLeech.getTime()) {
+      let leechAmount = Math.floor(user.wallet * 0.01)
+      latestLeech.setTime(latestLeech.getTime() + (1*60*60*1000));
+      this.user.nextLeech = latestLeech.getTime();
+      user.wallet -= leechAmount;
+      this.user.wallet += leechAmount;
+
+      this.userService.updateUser(this.user);
+      this.userService.updateUser(user);
+      this.authenticationService.changeUser(this.user);
+      sessionStorage.removeItem('currentUser');
+      sessionStorage.setItem('currentUser', JSON.stringify(this.user));
+    } else {
+      alert('An hour must pass before you can leech again!');
+    }
+  }
+
   AddCurrentUser() {
     const committedUser = new User(
       this.user.firstname,
@@ -111,7 +149,8 @@ export class UsersComponent implements OnInit {
       this.user.playthroughs,
       this.user.attributes,
       this.user.level,
-      this.user.admin
+      this.user.admin,
+      this.user.nextLeech
     );
     let userExists = false;
     for (let i = 0; i < this.currentUsers.length; i++) {

@@ -83,6 +83,10 @@
         <h2>Highscore: <span style="float:right">{{selectedUser.score | number:'1.0-0' }}</span></h2>
         <h2>Wallet: <span style="float:right;" class="bossCoin"></span> <span style="float:right;">{{selectedUser.wallet | number:'1.0-0' }}</span></h2>
       </div>
+      <hr />
+      <button *ngIf="leecher && selectedUser.username !== user.username && user.nextLeech === undefined" (click)="leech(selectedUser);" class="leech">Leech</button>
+      <button *ngIf="leecher && selectedUser.username !== user.username && dateTime.getTime() > user.nextLeech" (click)="leech(selectedUser);" class="leech">Leech</button>
+      <button *ngIf="leecher && selectedUser.username !== user.username && dateTime.getTime() < user.nextLeech" (click)="leech(selectedUser);" class="leech">Next leech @ {{user.nextLeech | date:'h:mm:ssa'}}</button>
     </div>
     <div *ngIf="selectedTab === 3" style="min-height: 80vh;">
       <h2>About</h2>
@@ -217,6 +221,9 @@
           <h2>Highscore: <span style="float:right">{{selectedUser.score | number:'1.0-0' }}</span></h2>
           <h2>Wallet: <span style="float:right;" class="bossCoin"></span> <span style="float:right;">{{selectedUser.wallet | number:'1.0-0' }}</span></h2>
         </div>
+        <hr />
+        <button *ngIf="leecher && selectedUser.username !== user.username && dateTime.getTime() > user.nextLeech" (click)="leech(selectedUser);" class="leech">Leech</button>
+        <button *ngIf="leecher && selectedUser.username !== user.username && dateTime.getTime() < user.nextLeech" (click)="leech(selectedUser);" class="leech">Next leech @ {{user.nextLeech | date:'h:mm:ssa'}}</button>
       </div>
       <div *ngIf="selectedTab === 3" class="box-content container">
         <h2>About</h2>

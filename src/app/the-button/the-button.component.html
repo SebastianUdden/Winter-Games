@@ -110,6 +110,9 @@
         <div *ngIf="!gameOn && noStart && !getReady" (click)="foreverAlone = !foreverAlone" class="the-button-main center bland-error-background medium unselectable">Loading: {{ readyIn }}</div>
         <div *ngIf="!gameOn && !noStart && !getReady" (click)="StartOver()" class="the-button-main center sea-4-background medium unselectable">New Game</div>
       </div>
+      <div class="row extra-time-row">
+        <div class="text-center medium grayed-out-text unselectable">{{comboType}} x{{bonus}}</div>
+      </div>
       <div class="row text-center" style="margin-top: 20px;">
           <div class="row" *ngIf="!newRecord">
             <div *ngIf="userScore < 100 || userScore >= 2050000" class="the-counter border-gray grayed-out-text text-center big unselectable">{{ userScore }}</div>
@@ -231,6 +234,20 @@
               <div *ngIf="this.timeBlocks[23].selected && click === 4" (click)="powerbar.extraTime(bonusTimePerClick); setClick(5);" class="oldOx4 random-img"></div>
               <div *ngIf="this.timeBlocks[23].selected && click === 5" (click)="powerbar.extraTime(bonusTimePerClick); setClick(1);" class="oldOx5 random-img"></div>
             </div>
+        </div>
+      </div>
+      <div class="row extra-time-row">
+        <div class="col-xs-4" *ngIf="dualWieldAvailable">
+          <button class="buttonAttributeContainer buttonAttributeUsed" *ngIf="gameOn && !getReady && dualWield">X2</button>
+          <button class="buttonAttributeContainer buttonAttributeNotUsed" *ngIf="gameOn && !getReady && !dualWield" (click)="toggleDualWield();">X2</button>
+        </div>
+        <div class="col-xs-4" *ngIf="timeLordAvailable">
+          <button class="buttonAttributeContainer buttonAttributeUsed" *ngIf="gameOn && !getReady && timeLord">+30</button>
+          <button class="buttonAttributeContainer buttonAttributeNotUsed" *ngIf="gameOn && !getReady && !timeLord" (click)="toggleTimeLord();">+30</button>
+        </div>
+        <div class="col-xs-4" *ngIf="minigunAvailable">
+          <button class="buttonAttributeContainer buttonAttributeUsed" *ngIf="gameOn && !getReady && minigun">X30</button>
+          <button class="buttonAttributeContainer buttonAttributeNotUsed" *ngIf="gameOn && !getReady && !minigun" (click)="toggleMinigun();">X30</button>
         </div>
       </div>
     </div>
