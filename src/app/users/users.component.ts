@@ -32,11 +32,11 @@ export class UsersComponent implements OnInit {
   public grinder = false;
   public mcFly = true;
   public marketAttributes = [
-    new Attribute('Leech', 'Steal 1% of an opponents wealth per hour during a total of 3 hours.', 'Every three hours.', 50, '#cc33cc', 'url("assets/images/attributes/box.png");', false),
-    new Attribute('Dual-Wield', 'Get X2, permanently, like a BOSS.', 'Always active.', 100, '#cc33cc', 'url("assets/images/attributes/box.png");', false),
-    new Attribute('Minigun', 'Get X40 for a 10 second period.', 'Once per day.', 200, '#cc33cc', 'url("assets/images/attributes/box.png");', false),
-    new Attribute('Time-Lord', 'Get an extra 30 seconds for each round.', 'Always active.', 300, '#cc33cc', 'url("assets/images/attributes/box.png");', false),
-    new Attribute('Captains Badge', 'You will be a team captain on the DAY.', '28th December.', 99999, '#cc33cc', 'url("assets/images/attributes/box.png");', false)
+    // new Attribute('Leech', 'Steal 1% of an opponents wealth per hour during a total of 3 hours.', 'Every three hours.', 50, '#cc33cc', 'url("assets/images/attributes/box.png");', false),
+    // new Attribute('Dual-Wield', 'Get X2, permanently, like a BOSS.', 'Always active.', 100, '#cc33cc', 'url("assets/images/attributes/box.png");', false),
+    // new Attribute('Minigun', 'Get X40 for a 10 second period.', 'Once per day.', 200, '#cc33cc', 'url("assets/images/attributes/box.png");', false),
+    // new Attribute('Time-Lord', 'Get an extra 30 seconds for each round.', 'Always active.', 300, '#cc33cc', 'url("assets/images/attributes/box.png");', false),
+    // new Attribute('Captains Badge', 'You will be a team captain on the DAY.', '28th December.', 99999, '#cc33cc', 'url("assets/images/attributes/box.png");', false)
   ];
   @Output() gamblerEvent = new EventEmitter<boolean>();
   @Output() maestroEvent = new EventEmitter<boolean>();
@@ -57,25 +57,33 @@ export class UsersComponent implements OnInit {
   users: User[];
   getUsers(): void {
     this.userService.getUsers()
-    .subscribe(users => this.SortDescending(this.users = users));
+      .subscribe(users => this.SortDescending(this.users = users));
+  }
+  getAttributes(): void {
+    this.userService.getAttributes()
+      .subscribe(attributes => this.SortDescending(this.marketAttributes = attributes));
+
+    setTimeout(() => {
+      for (let i = 0; i < this.marketAttributes.length; i++) {
+        this.marketAttributes[i].owned = false;
+        for (let x = 0; x < this.user.attributes.length; x++) {
+          if (this.marketAttributes[i].name === this.user.attributes[x].name) {
+            this.marketAttributes[i].owned = true;
+          }
+          if (this.user.attributes[x].name === 'Leech') {
+            this.leecher = true;
+            this.dateTime = new Date();
+          }
+        }
+      }
+    }, 1000);
   }
 
   ngOnInit() {
+    this.getAttributes();
     this.getUsers();
     this.authenticationService.currentUser.subscribe(user => this.user = user);
     this.selectUser(this.user);
-    for (let i = 0; i < this.marketAttributes.length; i++) {
-      this.marketAttributes[i].owned = false;
-      for (let x = 0; x < this.user.attributes.length; x++) {
-        if (this.marketAttributes[i].name === this.user.attributes[x].name) {
-          this.marketAttributes[i].owned = true;
-        }
-        if (this.user.attributes[x].name === 'Leech') {
-          this.leecher = true;
-          this.dateTime = new Date();
-        }
-      }
-    }
   }
 
   selectTab(tab) {

@@ -11,8 +11,8 @@
   </div>
   <div class="row">
     <div *ngIf="selectedTab === 1">
-      <h2 *ngIf="showHighscore" style="cursor:pointer;" (click)="toggleHighscore();">HIGH SCORE</h2>
-      <h2 *ngIf="!showHighscore" style="cursor:pointer;" (click)="toggleHighscore();">WALLET</h2>
+      <h2 *ngIf="showHighscore" style="cursor:pointer;" (click)="toggleHighscore();">HIGH SCORE <span class="fa fa-exchange"></span> <img style="height: 36px;" src="assets/images/bossItems/bossCoinSymbol.png" /></h2>
+      <h2 *ngIf="!showHighscore" style="cursor:pointer;" (click)="toggleHighscore();">WALLET <span class="fa fa-exchange"></span> <span style="height: 40px; margin-bottom:-4px;" class="fa fa-trophy"></span></h2>
       <hr />
       <div *ngFor="let u of users" class="userInfo userInfo-row">
         <div *ngIf="user">
@@ -31,7 +31,19 @@
               <div *ngIf="u.png === 'Ivar.png'" class="col-xs-2 users-img highscore-img ivar"></div>
               <div *ngIf="u.png === 'Amanda.png'" class="col-xs-2 users-img highscore-img amanda"></div>
               <div *ngIf="u.png === 'Robban.png'" class="col-xs-2 users-img highscore-img robban"></div>
-              <div class="col-xs-7 userInfo-item name">{{u.username}}</div>
+              <div *ngFor="let marketAttribute of marketAttributes">
+                <div *ngIf="marketAttribute.name === 'Captains-Badge-Blue'">
+                  <div *ngIf="marketAttribute.ownedBy === u.username" class="col-xs-1">
+                    <img style="width:90px; margin-top: 20px;" src="assets\images\attributes\blueLeader.png" alt="Blue Leader">
+                  </div>
+                </div>
+                <div *ngIf="marketAttribute.name === 'Captains-Badge-Red'">
+                  <div *ngIf="marketAttribute.ownedBy === u.username" class="col-xs-1">
+                    <img style="width:90px; margin-top: 20px;" src="assets\images\attributes\redLeader.png" alt="Red Leader">
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-6 userInfo-item name">{{u.username}}</div>
             </div>
             <div class="row">
               <div *ngIf="showHighscore" class="col-xs-12 centerText userInfo-item score botRow">{{u.score | number:'1.0-0' }}</div>
@@ -53,7 +65,19 @@
               <div *ngIf="u.png === 'Ivar.png'" class="col-xs-2 users-img highscore-img ivar"></div>
               <div *ngIf="u.png === 'Amanda.png'" class="col-xs-2 users-img highscore-img amanda"></div>
               <div *ngIf="u.png === 'Robban.png'" class="col-xs-2 users-img highscore-img robban"></div>
-              <div class="col-xs-7 userInfo-item name">{{u.username}}</div>
+              <div *ngFor="let marketAttribute of marketAttributes">
+                <div *ngIf="marketAttribute.name === 'Captains-Badge-Blue'">
+                  <div *ngIf="marketAttribute.ownedBy === u.username" class="col-xs-1">
+                    <img style="width:90px; margin-top: 20px;" src="assets\images\attributes\blueLeader.png" alt="Blue Leader">
+                  </div>
+                </div>
+                <div *ngIf="marketAttribute.name === 'Captains-Badge-Red'">
+                  <div *ngIf="marketAttribute.ownedBy === u.username" class="col-xs-1">
+                    <img style="width:90px; margin-top: 20px;" src="assets\images\attributes\redLeader.png" alt="Red Leader">
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-6 userInfo-item name">{{u.username}}</div>
             </div>
             <div class="row">
               <div *ngIf="showHighscore" class="col-xs-12 centerText userInfo-item score botRow">{{u.score | number:'1.0-0' }}</div>
@@ -83,10 +107,25 @@
         <h2>Highscore: <span style="float:right">{{selectedUser.score | number:'1.0-0' }}</span></h2>
         <h2>Wallet: <span style="float:right;" class="bossCoin"></span> <span style="float:right;">{{selectedUser.wallet | number:'1.0-0' }}</span></h2>
       </div>
-      <hr />
-      <button *ngIf="leecher && selectedUser.username !== user.username && user.nextLeech === undefined" (click)="leech(selectedUser);" class="leech">Leech</button>
-      <button *ngIf="leecher && selectedUser.username !== user.username && dateTime.getTime() > user.nextLeech" (click)="leech(selectedUser);" class="leech">Leech</button>
-      <button *ngIf="leecher && selectedUser.username !== user.username && dateTime.getTime() < user.nextLeech" (click)="leech(selectedUser);" class="leech">Next leech @ {{user.nextLeech | date:'h:mm:ssa'}}</button>
+      <div *ngIf="user.admin">
+        <hr />
+        <button *ngIf="leecher && selectedUser.username !== user.username && user.nextLeech === undefined" (click)="leech(selectedUser);" class="leech"><img style="float:left; width:90px;" src="assets\images\attributes\leech.png" alt="Blue Leader"> Leech</button>
+        <button *ngIf="leecher && selectedUser.username !== user.username && dateTime.getTime() > user.nextLeech" (click)="leech(selectedUser);" class="leech"><img style="float:left; width:90px" src="assets\images\attributes\leech.png" alt="Blue Leader"> Leech</button>
+        <button *ngIf="leecher && selectedUser.username !== user.username && dateTime.getTime() < user.nextLeech" (click)="leech(selectedUser);" class="leech"><img style="float:left; width:90px" src="assets\images\attributes\leech.png" alt="Blue Leader"> Ready {{user.nextLeech | date:'h:mma'}}</button>
+        <hr />
+        <h3>Attributes</h3>
+        <hr />
+        <div *ngFor="let marketAttribute of marketAttributes">
+          <div *ngIf="marketAttribute.name === 'Captains-Badge-Blue' || marketAttribute.name === 'Captains-Badge-Red'">
+            <div *ngIf="marketAttribute.ownedBy === selectedUser.username">
+              <app-attribute [attribute]="marketAttribute" [owned]="true"></app-attribute>
+            </div>
+          </div>
+        </div>
+        <div *ngFor="let userAttribute of selectedUser.attributes">
+          <app-attribute [attribute]="userAttribute" [owned]="true"></app-attribute>
+        </div>
+      </div>
     </div>
     <div *ngIf="selectedTab === 3" style="min-height: 80vh;">
       <h2>About</h2>
@@ -101,7 +140,7 @@
         <img style="height: 20px;" src="assets/images/bossItems/oldOx1.png"> to increase your time and check the Highscore <img style="height: 20px;" src="assets/images/menu/trophy.svg">
         to see how your best turn stacks up against your friends' and foes'.
         Your Wallet <img style="height: 20px;" src="assets/images/bossItems/bossCoinSymbol.png"> contains all your accumulated BossCoin <img style="height: 20px;" src="assets/images/bossItems/bossCoin.png"> wealth, which can be spent
-        at a later date...
+        on insane weaponry and godlike attributes at the marketplace...
       </p>
     </div>
     <div *ngIf="selectedTab === 4" style="min-height: 80vh;">
@@ -125,6 +164,13 @@
         <hr />
         <h3>Owned attributes</h3>
         <hr />
+        <div *ngFor="let marketAttribute of marketAttributes">
+          <div *ngIf="marketAttribute.name === 'Captains-Badge-Blue' || marketAttribute.name === 'Captains-Badge-Red'">
+            <div *ngIf="marketAttribute.ownedBy === user.username">
+              <app-attribute [attribute]="marketAttribute" [owned]="true"></app-attribute>
+            </div>
+          </div>
+        </div>
         <div *ngFor="let userAttribute of user.attributes">
           <app-attribute [attribute]="userAttribute" [owned]="true"></app-attribute>
         </div>
@@ -168,7 +214,19 @@
                 <div *ngIf="u.png === 'Ivar.png'" class="col-xs-2 users-img highscore-img ivar"></div>
                 <div *ngIf="u.png === 'Amanda.png'" class="col-xs-2 users-img highscore-img amanda"></div>
                 <div *ngIf="u.png === 'Robban.png'" class="col-xs-2 users-img highscore-img robban"></div>
-                <div class="col-xs-7 userInfo-item name">{{u.username}}</div>
+                <div *ngFor="let marketAttribute of marketAttributes">
+                  <div *ngIf="marketAttribute.name === 'Captains-Badge-Blue'">
+                    <div *ngIf="marketAttribute.ownedBy === u.username" class="col-xs-1">
+                      <img style="width:70px; margin-top:6px;" src="assets\images\attributes\blueLeader.png" alt="Blue Leader">
+                    </div>
+                  </div>
+                  <div *ngIf="marketAttribute.name === 'Captains-Badge-Red'">
+                    <div *ngIf="marketAttribute.ownedBy === u.username" class="col-xs-1">
+                      <img style="width:70px; margin-top:6px;" src="assets\images\attributes\redLeader.png" alt="Red Leader">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-6 userInfo-item name">{{u.username}}</div>
               </div>
               <div (click)="selectUser(u);" class="row">
                 <div *ngIf="showHighscore" class="col-xs-12 centerText userInfo-item score botRow">{{u.score | number:'1.0-0' }}</div>
@@ -190,7 +248,19 @@
                 <div *ngIf="u.png === 'Ivar.png'" class="col-xs-2 users-img highscore-img ivar"></div>
                 <div *ngIf="u.png === 'Amanda.png'" class="col-xs-2 users-img highscore-img amanda"></div>
                 <div *ngIf="u.png === 'Robban.png'" class="col-xs-2 users-img highscore-img robban"></div>
-                <div class="col-xs-7 userInfo-item name">{{u.username}}</div>
+                <div *ngFor="let marketAttribute of marketAttributes">
+                  <div *ngIf="marketAttribute.name === 'Captains-Badge-Blue'">
+                    <div *ngIf="marketAttribute.ownedBy === u.username" class="col-xs-1">
+                      <img style="width:70px; margin-top:6px;" src="assets\images\attributes\blueLeader.png" alt="Blue Leader">
+                    </div>
+                  </div>
+                  <div *ngIf="marketAttribute.name === 'Captains-Badge-Red'">
+                    <div *ngIf="marketAttribute.ownedBy === u.username" class="col-xs-1">
+                      <img style="width:70px; margin-top:6px;" src="assets\images\attributes\redLeader.png" alt="Red Leader">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-6 userInfo-item name">{{u.username}}</div>
               </div>
               <div (click)="selectUser(u);" class="row">
                 <div *ngIf="showHighscore" class="col-xs-12 centerText userInfo-item score botRow">{{u.score | number:'1.0-0' }}</div>
@@ -222,8 +292,24 @@
           <h2>Wallet: <span style="float:right;" class="bossCoin"></span> <span style="float:right;">{{selectedUser.wallet | number:'1.0-0' }}</span></h2>
         </div>
         <hr />
-        <button *ngIf="leecher && selectedUser.username !== user.username && dateTime.getTime() > user.nextLeech" (click)="leech(selectedUser);" class="leech">Leech</button>
-        <button *ngIf="leecher && selectedUser.username !== user.username && dateTime.getTime() < user.nextLeech" (click)="leech(selectedUser);" class="leech">Next leech @ {{user.nextLeech | date:'h:mm:ssa'}}</button>
+        <div *ngIf="user.admin">
+          <button *ngIf="leecher && selectedUser.username !== user.username && user.nextLeech === undefined" (click)="leech(selectedUser);" class="leech"><img style="float:left; width:90px;" src="assets\images\attributes\leech.png" alt="Blue Leader"> <span style="padding-top:20px;">Leech</span></button>
+          <button *ngIf="leecher && selectedUser.username !== user.username && dateTime.getTime() > user.nextLeech" (click)="leech(selectedUser);" class="leech"><img style="float:left; width:90px" src="assets\images\attributes\leech.png" alt="Blue Leader"> <span style="padding-top:20px;">Leech</span></button>
+          <button *ngIf="leecher && selectedUser.username !== user.username && dateTime.getTime() < user.nextLeech" (click)="leech(selectedUser);" class="leech"><img style="float:left; width:90px" src="assets\images\attributes\leech.png" alt="Blue Leader"> <span style="padding-top:20px;">Ready {{user.nextLeech | date:'h:mma'}}</span></button>
+          <hr />
+          <h3>Attributes</h3>
+          <hr />
+          <div *ngFor="let marketAttribute of marketAttributes">
+            <div *ngIf="marketAttribute.name === 'Captains-Badge-Blue' || marketAttribute.name === 'Captains-Badge-Red'">
+              <div *ngIf="marketAttribute.ownedBy === selectedUser.username">
+                <app-attribute [attribute]="marketAttribute" [owned]="true"></app-attribute>
+              </div>
+            </div>
+          </div>
+          <div *ngFor="let userAttribute of selectedUser.attributes">
+            <app-attribute [attribute]="userAttribute" [owned]="true"></app-attribute>
+          </div>
+        </div>
       </div>
       <div *ngIf="selectedTab === 3" class="box-content container">
         <h2>About</h2>
@@ -238,7 +324,7 @@
           <img style="height: 20px;" src="assets/images/bossItems/oldOx1.png"> to increase your time and check the Highscore <img style="height: 20px;" src="assets/images/menu/trophy.svg">
           to see how your best turn stacks up against your friends' and foes'.
           Your Wallet <img style="height: 20px;" src="assets/images/bossItems/bossCoinSymbol.png"> contains all your accumulated BossCoin <img style="height: 20px;" src="assets/images/bossItems/bossCoin.png"> wealth, which can be spent
-          at a later date...
+          on insane weaponry and godlike attributes at the marketplace...
         </p>
       </div>
       <div *ngIf="selectedTab === 4" class="box-content container">
@@ -259,7 +345,7 @@
       <div *ngIf="selectedTab === 5" class="box-content container">
         <h2>Marketplace</h2>
         <hr />
-        <p>Buy our BOSSy goods and services! Ther are no in-game purchases, microtransactions and buy-to-win,
+        <p>Buy our BOSSy goods and services! There are no in-game purchases, microtransactions and buy-to-win,
           we accept no credit cards, only sweet sweet BossCoins
           <img style="height: 20px;" src="assets/images/bossItems/bossCoin.png">
         </p>
@@ -277,6 +363,13 @@
           <hr />
           <h3>Owned attributes</h3>
           <hr />
+          <div *ngFor="let marketAttribute of marketAttributes">
+            <div *ngIf="marketAttribute.name === 'Captains-Badge-Blue' || marketAttribute.name === 'Captains-Badge-Red'">
+              <div *ngIf="marketAttribute.ownedBy === user.username">
+                <app-attribute [attribute]="marketAttribute" [owned]="true"></app-attribute>
+              </div>
+            </div>
+          </div>
           <div *ngFor="let userAttribute of user.attributes">
             <app-attribute [attribute]="userAttribute" [owned]="true"></app-attribute>
           </div>

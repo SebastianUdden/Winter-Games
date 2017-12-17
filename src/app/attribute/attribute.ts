@@ -6,6 +6,7 @@ export class Attribute {
     public price: number,
     public color: string,
     public img: string,
-    public owned: boolean
+    public owned: boolean,
+    public ownedBy: string
   ) {  }
 }

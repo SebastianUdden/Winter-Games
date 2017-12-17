@@ -9,6 +9,21 @@
   cursor: pointer;
 }
 
+.attributeContainerPlus {
+  /* display: inline-block; */
+  float:left;
+  border-radius: 10px;
+  background-color: #bd631a;
+  height: 210px;
+  margin-bottom: 10px;
+  width: 87%;
+  cursor: pointer;
+}
+
+.owned {
+  width: 100%;
+}
+
 .attributeName {
   text-align: right;
   color:whitesmoke;
@@ -41,6 +56,15 @@
   float:left;
   width: 12%;
   height: 70px;
+}
+
+.buyButtonPlus {
+  border-radius: 10px;
+  margin-left: 1%;
+  margin-bottom: 10px;
+  float:left;
+  width: 12%;
+  height: 210px;
 }
 
 .available {

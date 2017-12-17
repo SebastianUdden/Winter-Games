@@ -1,18 +1,65 @@
 <div *ngIf="!owned">
-  <div class="attributeContainer" [style.background]="attribute.img" (click)="toggled = !toggled">
-    <p *ngIf="toggled" class="attributeDescription">{{attribute.description}}<br>Use: {{attribute.usage}}</p>
-    <p *ngIf="!toggled" class="attributeName">{{attribute.name}}</p>
-    <p *ngIf="!toggled" class="attributePrice">{{attribute.price | number:'1.0-0' }} <img style="height: 20px; margin-bottom:4px;" src="assets/images/bossItems/bossCoin.png"></p>
+    <!-- [style.background]="attribute.img" -->
+  <div *ngIf="!toggled" class="attributeContainer" (click)="toggled = !toggled">
+    <img *ngIf="attribute.name === 'Captains-Badge-Blue'" style="height: 80px; float:left;" src="assets/images/attributes/blueLeader.png" alt="Badge">
+    <img *ngIf="attribute.name === 'Leech'" style="height: 80px; float:left;" src="assets/images/attributes/leech.png" alt="Badge">
+    <img *ngIf="attribute.name === 'Minigun'" style="height: 80px; float:left;" src="assets/images/attributes/miniGun.png" alt="Badge">
+    <img *ngIf="attribute.name === 'Captains-Badge-Red'" style="height: 80px; float:left;" src="assets/images/attributes/redLeader.png" alt="Badge">
+    <img *ngIf="attribute.name === 'Time-Lord'" style="height: 80px; float:left;" src="assets/images/attributes/timeLord.png" alt="Badge">
+    <img *ngIf="attribute.name === 'Dual-Wield'" style="height: 80px; float:left;" src="assets/images/attributes/tombRaider.png" alt="Badge">
+    <p *ngIf="attribute.name !== 'Captains-Badge-Blue' && attribute.name !== 'Captains-Badge-Red'" class="attributeName">{{attribute.name}}</p>
+    <p *ngIf="attribute.name === 'Captains-Badge-Blue'" class="attributeName">Blue Captain</p>
+    <p *ngIf="attribute.name === 'Captains-Badge-Red'" class="attributeName">Red Captain</p>
+    <p class="attributePrice">{{attribute.price | number:'1.0-0' }} <img style="height: 20px; margin-bottom:4px;" src="assets/images/bossItems/bossCoin.png"></p>
   </div>
-  <div>
+  <div *ngIf="toggled" class="attributeContainerPlus" (click)="toggled = !toggled">
+      <img *ngIf="attribute.name === 'Captains-Badge-Blue'" style="height: 80px; float:left;" src="assets/images/attributes/blueLeader.png" alt="Badge">
+      <img *ngIf="attribute.name === 'Leech'" style="height: 80px; float:left;" src="assets/images/attributes/leech.png" alt="Badge">
+      <img *ngIf="attribute.name === 'Minigun'" style="height: 80px; float:left;" src="assets/images/attributes/miniGun.png" alt="Badge">
+      <img *ngIf="attribute.name === 'Captains-Badge-Red'" style="height: 80px; float:left;" src="assets/images/attributes/redLeader.png" alt="Badge">
+      <img *ngIf="attribute.name === 'Time-Lord'" style="height: 80px; float:left;" src="assets/images/attributes/timeLord.png" alt="Badge">
+      <img *ngIf="attribute.name === 'Dual-Wield'" style="height: 80px; float:left;" src="assets/images/attributes/tombRaider.png" alt="Badge">
+    <p *ngIf="attribute.name !== 'Captains-Badge-Blue' && attribute.name !== 'Captains-Badge-Red'" class="attributeName">{{attribute.name}}</p>
+    <p *ngIf="attribute.name === 'Captains-Badge-Blue'" class="attributeName">Blue Captain</p>
+    <p *ngIf="attribute.name === 'Captains-Badge-Red'" class="attributeName">Red Captain</p>
+    <p class="attributePrice">{{attribute.price | number:'1.0-0' }} <img style="height: 20px; margin-bottom:4px;" src="assets/images/bossItems/bossCoin.png"></p>
+    <p class="attributeDescription">{{attribute.description}}</p>
+    <p class="attributeDescription">Use: {{attribute.usage}}</p>
+  </div>
+  <div *ngIf="!toggled">
     <div *ngIf="user.wallet >= attribute.price" class="buyButton available" (click)="buyAttribute();"><i class="fa fa-handshake-o deal" aria-hidden="true"></i></div>
     <div *ngIf="user.wallet < attribute.price" class="buyButton notAvailable"><i class="fa fa-handshake-o deal" aria-hidden="true"></i></div>
   </div>
+  <div *ngIf="toggled">
+    <div *ngIf="user.wallet >= attribute.price" class="buyButtonPlus available" (click)="buyAttribute();"><i class="fa fa-handshake-o deal" aria-hidden="true"></i></div>
+    <div *ngIf="user.wallet < attribute.price" class="buyButtonPlus notAvailable"><i class="fa fa-handshake-o deal" aria-hidden="true"></i></div>
+  </div>
 </div>
 <div *ngIf="owned">
-  <div class="attributeContainer" [style.background]="attribute.img" (click)="toggled = !toggled">
-    <p *ngIf="toggled" class="attributeDescription">{{attribute.description}}<br>Use: {{attribute.usage}}</p>
-    <p *ngIf="!toggled" class="attributeName">{{attribute.name}}</p>
-    <p *ngIf="!toggled" class="attributePrice">{{attribute.price | number:'1.0-0' }} <img style="height: 20px; margin-bottom:4px;" src="assets/images/bossItems/bossCoin.png"></p>
+  <div *ngIf="!toggled" class="attributeContainer owned" (click)="toggled = !toggled">
+    <img *ngIf="attribute.name === 'Captains-Badge-Blue'" style="height: 80px; float:left;" src="assets/images/attributes/blueLeader.png" alt="Badge">
+    <img *ngIf="attribute.name === 'Leech'" style="height: 80px; float:left;" src="assets/images/attributes/leech.png" alt="Badge">
+    <img *ngIf="attribute.name === 'Minigun'" style="height: 80px; float:left;" src="assets/images/attributes/miniGun.png" alt="Badge">
+    <img *ngIf="attribute.name === 'Captains-Badge-Red'" style="height: 80px; float:left;" src="assets/images/attributes/redLeader.png" alt="Badge">
+    <img *ngIf="attribute.name === 'Time-Lord'" style="height: 80px; float:left;" src="assets/images/attributes/timeLord.png" alt="Badge">
+    <img *ngIf="attribute.name === 'Dual-Wield'" style="height: 80px; float:left;" src="assets/images/attributes/tombRaider.png" alt="Badge">
+    <p *ngIf="attribute.name !== 'Captains-Badge-Blue' && attribute.name !== 'Captains-Badge-Red'" class="attributeName">{{attribute.name}}</p>
+    <p *ngIf="attribute.name === 'Captains-Badge-Blue'" class="attributeName">Blue Captain</p>
+    <p *ngIf="attribute.name === 'Captains-Badge-Red'" class="attributeName">Red Captain</p>
+    <p class="attributePrice">{{attribute.price | number:'1.0-0' }} <img style="height: 20px; margin-bottom:4px;" src="assets/images/bossItems/bossCoin.png"></p>
+  </div>
+  <div *ngIf="toggled" class="attributeContainerPlus owned" (click)="toggled = !toggled">
+      <img *ngIf="attribute.name === 'Captains-Badge-Blue'" style="height: 80px; float:left;" src="assets/images/attributes/blueLeader.png" alt="Badge">
+      <img *ngIf="attribute.name === 'Leech'" style="height: 80px; float:left;" src="assets/images/attributes/leech.png" alt="Badge">
+      <img *ngIf="attribute.name === 'Minigun'" style="height: 80px; float:left;" src="assets/images/attributes/miniGun.png" alt="Badge">
+      <img *ngIf="attribute.name === 'Captains-Badge-Red'" style="height: 80px; float:left;" src="assets/images/attributes/redLeader.png" alt="Badge">
+      <img *ngIf="attribute.name === 'Time-Lord'" style="height: 80px; float:left;" src="assets/images/attributes/timeLord.png" alt="Badge">
+      <img *ngIf="attribute.name === 'Dual-Wield'" style="height: 80px; float:left;" src="assets/images/attributes/tombRaider.png" alt="Badge">
+    <p *ngIf="attribute.name !== 'Captains-Badge-Blue' && attribute.name !== 'Captains-Badge-Red'" class="attributeName">{{attribute.name}}</p>
+    <p *ngIf="attribute.name === 'Captains-Badge-Blue'" class="attributeName">Blue Captain</p>
+    <p *ngIf="attribute.name === 'Captains-Badge-Red'" class="attributeName">Red Captain</p>
+    <p class="attributePrice">{{attribute.price | number:'1.0-0' }} <img style="height: 20px; margin-bottom:4px;" src="assets/images/bossItems/bossCoin.png"></p>
+    <p class="attributeDescription">{{attribute.description}}</p>
+    <p class="attributeDescription">Use: {{attribute.usage}}</p>
   </div>
 </div>

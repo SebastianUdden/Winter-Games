@@ -13,6 +13,7 @@ import { User } from '../_models/user';
 })
 export class AttributeComponent implements OnInit {
   public user: User;
+  public users: <User>[];
   public toggled = false;
   public attributeExists = false;
   @Input() attribute: Attribute;
@@ -38,7 +39,19 @@ export class AttributeComponent implements OnInit {
       }
     }
     if (!this.attributeExists) {
-      this.user.attributes.push(this.attribute);
+      if (this.attribute.name === 'Captains-Badge-Blue') {
+        console.log(this.attribute.name);
+        this.attribute.price *= 2;
+        this.attribute.ownedBy = this.user.username;
+        this.userService.updateAttribute(this.attribute);
+      } else if (this.attribute.name === 'Captains-Badge-Red') {
+        console.log(this.attribute.name);
+        this.attribute.price *= 2;
+        this.attribute.ownedBy = this.user.username;
+        this.userService.updateAttribute(this.attribute);
+      } else {
+        this.user.attributes.push(this.attribute);
+      }
       this.user.wallet -= this.attribute.price;
       this.userService.updateUser(this.user);
       this.authenticationService.changeUser(this.user);
