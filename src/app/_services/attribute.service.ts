@@ -42,7 +42,7 @@ export class UserService {
 
   /** POST: add a new attribute to the server */
   addAttribute (model: any): Observable<Attribute> {
-    const attribute = new Attribute(model.name, model.description, model.usage, model.price, model.color, model.img, false);
+    const attribute = new Attribute(model.name, model.description, model.usage, model.price, model.color, model.img, false, model.string);
     return this.http.post<Attribute>(this.usersUrl + '/attributes', attribute, httpOptions).pipe(
       tap((attribute: Attribute) => this.log(`added attribute :${attribute.name}`)),
       catchError(this.handleError<Attribute>('addAttribute'))
