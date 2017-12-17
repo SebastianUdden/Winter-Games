@@ -13,7 +13,7 @@ import { User } from '../_models/user';
 })
 export class AttributeComponent implements OnInit {
   public user: User;
-  public users: <User>[];
+  users: User[];
   public toggled = false;
   public attributeExists = false;
   @Input() attribute: Attribute;
