@@ -238,16 +238,16 @@
       </div>
       <div class="row extra-time-row">
         <div class="col-xs-4" *ngIf="dualWieldAvailable">
-          <button class="buttonAttributeContainer buttonAttributeUsed" *ngIf="gameOn && !getReady && dualWield">X2</button>
-          <button class="buttonAttributeContainer buttonAttributeNotUsed" *ngIf="gameOn && !getReady && !dualWield" (click)="toggleDualWield();">X2</button>
+          <button class="buttonAttributeContainer buttonAttributeUsed" *ngIf="gameOn && !getReady && dualWield"><img class="buttonAttributeImage" src="assets/images/attributes/tombRaider.png" alt="Dual-Wield" /> X2</button>
+          <button class="buttonAttributeContainer buttonAttributeNotUsed" *ngIf="gameOn && !getReady && !dualWield" (click)="toggleDualWield();"><img class="buttonAttributeImage" src="assets/images/attributes/tombRaider.png" alt="Dual-Wield" /> X2</button>
         </div>
         <div class="col-xs-4" *ngIf="timeLordAvailable">
-          <button class="buttonAttributeContainer buttonAttributeUsed" *ngIf="gameOn && !getReady && timeLord">+30</button>
-          <button class="buttonAttributeContainer buttonAttributeNotUsed" *ngIf="gameOn && !getReady && !timeLord" (click)="toggleTimeLord();">+30</button>
+          <button class="buttonAttributeContainer buttonAttributeUsed" *ngIf="gameOn && !getReady && timeLord"><img class="buttonAttributeImage" src="assets/images/attributes/timeLord.png" alt="Time-Lord" /> +30</button>
+          <button class="buttonAttributeContainer buttonAttributeNotUsed" *ngIf="gameOn && !getReady && !timeLord" (click)="toggleTimeLord();"><img class="buttonAttributeImage" src="assets/images/attributes/timeLord.png" alt="Time-Lord" /> +30</button>
         </div>
         <div class="col-xs-4" *ngIf="minigunAvailable">
-          <button class="buttonAttributeContainer buttonAttributeUsed" *ngIf="gameOn && !getReady && minigun">X30</button>
-          <button class="buttonAttributeContainer buttonAttributeNotUsed" *ngIf="gameOn && !getReady && !minigun" (click)="toggleMinigun();">X30</button>
+          <button class="buttonAttributeContainer buttonAttributeUsed" *ngIf="gameOn && !getReady && minigun"><img class="buttonAttributeImage" src="assets/images/attributes/miniGun.png" alt="Minigun" /> X30 (10s)</button>
+          <button class="buttonAttributeContainer buttonAttributeNotUsed" *ngIf="gameOn && !getReady && !minigun" (click)="toggleMinigun();"><img class="buttonAttributeImage" src="assets/images/attributes/miniGun.png" alt="Minigun" /> X30 (10s)</button>
         </div>
       </div>
     </div>
@@ -410,7 +410,7 @@
           </div>
         </div>
         <div class="row">
-            <div class="red-text text-center medium unselectable empty-row"><span *ngIf="newRecord" style="color:#09b909;">Yehaaaw! A neeeew RECORD!!!</span><span *ngIf="!newRecord">{{ perseverance }} {{ level }}</span></div>
+            <div class="red-text text-center medium unselectable empty-row" style="margin-bottom:-30px;"><span *ngIf="newRecord" style="color:#09b909;">Yehaaaw! A neeeew RECORD!!!</span><span *ngIf="!newRecord">{{ perseverance }} {{ level }}</span></div>
             <div id="countButton" *ngIf="userScore >= 0 && gameOn  && !getReady" (click)="Count()" class="the-button-main center blue-oyster-background medium unselectable">
                 <span *ngIf="!cheatX20">BOSS</span>
                 <span *ngIf="cheatX2">x2</span>
@@ -543,16 +543,16 @@
         <div class="row gambling-bar extra-time-row">
           <div *ngIf="user.admin">
             <div class="col-xs-2" *ngIf="dualWieldAvailable">
-              <button class="buttonAttributeContainer buttonAttributeUsed" *ngIf="gameOn && !getReady && dualWield">Dual-Wield X2</button>
-              <button class="buttonAttributeContainer buttonAttributeNotUsed" *ngIf="gameOn && !getReady && !dualWield" (click)="toggleDualWield();">Dual-Wield X2</button>
+              <button class="buttonAttributeContainer buttonAttributeUsed" *ngIf="gameOn && !getReady && dualWield"><img class="buttonAttributeImage" src="assets/images/attributes/tombRaider.png" alt="Dual-Wield" /> X2</button>
+              <button class="buttonAttributeContainer buttonAttributeNotUsed" *ngIf="gameOn && !getReady && !dualWield" (click)="toggleDualWield();"><img class="buttonAttributeImage" src="assets/images/attributes/tombRaider.png" alt="Dual-Wield" /> X2</button>
             </div>
             <div class="col-xs-2" *ngIf="timeLordAvailable">
-              <button class="buttonAttributeContainer buttonAttributeUsed" *ngIf="gameOn && !getReady && timeLord">Time-Lord +30</button>
-              <button class="buttonAttributeContainer buttonAttributeNotUsed" *ngIf="gameOn && !getReady && !timeLord" (click)="toggleTimeLord();">Time-Lord +30</button>
+              <button class="buttonAttributeContainer buttonAttributeUsed" *ngIf="gameOn && !getReady && timeLord"><img class="buttonAttributeImage" src="assets/images/attributes/timeLord.png" alt="Time-Lord" /> +30</button>
+              <button class="buttonAttributeContainer buttonAttributeNotUsed" *ngIf="gameOn && !getReady && !timeLord" (click)="toggleTimeLord();"><img class="buttonAttributeImage" src="assets/images/attributes/timeLord.png" alt="Time-Lord" /> +30</button>
             </div>
             <div class="col-xs-2" *ngIf="minigunAvailable">
-              <button class="buttonAttributeContainer buttonAttributeUsed" *ngIf="gameOn && !getReady && minigun">Minigun X30 (10s)</button>
-              <button class="buttonAttributeContainer buttonAttributeNotUsed" *ngIf="gameOn && !getReady && !minigun" (click)="toggleMinigun();">Minigun X30 (10s)</button>
+              <button class="buttonAttributeContainer buttonAttributeUsed" *ngIf="gameOn && !getReady && minigun"><img class="buttonAttributeImage" src="assets/images/attributes/miniGun.png" alt="Minigun" /> X30 (10s)</button>
+              <button class="buttonAttributeContainer buttonAttributeNotUsed" *ngIf="gameOn && !getReady && !minigun" (click)="toggleMinigun();"><img class="buttonAttributeImage" src="assets/images/attributes/miniGun.png" alt="Minigun" /> X30 (10s)</button>
             </div>
           </div>
         </div>

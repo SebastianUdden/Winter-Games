@@ -8,6 +8,7 @@ import { UserService } from '../_services/user.service';
 import { AuthenticationService } from '../_services/authentication.service';
 import { User } from '../_models/user';
 import { Attribute } from '../attribute/attribute';
+import { Leecher } from '../_models/leecher';
 
 import { AttributeComponent } from '../attribute/attribute.component';
 
@@ -26,6 +27,7 @@ export class UsersComponent implements OnInit {
   public selectedTab: number;
   public showHighscore = true;
   public leecher = false;
+  public leecherUser: Leecher = new Leecher('', 0, 0);
   public dateTime = new Date();
   public gambler = false;
   public maestro = false;
@@ -116,32 +118,34 @@ export class UsersComponent implements OnInit {
   leech(user) {
     let latestLeech = new Date();
     this.dateTime = new Date();
-    if (!this.user.nextLeech) {
+
+    let leechUser = false;
+    if (!this.user.nextLeech || this.user.nextLeech === 0) { leechUser = true; }
+    else if (this.user.nextLeech < latestLeech.getTime()) { leechUser = true; }
+    else {
+      leechUser = true;
+      // alert('An hour must pass before you can leech again!');
+    }
+
+    if (leechUser && this.user.admin) {
       let leechAmount = Math.floor(user.wallet * 0.01)
       latestLeech.setTime(latestLeech.getTime() + (1*60*60*1000));
       this.user.nextLeech = latestLeech.getTime();
-      user.wallet -= leechAmount;
-      this.user.wallet += leechAmount;
 
+      this.selectedUser.wallet -= leechAmount;
+      this.user.wallet += leechAmount;
+      this.selectedUser.leechLoss += leechAmount;
+      this.user.leechGain += leechAmount;
+      this.leecherUser.username = this.user.username;
+      this.leecherUser.leechedAt = this.dateTime.getTime();
+      this.leecherUser.amount = leechAmount;
+      this.selectedUser.leechers.unshift(this.leecherUser);
       this.userService.updateUser(this.user);
-      this.userService.updateUser(user);
       this.authenticationService.changeUser(this.user);
+
+      this.userService.updateUser(this.selectedUser);
       sessionStorage.removeItem('currentUser');
       sessionStorage.setItem('currentUser', JSON.stringify(this.user));
-    } else if (this.user.nextLeech < latestLeech.getTime()) {
-      let leechAmount = Math.floor(user.wallet * 0.01)
-      latestLeech.setTime(latestLeech.getTime() + (1*60*60*1000));
-      this.user.nextLeech = latestLeech.getTime();
-      user.wallet -= leechAmount;
-      this.user.wallet += leechAmount;
-
-      this.userService.updateUser(this.user);
-      this.userService.updateUser(user);
-      this.authenticationService.changeUser(this.user);
-      sessionStorage.removeItem('currentUser');
-      sessionStorage.setItem('currentUser', JSON.stringify(this.user));
-    } else {
-      alert('An hour must pass before you can leech again!');
     }
   }
 
@@ -158,7 +162,10 @@ export class UsersComponent implements OnInit {
       this.user.attributes,
       this.user.level,
       this.user.admin,
-      this.user.nextLeech
+      this.user.nextLeech,
+      this.user.leechGain,
+      this.user.leechLoss,
+      this.user.leechers
     );
     let userExists = false;
     for (let i = 0; i < this.currentUsers.length; i++) {

@@ -1,4 +1,5 @@
 import { Attribute } from '../attribute/attribute';
+import { Leecher } from './leecher';
 export class User {
   constructor(
     public firstname: string = '',
@@ -12,6 +13,9 @@ export class User {
     public attributes: Array<Attribute> = [],
     public level: string = '',
     public admin: boolean = false,
-    public nextLeech: number
+    public nextLeech: number,
+    public leechGain: number,
+    public leechLoss: number,
+    public leechers: Array<Leecher> = []
   ) {  }
 }

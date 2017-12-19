@@ -41,7 +41,15 @@ export class UserService {
   }
   /** POST: add a new attribute to the server */
   addAttribute (model: any): Observable<Attribute> {
-    const attribute = new Attribute(model.name, model.description, model.usage, model.price, model.color, model.img, false, model.string);
+    const attribute = new Attribute(
+      model.name,
+      model.description,
+      model.usage,
+      model.price,
+      model.color,
+      model.img,
+      false,
+      model.ownedBy);
     return this.http.post<Attribute>(this.usersUrl + '/attributes', attribute, httpOptions).pipe(
       tap((attribute: Attribute) => this.log(`added attribute :${attribute.name}`)),
       catchError(this.handleError<Attribute>('addAttribute'))
@@ -115,7 +123,22 @@ export class UserService {
 
   /** POST: add a new user to the server */
   addUser (model: any): Observable<User> {
-    const user = new User(model.firstname, model.lastname, model.email, model.username, model.password, 0, 0, 0, [], '', false, 0);
+    const user = new User(
+      model.firstname,
+      model.lastname,
+      model.email,
+      model.username,
+      model.password,
+      0,
+      0,
+      0,
+      [],
+      '',
+      false,
+      0,
+      0,
+      0,
+      []);
     return this.http.post<User>(this.usersUrl + '/users', user, httpOptions).pipe(
       tap((user: User) => this.log(`added user :${user.username}`)),
       catchError(this.handleError<User>('addUser'))

@@ -22,7 +22,7 @@ export class AuthenticationService {
     this.userSource.next(user);
   }
   logout() {
-    this.userSource.next(new User('', '', '', '', '', 0, 0, 0, [], '', false, 0));
+    this.userSource.next(new User('', '', '', '', '', 0, 0, 0, [], '', false, 0, 0, 0, []));
     sessionStorage.removeItem('currentUser');
   }
 }
