@@ -125,6 +125,7 @@ export class UsersComponent implements OnInit {
     else {
       leechUser = true;
       // alert('An hour must pass before you can leech again!');
+
     }
 
     if (leechUser && this.user.admin) {
