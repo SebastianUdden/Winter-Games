@@ -27,7 +27,7 @@ export class UsersComponent implements OnInit {
   public selectedTab: number;
   public showHighscore = true;
   public leecher = false;
-  public leecherUser: Leecher = new Leecher('', 0, 0);
+  public leecherUser: Leecher = new Leecher('', new Date(), 0);
   public dateTime = new Date();
   public gambler = false;
   public maestro = false;
@@ -125,7 +125,6 @@ export class UsersComponent implements OnInit {
     else {
       leechUser = true;
       // alert('An hour must pass before you can leech again!');
-
     }
 
     if (leechUser && this.user.admin) {
@@ -138,7 +137,7 @@ export class UsersComponent implements OnInit {
       this.selectedUser.leechLoss += leechAmount;
       this.user.leechGain += leechAmount;
       this.leecherUser.username = this.user.username;
-      this.leecherUser.leechedAt = this.dateTime.getTime();
+      this.leecherUser.leechedAt = this.dateTime;
       this.leecherUser.amount = leechAmount;
       this.selectedUser.leechers.unshift(this.leecherUser);
       this.userService.updateUser(this.user);

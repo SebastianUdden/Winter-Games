@@ -107,25 +107,41 @@
         <h2>Highscore: <span style="float:right">{{selectedUser.score | number:'1.0-0' }}</span></h2>
         <h2>Wallet: <span style="float:right;" class="bossCoin"></span> <span style="float:right;">{{selectedUser.wallet | number:'1.0-0' }}</span></h2>
       </div>
-      <div *ngIf="user.admin">
-        <hr />
-        <button *ngIf="leecher && selectedUser.username !== user.username && user.nextLeech === undefined" (click)="leech(selectedUser);" class="leech"><img style="float:left; width:90px;" src="assets\images\attributes\leech.png" alt="Leech"> Leech</button>
-        <button *ngIf="leecher && selectedUser.username !== user.username && dateTime.getTime() > user.nextLeech" (click)="leech(selectedUser);" class="leech"><img style="float:left; width:90px" src="assets\images\attributes\leech.png" alt="Leech"> Leech</button>
-        <button *ngIf="leecher && selectedUser.username !== user.username && dateTime.getTime() < user.nextLeech" (click)="leech(selectedUser);" class="leech"><img style="float:left; width:90px" src="assets\images\attributes\leech.png" alt="Leech"> Ready {{user.nextLeech | date:'h:mma'}}</button>
-        <hr />
-        <h3>Attributes</h3>
-        <hr />
-        <div *ngFor="let marketAttribute of marketAttributes">
-          <div *ngIf="marketAttribute.name === 'Captains-Badge-Blue' || marketAttribute.name === 'Captains-Badge-Red'">
-            <div *ngIf="marketAttribute.ownedBy === selectedUser.username">
-              <app-attribute [attribute]="marketAttribute" [owned]="true"></app-attribute>
+      <div>
+          <button *ngIf="leecher && selectedUser.username !== user.username && user.nextLeech === undefined" (click)="leech(selectedUser);" class="leech"><img style="float:left; width:90px;" src="assets\images\attributes\leech.png" alt="Leech"> <span style="padding-top:20px;">Leech</span></button>
+          <button *ngIf="leecher && selectedUser.username !== user.username && dateTime.getTime() > user.nextLeech" (click)="leech(selectedUser);" class="leech"><img style="float:left; width:90px" src="assets\images\attributes\leech.png" alt="Leech"> <span style="padding-top:20px;">Leech</span></button>
+          <button *ngIf="leecher && selectedUser.username !== user.username && dateTime.getTime() < user.nextLeech" (click)="leech(selectedUser);" class="leech"><img style="float:left; width:90px" src="assets\images\attributes\leech.png" alt="Leech"> <span style="padding-top:20px;">Ready {{user.nextLeech | date:'h:mma'}}</span></button>
+          <h2>Gain / Loss</h2>
+          <h4>{{selectedUser.leechGain}} <img style="height: 20px;" src="assets/images/bossItems/bossCoin.png"> / {{selectedUser.leechLoss}} <img style="height: 20px;" src="assets/images/bossItems/bossCoin.png"></h4>
+          <h2>Latest Leechers</h2>
+          <h4 *ngFor="let leecher of selectedUser.leechers.slice(0, 5);">
+            <img style="height: 40px;" *ngIf="leecher.username === 'Sebbe'" src="assets/images/avatars/Sebbe.png" alt="Sebbe" />
+            <img style="height: 40px;" *ngIf="leecher.username === 'Mattis'" src="assets/images/avatars/Mattis.png" alt="Mattis" />
+            <img style="height: 40px;" *ngIf="leecher.username === 'Dennan'" src="assets/images/avatars/Dennan.png" alt="Dennan" />
+            <img style="height: 40px;" *ngIf="leecher.username === 'Robin'" src="assets/images/avatars/Robin.png" alt="Robin" />
+            <img style="height: 40px;" *ngIf="leecher.username === 'Kling'" src="assets/images/avatars/Kling.png" alt="Kling" />
+            <img style="height: 40px;" *ngIf="leecher.username === 'Fredde'" src="assets/images/avatars/Fredde.png" alt="Fredde" />
+            <img style="height: 40px;" *ngIf="leecher.username === 'Virre'" src="assets/images/avatars/Virre.png" alt="Virre" />
+            <img style="height: 40px;" *ngIf="leecher.username === 'Schaeran'" src="assets/images/avatars/Schaeran.png" alt="Schaeran" />
+            <img style="height: 40px;" *ngIf="leecher.username === 'Nemer'" src="assets/images/avatars/Nemer.png" alt="Nemer" />
+            <img style="height: 40px;" *ngIf="leecher.username === 'Ivar'" src="assets/images/avatars/Ivar.png" alt="Ivar" />
+            <img style="height: 40px;" *ngIf="leecher.username === 'Amanda'" src="assets/images/avatars/Amanda.png" alt="Amanda" />
+            <img style="height: 40px;" *ngIf="leecher.username === 'Robban'" src="assets/images/avatars/Robban.png" alt="Robban" />
+             {{leecher.amount}} <img style="height: 20px;" src="assets/images/bossItems/bossCoin.png"> - {{ leecher.leechedAt | date:'MM/dd - h:mma'}}</h4>
+          <hr />
+          <h3>Attributes</h3>
+          <hr />
+          <div *ngFor="let marketAttribute of marketAttributes">
+            <div *ngIf="marketAttribute.name === 'Captains-Badge-Blue' || marketAttribute.name === 'Captains-Badge-Red'">
+              <div *ngIf="marketAttribute.ownedBy === selectedUser.username">
+                <app-attribute [attribute]="marketAttribute" [owned]="true"></app-attribute>
+              </div>
             </div>
           </div>
+          <div *ngFor="let userAttribute of selectedUser.attributes">
+            <app-attribute [attribute]="userAttribute" [owned]="true"></app-attribute>
+          </div>
         </div>
-        <div *ngFor="let userAttribute of selectedUser.attributes">
-          <app-attribute [attribute]="userAttribute" [owned]="true"></app-attribute>
-        </div>
-      </div>
     </div>
     <div *ngIf="selectedTab === 3" style="min-height: 80vh;">
       <h2>About</h2>
@@ -152,7 +168,7 @@
       </p>
       <h3>Wallet: <span style="float:right;" class="bossCoin"></span> <span style="float:right;">{{user.wallet | number:'1.0-0' }}</span></h3>
       <hr />
-      <div *ngIf="user.admin">
+      <div>
         <h3>Attributes for sale</h3>
         <hr />
         <div *ngFor="let marketAttribute of marketAttributes">
@@ -194,9 +210,9 @@
     </div>
     <div class="row">
       <div *ngIf="selectedTab === 1" class="box-content container">
-        <h2 *ngIf="showHighscore" style="cursor:pointer;" (click)="toggleHighscore();">HIGH SCORE <span class="fa fa-exchange"></span> <img style="height: 36px;" src="assets/images/bossItems/bossCoinSymbol.png" /></h2>
+        <h2 *ngIf="showHighscore" style="cursor:pointer;" (click)="toggleHighscore();">HIGH SCORE <span class="fa fa-exchange"></span> <img style="height: 36px; margin-top:-4px;" src="assets/images/bossItems/bossCoinSymbol.png" /></h2>
         <h2 *ngIf="!showHighscore" style="cursor:pointer;" (click)="toggleHighscore();">WALLET <span class="fa fa-exchange"></span> <span style="height: 40px; margin-bottom:-4px;" class="fa fa-trophy"></span></h2>
-        <hr />
+        <hr style="margin-top:-7px;" />
         <div *ngFor="let u of users" class="userInfo userInfo-row">
           <div *ngIf="user">
             <div *ngIf="u.username === user.username" class="currentUser">
@@ -292,14 +308,14 @@
           <h2>Wallet: <span style="float:right;" class="bossCoin"></span> <span style="float:right;">{{selectedUser.wallet | number:'1.0-0' }}</span></h2>
         </div>
         <hr />
-        <div *ngIf="user.admin">
+        <div>
           <button *ngIf="leecher && selectedUser.username !== user.username && user.nextLeech === undefined" (click)="leech(selectedUser);" class="leech"><img style="float:left; width:90px;" src="assets\images\attributes\leech.png" alt="Leech"> <span style="padding-top:20px;">Leech</span></button>
           <button *ngIf="leecher && selectedUser.username !== user.username && dateTime.getTime() > user.nextLeech" (click)="leech(selectedUser);" class="leech"><img style="float:left; width:90px" src="assets\images\attributes\leech.png" alt="Leech"> <span style="padding-top:20px;">Leech</span></button>
           <button *ngIf="leecher && selectedUser.username !== user.username && dateTime.getTime() < user.nextLeech" (click)="leech(selectedUser);" class="leech"><img style="float:left; width:90px" src="assets\images\attributes\leech.png" alt="Leech"> <span style="padding-top:20px;">Ready {{user.nextLeech | date:'h:mma'}}</span></button>
           <h2>Gain / Loss</h2>
           <h4>{{selectedUser.leechGain}} <img style="height: 20px;" src="assets/images/bossItems/bossCoin.png"> / {{selectedUser.leechLoss}} <img style="height: 20px;" src="assets/images/bossItems/bossCoin.png"></h4>
-          <h2>Leechers</h2>
-          <h4 *ngFor="let leecher of selectedUser.leechers">
+          <h2>Latest Leechers</h2>
+          <h4 *ngFor="let leecher of selectedUser.leechers.slice(0, 5);">
             <img style="height: 40px;" *ngIf="leecher.username === 'Sebbe'" src="assets/images/avatars/Sebbe.png" alt="Sebbe" />
             <img style="height: 40px;" *ngIf="leecher.username === 'Mattis'" src="assets/images/avatars/Mattis.png" alt="Mattis" />
             <img style="height: 40px;" *ngIf="leecher.username === 'Dennan'" src="assets/images/avatars/Dennan.png" alt="Dennan" />
@@ -312,7 +328,7 @@
             <img style="height: 40px;" *ngIf="leecher.username === 'Ivar'" src="assets/images/avatars/Ivar.png" alt="Ivar" />
             <img style="height: 40px;" *ngIf="leecher.username === 'Amanda'" src="assets/images/avatars/Amanda.png" alt="Amanda" />
             <img style="height: 40px;" *ngIf="leecher.username === 'Robban'" src="assets/images/avatars/Robban.png" alt="Robban" />
-             {{leecher.amount}} <img style="height: 20px;" src="assets/images/bossItems/bossCoin.png"></h4>
+             {{leecher.amount}} <img style="height: 20px;" src="assets/images/bossItems/bossCoin.png"> - {{ leecher.leechedAt | date:'MM/dd - h:mma'}}</h4>
           <hr />
           <h3>Attributes</h3>
           <hr />
@@ -368,7 +384,7 @@
         </p>
         <h3>Wallet: <span style="float:right;" class="bossCoin"></span> <span style="float:right;">{{user.wallet | number:'1.0-0' }}</span></h3>
         <hr />
-        <div *ngIf="user.admin">
+        <div>
           <h3>Attributes for sale</h3>
           <hr />
           <div *ngFor="let marketAttribute of marketAttributes">
