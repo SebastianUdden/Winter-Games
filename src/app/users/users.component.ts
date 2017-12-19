@@ -126,6 +126,7 @@ export class UsersComponent implements OnInit {
       alert('An hour must pass before you can leech again!');
     }
 
+
     if (leechUser) {
       let leechAmount = Math.floor(user.wallet * 0.01)
       latestLeech.setTime(latestLeech.getTime() + (1*60*60*1000));
