@@ -123,8 +123,7 @@ export class UsersComponent implements OnInit {
     if (!this.user.nextLeech || this.user.nextLeech === 0) { leechUser = true; }
     else if (this.user.nextLeech < latestLeech.getTime()) { leechUser = true; }
     else {
-      leechUser = true;
-      // alert('An hour must pass before you can leech again!');
+      alert('An hour must pass before you can leech again!');
     }
 
     if (leechUser && this.user.admin) {
