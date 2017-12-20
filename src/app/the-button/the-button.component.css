@@ -482,7 +482,8 @@ li {
 }
 
 .buttonAttributeImage {
-  width: 70px;
+  margin-left: -6px;
+  height: 100%;
 }
 
 /*///////////////////
