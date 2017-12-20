@@ -16,14 +16,14 @@ export class TheTeamComponent implements OnInit {
   currentUser: User;
   users: User[] = [];
   user: User;
-  public bluedLeader: User;
+  public blueLeader: User;
   public redLeader: User;
   public choice = false;
   public evil = false;
   public deleteButton = false;
   admins: User[] = [];
-  blueTeam: User[] = [];
-  redTeam: User[] = [];
+  public blueTeam: User[] = [];
+  public redTeam: User[] = [];
   public marketAttributes = [];
   constructor(
     private userService: UserService,
