@@ -48,3 +48,19 @@ a.danger {
 input.ng-invalid.ng-touched {
   border: 1px solid red;
 }
+
+.team {
+  border-radius: 14px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #dddddd;
+  margin: 10px;
+  padding: 10px !important;
+}
+.redTeam {
+  background-color: #7a1324;
+}
+
+.blueTeam {
+  background-color: #113985;
+}

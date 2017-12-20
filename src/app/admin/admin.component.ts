@@ -4,6 +4,7 @@ import { DecimalPipe } from '@angular/common';
 import { User } from '../_models/user';
 import { UserService } from '../_services/user.service';
 import { AuthenticationService } from '../_services/authentication.service';
+// import { setTimeout } from 'timers';
 
 @Component({
   selector: 'app-admin',
@@ -18,6 +19,9 @@ export class AdminComponent implements OnInit {
   public choice = false;
   public evil = false;
   public deleteButton = false;
+  admins: User[] = [];
+  blueTeam: User[] = [];
+  redTeam: User[] = [];
   constructor(
     private userService: UserService,
     private authenticationService: AuthenticationService) {
@@ -28,7 +32,55 @@ export class AdminComponent implements OnInit {
     this.loadAllUsers();
   }
   private loadAllUsers() {
-    this.userService.getUsers().subscribe(users => { this.users = users; });
+    this.userService.getUsers().subscribe(users => { this.users = this.sortDescending(users); });
+  }
+  sortDescending(array) {
+    array.sort(function(a, b){ return b.score - a.score; });
+    for (let i = 0; i < array.length; i++) {
+      if (array[i].admin) {
+        this.admins.push(array[i]);
+        array.splice(i, 1)
+      }
+    }
+    for (let i = 0; i < array.length; i++) {
+      switch(i) {
+        case 0:
+          this.blueTeam.push(array[i]);
+          break;
+        case 1:
+          this.redTeam.push(array[i]);
+          break;
+        case 2:
+          this.redTeam.push(array[i]);
+          break;
+        case 3:
+          this.blueTeam.push(array[i]);
+          break;
+        case 4:
+          this.redTeam.push(array[i]);
+          break;
+        case 5:
+          this.blueTeam.push(array[i]);
+          break;
+        case 6:
+          this.redTeam.push(array[i]);
+          break;
+        case 7:
+          this.blueTeam.push(array[i]);
+          break;
+        case 8:
+          this.redTeam.push(array[i]);
+          break;
+        case 9:
+          this.blueTeam.push(array[i]);
+          break;
+        default:
+          break;
+      }
+    }
+    this.blueTeam.unshift(this.admins[0]);
+    this.redTeam.unshift(this.admins[1]);
+    return array;
   }
   goStraightEvil(evil) {
     if (evil === undefined) {
