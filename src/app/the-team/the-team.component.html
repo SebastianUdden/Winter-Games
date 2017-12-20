@@ -1,0 +1,75 @@
+<div class="row admin" *ngIf="user">
+    <div class="col-xs-5 team blueTeam">
+      <h2><img style="height:100px;" src="assets/images/attributes/blueLeader.png" alt=""/> Blue Team</h2>
+      <div *ngFor="let usr of blueTeam">
+        <div class="row">
+          <img *ngIf="usr.username === 'Sebbe'" class="col-xs-2 user-img" src="assets/images/avatars/Sebbe.png" alt="IMG" />
+          <img *ngIf="usr.username === 'Mattis'" class="col-xs-2 user-img" src="assets/images/avatars/Mattis.png" alt="IMG" />
+          <img *ngIf="usr.username === 'Robban'" class="col-xs-2 user-img" src="assets/images/avatars/Robban.png" alt="IMG" />
+          <img *ngIf="usr.username === 'Schaeran'" class="col-xs-2 user-img" src="assets/images/avatars/Schaeran.png" alt="IMG" />
+          <img *ngIf="usr.username === 'Robin'" class="col-xs-2 user-img" src="assets/images/avatars/Robin.png" alt="IMG" />
+          <img *ngIf="usr.username === 'Ivar'" class="col-xs-2 user-img" src="assets/images/avatars/Ivar.png" alt="IMG" />
+          <img *ngIf="usr.username === 'Fredde'" class="col-xs-2 user-img" src="assets/images/avatars/Fredde.png" alt="IMG" />
+          <img *ngIf="usr.username === 'Virre'" class="col-xs-2 user-img" src="assets/images/avatars/Virre.png" alt="IMG" />
+          <img *ngIf="usr.username === 'Nemer'" class="col-xs-2 user-img" src="assets/images/avatars/Nemer.png" alt="IMG" />
+          <img *ngIf="usr.username === 'Amanda'" class="col-xs-2 user-img" src="assets/images/avatars/Amanda.png" alt="IMG" />
+          <img *ngIf="usr.username === 'Dennan'" class="col-xs-2 user-img" src="assets/images/avatars/Dennan.png" alt="IMG" />
+          <img *ngIf="usr.username === 'Kling'" class="col-xs-2 user-img" src="assets/images/avatars/Kling.png" alt="IMG" />
+          <div class="col-xs-8 user-list">
+              <div *ngFor="let marketAttribute of marketAttributes">
+                <div *ngIf="marketAttribute.name === 'Captains-Badge-Blue'">
+                  <div *ngIf="marketAttribute.ownedBy === usr.username">
+                    <img style="width:90px; float:right;" src="assets\images\attributes\blueLeader.png" alt="Blue Leader">
+                  </div>
+                </div>
+                <div *ngIf="marketAttribute.name === 'Captains-Badge-Red'">
+                  <div *ngIf="marketAttribute.ownedBy === usr.username">
+                    <img style="width:90px; float:right;" src="assets\images\attributes\redLeader.png" alt="Red Leader">
+                  </div>
+                </div>
+              </div>
+            <h3>{{usr.username}}</h3>
+            <p>Highscore: {{usr.score | number:'1.0-2' }}</p>
+            <p>Wallet: {{usr.wallet | number:'1.0-2' }} <img style="margin-top: -4px; height:20px;" src="assets/images/bossItems/bossCoinSymbol.png" /></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-2"></div>
+    <div class="col-xs-5 team redTeam">
+      <h2><img style="height:100px;" src="assets/images/attributes/redLeader.png" alt=""/>Red Team</h2>
+      <div *ngFor="let usr of redTeam">
+          <div class="row">
+            <img *ngIf="usr.username === 'Sebbe'" class="col-xs-2 user-img" src="assets/images/avatars/Sebbe.png" alt="IMG" />
+            <img *ngIf="usr.username === 'Mattis'" class="col-xs-2 user-img" src="assets/images/avatars/Mattis.png" alt="IMG" />
+            <img *ngIf="usr.username === 'Robban'" class="col-xs-2 user-img" src="assets/images/avatars/Robban.png" alt="IMG" />
+            <img *ngIf="usr.username === 'Schaeran'" class="col-xs-2 user-img" src="assets/images/avatars/Schaeran.png" alt="IMG" />
+            <img *ngIf="usr.username === 'Robin'" class="col-xs-2 user-img" src="assets/images/avatars/Robin.png" alt="IMG" />
+            <img *ngIf="usr.username === 'Ivar'" class="col-xs-2 user-img" src="assets/images/avatars/Ivar.png" alt="IMG" />
+            <img *ngIf="usr.username === 'Fredde'" class="col-xs-2 user-img" src="assets/images/avatars/Fredde.png" alt="IMG" />
+            <img *ngIf="usr.username === 'Virre'" class="col-xs-2 user-img" src="assets/images/avatars/Virre.png" alt="IMG" />
+            <img *ngIf="usr.username === 'Nemer'" class="col-xs-2 user-img" src="assets/images/avatars/Nemer.png" alt="IMG" />
+            <img *ngIf="usr.username === 'Amanda'" class="col-xs-2 user-img" src="assets/images/avatars/Amanda.png" alt="IMG" />
+            <img *ngIf="usr.username === 'Dennan'" class="col-xs-2 user-img" src="assets/images/avatars/Dennan.png" alt="IMG" />
+            <img *ngIf="usr.username === 'Kling'" class="col-xs-2 user-img" src="assets/images/avatars/Kling.png" alt="IMG" />
+            <div class="col-xs-8 user-list">
+              <div *ngFor="let marketAttribute of marketAttributes">
+                <div *ngIf="marketAttribute.name === 'Captains-Badge-Blue'">
+                  <div *ngIf="marketAttribute.ownedBy === usr.username">
+                    <img style="width:90px; float:right;" src="assets\images\attributes\blueLeader.png" alt="Blue Leader">
+                  </div>
+                </div>
+                <div *ngIf="marketAttribute.name === 'Captains-Badge-Red'">
+                  <div *ngIf="marketAttribute.ownedBy === usr.username">
+                    <img style="width:90px; float:right;" src="assets\images\attributes\redLeader.png" alt="Red Leader">
+                  </div>
+                </div>
+              </div>
+              <h3>{{usr.username}}</h3>
+              <p>Highscore: {{usr.score | number:'1.0-2' }}</p>
+              <p>Wallet: {{usr.wallet | number:'1.0-2' }} <img style="margin-top: -4px; height:20px;" src="assets/images/bossItems/bossCoinSymbol.png" /></p>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>

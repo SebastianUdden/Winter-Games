@@ -1,0 +1,78 @@
+.admin {
+  height: 100%;
+  text-decoration: none;
+  font: 18px/1.4em 'Ubuntu', arial, sans-serif;
+  line-height: 1.428571429;
+  border-radius: 10px;
+  color: #fff;
+}
+.marginBottom {
+  margin-bottom: 4px;
+}
+.user-img {
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 1px;
+  margin-bottom: 8px;
+  margin-left: 25px;
+  margin-right: 10px;
+  padding: 1px;
+  background-color: rgb(59, 59, 59);
+}
+.user-list {
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 1px;
+  margin-bottom: 8px;
+  height: 115px;
+  padding: 5px;
+  background-color: rgb(59, 59, 59);
+}
+.user-list h3 {
+  margin-top: 2px;
+}
+.user-list:hover {
+  background-color: rgb(77, 77, 77);
+}
+
+.user input {
+  color: black;
+}
+
+.admin a {
+  color: #00B7FF;
+  cursor: pointer;
+}
+
+.admin a:hover,
+.admin a:active {
+  color: #00B7FF;
+  text-decoration: underline;
+}
+
+a.danger {
+  color: red;
+}
+
+.spacing {
+  margin-bottom: 20px;
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+.team {
+  border-radius: 14px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #dddddd;
+  padding: 10px !important;
+}
+.redTeam {
+  background-color: #7a1324;
+}
+
+.blueTeam {
+  background-color: #113985;
+}
