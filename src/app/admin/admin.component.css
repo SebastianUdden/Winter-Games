@@ -4,6 +4,7 @@
   font: 18px/1.4em 'Ubuntu', arial, sans-serif;
   line-height: 1.428571429;
   background-color: rgb(44, 44, 44);
+  border-radius: 10px;
   color: #fff;
 }
 .marginBottom {
