@@ -413,7 +413,7 @@ export class TheButtonComponent implements OnInit, OnDestroy {
       this.dualWield = true;
     }
     toggleMinigun() {
-      this.SetCheat(true, 30);
+      this.SetCheat(true, 40);
       this.minigun = true;
       this.minigunCount = 0;
       console.log('minigun: ' + this.minigunCount);
@@ -463,7 +463,7 @@ export class TheButtonComponent implements OnInit, OnDestroy {
         this.minigunCount++;
       } else if (this.minigunCount >= 10) {
         this.minigunCount = -1;
-        this.SetCheat(false, 30);
+        this.SetCheat(false, 40);
       }
       if (this.rage < 11) {
         this.rage++;
