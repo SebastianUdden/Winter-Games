@@ -71,9 +71,11 @@ input.ng-invalid.ng-touched {
   font-size: 15px;
 }
 .wealthInput {
+  border-radius: 4px;
   color: #1c994e;
 }
 
 .wealthOutput {
+  border-radius: 4px;
   color: #c02929;
 }

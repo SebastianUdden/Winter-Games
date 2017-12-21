@@ -19,6 +19,20 @@
   <br>
   <hr>
   <h2>Username: {{user.username}}</h2>
-  <h2>Attributes: N/A</h2>
+  <h2>Attributes:</h2>
+  <hr />
+  <div *ngFor="let attribute of allAttributes">
+    <div *ngIf="attribute.name === 'Captains-Badge-Blue'
+      || attribute.name === 'Captains-Badge-Red'
+      || attribute.name === 'Nidhogg'
+      || attribute.name === 'Achtung'">
+      <div *ngIf="attribute.ownedBy === user.username">
+        <app-attribute [attribute]="attribute" [owned]="true"></app-attribute>
+      </div>
+    </div>
+  </div>
+  <div *ngFor="let userAttribute of user.attributes">
+    <app-attribute [attribute]="userAttribute" [owned]="true"></app-attribute>
+  </div>
   <hr>
 </section>

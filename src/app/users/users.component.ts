@@ -95,7 +95,6 @@ export class UsersComponent implements OnInit {
         this.toggle('maestro');
         // this.toggle('gambler');
         // this.toggle('grinder');
-        // this.toggle('mcFly');
       }, 1);
     }
   }

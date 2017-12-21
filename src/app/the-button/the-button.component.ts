@@ -40,6 +40,10 @@ export class TheButtonComponent implements OnInit, OnDestroy {
     public timeLord = false;
     public timeLordAvailable = false;
     public timeLordBonus = 30;
+    public achtung = false;
+    public achtungAvailable = false;
+    public nidhogg = false;
+    public nidhoggAvailable = false;
 
     public click = 1;
     public gambler = false;
@@ -412,6 +416,14 @@ export class TheButtonComponent implements OnInit, OnDestroy {
       this.SetCheat(true, 2);
       this.dualWield = true;
     }
+    toggleAchtung() {
+      this.SetCheat(true, 2);
+      this.achtung = true;
+    }
+    toggleNidhogg() {
+      this.SetCheat(true, 2);
+      this.nidhogg = true;
+    }
     toggleMinigun() {
       this.SetCheat(true, 40);
       this.minigun = true;
@@ -526,14 +538,46 @@ export class TheButtonComponent implements OnInit, OnDestroy {
       this.timeLord = false;
       this.userScore = 0;
     }
-
+    public allAttributes = [];
     constructor(
       private data: UpdateService,
       private userService: UserService,
       private authenticationService: AuthenticationService) {
         this.comboType = '';
     }
+    getAttributes(): void {
+      this.userService.getAttributes()
+        .subscribe(attributes => this.SortDescending(this.allAttributes = attributes));
+
+      setTimeout(() => {
+        for (let i = 0; i < this.allAttributes.length; i++) {
+          console.log('Name ' + this.allAttributes[i].name);
+          this.allAttributes[i].owned = false;
+          for (let x = 0; x < this.user.attributes.length; x++) {
+            if (this.allAttributes[i].name === this.user.attributes[x].name) {
+              this.allAttributes[i].owned = true;
+            }
+          }
+          if (this.allAttributes[i].name === 'Achtung') {
+            console.log('Achtung!');
+            if (this.allAttributes[i].ownedBy === this.user.username) {
+              this.achtungAvailable = true;
+            }
+          }
+          if (this.allAttributes[i].name === 'Nidhogg') {
+            console.log('Nidhogg!');
+            if (this.allAttributes[i].ownedBy === this.user.username) {
+              this.nidhoggAvailable = true;
+            }
+          }
+        }
+      }, 1000);
+    }
+    SortDescending(array) {
+      return array.sort(function(a, b){ return b.score - a.score; });
+    }
     ngOnInit() {
+      this.getAttributes();
       this.authenticationService.currentUser.subscribe(user => this.user = user);
       if (this.user.attributes) {
         for (let i = 0; i < this.user.attributes.length; i++) {

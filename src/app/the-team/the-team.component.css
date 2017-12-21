@@ -4,7 +4,10 @@
   font: 18px/1.4em 'Ubuntu', arial, sans-serif;
   line-height: 1.428571429;
   border-radius: 10px;
-  color: #fff;
+  color: #fff
+}
+.teamContainer {
+  margin-bottom: 40px;
 }
 .marginBottom {
   margin-bottom: 4px;
@@ -67,7 +70,7 @@ input.ng-invalid.ng-touched {
   border-width: 2px;
   border-style: solid;
   border-color: #dddddd;
-  padding: 10px !important;
+  padding-bottom: 30px;
 }
 .redTeam {
   background-color: #7a1324;
@@ -75,4 +78,32 @@ input.ng-invalid.ng-touched {
 
 .blueTeam {
   background-color: #113985;
+}
+
+@media only screen and (
+  max-width: 1126px
+) {
+#showTeamBig {
+  display: none;
+}
+#showTeamSmall {
+  width: 100vw;
+  margin: 0 auto;
+  margin-top: -5vh;
+}
+.team {
+  margin-left: 5%;
+  width: 80%;
+}
+}
+
+@media only screen and (
+  min-width: 1126px
+) {
+#showTeamSmall {
+  display: none;
+}
+.team {
+  margin-left: 0;
+}
 }

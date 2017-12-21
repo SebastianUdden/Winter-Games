@@ -60,10 +60,10 @@ export class TheTeamComponent implements OnInit {
   sortDescending(array) {
     let teamsArray = array.sort(function(a, b){ return b.score - a.score; });
     for (let i = 0; i < array.length; i++) {
-      if (array[i].admin) {
-        this.admins.push(array[i]);
-        teamsArray = array.splice(i, 1)
-      }
+      // if (array[i].admin) {
+      //   this.admins.push(array[i]);
+      //   teamsArray = array.splice(i, 1)
+      // }
       for (let x = 0; x < this.marketAttributes.length; x++) {
         if (this.marketAttributes[x].name === 'Captains-Badge-Blue') {
           if (this.marketAttributes[x].ownedBy === array[i].username) {
@@ -79,6 +79,8 @@ export class TheTeamComponent implements OnInit {
         }
       }
     }
+    this.blueTeam.unshift(this.blueLeader);
+    this.redTeam.unshift(this.redLeader);
     for (let i = 0; i < array.length; i++) {
       switch(i) {
         case 0:
@@ -111,12 +113,17 @@ export class TheTeamComponent implements OnInit {
         case 9:
           this.blueTeam.push(array[i]);
           break;
+        case 10:
+          if(this.blueTeam.length > 5) {
+            this.redTeam.push(array[i]);
+          } else {
+            this.blueTeam.push(array[i]);
+          }
+          break;
         default:
           break;
       }
     }
-    this.blueTeam.unshift(this.blueLeader);
-    this.redTeam.unshift(this.redLeader);
     return array;
   }
   goStraightEvil(evil) {

@@ -138,8 +138,10 @@
               </div>
             </div>
           </div>
-          <div *ngFor="let userAttribute of selectedUser.attributes">
-            <app-attribute [attribute]="userAttribute" [owned]="true"></app-attribute>
+          <div *ngIf="selectedUser.username !== 'Sebbe'">
+            <div *ngFor="let userAttribute of selectedUser.attributes">
+              <app-attribute [attribute]="userAttribute" [owned]="true"></app-attribute>
+            </div>
           </div>
         </div>
     </div>
@@ -173,7 +175,9 @@
         <hr />
         <div *ngFor="let marketAttribute of marketAttributes">
           <div *ngIf="marketAttribute.owned !== true">
-            <app-attribute [attribute]="marketAttribute" [owned]="false"></app-attribute>
+            <div *ngIf="marketAttribute.name !== 'Achtung' && marketAttribute.name !== 'Nidhogg'">
+              <app-attribute [attribute]="marketAttribute" [owned]="marketAttribute.owned"></app-attribute>
+            </div>
           </div>
         </div>
         <h3 style="color:rgb(44, 44, 44);">.</h3>
@@ -339,8 +343,10 @@
               </div>
             </div>
           </div>
-          <div *ngFor="let userAttribute of selectedUser.attributes">
-            <app-attribute [attribute]="userAttribute" [owned]="true"></app-attribute>
+          <div *ngIf="selectedUser.username !== 'Mattis'">
+            <div *ngFor="let userAttribute of selectedUser.attributes">
+              <app-attribute [attribute]="userAttribute" [owned]="true"></app-attribute>
+            </div>
           </div>
         </div>
       </div>
@@ -389,7 +395,9 @@
           <hr />
           <div *ngFor="let marketAttribute of marketAttributes">
             <div *ngIf="marketAttribute.owned !== true">
-              <app-attribute [attribute]="marketAttribute" [owned]="marketAttribute.owned"></app-attribute>
+                <div *ngIf="marketAttribute.name !== 'Achtung' && marketAttribute.name !== 'Nidhogg'">
+                  <app-attribute [attribute]="marketAttribute" [owned]="marketAttribute.owned"></app-attribute>
+                </div>
             </div>
           </div>
           <h3 style="color:rgb(44, 44, 44);">.</h3>

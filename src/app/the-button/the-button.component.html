@@ -250,6 +250,18 @@
           <button class="buttonAttributeContainer buttonAttributeNotUsed" *ngIf="gameOn && !getReady && !minigun" (click)="toggleMinigun();"><img class="buttonAttributeImage" src="assets/images/attributes/miniGun.png" alt="Minigun" /></button>
         </div>
       </div>
+      <div class="row extra-time-row" style="margin-top:5vh;" *ngIf="achtungAvailable || nidhoggAvailable">
+        <div class="col-xs-4" *ngIf="achtungAvailable">
+          <button class="buttonAttributeContainer buttonAttributeUsed" *ngIf="gameOn && !getReady && achtung"><img class="buttonAttributeImage" src="assets/images/attributes/achtung.png" alt="Achtung" /></button>
+          <button class="buttonAttributeContainer buttonAttributeNotUsed" *ngIf="gameOn && !getReady && !achtung" (click)="toggleAchtung();"><img class="buttonAttributeImage" src="assets/images/attributes/achtung.png" alt="Achtung" /></button>
+        </div>
+        <div class="col-xs-4" *ngIf="nidhoggAvailable">
+          <button class="buttonAttributeContainer buttonAttributeUsed" *ngIf="gameOn && !getReady && nidhogg"><img class="buttonAttributeImage" src="assets/images/attributes/nidhogg.png" alt="Nidhogg" /></button>
+          <button class="buttonAttributeContainer buttonAttributeNotUsed" *ngIf="gameOn && !getReady && !nidhogg" (click)="toggleNidhogg();"><img class="buttonAttributeImage" src="assets/images/attributes/nidhogg.png" alt="Nidhogg" /></button>
+        </div>
+        <div class="col-xs-4">
+        </div>
+      </div>
     </div>
     <div class="mobileRight"></div>
   </div>
@@ -553,6 +565,14 @@
             <div class="col-xs-2" *ngIf="minigunAvailable">
               <button class="buttonAttributeContainer buttonAttributeUsed" *ngIf="gameOn && !getReady && minigun"><img class="buttonAttributeImage" src="assets/images/attributes/miniGun.png" alt="Minigun" /> X40</button>
               <button class="buttonAttributeContainer buttonAttributeNotUsed" *ngIf="gameOn && !getReady && !minigun" (click)="toggleMinigun();"><img class="buttonAttributeImage" src="assets/images/attributes/miniGun.png" alt="Minigun" /> X40</button>
+            </div>
+            <div class="col-xs-2" *ngIf="achtungAvailable">
+              <button class="buttonAttributeContainer buttonAttributeUsed" *ngIf="gameOn && !getReady && achtung"><img class="buttonAttributeImage" src="assets/images/attributes/achtung.png" alt="Achtung" /> X2</button>
+              <button class="buttonAttributeContainer buttonAttributeNotUsed" *ngIf="gameOn && !getReady && !achtung" (click)="toggleAchtung();"><img class="buttonAttributeImage" src="assets/images/attributes/achtung.png" alt="Achtung" /> X2</button>
+            </div>
+            <div class="col-xs-2" *ngIf="nidhoggAvailable">
+              <button class="buttonAttributeContainer buttonAttributeUsed" *ngIf="gameOn && !getReady && nidhogg"><img class="buttonAttributeImage" src="assets/images/attributes/nidhogg.png" alt="Nidhogg" /> X2</button>
+              <button class="buttonAttributeContainer buttonAttributeNotUsed" *ngIf="gameOn && !getReady && !nidhogg" (click)="toggleNidhogg();"><img class="buttonAttributeImage" src="assets/images/attributes/nidhogg.png" alt="Nidhogg" /> X2</button>
             </div>
           </div>
         </div>
