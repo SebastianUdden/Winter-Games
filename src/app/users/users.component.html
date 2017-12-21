@@ -31,15 +31,27 @@
               <div *ngIf="u.png === 'Ivar.png'" class="col-xs-2 users-img highscore-img ivar"></div>
               <div *ngIf="u.png === 'Amanda.png'" class="col-xs-2 users-img highscore-img amanda"></div>
               <div *ngIf="u.png === 'Robban.png'" class="col-xs-2 users-img highscore-img robban"></div>
-              <div *ngFor="let marketAttribute of marketAttributes">
-                <div *ngIf="marketAttribute.name === 'Captains-Badge-Blue'">
-                  <div *ngIf="marketAttribute.ownedBy === u.username" class="col-xs-1">
-                    <img style="width:90px; margin-top: 20px;" src="assets\images\attributes\blueLeader.png" alt="Blue Leader">
+              <div class="col-xs-3" style="display:inline;">
+                <div class="row" *ngIf="u.username !== 'Mattis'" style="margin-top:10px;">
+                  <div *ngFor="let marketAttribute of marketAttributes">
+                    <div *ngIf="marketAttribute.ownedBy">
+                      <div *ngIf="marketAttribute.ownedBy === u.username">
+                        <div *ngIf="marketAttribute.name === 'Captains-Badge-Blue'">
+                          <img style="float:left; width:30%;" src="assets\images\attributes\blueLeader.png">
+                        </div>
+                        <div *ngIf="marketAttribute.name === 'Captains-Badge-Red'">
+                          <img style="float:left; margin-left: -6px; width:30%;" src="assets\images\attributes\redLeader.png">
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div *ngIf="marketAttribute.name === 'Captains-Badge-Red'">
-                  <div *ngIf="marketAttribute.ownedBy === u.username" class="col-xs-1">
-                    <img style="width:90px; margin-top: 20px;" src="assets\images\attributes\redLeader.png" alt="Red Leader">
+                  <div *ngFor="let attribute of u.attributes">
+                    <img *ngIf="attribute.name === 'Achtung'" style="float:left; width:30%;" src="assets\images\attributes\achtung.png" alt="at">
+                    <img *ngIf="attribute.name === 'Leech'" style="float:left; width:30%;" src="assets\images\attributes\leech.png" alt="le">
+                    <img *ngIf="attribute.name === 'Minigun'" style="float:left; width:30%;" src="assets\images\attributes\miniGun.png" alt="mg">
+                    <img *ngIf="attribute.name === 'Nidhogg'"style="float:left; width:30%;" src="assets\images\attributes\nidhogg.png" alt="nh">
+                    <img *ngIf="attribute.name === 'Time-Lord'"style="float:left; width:30%;" src="assets\images\attributes\timeLord.png" alt="tl">
+                    <img *ngIf="attribute.name === 'Dual-Wield'" style="float:left; width:30%;" src="assets\images\attributes\tombRaider.png" alt="dw">
                   </div>
                 </div>
               </div>
@@ -65,19 +77,31 @@
               <div *ngIf="u.png === 'Ivar.png'" class="col-xs-2 users-img highscore-img ivar"></div>
               <div *ngIf="u.png === 'Amanda.png'" class="col-xs-2 users-img highscore-img amanda"></div>
               <div *ngIf="u.png === 'Robban.png'" class="col-xs-2 users-img highscore-img robban"></div>
-              <div *ngFor="let marketAttribute of marketAttributes">
-                <div *ngIf="marketAttribute.name === 'Captains-Badge-Blue'">
-                  <div *ngIf="marketAttribute.ownedBy === u.username" class="col-xs-1">
-                    <img style="width:90px; margin-top: 20px;" src="assets\images\attributes\blueLeader.png" alt="Blue Leader">
+              <div class="col-xs-3" style="display:inline;">
+                <div class="row" *ngIf="u.username !== 'Mattis'" style="margin-top:10px;">
+                  <div *ngFor="let marketAttribute of marketAttributes">
+                    <div *ngIf="marketAttribute.ownedBy">
+                      <div *ngIf="marketAttribute.ownedBy === u.username">
+                        <div *ngIf="marketAttribute.name === 'Captains-Badge-Blue'">
+                          <img style="float:left; width:30%;" src="assets\images\attributes\blueLeader.png">
+                        </div>
+                        <div *ngIf="marketAttribute.name === 'Captains-Badge-Red'">
+                          <img style="float:left; margin-left: -6px; width:30%;" src="assets\images\attributes\redLeader.png">
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div *ngIf="marketAttribute.name === 'Captains-Badge-Red'">
-                  <div *ngIf="marketAttribute.ownedBy === u.username" class="col-xs-1">
-                    <img style="width:90px; margin-top: 20px;" src="assets\images\attributes\redLeader.png" alt="Red Leader">
+                  <div *ngFor="let attribute of u.attributes">
+                    <img *ngIf="attribute.name === 'Achtung'" style="float:left; width:30%;" src="assets\images\attributes\achtung.png" alt="at">
+                    <img *ngIf="attribute.name === 'Leech'" style="float:left; width:30%;" src="assets\images\attributes\leech.png" alt="le">
+                    <img *ngIf="attribute.name === 'Minigun'" style="float:left; width:30%;" src="assets\images\attributes\miniGun.png" alt="mg">
+                    <img *ngIf="attribute.name === 'Nidhogg'"style="float:left; width:30%;" src="assets\images\attributes\nidhogg.png" alt="nh">
+                    <img *ngIf="attribute.name === 'Time-Lord'"style="float:left; width:30%;" src="assets\images\attributes\timeLord.png" alt="tl">
+                    <img *ngIf="attribute.name === 'Dual-Wield'" style="float:left; width:30%;" src="assets\images\attributes\tombRaider.png" alt="dw">
                   </div>
                 </div>
               </div>
-              <div class="col-xs-6 userInfo-item name">{{u.username}}</div>
+              <div class="col-xs-5 userInfo-item name">{{u.username}}</div>
             </div>
             <div class="row">
               <div *ngIf="showHighscore" class="col-xs-12 centerText userInfo-item score botRow">{{u.score | number:'1.0-0' }}</div>
@@ -234,19 +258,31 @@
                 <div *ngIf="u.png === 'Ivar.png'" class="col-xs-2 users-img highscore-img ivar"></div>
                 <div *ngIf="u.png === 'Amanda.png'" class="col-xs-2 users-img highscore-img amanda"></div>
                 <div *ngIf="u.png === 'Robban.png'" class="col-xs-2 users-img highscore-img robban"></div>
-                <div *ngFor="let marketAttribute of marketAttributes">
-                  <div *ngIf="marketAttribute.name === 'Captains-Badge-Blue'">
-                    <div *ngIf="marketAttribute.ownedBy === u.username" class="col-xs-1">
-                      <img style="width:70px; margin-top:6px;" src="assets\images\attributes\blueLeader.png" alt="Blue Leader">
+                <div class="col-xs-3" style="display:inline;">
+                  <div class="row" *ngIf="u.username !== 'Mattis'" style="margin-top:10px;">
+                    <div *ngFor="let marketAttribute of marketAttributes">
+                      <div *ngIf="marketAttribute.ownedBy">
+                        <div *ngIf="marketAttribute.ownedBy === u.username">
+                          <div *ngIf="marketAttribute.name === 'Captains-Badge-Blue'">
+                            <img style="float:left; width:30%;" src="assets\images\attributes\blueLeader.png">
+                          </div>
+                          <div *ngIf="marketAttribute.name === 'Captains-Badge-Red'">
+                            <img style="float:left; margin-left: -6px; width:30%;" src="assets\images\attributes\redLeader.png">
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                  <div *ngIf="marketAttribute.name === 'Captains-Badge-Red'">
-                    <div *ngIf="marketAttribute.ownedBy === u.username" class="col-xs-1">
-                      <img style="width:70px; margin-top:6px;" src="assets\images\attributes\redLeader.png" alt="Red Leader">
+                    <div *ngFor="let attribute of u.attributes">
+                      <img *ngIf="attribute.name === 'Achtung'" style="float:left; width:30%;" src="assets\images\attributes\achtung.png" alt="at">
+                      <img *ngIf="attribute.name === 'Leech'" style="float:left; width:30%;" src="assets\images\attributes\leech.png" alt="le">
+                      <img *ngIf="attribute.name === 'Minigun'" style="float:left; width:30%;" src="assets\images\attributes\miniGun.png" alt="mg">
+                      <img *ngIf="attribute.name === 'Nidhogg'"style="float:left; width:30%;" src="assets\images\attributes\nidhogg.png" alt="nh">
+                      <img *ngIf="attribute.name === 'Time-Lord'"style="float:left; width:30%;" src="assets\images\attributes\timeLord.png" alt="tl">
+                      <img *ngIf="attribute.name === 'Dual-Wield'" style="float:left; width:30%;" src="assets\images\attributes\tombRaider.png" alt="dw">
                     </div>
                   </div>
                 </div>
-                <div class="col-xs-6 userInfo-item name">{{u.username}}</div>
+                <div class="col-xs-5 userInfo-item name">{{u.username}}</div>
               </div>
               <div (click)="selectUser(u);" class="row">
                 <div *ngIf="showHighscore" class="col-xs-12 centerText userInfo-item score botRow">{{u.score | number:'1.0-0' }}</div>
@@ -268,19 +304,31 @@
                 <div *ngIf="u.png === 'Ivar.png'" class="col-xs-2 users-img highscore-img ivar"></div>
                 <div *ngIf="u.png === 'Amanda.png'" class="col-xs-2 users-img highscore-img amanda"></div>
                 <div *ngIf="u.png === 'Robban.png'" class="col-xs-2 users-img highscore-img robban"></div>
-                <div *ngFor="let marketAttribute of marketAttributes">
-                  <div *ngIf="marketAttribute.name === 'Captains-Badge-Blue'">
-                    <div *ngIf="marketAttribute.ownedBy === u.username" class="col-xs-1">
-                      <img style="width:70px; margin-top:6px;" src="assets\images\attributes\blueLeader.png" alt="Blue Leader">
+                <div class="col-xs-3" style="display:inline;">
+                  <div class="row" *ngIf="u.username !== 'Mattis'" style="margin-top:10px;">
+                    <div *ngFor="let marketAttribute of marketAttributes">
+                      <div *ngIf="marketAttribute.ownedBy">
+                        <div *ngIf="marketAttribute.ownedBy === u.username">
+                          <div *ngIf="marketAttribute.name === 'Captains-Badge-Blue'">
+                            <img style="float:left; width:30%;" src="assets\images\attributes\blueLeader.png">
+                          </div>
+                          <div *ngIf="marketAttribute.name === 'Captains-Badge-Red'">
+                            <img style="float:left; margin-left: -6px; width:30%;" src="assets\images\attributes\redLeader.png">
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                  <div *ngIf="marketAttribute.name === 'Captains-Badge-Red'">
-                    <div *ngIf="marketAttribute.ownedBy === u.username" class="col-xs-1">
-                      <img style="width:70px; margin-top:6px;" src="assets\images\attributes\redLeader.png" alt="Red Leader">
+                    <div *ngFor="let attribute of u.attributes">
+                      <img *ngIf="attribute.name === 'Achtung'" style="float:left; width:30%;" src="assets\images\attributes\achtung.png" alt="at">
+                      <img *ngIf="attribute.name === 'Leech'" style="float:left; width:30%;" src="assets\images\attributes\leech.png" alt="le">
+                      <img *ngIf="attribute.name === 'Minigun'" style="float:left; width:30%;" src="assets\images\attributes\miniGun.png" alt="mg">
+                      <img *ngIf="attribute.name === 'Nidhogg'"style="float:left; width:30%;" src="assets\images\attributes\nidhogg.png" alt="nh">
+                      <img *ngIf="attribute.name === 'Time-Lord'"style="float:left; width:30%;" src="assets\images\attributes\timeLord.png" alt="tl">
+                      <img *ngIf="attribute.name === 'Dual-Wield'" style="float:left; width:30%;" src="assets\images\attributes\tombRaider.png" alt="dw">
                     </div>
                   </div>
                 </div>
-                <div class="col-xs-6 userInfo-item name">{{u.username}}</div>
+                <div class="col-xs-5 userInfo-item name">{{u.username}}</div>
               </div>
               <div (click)="selectUser(u);" class="row">
                 <div *ngIf="showHighscore" class="col-xs-12 centerText userInfo-item score botRow">{{u.score | number:'1.0-0' }}</div>

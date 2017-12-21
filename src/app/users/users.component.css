@@ -293,6 +293,11 @@ input:checked + .slider:before {
   margin-bottom: 15px;
 }
 
+.highscore-attribute {
+  display:inline-block;
+  width: 40px;
+  margin-left:-20px;
+}
 /*///////////////
 // Media Queries
 ///////////////////////////////////////////////////////////////////////////////*/

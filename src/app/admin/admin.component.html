@@ -63,7 +63,7 @@
     <div class="team redTeam">
       <h2><img style="height:100px;" src="assets/images/attributes/redLeader.png" alt=""/>Red Team</h2>
       <div *ngFor="let usr of redTeam">
-        <div class="admin-user-list">
+        <div class="admin-user-list" *ngIf="usr">
           <h3>{{usr.username}} ({{usr.firstname}} {{usr.lastname}})</h3>
           <p>Highscore: {{usr.score | number:'1.0-2' }}</p>
           <p>Wallet: {{usr.wallet | number:'1.0-2' }}</p>
