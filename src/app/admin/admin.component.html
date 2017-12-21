@@ -11,12 +11,17 @@
     <div class="team blueTeam">
       <h2><img style="height:100px;" src="assets/images/attributes/blueLeader.png" alt=""/> Blue Team</h2>
       <div *ngFor="let usr of blueTeam">
-        <div class="user-list">
+        <div class="admin-user-list">
           <h3>{{usr.username}} ({{usr.firstname}} {{usr.lastname}})</h3>
           <p>Highscore: {{usr.score | number:'1.0-2' }}</p>
           <p>Wallet: {{usr.wallet | number:'1.0-2' }}</p>
           <p>Playthroughs: {{usr.playthroughs | number:'1.0-2' }}</p>
           <div *ngIf="choice && evil">
+            <p>Wallet <span style="color:#ec2d2a;">Penalty:</span></p>
+            <div>
+              <input class="marginBottom wealth wealthOutput" type="number" placeholder="BossCoins" [(ngModel)]="wealth" />
+              <span class="btn btn-warning marginBottom" (click)="changeWealth(usr,false);">Destroy Wealth</span>
+            </div>
             <p>Score <span style="color:#ec2d2a;">Penalties:</span></p>
             <p>
               <span class="btn btn-warning marginBottom" (click)="editScore(usr, 0.75);">Take Quarter</span>
@@ -29,6 +34,11 @@
             </p>
           </div>
           <div *ngIf="choice && !evil">
+            <p>Wallet <span style="color:#43cc1a;">Boost:</span></p>
+            <div>
+              <input class="marginBottom wealth wealthInput" type="number" placeholder="BossCoins" [(ngModel)]="wealth" />
+              <span class="btn btn-info marginBottom" (click)="changeWealth(usr, true);">Create Wealth</span>
+            </div>
             <p>Score <span style="color:#43cc1a;">Boosts:</span></p>
             <p>
               <span class="btn btn-info marginBottom" (click)="editScore(usr, 1.25);">Give Quarter</span>
@@ -45,7 +55,7 @@
     <div class="team redTeam">
       <h2><img style="height:100px;" src="assets/images/attributes/redLeader.png" alt=""/>Red Team</h2>
       <div *ngFor="let usr of redTeam">
-        <div class="user-list">
+        <div class="admin-user-list">
           <h3>{{usr.username}} ({{usr.firstname}} {{usr.lastname}})</h3>
           <p>Highscore: {{usr.score | number:'1.0-2' }}</p>
           <p>Wallet: {{usr.wallet | number:'1.0-2' }}</p>
@@ -79,7 +89,7 @@
 </div>
     <!-- <div>
       <div *ngFor="let usr of users">
-        <div class="user-list" *ngIf="!usr.admin">
+        <div class="admin-user-list" *ngIf="!usr.admin">
             <h3>{{usr.username}} ({{usr.firstname}} {{usr.lastname}})</h3>
             <p>Highscore: {{usr.score | number:'1.0-2' }}</p>
             <p>Wallet: {{usr.wallet | number:'1.0-2' }}</p>
@@ -113,7 +123,7 @@
     <!-- <hr>
     <h4>And of course, your partner in crime/cardancing...</h4>
     <div *ngFor="let usr of users">
-      <div class="user-list" *ngIf="usr.admin && usr.username !== user.username">
+      <div class="admin-user-list" *ngIf="usr.admin && usr.username !== user.username">
           <h3>{{usr.username}} ({{usr.firstname}} {{usr.lastname}})</h3>
           <p>Highscore: {{usr.score | number:'1.0-2' }}</p>
           <p>Wallet: {{usr.wallet | number:'1.0-2' }}</p>

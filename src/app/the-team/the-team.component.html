@@ -1,8 +1,8 @@
-<div class="row admin" *ngIf="user">
+<div class="row teamBox" *ngIf="user">
     <div class="col-xs-5 team blueTeam">
       <h2><img style="height:100px;" src="assets/images/attributes/blueLeader.png" alt=""/> Blue Team</h2>
       <div *ngFor="let usr of blueTeam">
-        <div class="row">
+        <div *ngIf="usr" class="row">
           <img *ngIf="usr.username === 'Sebbe'" class="col-xs-2 user-img" src="assets/images/avatars/Sebbe.png" alt="IMG" />
           <img *ngIf="usr.username === 'Mattis'" class="col-xs-2 user-img" src="assets/images/avatars/Mattis.png" alt="IMG" />
           <img *ngIf="usr.username === 'Robban'" class="col-xs-2 user-img" src="assets/images/avatars/Robban.png" alt="IMG" />
@@ -39,7 +39,7 @@
     <div class="col-xs-5 team redTeam">
       <h2><img style="height:100px;" src="assets/images/attributes/redLeader.png" alt=""/>Red Team</h2>
       <div *ngFor="let usr of redTeam">
-          <div class="row">
+          <div *ngIf="usr" class="row">
             <img *ngIf="usr.username === 'Sebbe'" class="col-xs-2 user-img" src="assets/images/avatars/Sebbe.png" alt="IMG" />
             <img *ngIf="usr.username === 'Mattis'" class="col-xs-2 user-img" src="assets/images/avatars/Mattis.png" alt="IMG" />
             <img *ngIf="usr.username === 'Robban'" class="col-xs-2 user-img" src="assets/images/avatars/Robban.png" alt="IMG" />

@@ -10,7 +10,7 @@
 .marginBottom {
   margin-bottom: 4px;
 }
-.user-list {
+.admin-user-list {
   border-radius: 10px;
   border-style: solid;
   border-width: 1px;
@@ -19,7 +19,7 @@
   background-color: rgb(59, 59, 59);
 }
 
-.user-list:hover {
+.admin-user-list:hover {
   background-color: rgb(77, 77, 77);
 }
 
@@ -64,4 +64,16 @@ input.ng-invalid.ng-touched {
 
 .blueTeam {
   background-color: #113985;
+}
+
+.wealth {
+  padding: 3px;
+  font-size: 15px;
+}
+.wealthInput {
+  color: #1c994e;
+}
+
+.wealthOutput {
+  color: #c02929;
 }

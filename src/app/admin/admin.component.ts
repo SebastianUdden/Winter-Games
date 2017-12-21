@@ -19,6 +19,7 @@ export class AdminComponent implements OnInit {
   public choice = false;
   public evil = false;
   public deleteButton = false;
+  public wealth = 0;
   admins: User[] = [];
   blueTeam: User[] = [];
   redTeam: User[] = [];
@@ -33,6 +34,15 @@ export class AdminComponent implements OnInit {
   }
   private loadAllUsers() {
     this.userService.getUsers().subscribe(users => { this.users = this.sortDescending(users); });
+  }
+  changeWealth(user, create) {
+    if (create) {
+      user.wallet += this.wealth;
+      this.userService.updateUser(user);
+    } else {
+      user.wallet -= this.wealth;
+      this.userService.updateUser(user);
+    }
   }
   sortDescending(array) {
     array.sort(function(a, b){ return b.score - a.score; });
