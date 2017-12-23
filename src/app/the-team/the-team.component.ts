@@ -96,10 +96,10 @@ export class TheTeamComponent implements OnInit {
           this.blueTeam.push(array[i]);
           break;
         case 4:
-          this.redTeam.push(array[i]);
+          this.blueTeam.push(array[i]);
           break;
         case 5:
-          this.blueTeam.push(array[i]);
+          this.redTeam.push(array[i]);
           break;
         case 6:
           this.redTeam.push(array[i]);
@@ -114,7 +114,7 @@ export class TheTeamComponent implements OnInit {
           this.blueTeam.push(array[i]);
           break;
         case 10:
-          if(this.blueTeam.length > 5) {
+          if(this.blueTeam.length > this.redTeam.length) {
             this.redTeam.push(array[i]);
           } else {
             this.blueTeam.push(array[i]);

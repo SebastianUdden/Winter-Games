@@ -104,6 +104,9 @@ export class AdminComponent implements OnInit {
         case 9:
           this.blueTeam.push(array[i]);
           break;
+        case 10:
+          this.redTeam.push(array[i]);
+          break;
         default:
           break;
       }

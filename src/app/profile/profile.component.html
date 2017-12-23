@@ -25,7 +25,11 @@
     <div *ngIf="attribute.name === 'Captains-Badge-Blue'
       || attribute.name === 'Captains-Badge-Red'
       || attribute.name === 'Nidhogg'
-      || attribute.name === 'Achtung'">
+      || attribute.name === 'Achtung'
+      || attribute.name === 'anteHype'
+      || attribute.name === 'autoClicker'
+      || attribute.name === 'chug'
+      || attribute.name === 'ninja'">
       <div *ngIf="attribute.ownedBy === user.username">
         <app-attribute [attribute]="attribute" [owned]="true"></app-attribute>
       </div>
