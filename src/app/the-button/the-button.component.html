@@ -582,6 +582,10 @@
               <button class="buttonAttributeContainer buttonAttributeUsed" *ngIf="gameOn && !getReady && ultraLeech"><img class="buttonAttributeImage" src="assets/images/attributes/ninja.png" alt="UltraLeech" /> X2</button>
               <button class="buttonAttributeContainer buttonAttributeNotUsed" *ngIf="gameOn && !getReady && !ultraLeech" (click)="toggleUltraLeech();"><img class="buttonAttributeImage" src="assets/images/attributes/ninja.png" alt="UltraLeech" /> X2</button>
             </div>
+            <div class="col-xs-2" *ngIf="vikingAvailable">
+              <button class="buttonAttributeContainer buttonAttributeUsed" *ngIf="gameOn && !getReady && viking"><img class="buttonAttributeImage" src="assets/images/attributes/viking.png" alt="UltraLeech" /> X2</button>
+              <button class="buttonAttributeContainer buttonAttributeNotUsed" *ngIf="gameOn && !getReady && !viking" (click)="toggleViking();"><img class="buttonAttributeImage" src="assets/images/attributes/viking.png" alt="UltraLeech" /> X2</button>
+            </div>
             <div class="col-xs-2" *ngIf="chugAvailable">
               <button class="buttonAttributeContainer buttonAttributeUsed" *ngIf="gameOn && !getReady && chug"><img class="buttonAttributeImage" src="assets/images/attributes/chug.png" alt="Chug" /> X2</button>
               <button class="buttonAttributeContainer buttonAttributeNotUsed" *ngIf="gameOn && !getReady && !chug" (click)="toggleChug();"><img class="buttonAttributeImage" src="assets/images/attributes/chug.png" alt="Chug" /> X2</button>

@@ -14,7 +14,7 @@
           <li class="wgNav" *ngIf="user"><a *ngIf="user.username !== ''" routerLink="/the-button"><span class="fa fa-dot-circle-o" ></span> The Button</a></li>
           <!-- <li class="wgNav" *ngIf="user"><a *ngIf="user.username === 'Sebbe'" routerLink="/the-duel"><span class="fa fa-crosshairs"></span> The Duel</a></li> -->
           <li class="wgNav" *ngIf="user"><a *ngIf="user.admin" routerLink="/admin"><span class="fa fa-user-secret"></span> Admin</a></li>
-          <li class="wgNav" *ngIf="user"><a *ngIf="user.admin" routerLink="/the-teams"><span class="fa fa-users"></span> The Teams</a></li>
+          <li class="wgNav" *ngIf="user"><a routerLink="/the-teams"><span class="fa fa-users"></span> The Teams</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right" data-toggle="collapse" data-target="#myNavbar .nav-collapse.in">
           <!-- <li class="wgNav" *ngIf="!user"><a routerLink="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>

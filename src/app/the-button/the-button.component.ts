@@ -37,6 +37,7 @@ export class TheButtonComponent implements OnInit, OnDestroy {
     public minigun = false;
     public minigunAvailable = false;
     public minigunCount = -1;
+    public penaltyCount = -1;
     public timeLord = false;
     public timeLordAvailable = false;
     public timeLordBonus = 30;
@@ -46,6 +47,8 @@ export class TheButtonComponent implements OnInit, OnDestroy {
     public nidhoggAvailable = false;
     public ninja = false;
     public ninjaAvailable = false;
+    public viking = false;
+    public vikingAvailable = false;
     public ultraLeech = false;
     public ultraLeechAvailable = false;
     public chug = false;
@@ -444,6 +447,10 @@ export class TheButtonComponent implements OnInit, OnDestroy {
       this.SetCheat(true, 2);
       this.chug = true;
     }
+    toggleViking() {
+      this.SetCheat(true, 2);
+      this.viking = true;
+    }
     toggleUltraLeech() {
       this.SetCheat(true, 2);
       this.ultraLeech = true;
@@ -512,6 +519,11 @@ export class TheButtonComponent implements OnInit, OnDestroy {
       } else if (this.minigunCount >= 10) {
         this.minigunCount = -1;
         this.SetCheat(false, 40);
+      }
+      if (this.penaltyCount > -1 && this.penaltyCount < 12) {
+        this.penaltyCount++;
+      } else if (this.penaltyCount >= 12) {
+        this.penaltyCount = -1;
         if (this.autoClickerAvailable) {
           this.toggleAutoClicker();
         }
@@ -560,6 +572,7 @@ export class TheButtonComponent implements OnInit, OnDestroy {
     StartOver() {
       this.getReady = true;
       const timer = TimerObservable.create(2000, 1000);
+      if (this.autoClickerAvailable || this.cryBabyAvailable) { this.penaltyCount = 0; }
       this.subscription = timer.subscribe(t => {
         this.CalculateTimer(t);
       });
@@ -580,6 +593,7 @@ export class TheButtonComponent implements OnInit, OnDestroy {
       this.achtung = false;
       this.ninja = false;
       this.ultraLeech = false;
+      this.viking = false;
       this.chug = false;
       this.anteHype = false;
       this.autoClicker = false;
@@ -623,6 +637,11 @@ export class TheButtonComponent implements OnInit, OnDestroy {
               this.ninjaAvailable = true;
             }
           }
+          if (this.allAttributes[i].name === 'Viking') {
+            if (this.allAttributes[i].ownedBy === this.user.username) {
+              this.vikingAvailable = true;
+            }
+          }
           if (this.allAttributes[i].name === 'Ultra-Leech') {
             if (this.allAttributes[i].ownedBy === this.user.username) {
               this.ultraLeechAvailable = true;
@@ -638,7 +657,7 @@ export class TheButtonComponent implements OnInit, OnDestroy {
               this.autoClickerAvailable = true;
             }
           }
-          if (this.allAttributes[i].name === 'CryBaby') {
+          if (this.allAttributes[i].name === 'Cry-Baby') {
             if (this.allAttributes[i].ownedBy === this.user.username) {
               this.cryBabyAvailable = true;
             }

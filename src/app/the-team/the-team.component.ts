@@ -84,40 +84,44 @@ export class TheTeamComponent implements OnInit {
     for (let i = 0; i < array.length; i++) {
       switch(i) {
         case 0:
-          this.blueTeam.push(array[i]);
+          this.redTeam.push(array[i]);
           break;
         case 1:
-          this.redTeam.push(array[i]);
+          this.blueTeam.push(array[i]);
           break;
         case 2:
-          this.redTeam.push(array[i]);
+          this.blueTeam.push(array[i]);
           break;
         case 3:
-          this.blueTeam.push(array[i]);
+          this.redTeam.push(array[i]);
           break;
         case 4:
-          this.blueTeam.push(array[i]);
+          this.redTeam.push(array[i]);
           break;
         case 5:
-          this.redTeam.push(array[i]);
+          this.blueTeam.push(array[i]);
           break;
         case 6:
-          this.redTeam.push(array[i]);
+          this.blueTeam.push(array[i]);
           break;
         case 7:
-          this.blueTeam.push(array[i]);
+          this.redTeam.push(array[i]);
           break;
         case 8:
           this.redTeam.push(array[i]);
           break;
         case 9:
-          this.blueTeam.push(array[i]);
-          break;
-        case 10:
-          if(this.blueTeam.length > this.redTeam.length) {
+          if(this.redTeam.length < this.blueTeam.length) {
             this.redTeam.push(array[i]);
           } else {
             this.blueTeam.push(array[i]);
+          }
+          break;
+        case 10:
+          if(this.blueTeam.length < this.redTeam.length) {
+            this.blueTeam.push(array[i]);
+          } else {
+            this.redTeam.push(array[i]);
           }
           break;
         default:
