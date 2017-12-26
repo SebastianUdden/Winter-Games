@@ -507,7 +507,8 @@ export class TheButtonComponent implements OnInit, OnDestroy {
       }
       if (this.userScore > 9999 && !this.reached9999) {
           // this.TurnCheatsOff();
-          this.CheatToggle(20);
+          this.bonus *= 20;
+          // this.CheatToggle(20);
           this.reached9999 = true;
       }
       this.CheckLevel(this.userScore);
@@ -572,6 +573,8 @@ export class TheButtonComponent implements OnInit, OnDestroy {
     }
 
     StartOver() {
+      this.reached1337 = false;
+      this.reached9999 = false;
       this.getReady = true;
       const timer = TimerObservable.create(2000, 1000);
       if (this.autoClickerAvailable || this.cryBabyAvailable) { this.penaltyCount = 0; }
