@@ -684,7 +684,7 @@ export class TheButtonComponent implements OnInit, OnDestroy {
             this.dualWieldAvailable = true;
           }
           if (this.user.attributes[i].name === 'Viking') {
-            this.vikingdAvailable = true;
+            this.vikingAvailable = true;
           }
           if (this.user.attributes[i].name === 'Time-Lord') {
             this.timeLordAvailable = true;
