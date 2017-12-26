@@ -460,10 +460,10 @@ li {
 .buttonAttributeContainer {
   margin-top: 15px;
   margin-bottom: 10px;
-  margin-right: 10px;
+  margin-right: 5%;
   border-radius: 10px;
   height: 70px;
-  width: 87%;
+  width: 95%;
   font-size: 24px !important;
   color:whitesmoke;
   cursor: pointer;

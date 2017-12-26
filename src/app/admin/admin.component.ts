@@ -142,7 +142,9 @@ export class AdminComponent implements OnInit {
   giveViking(user) {
     this.deleteButton = false;
     for (let i = 0; i < this.allAttributes.length; i++) {
+      console.log(this.allAttributes[i].name);
       if (this.allAttributes[i].name === 'Viking') {
+        console.log('pushing viking');
         user.attributes.push(this.allAttributes[i]);
       }
       this.userService.updateUser(user);

@@ -237,7 +237,56 @@
         </div>
       </div>
       <div class="row extra-time-row">
-        <div class="col-xs-4" *ngIf="dualWieldAvailable">
+        <div class="col-xs-12" *ngIf="timeLordAvailable">
+          <button class="buttonAttributeContainer buttonAttributeUsed" *ngIf="gameOn && !getReady && timeLord" style="margin-right: 0;width:100%"><img class="buttonAttributeImage" src="assets/images/attributes/timeLord.png" alt="Time-Lord" /> +30</button>
+          <button class="buttonAttributeContainer buttonAttributeNotUsed" *ngIf="gameOn && !getReady && !timeLord" (click)="toggleTimeLord();" style="margin-right: 0;width:100%"><img class="buttonAttributeImage" src="assets/images/attributes/timeLord.png" alt="Time-Lord" /> +30</button>
+        </div>
+        <div class="col-xs-6" *ngIf="dualWieldAvailable">
+            <button class="buttonAttributeContainer buttonAttributeUsed" *ngIf="gameOn && !getReady && dualWield"><img class="buttonAttributeImage" src="assets/images/attributes/tombRaider.png" alt="Dual-Wield" /> X2</button>
+            <button class="buttonAttributeContainer buttonAttributeNotUsed" *ngIf="gameOn && !getReady && !dualWield" (click)="toggleDualWield();"><img class="buttonAttributeImage" src="assets/images/attributes/tombRaider.png" alt="Dual-Wield" /> X2</button>
+          </div>
+          <div class="col-xs-6" *ngIf="minigunAvailable">
+            <button class="buttonAttributeContainer buttonAttributeUsed" *ngIf="gameOn && !getReady && minigun"><img class="buttonAttributeImage" src="assets/images/attributes/miniGun.png" alt="Minigun" /> X40</button>
+            <button class="buttonAttributeContainer buttonAttributeNotUsed" *ngIf="gameOn && !getReady && !minigun" (click)="toggleMinigun();"><img class="buttonAttributeImage" src="assets/images/attributes/miniGun.png" alt="Minigun" /> X40</button>
+          </div>
+          <div class="col-xs-6" *ngIf="achtungAvailable">
+            <button class="buttonAttributeContainer buttonAttributeUsed" *ngIf="gameOn && !getReady && achtung"><img class="buttonAttributeImage" src="assets/images/attributes/achtung.png" alt="Achtung" /> X2</button>
+            <button class="buttonAttributeContainer buttonAttributeNotUsed" *ngIf="gameOn && !getReady && !achtung" (click)="toggleAchtung();"><img class="buttonAttributeImage" src="assets/images/attributes/achtung.png" alt="Achtung" /> X2</button>
+          </div>
+          <div class="col-xs-6" *ngIf="nidhoggAvailable">
+            <button class="buttonAttributeContainer buttonAttributeUsed" *ngIf="gameOn && !getReady && nidhogg"><img class="buttonAttributeImage" src="assets/images/attributes/nidhogg.png" alt="Nidhogg" /> X2</button>
+            <button class="buttonAttributeContainer buttonAttributeNotUsed" *ngIf="gameOn && !getReady && !nidhogg" (click)="toggleNidhogg();"><img class="buttonAttributeImage" src="assets/images/attributes/nidhogg.png" alt="Nidhogg" /> X2</button>
+          </div>
+          <div class="col-xs-6" *ngIf="ninjaAvailable">
+            <button class="buttonAttributeContainer buttonAttributeUsed" *ngIf="gameOn && !getReady && ninja"><img class="buttonAttributeImage" src="assets/images/attributes/ninja.png" alt="Ninja" /> X2</button>
+            <button class="buttonAttributeContainer buttonAttributeNotUsed" *ngIf="gameOn && !getReady && !ninja" (click)="toggleNinja();"><img class="buttonAttributeImage" src="assets/images/attributes/ninja.png" alt="Ninja" /> X2</button>
+          </div>
+          <div class="col-xs-6" *ngIf="ultraLeechAvailable">
+            <button class="buttonAttributeContainer buttonAttributeUsed" *ngIf="gameOn && !getReady && ultraLeech"><img class="buttonAttributeImage" src="assets/images/attributes/ultraLeech.png" alt="UltraLeech" /> X2</button>
+            <button class="buttonAttributeContainer buttonAttributeNotUsed" *ngIf="gameOn && !getReady && !ultraLeech" (click)="toggleUltraLeech();"><img class="buttonAttributeImage" src="assets/images/attributes/ultraLeech.png" alt="UltraLeech" /> X2</button>
+          </div>
+          <div class="col-xs-6" *ngIf="vikingAvailable">
+            <button class="buttonAttributeContainer buttonAttributeUsed" *ngIf="gameOn && !getReady && viking"><img class="buttonAttributeImage" src="assets/images/attributes/viking.png" alt="UltraLeech" /> X2</button>
+            <button class="buttonAttributeContainer buttonAttributeNotUsed" *ngIf="gameOn && !getReady && !viking" (click)="toggleViking();"><img class="buttonAttributeImage" src="assets/images/attributes/viking.png" alt="UltraLeech" /> X2</button>
+          </div>
+          <div class="col-xs-6" *ngIf="chugAvailable">
+            <button class="buttonAttributeContainer buttonAttributeUsed" *ngIf="gameOn && !getReady && chug"><img class="buttonAttributeImage" src="assets/images/attributes/chug.png" alt="Chug" /> X2</button>
+            <button class="buttonAttributeContainer buttonAttributeNotUsed" *ngIf="gameOn && !getReady && !chug" (click)="toggleChug();"><img class="buttonAttributeImage" src="assets/images/attributes/chug.png" alt="Chug" /> X2</button>
+          </div>
+          <div class="col-xs-6" *ngIf="anteHypeAvailable">
+            <button class="buttonAttributeContainer buttonAttributeUsed" *ngIf="gameOn && !getReady && anteHype"><img class="buttonAttributeImage" src="assets/images/attributes/anteHype.png" alt="AnteHype" /> X3</button>
+            <button class="buttonAttributeContainer buttonAttributeNotUsed" *ngIf="gameOn && !getReady && !anteHype" (click)="toggleAnteHype();"><img class="buttonAttributeImage" src="assets/images/attributes/anteHype.png" alt="AnteHype" /> X3</button>
+          </div>
+          <div class="col-xs-6" *ngIf="autoClickerAvailable">
+            <button class="buttonAttributeContainer buttonAttributeUsed" *ngIf="gameOn && !getReady && autoClicker"><img class="buttonAttributeImage" src="assets/images/attributes/autoClicker.png" alt="AutoClicker" /> /2</button>
+            <button class="buttonAttributeContainer buttonAttributeNotUsed" *ngIf="gameOn && !getReady && !autoClicker" (click)="toggleAutoClicker();"><img class="buttonAttributeImage" src="assets/images/attributes/autoClicker.png" alt="AutoClicker" /> /2</button>
+          </div>
+          <div class="col-xs-6" *ngIf="cryBabyAvailable">
+            <button class="buttonAttributeContainer buttonAttributeUsed" *ngIf="gameOn && !getReady && cryBaby"><img class="buttonAttributeImage" src="assets/images/attributes/cryBaby.png" alt="CryBaby" /> /2</button>
+            <button class="buttonAttributeContainer buttonAttributeNotUsed" *ngIf="gameOn && !getReady && !cryBaby" (click)="toggleCryBaby();"><img class="buttonAttributeImage" src="assets/images/attributes/cryBaby.png" alt="CryBaby" /> /2</button>
+          </div>
+
+        <!-- <div class="col-xs-4" *ngIf="dualWieldAvailable">
           <button class="buttonAttributeContainer buttonAttributeUsed" *ngIf="gameOn && !getReady && dualWield"><img class="buttonAttributeImage" src="assets/images/attributes/tombRaider.png" alt="Dual-Wield" /></button>
           <button class="buttonAttributeContainer buttonAttributeNotUsed" *ngIf="gameOn && !getReady && !dualWield" (click)="toggleDualWield();"><img class="buttonAttributeImage" src="assets/images/attributes/tombRaider.png" alt="Dual-Wield" /></button>
         </div>
@@ -260,7 +309,7 @@
           <button class="buttonAttributeContainer buttonAttributeNotUsed" *ngIf="gameOn && !getReady && !nidhogg" (click)="toggleNidhogg();"><img class="buttonAttributeImage" src="assets/images/attributes/nidhogg.png" alt="Nidhogg" /></button>
         </div>
         <div class="col-xs-4">
-        </div>
+        </div> -->
       </div>
     </div>
     <div class="mobileRight"></div>
