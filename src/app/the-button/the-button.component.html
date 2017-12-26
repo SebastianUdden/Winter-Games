@@ -291,13 +291,13 @@
         <div class="col-lg-1" *ngFor="let lightSwitch of lightSwitches">{{lightSwitch.color}}: {{lightSwitch.status}}</div>
     </div>
   </div>
+  <!-- 'shake-crazy': rage >= 7 && rage < 11, -->
   <div class="row shake-hard" [ngClass]="{
     'troll': rage > 0 && rage < 4,
     'fff': rage >= 4 && rage < 7,
     'rage': rage >= 7 && rage < 11,
-    'shake-little': rage > 0 && rage < 4,
-    'shake-hard': rage >= 4 && rage < 7,
-    'shake-crazy': rage >= 7 && rage < 11,
+    'shake-little': rage > 0 && rage < 7,
+    'shake-hard': rage >= 7 && rage < 11,
     'alone': foreverAlone && noStart
   }">
     <div class="col-lg-3 full-height users">
@@ -579,8 +579,8 @@
               <button class="buttonAttributeContainer buttonAttributeNotUsed" *ngIf="gameOn && !getReady && !ninja" (click)="toggleNinja();"><img class="buttonAttributeImage" src="assets/images/attributes/ninja.png" alt="Ninja" /> X2</button>
             </div>
             <div class="col-xs-2" *ngIf="ultraLeechAvailable">
-              <button class="buttonAttributeContainer buttonAttributeUsed" *ngIf="gameOn && !getReady && ultraLeech"><img class="buttonAttributeImage" src="assets/images/attributes/ninja.png" alt="UltraLeech" /> X2</button>
-              <button class="buttonAttributeContainer buttonAttributeNotUsed" *ngIf="gameOn && !getReady && !ultraLeech" (click)="toggleUltraLeech();"><img class="buttonAttributeImage" src="assets/images/attributes/ninja.png" alt="UltraLeech" /> X2</button>
+              <button class="buttonAttributeContainer buttonAttributeUsed" *ngIf="gameOn && !getReady && ultraLeech"><img class="buttonAttributeImage" src="assets/images/attributes/ultraLeech.png" alt="UltraLeech" /> X2</button>
+              <button class="buttonAttributeContainer buttonAttributeNotUsed" *ngIf="gameOn && !getReady && !ultraLeech" (click)="toggleUltraLeech();"><img class="buttonAttributeImage" src="assets/images/attributes/ultraLeech.png" alt="UltraLeech" /> X2</button>
             </div>
             <div class="col-xs-2" *ngIf="vikingAvailable">
               <button class="buttonAttributeContainer buttonAttributeUsed" *ngIf="gameOn && !getReady && viking"><img class="buttonAttributeImage" src="assets/images/attributes/viking.png" alt="UltraLeech" /> X2</button>

@@ -16,6 +16,8 @@ export class TheTeamComponent implements OnInit {
   currentUser: User;
   users: User[] = [];
   user: User;
+  public blueTeamScore = 0;
+  public redTeamScore = 0;
   public blueLeader: User;
   public redLeader: User;
   public choice = false;
@@ -126,6 +128,16 @@ export class TheTeamComponent implements OnInit {
           break;
         default:
           break;
+      }
+    }
+    for (let i = 0; i < this.blueTeam.length; i++) {
+      if (this.blueTeam[i]) {
+        this.blueTeamScore += this.blueTeam[i].score;
+      }
+    }
+    for (let i = 0; i < this.redTeam.length; i++) {
+      if (this.redTeam[i]) {
+        this.redTeamScore += this.redTeam[i].score;
       }
     }
     return array;

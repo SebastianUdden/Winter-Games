@@ -8,6 +8,16 @@
     <p *ngIf="!choice">Your <b style="color: #fff81e;">minions</b> are waiting below... &nbsp;&nbsp;&nbsp;&nbsp;<span class="fa fa-free-code-camp"></span><span class="fa fa-coffee"></span></p>
     <p *ngIf="choice && evil">Your <b style="color: #fff81e;">minions</b> are trembling below... &nbsp;&nbsp;&nbsp;<span class="fa fa-flash"></span><span class="fa fa-wheelchair-alt"></span></p>
     <p *ngIf="choice && !evil">Your <b style="color: #fff81e;">minions</b> are cheering below! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="fa fa-gift" style="margin-right:1px;"></span><span class="fa fa-heart"></span></p>
+    <p>
+      <span class="btn btn-info marginBottom" (click)="promote('Default', 'Achtung');">Default Achtung</span>
+      <span class="btn btn-info marginBottom" (click)="promote('Default', 'Nidhogg');">Default Nidhogg</span>
+      <span class="btn btn-info marginBottom" (click)="promote('Default', 'Ninja');">Default Nin-jaa</span>
+      <span class="btn btn-info marginBottom" (click)="promote('Default', 'Chug');">Default Chug</span>
+      <span class="btn btn-info marginBottom" (click)="promote('Default', 'AnteHype');">Default AnteHype</span>
+      <span class="btn btn-info marginBottom" (click)="promote('Default', 'Ultra-Leech');">Default Ultra-Leech</span>
+      <span class="btn btn-info marginBottom" (click)="promote('Default', 'AutoClicker');">Default AutoClicker</span>
+      <span class="btn btn-info marginBottom" (click)="promote('Default', 'Cry-Baby');">Default Cry-Baby</span>
+    </p>
     <div class="team blueTeam">
       <h2><img style="height:100px;" src="assets/images/attributes/blueLeader.png" alt=""/> Blue Team</h2>
       <div *ngFor="let usr of blueTeam">
@@ -50,13 +60,15 @@
             </p>
             <p>Promotions</p>
             <p>
-              <span class="btn btn-info marginBottom" (click)="promote(usr, 'Achtung');">Make Achtung</span>
-              <span class="btn btn-info marginBottom" (click)="promote(usr, 'Nidhogg');">Make Nidhogg</span>
-              <span class="btn btn-info marginBottom" (click)="promote(usr, 'Ninja');">Make Nin-jaa</span>
-              <span class="btn btn-info marginBottom" (click)="promote(usr, 'OxBoss');">Make Chug</span>
-              <span class="btn btn-info marginBottom" (click)="promote(usr, 'AnteHYPE');">Make AnteHYPE</span>
-              <span class="btn btn-info marginBottom" (click)="promote(usr, 'AutoClicker');">Make AutoClicker</span>
-              <span class="btn btn-info marginBottom" (click)="promote(usr, 'CryBaby');">Make CryBaby</span>
+              <span class="btn btn-info marginBottom" (click)="promote(usr.username, 'Achtung');">Make Achtung</span>
+              <span class="btn btn-info marginBottom" (click)="promote(usr.username, 'Nidhogg');">Make Nidhogg</span>
+              <span class="btn btn-info marginBottom" (click)="promote(usr.username, 'Ninja');">Make Nin-jaa</span>
+              <span class="btn btn-info marginBottom" (click)="promote(usr.username, 'Chug');">Make Chug</span>
+              <span class="btn btn-info marginBottom" (click)="promote(usr.username, 'AnteHype');">Make AnteHype</span>
+              <span class="btn btn-info marginBottom" (click)="promote(usr.username, 'Ultra-Leech');">Make Ultra-Leech</span>
+              <span class="btn btn-info marginBottom" (click)="promote(usr.username, 'AutoClicker');">Make AutoClicker</span>
+              <span class="btn btn-info marginBottom" (click)="promote(usr.username, 'Cry-Baby');">Make Cry-Baby</span>
+              <span class="btn btn-info marginBottom" (click)="giveViking(usr);">Give Viking</span>
             </p>
           </div>
         </div>
@@ -104,13 +116,15 @@
             </p>
             <p>Promotions</p>
             <p>
-              <span class="btn btn-info marginBottom" (click)="promote(usr, 'Achtung');">Make Achtung</span>
-              <span class="btn btn-info marginBottom" (click)="promote(usr, 'Nidhogg');">Make Nidhogg</span>
-              <span class="btn btn-info marginBottom" (click)="promote(usr, 'Ninja');">Make Nin-jaa</span>
-              <span class="btn btn-info marginBottom" (click)="promote(usr, 'OxBoss');">Make Chug</span>
-              <span class="btn btn-info marginBottom" (click)="promote(usr, 'AnteHYPE');">Make AnteHYPE</span>
-              <span class="btn btn-info marginBottom" (click)="promote(usr, 'AutoClicker');">Make AutoClicker</span>
-              <span class="btn btn-info marginBottom" (click)="promote(usr, 'CryBaby');">Make CryBaby</span>
+              <span class="btn btn-info marginBottom" (click)="promote(usr.username, 'Achtung');">Make Achtung</span>
+              <span class="btn btn-info marginBottom" (click)="promote(usr.username, 'Nidhogg');">Make Nidhogg</span>
+              <span class="btn btn-info marginBottom" (click)="promote(usr.username, 'Ninja');">Make Nin-jaa</span>
+              <span class="btn btn-info marginBottom" (click)="promote(usr.username, 'Chug');">Make Chug</span>
+              <span class="btn btn-info marginBottom" (click)="promote(usr.username, 'AnteHype');">Make AnteHype</span>
+              <span class="btn btn-info marginBottom" (click)="promote(usr.username, 'Ultra-Leech');">Make Ultra-Leech</span>
+              <span class="btn btn-info marginBottom" (click)="promote(usr.username, 'AutoClicker');">Make AutoClicker</span>
+              <span class="btn btn-info marginBottom" (click)="promote(usr.username, 'Cry-Baby');">Make Cry-Baby</span>
+              <span class="btn btn-info marginBottom" (click)="giveViking(usr);">Give Viking</span>
             </p>
           </div>
         </div>

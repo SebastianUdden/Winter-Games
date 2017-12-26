@@ -130,13 +130,22 @@ export class AdminComponent implements OnInit {
     user.score *= multiplier;
     this.userService.updateUser(user);
   }
-  promote(user, promotion) {
+  promote(username, promotion) {
     this.deleteButton = false;
     for (let i = 0; i < this.allAttributes.length; i++) {
       if (this.allAttributes[i].name === promotion) {
-        this.allAttributes[i].ownedBy = user.username;
+        this.allAttributes[i].ownedBy = username;
       }
       this.userService.updateAttribute(this.allAttributes[i]);
+    }
+  }
+  giveViking(user) {
+    this.deleteButton = false;
+    for (let i = 0; i < this.allAttributes.length; i++) {
+      if (this.allAttributes[i].name === 'Viking') {
+        user.attributes.push(this.allAttributes[i]);
+      }
+      this.userService.updateUser(user);
     }
   }
   demote(user) {

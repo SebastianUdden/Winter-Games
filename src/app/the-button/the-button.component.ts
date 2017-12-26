@@ -469,6 +469,7 @@ export class TheButtonComponent implements OnInit, OnDestroy {
     }
     toggleMinigun() {
       this.SetCheat(true, 40);
+      this.rage = 0;
       this.minigun = true;
       this.minigunCount = 0;
       console.log('minigun: ' + this.minigunCount);
@@ -517,12 +518,13 @@ export class TheButtonComponent implements OnInit, OnDestroy {
       if (this.minigunCount > -1 && this.minigunCount < 10) {
         this.minigunCount++;
       } else if (this.minigunCount >= 10) {
+        this.rage = 12;
         this.minigunCount = -1;
         this.SetCheat(false, 40);
       }
-      if (this.penaltyCount > -1 && this.penaltyCount < 12) {
+      if (this.penaltyCount > -1 && this.penaltyCount < 60) {
         this.penaltyCount++;
-      } else if (this.penaltyCount >= 12) {
+      } else if (this.penaltyCount >= 60) {
         this.penaltyCount = -1;
         if (this.autoClickerAvailable) {
           this.toggleAutoClicker();
@@ -680,6 +682,9 @@ export class TheButtonComponent implements OnInit, OnDestroy {
         for (let i = 0; i < this.user.attributes.length; i++) {
           if (this.user.attributes[i].name === 'Dual-Wield') {
             this.dualWieldAvailable = true;
+          }
+          if (this.user.attributes[i].name === 'Viking') {
+            this.vikingdAvailable = true;
           }
           if (this.user.attributes[i].name === 'Time-Lord') {
             this.timeLordAvailable = true;
