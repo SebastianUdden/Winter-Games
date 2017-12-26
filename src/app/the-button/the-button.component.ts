@@ -44,6 +44,18 @@ export class TheButtonComponent implements OnInit, OnDestroy {
     public achtungAvailable = false;
     public nidhogg = false;
     public nidhoggAvailable = false;
+    public ninja = false;
+    public ninjaAvailable = false;
+    public ultraLeech = false;
+    public ultraLeechAvailable = false;
+    public chug = false;
+    public chugAvailable = false;
+    public autoClicker = false;
+    public autoClickerAvailable = false;
+    public cryBaby = false;
+    public cryBabyAvailable = false;
+    public anteHype = false;
+    public anteHypeAvailable = false;
 
     public click = 1;
     public gambler = false;
@@ -424,6 +436,30 @@ export class TheButtonComponent implements OnInit, OnDestroy {
       this.SetCheat(true, 2);
       this.nidhogg = true;
     }
+    toggleNinja() {
+      this.SetCheat(true, 2);
+      this.ninja = true;
+    }
+    toggleChug() {
+      this.SetCheat(true, 2);
+      this.chug = true;
+    }
+    toggleUltraLeech() {
+      this.SetCheat(true, 2);
+      this.ultraLeech = true;
+    }
+    toggleAutoClicker() {
+      this.SetCheat(true, 0.5);
+      this.autoClicker = true;
+    }
+    toggleCryBaby() {
+      this.SetCheat(true, 0.5);
+      this.cryBaby = true;
+    }
+    toggleAnteHype() {
+      this.SetCheat(true, 3);
+      this.anteHype = true;
+    }
     toggleMinigun() {
       this.SetCheat(true, 40);
       this.minigun = true;
@@ -476,6 +512,12 @@ export class TheButtonComponent implements OnInit, OnDestroy {
       } else if (this.minigunCount >= 10) {
         this.minigunCount = -1;
         this.SetCheat(false, 40);
+        if (this.autoClickerAvailable) {
+          this.toggleAutoClicker();
+        }
+        if (this.cryBabyAvailable) {
+          this.toggleCryBaby();
+        }
       }
       if (this.rage < 11) {
         this.rage++;
@@ -534,6 +576,14 @@ export class TheButtonComponent implements OnInit, OnDestroy {
       this.users.getUsers();
       this.newRecord = false;
       this.dualWield = false;
+      this.nidhogg = false;
+      this.achtung = false;
+      this.ninja = false;
+      this.ultraLeech = false;
+      this.chug = false;
+      this.anteHype = false;
+      this.autoClicker = false;
+      this.cryBaby = false;
       this.minigun = false;
       this.timeLord = false;
       this.userScore = 0;
@@ -559,15 +609,43 @@ export class TheButtonComponent implements OnInit, OnDestroy {
             }
           }
           if (this.allAttributes[i].name === 'Achtung') {
-            console.log('Achtung!');
             if (this.allAttributes[i].ownedBy === this.user.username) {
               this.achtungAvailable = true;
             }
           }
           if (this.allAttributes[i].name === 'Nidhogg') {
-            console.log('Nidhogg!');
             if (this.allAttributes[i].ownedBy === this.user.username) {
               this.nidhoggAvailable = true;
+            }
+          }
+          if (this.allAttributes[i].name === 'Ninja') {
+            if (this.allAttributes[i].ownedBy === this.user.username) {
+              this.ninjaAvailable = true;
+            }
+          }
+          if (this.allAttributes[i].name === 'Ultra-Leech') {
+            if (this.allAttributes[i].ownedBy === this.user.username) {
+              this.ultraLeechAvailable = true;
+            }
+          }
+          if (this.allAttributes[i].name === 'Chug') {
+            if (this.allAttributes[i].ownedBy === this.user.username) {
+              this.chugAvailable = true;
+            }
+          }
+          if (this.allAttributes[i].name === 'AutoClicker') {
+            if (this.allAttributes[i].ownedBy === this.user.username) {
+              this.autoClickerAvailable = true;
+            }
+          }
+          if (this.allAttributes[i].name === 'CryBaby') {
+            if (this.allAttributes[i].ownedBy === this.user.username) {
+              this.cryBabyAvailable = true;
+            }
+          }
+          if (this.allAttributes[i].name === 'AnteHype') {
+            if (this.allAttributes[i].ownedBy === this.user.username) {
+              this.anteHypeAvailable = true;
             }
           }
         }
