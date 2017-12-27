@@ -265,6 +265,10 @@ export class TheButtonComponent implements OnInit, OnDestroy {
 
     CheckForCheats() {
         let rainbow = false;
+        let mario = false;
+        let luigi = false;
+        let cminor = false;
+
         let rgb = false;
         let roCgCLb = false;
         let sunset = false;
@@ -282,6 +286,48 @@ export class TheButtonComponent implements OnInit, OnDestroy {
             true,
             true,
             true
+        ];
+        const marioArray = [
+          false,
+          true,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false
+        ];
+        const luigiArray = [
+          false,
+          false,
+          false,
+          false,
+          true,
+          true,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false
+        ];
+        const cminorArray = [
+          true,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false
         ];
         const rgbArray = [
             false,
@@ -327,13 +373,26 @@ export class TheButtonComponent implements OnInit, OnDestroy {
         ];
 
         rainbow = this.CheckStatusArrayMatch(rainbowArray);
+        mario = this.CheckStatusArrayMatch(marioArray);
+        luigi = this.CheckStatusArrayMatch(luigiArray);
+        cminor = this.CheckStatusArrayMatch(cminorArray);
+
         rgb = this.CheckStatusArrayMatch(rgbArray);
         roCgCLb = this.CheckStatusArrayMatch(roCgCLbArray);
         sunset = this.CheckStatusArrayMatch(sunsetArray);
 
-        if (rainbow || rgb || roCgCLb || sunset) {
+        if (rainbow || rgb || roCgCLb || sunset || mario || luigi || cminor) {
             if (rainbow) {
                 this.CheatToggle(2);
+            }
+            if (mario) {
+              this.CheatToggle(3);
+            }
+            if (luigi) {
+              this.CheatToggle(4);
+            }
+            if (cminor) {
+              this.CheatToggle(5);
             }
             if (rgb) {
                 // this.CheatToggle(3);
@@ -355,16 +414,16 @@ export class TheButtonComponent implements OnInit, OnDestroy {
     CheatToggle(number) {
         if (number === 2) {
             this.cheatX2 = !this.cheatX2;
-            this.SetCheat(this.cheatX2, number);
+            this.SetCheat(this.cheatX2, 2);
         } else if (number === 3) {
             this.cheatX3 = !this.cheatX3;
-            this.SetCheat(this.cheatX3, number);
+            this.SetCheat(this.cheatX3, 2);
         } else if (number === 4) {
             this.cheatX4 = !this.cheatX4;
-            this.SetCheat(this.cheatX4, number);
+            this.SetCheat(this.cheatX4, 2);
         } else if (number === 5) {
             this.cheatX5 = !this.cheatX5;
-            this.SetCheat(this.cheatX5, number);
+            this.SetCheat(this.cheatX5, 2);
         } else if (number === 9) {
             this.cheatX9 = !this.cheatX9;
             this.SetCheat(this.cheatX9, number);

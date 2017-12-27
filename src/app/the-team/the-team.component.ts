@@ -54,12 +54,14 @@ export class TheTeamComponent implements OnInit {
     this.loadAllUsers();
   }
   private loadAllUsers() {
-    this.userService.getUsers().subscribe(users => { this.users = this.sortDescending(users); });
+    this.userService.getUsers().subscribe(users => { this.users = this.sortDescendingDynamic(users); }); // Dynamic
+    // this.userService.getUsers().subscribe(users => { this.users = this.sortDescendingSet(users); }); // Set
   }
   SortDescending(array) {
     return array.sort(function(a, b){ return b.score - a.score; });
   }
-  sortDescending(array) {
+
+  sortDescendingDynamic(array) {
     let teamsArray = array.sort(function(a, b){ return b.score - a.score; });
     for (let i = 0; i < array.length; i++) {
       // if (array[i].admin) {
@@ -142,6 +144,64 @@ export class TheTeamComponent implements OnInit {
     }
     return array;
   }
+
+  sortDescendingSet(array) {
+    let teamsArray = array.sort(function(a, b){ return b.score - a.score; });
+    for (let i = 0; i < array.length; i++) {
+      switch(array[i].username) {
+        case 'Robban':
+          this.blueTeam.push(array[i]);
+          break;
+        case 'Nemer':
+          this.blueTeam.push(array[i]);
+          break;
+        case 'Virre':
+          this.blueTeam.push(array[i]);
+          break;
+        case 'Amanda':
+          this.blueTeam.push(array[i]);
+          break;
+        case 'Kling':
+          this.blueTeam.push(array[i]);
+          break;
+        case 'Mattis':
+          this.blueTeam.push(array[i]);
+          break;
+        case 'Fredde':
+          this.redTeam.push(array[i]);
+          break;
+        case 'Robin':
+          this.redTeam.push(array[i]);
+          break;
+        case 'Schaeran':
+          this.redTeam.push(array[i]);
+          break;
+        case 'Ivar':
+          this.redTeam.push(array[i]);
+          break;
+        case 'Dennan':
+          this.redTeam.push(array[i]);
+          break;
+        case 'Sebbe':
+          this.redTeam.push(array[i]);
+          break;
+        default:
+          break;
+      }
+    }
+    for (let i = 0; i < this.blueTeam.length; i++) {
+      if (this.blueTeam[i]) {
+        this.blueTeamScore += this.blueTeam[i].score;
+      }
+    }
+    for (let i = 0; i < this.redTeam.length; i++) {
+      if (this.redTeam[i]) {
+        this.redTeamScore += this.redTeam[i].score;
+      }
+    }
+    return array;
+  }
+
   goStraightEvil(evil) {
     if (evil === undefined) {
       this.choice = false;

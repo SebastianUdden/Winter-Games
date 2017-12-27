@@ -32,7 +32,7 @@
               <div *ngIf="u.png === 'Amanda.png'" class="col-xs-2 users-img highscore-img amanda"></div>
               <div *ngIf="u.png === 'Robban.png'" class="col-xs-2 users-img highscore-img robban"></div>
               <div class="col-xs-3" style="display:inline;">
-                <div class="row" *ngIf="u.username !== 'Mattis'" style="margin-top:10px;">
+                <div class="row" style="margin-top:10px;">
                   <div *ngFor="let marketAttribute of marketAttributes">
                     <div *ngIf="marketAttribute.ownedBy">
                       <div *ngIf="marketAttribute.ownedBy === u.username">
@@ -78,7 +78,7 @@
               <div *ngIf="u.png === 'Amanda.png'" class="col-xs-2 users-img highscore-img amanda"></div>
               <div *ngIf="u.png === 'Robban.png'" class="col-xs-2 users-img highscore-img robban"></div>
               <div class="col-xs-3" style="display:inline;">
-                <div class="row" *ngIf="u.username !== 'Mattis'" style="margin-top:10px;">
+                <div class="row" style="margin-top:10px;">
                   <div *ngFor="let marketAttribute of marketAttributes">
                     <div *ngIf="marketAttribute.ownedBy">
                       <div *ngIf="marketAttribute.ownedBy === u.username">
@@ -168,7 +168,7 @@
               </div>
             </div>
           </div>
-          <div *ngIf="selectedUser.username !== 'Mattis'">
+          <div>
             <div *ngFor="let userAttribute of selectedUser.attributes">
               <app-attribute [attribute]="userAttribute" [owned]="true"></app-attribute>
             </div>
@@ -274,7 +274,7 @@
                 <div *ngIf="u.png === 'Amanda.png'" class="col-xs-2 users-img highscore-img amanda"></div>
                 <div *ngIf="u.png === 'Robban.png'" class="col-xs-2 users-img highscore-img robban"></div>
                 <div class="col-xs-3" style="display:inline;">
-                  <div class="row" *ngIf="u.username !== 'Mattis'" style="margin-top:10px;">
+                  <div class="row" style="margin-top:10px;">
                     <div *ngFor="let marketAttribute of marketAttributes">
                       <div *ngIf="marketAttribute.ownedBy">
                         <div *ngIf="marketAttribute.ownedBy === u.username">
@@ -326,7 +326,7 @@
                 <div *ngIf="u.png === 'Amanda.png'" class="col-xs-2 users-img highscore-img amanda"></div>
                 <div *ngIf="u.png === 'Robban.png'" class="col-xs-2 users-img highscore-img robban"></div>
                 <div class="col-xs-3" style="display:inline;">
-                  <div class="row" *ngIf="u.username !== 'Mattis'" style="margin-top:10px;">
+                  <div class="row" style="margin-top:10px;">
                     <div *ngFor="let marketAttribute of marketAttributes">
                       <div *ngIf="marketAttribute.ownedBy">
                         <div *ngIf="marketAttribute.ownedBy === u.username">
@@ -418,7 +418,7 @@
               </div>
             </div>
           </div>
-          <div *ngIf="selectedUser.username !== 'Mattis'">
+          <div>
             <div *ngFor="let userAttribute of selectedUser.attributes">
               <app-attribute [attribute]="userAttribute" [owned]="true"></app-attribute>
             </div>
