@@ -161,16 +161,6 @@ export class AdminComponent implements OnInit {
           break;
       }
     }
-    for (let i = 0; i < this.blueTeam.length; i++) {
-      if (this.blueTeam[i]) {
-        this.blueTeamScore += this.blueTeam[i].score;
-      }
-    }
-    for (let i = 0; i < this.redTeam.length; i++) {
-      if (this.redTeam[i]) {
-        this.redTeamScore += this.redTeam[i].score;
-      }
-    }
     return array;
   }
 
