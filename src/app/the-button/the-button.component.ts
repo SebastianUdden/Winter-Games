@@ -420,7 +420,7 @@ export class TheButtonComponent implements OnInit, OnDestroy {
             this.SetCheat(this.cheatX3, 2);
         } else if (number === 4) {
             this.cheatX4 = !this.cheatX4;
-            this.SetCheat(this.cheatX4, 2);
+            this.SetCheat(this.cheatX4, 3);
         } else if (number === 5) {
             this.cheatX5 = !this.cheatX5;
             this.SetCheat(this.cheatX5, 2);
