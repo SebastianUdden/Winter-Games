@@ -53,8 +53,8 @@ export class AdminComponent implements OnInit {
     this.loadAllUsers();
   }
   private loadAllUsers() {
-    this.userService.getUsers().subscribe(users => { this.users = this.sortDescendingDynamic(users); });
-    // this.userService.getUsers().subscribe(users => { this.users = this.sortDescendingSet(users); });
+    // this.userService.getUsers().subscribe(users => { this.users = this.sortDescendingDynamic(users); });
+    this.userService.getUsers().subscribe(users => { this.users = this.sortDescendingSet(users); });
   }
   changeWealth(user, create) {
     if (create) {
@@ -122,13 +122,13 @@ export class AdminComponent implements OnInit {
     for (let i = 0; i < array.length; i++) {
       switch(array[i].username) {
         case 'Robban':
-          this.blueTeam.push(array[i]);
+          this.redTeam.push(array[i]);
           break;
         case 'Nemer':
           this.blueTeam.push(array[i]);
           break;
         case 'Virre':
-          this.blueTeam.push(array[i]);
+          this.redTeam.push(array[i]);
           break;
         case 'Amanda':
           this.blueTeam.push(array[i]);
@@ -140,7 +140,7 @@ export class AdminComponent implements OnInit {
           this.blueTeam.push(array[i]);
           break;
         case 'Fredde':
-          this.redTeam.push(array[i]);
+          this.blueTeam.push(array[i]);
           break;
         case 'Robin':
           this.redTeam.push(array[i]);
@@ -149,7 +149,7 @@ export class AdminComponent implements OnInit {
           this.redTeam.push(array[i]);
           break;
         case 'Ivar':
-          this.redTeam.push(array[i]);
+          this.blueTeam.push(array[i]);
           break;
         case 'Dennan':
           this.redTeam.push(array[i]);

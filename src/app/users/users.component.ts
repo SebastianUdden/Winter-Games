@@ -127,7 +127,7 @@ export class UsersComponent implements OnInit {
 
 
     if (leechUser) {
-      let leechAmount = Math.floor(user.wallet * 0.01)
+      let leechAmount = Math.floor(user.wallet * 0.1)
       latestLeech.setTime(latestLeech.getTime() + (1*60*60*1000));
       this.user.nextLeech = latestLeech.getTime();
 
